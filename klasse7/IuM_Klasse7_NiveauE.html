@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Informatik und Medienbildung, Klasse 7, Niveaustufe E: Darstellung der Inhalte sowie je zwei Aufgaben mit Loesungen zu allen 31 Teilkompetenzen der Lesehilfe des Ministeriums fuer Kultus Baden-Wuerttemberg.">
+<title>IuM Klasse 7 Niveau E</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  /* Grundlagen (ersetzt das Reset, das die Artifact-Veroeffentlichung sonst ergaenzt) */
+  html, body { margin: 0; padding: 0; }
+  img, svg { max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+</style>
+<style>
+  :root{
+    color-scheme:light;
+    --ground:#f5f6f8; --surface:#ffffff; --surface-2:#eef0f4;
+    --ink:#14181e; --ink-2:#39414d; --muted:#5b6573; --line:#d8dce4; --line-soft:#e6e9ef;
+    --accent:#12459e; --accent-soft:#e4eaf6;
+    --a-dp:#12459e; --a-id:#0f6355; --a-al:#6c3a8e; --a-ks:#a0442b; --a-da:#6f6014;
+    --sol-bg:#f2f6f1; --sol-line:#c9d8c6; --sol-ink:#2c4a2a;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:"Atkinson Hyperlegible","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+      --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+      --accent:#8fb2ee; --accent-soft:#1d2735;
+      --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+      --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+    --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+    --accent:#8fb2ee; --accent-soft:#1d2735;
+    --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+    --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:52rem;margin:0 auto;padding:0 1.5rem 5rem}
+
+  /* ---------- masthead ---------- */
+  .mast{border-bottom:1px solid var(--line);padding:3.5rem 0 2rem;margin-bottom:2.5rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 1.1rem}
+  .mast h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5.5vw,3rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 .5rem;text-wrap:balance}
+  .mast .sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--ink-2);margin:0 0 1.6rem}
+  .mast p.lede{max-width:62ch;color:var(--ink-2);margin:0 0 1.4rem}
+  .src{font-size:.85rem;color:var(--muted);border-left:2px solid var(--line);padding-left:.9rem;max-width:62ch}
+
+  /* ---------- controls ---------- */
+  .bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);margin-bottom:2.5rem}
+  .bar-in{max-width:52rem;margin:0 auto;padding:.6rem 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center}
+  .bar nav{display:flex;flex-wrap:wrap;gap:.15rem .55rem;flex:1 1 auto}
+  .bar nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:.2rem .1rem;border-bottom:2px solid transparent}
+  .bar nav a:hover{color:var(--ink);border-bottom-color:var(--nav-c,var(--accent))}
+  button.toggle{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:2px;padding:.35rem .7rem;cursor:pointer}
+  button.toggle:hover{border-color:var(--accent);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* ---------- sections ---------- */
+  .area{margin:0 0 4rem;--c:var(--accent)}
+  #dp{--c:var(--a-dp)} #id{--c:var(--a-id)} #al{--c:var(--a-al)} #ks{--c:var(--a-ks)} #da{--c:var(--a-da)}
+  .area-head{border-top:3px solid var(--c);padding-top:1rem;margin-bottom:1.75rem}
+  .area-head .kb{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:.4rem}
+  .area-head h2{font-family:var(--serif);font-size:clamp(1.45rem,3.6vw,1.95rem);font-weight:600;line-height:1.2;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .area-head .count{font-size:.85rem;color:var(--muted);margin:.45rem 0 0}
+
+  /* ---------- Teilkompetenz ---------- */
+  .tk{background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--c);margin-bottom:1.5rem}
+  .tk-head{padding:1.15rem 1.4rem 1rem;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;align-items:baseline}
+  .tk-id{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--c);letter-spacing:.04em;white-space:nowrap}
+  .tk-head h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;line-height:1.35;margin:0;text-wrap:pretty}
+  .tk-body{padding:1.2rem 1.4rem 1.4rem}
+  .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 .6rem}
+  .lbl+*{margin-top:0}
+  .prose p{margin:0 0 .8rem;max-width:68ch;color:var(--ink-2)}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:700}
+  .prose ul{margin:.2rem 0 .9rem;padding-left:1.1rem;max-width:68ch;color:var(--ink-2)}
+  .prose li{margin-bottom:.3rem}
+  .prose li::marker{color:var(--c)}
+  .term{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:.08em .35em;border-radius:2px;color:var(--ink)}
+
+  .tasks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem;border-top:1px solid var(--line-soft);padding-top:1.1rem;margin-top:1.4rem}
+  .tasks>li{display:flex;flex-direction:column;gap:.55rem}
+  .tk-num{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600}
+  .tasks .q{margin:0;max-width:68ch}
+  .tasks .q p{margin:0 0 .5rem}
+  .tasks .q p:last-child{margin:0}
+  .tasks ol.sub,.tasks ul.sub{margin:.4rem 0 0;padding-left:1.3rem}
+  .tasks ol.sub li,.tasks ul.sub li{margin-bottom:.25rem}
+
+  details{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:2px}
+  details>summary{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sol-ink);padding:.5rem .8rem;cursor:pointer;list-style:none}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::before{content:"▸ ";display:inline-block;transition:transform .15s}
+  details[open]>summary::before{content:"▾ "}
+  details .sol{padding:0 .9rem .9rem;font-size:.94rem;color:var(--ink-2);max-width:70ch}
+  details .sol p{margin:0 0 .6rem}
+  details .sol p:last-child{margin:0}
+  details .sol ol,details .sol ul{margin:.3rem 0 .7rem;padding-left:1.25rem}
+  details .sol li{margin-bottom:.28rem}
+  details .sol strong{color:var(--ink)}
+
+  pre.bits{font-family:var(--mono);font-size:.82rem;line-height:1.75;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:2px;padding:.7rem .85rem;margin:.5rem 0 .7rem;overflow-x:auto;white-space:pre;color:var(--ink)}
+  .grid-fig{font-family:var(--mono);font-size:.9rem;line-height:1.35;letter-spacing:.34em}
+
+  table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.5rem 0 .8rem;font-variant-numeric:tabular-nums}
+  .tbl-scroll{overflow-x:auto;margin:.5rem 0 .8rem}
+  .tbl-scroll table{margin:0;min-width:22rem}
+  th,td{text-align:left;padding:.4rem .7rem .4rem 0;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  td.n,th.n{text-align:right;padding-right:1.1rem;font-family:var(--mono)}
+
+  .note{font-size:.9rem;color:var(--muted);border-left:2px solid var(--c);padding-left:.85rem;margin:.9rem 0 0;max-width:66ch}
+  footer.doc{border-top:1px solid var(--line);padding-top:1.5rem;margin-top:1rem;font-size:.85rem;color:var(--muted);max-width:66ch}
+  footer.doc p{margin:0 0 .6rem}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media print{.bar{display:none}details{border-color:#ccc}.tk{break-inside:avoid}}
+</style>
+<style>
+  .tk-head{grid-template-columns:auto 1fr}
+  .tag{grid-column:2;font-family:var(--mono);font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:.1rem .4rem;justify-self:start;margin-top:.45rem}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <nav>
+      <a href="#dp">Digitalität</a>
+      <a href="#id">Daten</a>
+      <a href="#al">Algorithmen</a>
+      <a href="#ks">Kryptographie</a>
+      <a href="#da">Medienmanipulation</a>
+    </nav>
+    <button class="toggle" id="solAll" type="button">Alle Lösungen einblenden</button>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Farbschema wechseln">Dunkel</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Lesehilfe IuM · Schuljahr 2026/2027</p>
+    <h1>Klasse 7 auf Niveaustufe E</h1>
+    <p class="sub">Informatik und Medienbildung — Inhalte und Aufgaben zu allen 31 Teilkompetenzen</p>
+    <p class="lede">Für jede in der Lesehilfe für Klasse 7 auf Niveau E ausgewiesene Teilkompetenz enthält diese Zusammenstellung eine Darstellung der Inhalte sowie zwei Aufgaben mit ausgearbeiteter Lösung. Die Formulierung der Teilkompetenzen ist wörtlich übernommen; die Kennungen (DP 1, ID 2, …) folgen der Reihenfolge der Tabellen im Dokument.</p>
+    <p class="src">Grundlage: <em>Lesehilfe Informatik und Medienbildung für die Klassen 5 bis 7 im Schuljahr 2026/2027</em>, Ministerium für Kultus Baden-Württemberg, Juli 2026. Für das Gymnasium gelten die Kompetenzen der Niveaustufe E. Die Lesehilfe ist kein in Kraft gesetzter Bildungsplan, sondern ein Zwischenstand zur Unterrichtsplanung.</p>
+  </header>
+
+  <!-- ============ DIGITALITÄT UND PARTIZIPATION ============ -->
+  <section class="area" id="dp">
+    <div class="area-head">
+      <span class="kb">Digitalität und Partizipation</span>
+      <h2>Gaming und Manipulation durch Medien</h2>
+      <p class="count">9 Teilkompetenzen · DP 1 – DP 9 · auf Niveau E wortgleich mit G und M</p>
+    </div>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 1</span>
+        <h3>Unterschiedliche Arten von Akteuren im digitalen Raum identifizieren und deren Interessen beschreiben</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Im digitalen Raum tritt nie nur „das Internet“ auf, sondern immer ein <strong>Akteur mit einem Interesse</strong>. Unterschieden werden vor allem:</p>
+          <ul>
+            <li><strong>Privatpersonen</strong> – Selbstdarstellung, Kontakt, Zugehörigkeit</li>
+            <li><strong>Creator und Influencer</strong> – Reichweite, Einnahmen aus Werbung, Affiliate-Links, Sponsoring</li>
+            <li><strong>Unternehmen und Plattformbetreiber</strong> – Nutzungsdauer, Daten, Umsatz; die Plattform verdient an der Aufmerksamkeit, nicht am Inhalt</li>
+            <li><strong>Redaktionen und Medienhäuser</strong> – Information, Auflage bzw. Abonnements, journalistische Standards</li>
+            <li><strong>Öffentliche Stellen, Verbände, NGOs, Parteien</strong> – Information und Meinungsbildung</li>
+            <li><strong>Automatisierte Akteure</strong> – Bots, Empfehlungssysteme, KI-Systeme; sie handeln nach den Zielen ihrer Betreiber</li>
+          </ul>
+          <p>Auf Niveau E genügt es nicht, Interessen zu vermuten: Sie sollen <strong>belegt</strong> werden, etwa über Impressum, Kennzeichnung als Werbung oder bezahlte Partnerschaft, Finanzierungsmodell und Betreiberangabe. Leitfrage: <em>Wer spricht, wer bezahlt, und wer hat welchen Nutzen davon, dass ich das sehe?</em></p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Zu einem neuen Handyspiel erscheinen am selben Tag vier Beiträge. Ordne jedem Beitrag den Akteurstyp zu und beschreibe dessen Interesse. Nenne jeweils ein Merkmal, an dem man den Akteur erkennen kann.</p>
+              <ol class="sub">
+                <li>Ein Video „Ich spiele 24 Stunden X!“ mit dem Hinweis „enthält bezahlte Werbung“ und einem Rabattcode</li>
+                <li>Ein Beitrag im Spiel-Store: „Jetzt herunterladen – über 10 Mio. Spieler“</li>
+                <li>Ein Artikel einer Tageszeitung: „Was Eltern über X wissen sollten“ mit Zitaten zweier Fachleute</li>
+                <li>50 fast gleichlautende Kommentare „bestes Spiel ever 🔥“ von Konten, die alle in derselben Woche angelegt wurden</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Creator/Influencer.</strong> Interesse: Reichweite und Einnahmen; der Rabattcode bringt zusätzlich Provision. Erkennbar an der Werbekennzeichnung und am persönlichen Kanal.</li>
+                <li><strong>Unternehmen (Entwickler/Publisher).</strong> Interesse: Downloads und Umsatz. Erkennbar am Absender im Store und an der reinen Werbesprache ohne Nachteile.</li>
+                <li><strong>Redaktion.</strong> Interesse: Information der Leserschaft, journalistische Glaubwürdigkeit, Abonnements. Erkennbar an Impressum, Autorennennung und zitierten Quellen.</li>
+                <li><strong>Automatisierte Akteure (Bots), beauftragt von einem Unternehmen oder einer Agentur.</strong> Interesse: künstlich erzeugte Zustimmung, um die Bewertung zu heben. Erkennbar an gleichförmigen Texten und am gleichzeitig angelegten Konto­alter.</li>
+              </ol>
+              <p>Gemeinsame Einsicht: Alle vier wollen, dass das Spiel gut dasteht — nur Nr. 3 hat kein Interesse daran, dass es <em>gekauft</em> wird.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Videoportal ist für dich kostenlos. Erkläre, womit der Plattformbetreiber sein Geld verdient, und begründe damit, warum die Startseite dir gerade die Videos anzeigt, die sie anzeigt.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Bezahlt wird die Plattform von <strong>Werbetreibenden</strong>. Verkauft wird nicht das Video, sondern <strong>Aufmerksamkeit</strong>: Je länger und je öfter Nutzende bleiben, desto mehr Werbung kann eingeblendet werden, und je mehr über die Nutzenden bekannt ist, desto teurer lässt sich die Werbung verkaufen.</p>
+              <p>Daraus folgt das Interesse des Betreibers: Das Empfehlungssystem wählt nicht die <em>wichtigsten</em> oder <em>wahrsten</em> Videos aus, sondern die, bei denen die Verweildauer voraussichtlich am höchsten ist. Die Startseite ist also das Ergebnis eines Geschäftsmodells, nicht einer redaktionellen Auswahl. Für Nutzende heißt das: Sichtbarkeit ist kein Qualitätsbeweis.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 2</span>
+        <h3>Einflussnahme im digitalen Raum (zum Beispiel durch Algorithmen, Bewertungen, Kommentare, Werbung) beschreiben</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Einflussnahme wirkt an vier gut unterscheidbaren Stellen:</p>
+          <ul>
+            <li><strong>Algorithmen</strong> sortieren, was überhaupt sichtbar wird. Empfehlungssysteme bewerten Signale wie Verweildauer, Likes, Weiterleitungen und Ähnlichkeit zu bereits Gesehenem. Folgen: Personalisierung, Verstärkung von Extremen, <span class="term">Filterblase</span> und <span class="term">Echokammer</span>.</li>
+            <li><strong>Bewertungen</strong> (Sterne, Rankings) nutzen den Herdeneffekt und lassen sich durch gekaufte oder gefälschte Rezensionen manipulieren.</li>
+            <li><strong>Kommentare</strong> erzeugen den Eindruck einer Mehrheitsmeinung. Wenige laute Konten können ihn setzen (<em>Astroturfing</em>).</li>
+            <li><strong>Werbung</strong> ist zielgruppengenau ausspielbar und tritt oft als Inhalt getarnt auf (Native Advertising, Produktplatzierung im Let’s-Play).</li>
+          </ul>
+          <p>Wichtig ist die Unterscheidung zwischen <strong>legitimer Beeinflussung</strong> (gekennzeichnete Werbung, offene Meinungsäußerung) und <strong>Manipulation</strong> (Verschleierung von Absender oder Absicht).</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Zwei Schülerinnen suchen am selben Tag im selben Videoportal nach „Klimawandel“ und erhalten deutlich unterschiedliche Trefferlisten. Erkläre, wie das zustande kommt, und beurteile, welches Problem daraus für eine gemeinsame Diskussion im Unterricht entsteht.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Zustandekommen:</strong> Die Trefferliste wird personalisiert. In die Sortierung gehen frühere Suchen, angesehene Videos und Abbruchzeitpunkte, Abonnements, Standort und Gerät sowie das Verhalten ähnlicher Nutzergruppen ein. Beide sehen daher nicht „das Netz“, sondern eine auf sie zugeschnittene Auswahl.</p>
+              <p><strong>Problem:</strong> Beide halten ihre Liste für den objektiven Stand der Dinge. In der Diskussion fehlt damit eine gemeinsame Tatsachenbasis, und jede sieht ihre Position durch „das, was man überall findet“ bestätigt — obwohl das Empfehlungssystem genau diese Bestätigung erzeugt hat. Gegenmaßnahmen: Quellen bewusst außerhalb der Empfehlung suchen, Suchergebnisse vergleichen, abgemeldet oder in einem privaten Fenster suchen.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Onlineshop-Artikel hat 4,8 von 5 Sternen bei 1 240 Bewertungen. Nenne drei Beobachtungen, die dich an dieser Bewertung zweifeln lassen könnten, und begründe jeweils, warum.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Zum Beispiel:</p>
+              <ol>
+                <li><strong>Zeitliche Ballung:</strong> Sehr viele Bewertungen in wenigen Tagen, danach fast keine. Echte Käufe verteilen sich über die Zeit; eine Ballung deutet auf eine gekaufte Kampagne.</li>
+                <li><strong>Sprache und Länge:</strong> Viele kurze, austauschbare Texte („Super Produkt, klare Empfehlung!“) ohne konkrete Nutzungsdetails. Wer ein Produkt wirklich benutzt, nennt Einzelheiten — auch störende.</li>
+                <li><strong>Verteilung der Sterne:</strong> Fast nur 5 Sterne und ein paar 1-Stern-Bewertungen, dazwischen kaum etwas. Diese U-Form entsteht, wenn positive Bewertungen zugekauft und die echten, kritischen Stimmen davon überdeckt werden.</li>
+              </ol>
+              <p>Weitere gültige Antworten: Bewertungen beziehen sich auf ein anderes Produkt der Verkäuferin, Anreize wie Gutschein für 5 Sterne, Konten ohne weitere Bewertungshistorie, fehlender Vermerk „verifizierter Kauf“.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 3</span>
+        <h3>Die Vertrauenswürdigkeit von Inhalten und Quellen einschätzen sowie Hinweise auf Desinformation identifizieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Grundlage ist ein festes Prüfraster, das die Schülerinnen und Schüler routiniert anwenden:</p>
+          <ul>
+            <li><strong>Wer?</strong> Impressum, Autor oder Autorin, Trägerschaft, Fachlichkeit</li>
+            <li><strong>Wann?</strong> Datum, Aktualität, spätere Korrekturen</li>
+            <li><strong>Woher?</strong> Primärquelle statt „ein Bekannter sagt“; Zahlen mit Quellenangabe</li>
+            <li><strong>Wozu?</strong> Information, Verkauf, Meinungsbildung, Klickerzeugung</li>
+            <li><strong>Wie?</strong> Sachlicher Ton oder Empörungssprache, Trennung von Bericht und Kommentar</li>
+          </ul>
+          <p>Typische <strong>Warnsignale für Desinformation</strong>: starke Emotionalisierung und Dringlichkeit („Sofort teilen!“), fehlende oder im Kreis führende Quellen, alte Bilder in neuem Zusammenhang, auffällige Rechtschreibfehler, nachgeahmte Logos bekannter Medien, reißerische Überschrift ohne Deckung im Text.</p>
+          <p>Zentrale Methoden: <strong>Querlesen</strong> (dieselbe Behauptung bei zwei unabhängigen, seriösen Quellen prüfen), <strong>Rückwärtssuche</strong> von Bildern, Nachschlagen bei Faktencheck-Angeboten. Wichtig ist die Begriffsklärung: <em>Falschinformation</em> kann irrtümlich entstehen, <em>Desinformation</em> ist absichtlich gestreut.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Prüfe die folgende Meldung mit dem Prüfraster und nenne mindestens vier Hinweise auf Desinformation:</p>
+              <pre class="bits">SCHOCK-STUDIE: Handystrahlung senkt Schulnoten um
+2 Ganze Noten!! Lehrer schweigen darüber. Forscher
+haben es bewiesen. Bitte SOFORT teilen, bevor es
+gelöscht wird!    —  gesundheit-aktuell-news24.info</pre>
+              <p>Beschreibe anschließend, wie du in drei Schritten herausfinden würdest, ob etwas dran ist.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Hinweise auf Desinformation:</strong></p>
+              <ol>
+                <li><em>Wer?</em> Kein Autor, kein Impressum erkennbar; der Domainname („…news24.info“) imitiert ein Nachrichtenportal.</li>
+                <li><em>Woher?</em> „Forscher haben es bewiesen“ ohne Studie, Institut, Jahr oder Stichprobe — die Quelle ist nicht nachprüfbar.</li>
+                <li><em>Wie?</em> Emotionalisierung durch Großschreibung, Häufung von Ausrufezeichen und den Aufruf „SOFORT teilen“; die angebliche Löschung erzeugt künstlichen Zeitdruck.</li>
+                <li><em>Wozu?</em> Verschwörungsandeutung („Lehrer schweigen darüber“) lenkt von der fehlenden Quelle ab und liefert eine Erklärung dafür, warum man nichts findet.</li>
+                <li>Die Wirkungsangabe „2 ganze Noten“ ist überpräzise und unplausibel groß; kein Hinweis auf Datum oder Aktualität.</li>
+              </ol>
+              <p><strong>Prüfen in drei Schritten:</strong> (1) Querlesen — die Behauptung bei zwei unabhängigen, seriösen Quellen suchen; findet sich nichts, ist das bereits ein starkes Gegenindiz. (2) Nach der Originalstudie suchen und prüfen, ob sie überhaupt existiert und ob sie das behauptete Ergebnis enthält. (3) Faktencheck-Angebote durchsuchen, ob die Meldung dort bereits geprüft wurde.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Zwei Webseiten behaupten Gegenteiliges über die Wirkung von Bildschirmzeit. Seite A ist der Blog eines Anbieters von Konzentrationstabletten, Seite B eine Übersichtsseite einer Universitätsklinik ohne Autorennennung, letzte Änderung vor sechs Jahren. Beurteile beide Quellen und entscheide begründet, wie du weiter vorgehst.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Seite A:</strong> Klarer <em>Interessenkonflikt</em> — der Betreiber verkauft ein Produkt, dessen Nutzen die Behauptung stützen soll. Die Aussage ist damit nicht automatisch falsch, aber als Belegquelle unbrauchbar.</p>
+              <p><strong>Seite B:</strong> Die Trägerschaft ist vertrauenswürdig und ohne Verkaufsinteresse, aber die Angaben sind <em>veraltet</em> und ohne Autorennennung; bei einem Forschungsthema kann sich der Stand in sechs Jahren geändert haben.</p>
+              <p><strong>Vorgehen:</strong> Keine der beiden Seiten allein genügt. B ist der bessere Ausgangspunkt, weil kein Verkaufsinteresse vorliegt; die Aussage wird aber mit einer aktuellen Quelle gegengeprüft — etwa einer neueren Leitlinie, einer Veröffentlichung einer Fachgesellschaft oder einem Faktencheck. Merksatz: Vertrauenswürdigkeit hat zwei Bedingungen, <strong>Unabhängigkeit</strong> und <strong>Aktualität</strong>; hier fehlt jeder Seite eine davon.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 4</span>
+        <h3>Sich mit in manipulativer Absicht verbreiteten Falschmeldungen im digitalen Raum (zum Beispiel Fake News, Deepfakes) auseinandersetzen und den eigenen Umgang damit reflektieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Fake News</strong> sind bewusst erfundene oder verzerrte Nachrichten im Gewand journalistischer Berichte. Ziele: Klicks und Werbeeinnahmen, politische Stimmungsmache, Rufschädigung, Verunsicherung.</p>
+          <p><strong>Deepfakes</strong> sind mit KI erzeugte oder veränderte Bilder, Videos und Stimmen. Erkennungsansätze — mit ausdrücklichem Hinweis, dass sie immer unzuverlässiger werden: unnatürliche Übergänge an Haaren, Zähnen und Brillenrändern, unstimmige Beleuchtung und Schatten, fehlerhafte Hände, asynchrone Lippenbewegung, monotone Sprachmelodie, fehlende Originalquelle. Deshalb verschiebt sich die Prüfung vom Bild auf den <strong>Kontext</strong>: Wer hat es zuerst veröffentlicht, gibt es weitere Aufnahmen desselben Ereignisses?</p>
+          <p>Der Reflexionsteil betrifft das eigene Verhalten: Weiterleiten verstärkt eine Falschmeldung auch dann, wenn man sie widerlegen will. Handlungsregeln: erst prüfen, dann teilen; nicht kommentieren, sondern melden; Richtigstellung dort platzieren, wo die Falschmeldung ankam. Rechtlicher Rahmen: Persönlichkeitsrecht und Recht am eigenen Bild — ein Deepfake einer Mitschülerin ist kein Scherz, sondern kann strafbar sein.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>In einer Klassengruppe kursiert ein Sprachnachricht-Ausschnitt, in dem angeblich die Schulleiterin sagt, morgen fiele der Unterricht aus. Der Absender schreibt: „hab ich von meinem Cousin, ist 100 % echt“.</p>
+              <ol class="sub">
+                <li>Nenne drei Gründe, warum die Aufnahme ein Deepfake sein könnte.</li>
+                <li>Beschreibe, was du konkret tust — und was du ausdrücklich nicht tust.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> (1) Es gibt keine Originalquelle: Eine echte Ansage käme über den offiziellen Kanal der Schule, nicht als weitergeleiteter Ausschnitt. (2) Die Herkunftskette ist unbelegt und beruht auf Hörensagen („von meinem Cousin“); die Beteuerung „100 % echt“ ist selbst ein Warnsignal. (3) Der Inhalt ist genau das, was die Zielgruppe hören <em>will</em> — typisch für gestreute Falschmeldungen. Ergänzend: kurzer, abgeschnittener Ausschnitt ohne Kontext, monotone oder unnatürlich gleichmäßige Sprachmelodie, Stimmen lassen sich heute mit wenigen Sekunden Material nachbilden.</p>
+              <p><strong>b) Tun:</strong> Auf dem offiziellen Weg nachsehen (Schulhomepage, Elternportal, Nachfrage im Sekretariat oder bei einer Lehrkraft). In der Gruppe sachlich schreiben, dass die Aufnahme unbestätigt ist. Die Nachricht der Klassenlehrkraft melden, damit die Schule richtigstellen kann.</p>
+              <p><strong>Nicht tun:</strong> Nicht weiterleiten — auch nicht mit „ist bestimmt fake, aber hört mal“, weil jede Weiterleitung die Reichweite erhöht. Nicht auf die Ansage vertrauen und zu Hause bleiben. Den Ausschnitt nicht in weitere Gruppen kopieren und keine eigene „lustige“ Fassung erstellen: Das verletzt das Persönlichkeitsrecht der Schulleiterin.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Erkläre die Aussage: „Ein Deepfake schadet auch dann, wenn alle wissen, dass er gefälscht ist.“ Beziehe dich auf die Wirkung auf die betroffene Person und auf die Wirkung auf echte Aufnahmen.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Wirkung auf die betroffene Person:</strong> Das Bild bleibt im Gedächtnis, auch wenn die Richtigstellung geglaubt wird; die Person muss sich fortlaufend rechtfertigen, und die Aufnahme ist im Netz kaum vollständig zu löschen. Hinzu kommen Bloßstellung und psychische Belastung, unabhängig von der Frage der Echtheit.</p>
+              <p><strong>Wirkung auf echte Aufnahmen:</strong> Wenn bekannt ist, dass sich jedes Video fälschen lässt, verliert jedes Video seine Beweiskraft. Wer mit einer echten Aufnahme überführt wird, kann behaupten, sie sei ein Deepfake — die Fälschbarkeit liefert eine bequeme Ausrede. Deepfakes untergraben also nicht nur einzelne Wahrheiten, sondern das <strong>Vertrauen in Belege überhaupt</strong>. Genau deshalb wird die Prüfung des Kontexts (Erstveröffentlichung, unabhängige weitere Aufnahmen) wichtiger als das Suchen nach Bildfehlern.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 5</span>
+        <h3>Die Darstellung von Geschlechterrollen und Schönheitsidealen in Medien analysieren und deren Einfluss auf die Selbstwahrnehmung reflektieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Analysewerkzeuge:</strong> Wer wird gezeigt und wer nicht (Repräsentation)? In welcher Rolle — handelnd oder betrachtet? Welche Körper gelten als selbstverständlich? Wie wird gezeigt: Bildausschnitt, Perspektive, Pose, Kleidung, Beleuchtung?</p>
+          <p><strong>Typische Muster</strong>, unter anderem in Spielen: männliche Figuren als handelnde Helden mit breitem Körperbau, weibliche Figuren häufig sexualisiert und ohne eigenen Handlungsantrieb; wenig Vielfalt bei Hautfarbe, Alter, Körperform und Behinderung; enge Rollenzuweisung in der Werbung.</p>
+          <p><strong>Technische Seite:</strong> Schönheitsideale werden hergestellt — Retusche, Beauty-Filter in Echtzeit, Posenwahl, Licht, KI-generierte Gesichter. Der Vergleich erfolgt also nicht mit Menschen, sondern mit <em>Bearbeitungsergebnissen</em>.</p>
+          <p><strong>Reflexion:</strong> sozialer Vergleich nach oben, Unzufriedenheit mit dem eigenen Körper, „Snapchat-Dysmorphie“, Verstärkung durch Empfehlungssysteme, die auf ein bereits gezeigtes Interesse hin immer mehr desselben liefern. Der Unterricht bleibt beschreibend und analytisch; persönliche Betroffenheit darf nicht eingefordert werden.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Untersuche die Startbildschirme von drei digitalen Spielen deiner Wahl mit folgendem Raster und werte anschließend aus.</p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Merkmal</th><th>Spiel 1</th><th>Spiel 2</th><th>Spiel 3</th></tr>
+                <tr><td>Zahl männlich / weiblich / nicht zuordenbar gelesener Figuren</td><td>·</td><td>·</td><td>·</td></tr>
+                <tr><td>Wer steht im Vordergrund?</td><td>·</td><td>·</td><td>·</td></tr>
+                <tr><td>Handelnd oder betrachtet dargestellt?</td><td>·</td><td>·</td><td>·</td></tr>
+                <tr><td>Kleidung: funktional oder körperbetont?</td><td>·</td><td>·</td><td>·</td></tr>
+                <tr><td>Vielfalt bei Körperform, Alter, Hautfarbe</td><td>·</td><td>·</td><td>·</td></tr>
+              </table></div>
+              <p>Formuliere zwei Aussagen, die dein Material belegt, und eine Aussage, die es <em>nicht</em> belegt.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Erwartungshorizont (Beispielauswertung):</p>
+              <p><strong>Belegte Aussagen:</strong> „In allen drei untersuchten Spielen steht eine männlich gelesene Figur im Vordergrund; weibliche Figuren erscheinen kleiner oder im Hintergrund.“ — „Die Rüstung der männlichen Figuren bedeckt den Körper vollständig, die der weiblichen Figuren lässt Bauch und Beine frei, obwohl beide dieselbe Kampfrolle haben.“ Beides ist aus dem Raster direkt ablesbar.</p>
+              <p><strong>Nicht belegte Aussage:</strong> „Digitale Spiele machen Mädchen unzufrieden mit ihrem Körper.“ Drei Startbildschirme sind keine repräsentative Stichprobe, und über Wirkungen auf Personen sagt eine Bildanalyse nichts aus — dafür bräuchte man eine Untersuchung mit Befragten.</p>
+              <p>Methodische Einsicht, auf die es ankommt: Aus der <strong>Darstellung</strong> lässt sich auf Muster schließen, nicht auf <strong>Wirkung</strong>. Diese Trennung ist der eigentliche Lerngegenstand auf Niveau E.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Eine Person veröffentlicht zwei Bilder desselben Moments: eines mit Beauty-Filter, eines ohne. Das gefilterte Bild erhält viermal so viele Likes.</p>
+              <ol class="sub">
+                <li>Erkläre, welche Rückkopplung dadurch entsteht.</li>
+                <li>Begründe, warum es zu kurz greift, allein den einzelnen Nutzenden „mehr Selbstbewusstsein“ zu empfehlen.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Es entsteht ein sich selbst verstärkender Kreis: Das gefilterte Bild erhält mehr Zustimmung → die Person veröffentlicht künftig überwiegend gefilterte Bilder → das Empfehlungssystem zeigt gefilterte Bilder häufiger, weil sie mehr Reaktionen erzeugen → in den Feeds aller sieht ein gefiltertes Gesicht normal aus → der Maßstab für „normales Aussehen“ verschiebt sich weiter → ungefilterte Bilder wirken zunehmend mangelhaft. Der Vergleichsmaßstab ist dabei kein Mensch, sondern ein Bearbeitungsergebnis, das niemand erreichen kann — auch die abgebildete Person selbst nicht.</p>
+              <p><strong>b)</strong> Weil die Ursache nicht nur im Einzelnen liegt. Wirksam sind eine <em>technische</em> Ebene (Filter sind voreingestellt und oft nicht abschaltbar erkennbar), eine <em>wirtschaftliche</em> Ebene (die Plattform verdient an Reaktionen und begünstigt daher Reize) und eine <em>soziale</em> Ebene (Likes als Anerkennungswährung). Ein Appell an die Einzelperson lässt diese drei Ebenen unverändert und verlagert die Verantwortung auf die Betroffenen. Ansatzpunkte sind zusätzlich Kennzeichnungspflicht für bearbeitete Werbebilder, Filter-Voreinstellungen, Medienkompetenz über die Herstellung solcher Bilder und die bewusste Auswahl dessen, wem man folgt.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 6</span>
+        <h3>Sich mit psychologischen Aspekten von Gaming (zum Beispiel Motivation, Immersion, Storytelling) auseinandersetzen</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Motivation.</strong> Intrinsisch wirken Kompetenzerleben (angemessene Schwierigkeit, sichtbarer Fortschritt), Autonomie (eigene Entscheidungen) und soziale Eingebundenheit. Extrinsisch wirken gestaltete Belohnungen: Punkte, Level, Abzeichen, Ranglisten, tägliche Anmeldeprämien, <em>Streaks</em>. Wirksam ist besonders die <strong>variable Belohnung</strong> — unvorhersehbare Gewinne (Lootbox, seltener Gegenstand) halten die Spannung länger als sichere.</p>
+          <p><strong>Immersion.</strong> Vertiefung durch stimmige Spielwelt, Bild und Ton, Steuerung ohne Verzögerung, passende Herausforderung; Grenzfall <em>Flow</em>: Zeitgefühl geht verloren. Techniken, die den Abbruch erschweren: automatisch startende nächste Runde, Autosave mitten in der Sequenz, Countdown auf zeitlich begrenzte Ereignisse.</p>
+          <p><strong>Storytelling.</strong> Identifikation mit der Spielfigur, Neugier auf den Fortgang, Cliffhanger, eigene Entscheidungen mit Folgen — Spiele erzählen <em>interaktiv</em>, weshalb die Bindung stärker ausfällt als beim Zusehen.</p>
+          <p>Ziel der Auseinandersetzung ist nicht, Spielen abzuwerten, sondern <strong>Gestaltungsabsicht</strong> zu erkennen: Diese Mechanismen sind bewusst entworfen und lassen sich benennen.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Ordne jedem Element den psychologischen Mechanismus zu und erkläre, wie er die Spielzeit verlängert.</p>
+              <ol class="sub">
+                <li>Tägliche Anmeldeprämie, die bei einem versäumten Tag von vorn beginnt</li>
+                <li>Lootbox mit unbekanntem Inhalt</li>
+                <li>Nach jedem Sieg startet die nächste Runde automatisch nach 5 Sekunden</li>
+                <li>Ein Event endet „in 02:14:39“</li>
+                <li>Die Schwierigkeit passt sich der Leistung an</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Verlustaversion / Streak.</strong> Nicht der Gewinn motiviert, sondern die Angst, das Angesparte zu verlieren. Folge: Spielen auch ohne Lust, um den Lauf nicht zu unterbrechen.</li>
+                <li><strong>Variable Belohnung.</strong> Der unvorhersehbare Gewinn erzeugt stärkere Erwartungsspannung als ein sicherer; das Öffnen wird auch nach vielen Enttäuschungen fortgesetzt — dasselbe Muster wie beim Glücksspiel.</li>
+                <li><strong>Wegfall der Ausstiegsentscheidung.</strong> Aufhören müsste aktiv entschieden werden, Weiterspielen ist die Voreinstellung. Die 5 Sekunden reichen für keine Abwägung.</li>
+                <li><strong>Künstliche Verknappung / Zeitdruck (FOMO).</strong> Die Belohnung ist nur jetzt erreichbar; die Spielzeit richtet sich nach dem Zeitplan des Spiels statt nach dem eigenen.</li>
+                <li><strong>Kompetenzerleben im Flow-Bereich.</strong> Die Aufgabe bleibt dauerhaft knapp lösbar — nie langweilig, nie frustrierend. Damit gibt es keinen natürlichen Endpunkt, an dem man „fertig“ ist.</li>
+              </ol>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Zwei Spiele haben denselben Umfang. Spiel A speichert nur an klar markierten Punkten am Kapitelende, Spiel B speichert laufend und beginnt jedes Kapitel mit den letzten 30 Sekunden des vorherigen. Beurteile, welches Spiel leichter zu beenden ist, und begründe mit den Begriffen Immersion und Storytelling.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Spiel A ist leichter zu beenden.</strong> Der markierte Speicherpunkt am Kapitelende ist ein von den Entwicklern gesetzter <em>Ausstiegspunkt</em>: Die Erzählung ist an dieser Stelle abgeschlossen, die Spannung sinkt, und die Immersion wird bewusst kurz unterbrochen. Wer aufhört, verliert nichts.</p>
+              <p><strong>Spiel B erschwert das Beenden gezielt.</strong> Weil laufend gespeichert wird, gibt es keinen ausgezeichneten Moment mehr, an dem man „fertig“ ist — jeder Zeitpunkt ist gleich gut und damit keiner. Der Wiedereinstieg mit den letzten 30 Sekunden hält die Immersion über die Pause hinweg aufrecht und knüpft direkt an eine offene Erzählspannung an (Cliffhanger-Prinzip). Storytelling wirkt hier nicht nur als Inhalt, sondern als <strong>Bindungsmechanik</strong>.</p>
+              <p>Einsicht: Ob man leicht aufhören kann, hängt weniger von der Selbstdisziplin als von der Gestaltung ab. Wer das erkennt, kann sich eigene Ausstiegspunkte setzen — etwa den Wecker ans Kapitelende statt an eine Uhrzeit.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 7</span>
+        <h3>Soziale Aspekte von Gaming (zum Beispiel Zugehörigkeit, Vereinsamung, Gruppendruck, Teamplay) beschreiben</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Die sozialen Wirkungen sind <strong>zweiseitig</strong> und sollen nicht auf eine Warnung verkürzt werden.</p>
+          <ul>
+            <li><strong>Zugehörigkeit:</strong> Clan, Gilde, Discord-Server, gemeinsame Sprache und Insider. Wichtig gerade für Jugendliche, deren Freundeskreis nicht am Wohnort ist.</li>
+            <li><strong>Teamplay:</strong> Rollenteilung, Absprachen unter Zeitdruck, Führung, Umgang mit Niederlagen — übertragbare Kompetenzen.</li>
+            <li><strong>Gruppendruck:</strong> Verpflichtung zu festen Spielzeiten, Erwartung, ein bestimmtes Spiel oder gekaufte Gegenstände zu besitzen, Ausschluss bei Nichtteilnahme, Druck durch Rangsysteme.</li>
+            <li><strong>Vereinsamung:</strong> Verdrängung anderer Kontakte, Rückzug, viele lose Kontakte statt tragender Beziehungen; Onlinekontakte ersetzen Nähe nur teilweise.</li>
+            <li><strong>Abwertendes Verhalten:</strong> <em>Toxicity</em>, Beleidigungen, Ausgrenzung insbesondere von Mädchen und Minderheiten, Cybermobbing, Grooming durch Fremde in Sprachkanälen.</li>
+          </ul>
+          <p>Handlungsseite: Melden und Blockieren, Sprachkanäle einschränken, keine persönlichen Daten in Spielchats, Ansprechpersonen kennen.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Lies die Situation und beantworte die Fragen.</p>
+              <p><em>Nuri spielt fünf Abende in der Woche mit seinem Team, weil sonst der Aufstieg der Gruppe gefährdet ist. Im Team hat er zwei gute Freunde, die er nur dort trifft. Zum Handballtraining geht er seit zwei Monaten nicht mehr. Wenn er absagt, schreibt der Teamleiter „danke fürs Abschenken“.</em></p>
+              <ol class="sub">
+                <li>Benenne für jeden der vier Begriffe Zugehörigkeit, Teamplay, Gruppendruck und Vereinsamung eine Textstelle.</li>
+                <li>Nenne zwei Handlungsmöglichkeiten für Nuri, die nicht „ganz aufhören“ lauten.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong></p>
+              <ul>
+                <li><em>Zugehörigkeit:</em> „zwei gute Freunde, die er nur dort trifft“ — das Team ist ein echter sozialer Ort, kein Ersatz.</li>
+                <li><em>Teamplay:</em> „mit seinem Team … Aufstieg der Gruppe“ — gemeinsames Ziel, verteilte Rollen, Verlass aufeinander.</li>
+                <li><em>Gruppendruck:</em> „danke fürs Abschenken“ und die feste Erwartung von fünf Abenden — Absagen wird mit sozialer Sanktion beantwortet.</li>
+                <li><em>Vereinsamung:</em> „geht seit zwei Monaten nicht mehr“ zum Handball — andere Kontakte werden verdrängt, der Freundeskreis schrumpft auf eine Gruppe zusammen.</li>
+              </ul>
+              <p><strong>b)</strong> Zum Beispiel: (1) Mit dem Team feste, verlässliche Termine vereinbaren, die das Handballtraining aussparen — planbare Abwesenheit erzeugt weniger Druck als spontanes Absagen. (2) Die beiden Freunde bewusst außerhalb des Spiels treffen oder ins Handballtraining einladen, damit die Freundschaft nicht an das Spiel gebunden bleibt. Weitere gültige Antworten: die Rangjagd bewusst aufgeben und im Team ohne Aufstiegsziel spielen, den Ton im Team ansprechen, eine Ansprechperson einbeziehen.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Nimm Stellung: „Online zu spielen macht einsam.“ Begründe, warum die Aussage in dieser Form nicht haltbar ist, und formuliere sie so um, dass sie zutrifft.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Nicht haltbar</strong>, weil sie eine pauschale Ursache behauptet. Online-Spiele sind für viele gerade ein <em>sozialer</em> Ort: gemeinsame Aufgaben, Sprachkanäle, feste Gruppen, Freundschaften über große Entfernungen. Für Jugendliche, deren Freundeskreis nicht in der Nähe wohnt, oder die im Umfeld ausgegrenzt werden, kann das Spiel Zugehörigkeit überhaupt erst herstellen. Außerdem wird Ursache und Wirkung leicht verwechselt: Wer einsam ist, spielt möglicherweise mehr — nicht umgekehrt.</p>
+              <p><strong>Zutreffende Umformulierung:</strong> „Online zu spielen kann einsam machen, wenn es andere Kontakte <em>verdrängt</em> statt sie zu ergänzen — etwa wenn Verabredungen und Vereinsaktivitäten regelmäßig ausfallen und die Kontakte nur innerhalb eines Spiels bestehen.“</p>
+              <p>Damit ist die Aussage an eine überprüfbare Bedingung gebunden, statt eine Wirkung für alle zu behaupten.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 8</span>
+        <h3>Monetarisierungsmodelle von digitalen Spielen identifizieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Wie ein Spiel Geld verdient, bestimmt, wie es sich anfühlt. Die wichtigsten Modelle:</p>
+          <ul>
+            <li><strong>Vollpreis / Kaufspiel:</strong> einmalige Zahlung, danach vollständiger Inhalt.</li>
+            <li><strong>Free-to-Play:</strong> kostenlos, Einnahmen über Zusatzkäufe. Untervarianten: <em>Pay-to-Win</em> (Kauf verschafft Spielvorteil) und <em>Pay-for-Cosmetics</em> (nur Aussehen).</li>
+            <li><strong>In-App-Käufe und Spielwährung:</strong> Zwischenwährung wie Diamanten oder Coins verschleiert den echten Preis, ungünstige Umrechnung und Restbeträge fördern Nachkauf.</li>
+            <li><strong>Lootboxen:</strong> Zufallsinhalte gegen Geld — glücksspielnah, in mehreren Ländern deshalb reguliert.</li>
+            <li><strong>Battle Pass / Abonnement:</strong> laufende Zahlung plus Zeitdruck durch Saisonende.</li>
+            <li><strong>Werbefinanzierung:</strong> Videowerbung, Belohnung für angesehene Werbung.</li>
+            <li><strong>Datenbasierte Einnahmen:</strong> Nutzungsprofile für Werbung.</li>
+            <li><strong>DLC und Erweiterungen</strong> sowie <strong>Energie- und Wartezeitsysteme</strong>, die sich abkürzen lassen.</li>
+          </ul>
+          <p>Verbindung zur Informatik und Verbraucherbildung: Der reale Preis ist ausrechenbar, sobald man die Spielwährung zurückrechnet.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Ein Spiel verkauft Diamanten in Paketen. Eine Spielfigur kostet 250 Diamanten.</p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Paket</th><th class="n">Diamanten</th><th class="n">Preis</th></tr>
+                <tr><td>klein</td><td class="n">80</td><td class="n">0,99 €</td></tr>
+                <tr><td>mittel</td><td class="n">500</td><td class="n">4,99 €</td></tr>
+                <tr><td>groß</td><td class="n">1 200</td><td class="n">9,99 €</td></tr>
+              </table></div>
+              <ol class="sub">
+                <li>Was kostet die Spielfigur mindestens in Euro? Wie viele Diamanten bleiben übrig?</li>
+                <li>Erkläre, warum es kein Paket mit genau 250 Diamanten gibt.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Mit kleinen Paketen: 4 × 80 = 320 Diamanten für 4 × 0,99 € = <strong>3,96 €</strong>, Rest 70 Diamanten. Mit dem mittleren Paket: 500 Diamanten für <strong>4,99 €</strong>, Rest 250 Diamanten. Günstigste Möglichkeit ist also viermal das kleine Paket zu <strong>3,96 €</strong> — hier ist ausnahmsweise das kleine Paket im Vorteil, weil das mittlere Paket erst ab der zweiten Figur billiger wird. Preis je Diamant: klein 1,24 ct, mittel 1,00 ct, groß 0,83 ct.</p>
+              <p><strong>b)</strong> Weil Restbeträge beabsichtigt sind. Kein Paket passt genau auf einen Preis, deshalb bleibt nach jedem Kauf ein Guthaben übrig, das für nichts reicht. Dieses Guthaben wirkt wie schon ausgegebenes Geld und lädt zum Nachkauf ein („nur noch 70 fehlen“). Zusätzlich verschleiert die Zwischenwährung den echten Preis: „250 Diamanten“ fühlt sich anders an als „4 €“, und der Mengenrabatt der großen Pakete lenkt zu höheren Einmalzahlungen. Dass 500 nicht 2 × 250 in Euro entspricht, ist Teil derselben Gestaltung.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Vergleiche ein Vollpreisspiel für 60 € mit einem Free-to-Play-Spiel mit Lootboxen. Beurteile für beide, welche Interessen die Entwickler beim <em>Spieldesign</em> haben — nicht nur bei der Bezahlung.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Vollpreisspiel:</strong> Das Geld ist beim Kauf bereits eingenommen. Interesse der Entwickler ist ein gutes Urteil — Rezensionen, Weiterempfehlung, Verkauf des nächsten Teils. Das Design darf zu einem Ende kommen; ein Spiel, das man zufrieden durchspielt, ist ein Erfolg. Nachteil für Spielende: hohe Einstiegshürde, Kauf vor dem Ausprobieren.</p>
+              <p><strong>Free-to-Play mit Lootboxen:</strong> Eingenommen wird erst <em>während</em> des Spielens, und ein kleiner Teil der Spielenden trägt den Großteil des Umsatzes. Interesse ist deshalb lange Bindung und wiederkehrende Kaufanlässe. Das schlägt auf das Design durch: Wartezeiten und Energiesysteme, die sich bezahlen lassen; künstliche Verknappung; Ranglisten, die Nachkauf lohnend machen; kein Abschluss, sondern Saisons. Frustration ist hier nicht Fehler, sondern Verkaufsargument.</p>
+              <p><strong>Bewertung:</strong> Free-to-Play ist zugänglicher und ohne Risiko ausprobierbar, koppelt aber Spielerfolg teilweise an Geld und arbeitet mit glücksspielnahen Mechaniken. Der 60-€-Preis ist transparent und begrenzt — man weiß, was es kostet. Entscheidendes Kriterium: Bei Vollpreis zahlt man <em>für</em> das Spiel, bei Lootboxen zahlt man dafür, dass eine eingebaute Hürde verschwindet.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DP 9</span>
+        <h3>Die eigene Nutzung von digitalen Spielen reflektieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Reflexion beginnt mit <strong>Daten statt Gefühl</strong>: Die Bildschirmzeitfunktion des Geräts oder ein einwöchiges Protokoll liefert tatsächliche Zeiten, die meist von der Schätzung abweichen.</p>
+          <p>Leitfragen: Wann spiele ich, und wann eigentlich statt was? Wie fühle ich mich davor und danach? Was hat mich zum Anfangen gebracht — eigener Wunsch, Benachrichtigung, Langeweile, Gruppendruck? Wie leicht höre ich auf, und was hindert mich daran? Wie viel Geld habe ich im letzten Monat ausgegeben?</p>
+          <p>Statt einer Stundengrenze eignen sich <strong>Kriterien</strong>: Beeinträchtigung von Schule, Schlaf, Sport und anderen Kontakten; Unruhe, wenn nicht gespielt werden kann; Verheimlichen von Zeiten und Ausgaben. Der Begriff <em>Computerspielstörung</em> kann eingeordnet werden — mit dem klaren Hinweis, dass viel Spielen allein keine Diagnose ist und Selbstdiagnosen im Unterricht nichts zu suchen haben.</p>
+          <p>Handlungsseite: eigene Ausstiegspunkte, Benachrichtigungen ausschalten, festes Ausgabenbudget, Ansprechstellen kennen. Rahmen: Die Auswertung bleibt <strong>freiwillig und anonym</strong>; Ziel ist begründete Selbststeuerung, nicht ein Bekenntnis.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Führe eine Woche lang ein Spielprotokoll: Tag, Dauer, Auslöser des Beginns, Stimmung davor und danach, Grund des Aufhörens. Werte anschließend aus:</p>
+              <ol class="sub">
+                <li>Vergleiche deine vorher notierte Schätzung mit der tatsächlichen Gesamtzeit.</li>
+                <li>Welcher Auslöser kommt am häufigsten vor — und ist es ein eigener Wunsch?</li>
+                <li>Welcher Grund des Aufhörens kommt am häufigsten vor?</li>
+              </ol>
+              <p class="note">Die Protokolle bleiben bei den Schülerinnen und Schülern; ausgetauscht werden nur die Auswertungssätze — anonym und freiwillig.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Individuelle Ergebnisse; bewertet wird die Qualität der Auswertung. Erwartungshorizont für typische Befunde:</p>
+              <ol>
+                <li>Die tatsächliche Zeit liegt fast immer <strong>über</strong> der Schätzung. Begründung: Kurze Sitzungen zwischendurch werden nicht mitgezählt, und Immersion lässt das Zeitgefühl verschwimmen. Einsicht: Selbstauskunft ist keine verlässliche Datenquelle.</li>
+                <li>Häufigster Auslöser ist meist <em>kein</em> eigener Entschluss, sondern eine Benachrichtigung, eine Einladung des Teams, Langeweile oder Aufschieben einer Aufgabe. Genau das ist der Ansatzpunkt: Ein fremdbestimmter Auslöser lässt sich abschalten, ein eigener Wunsch braucht das nicht.</li>
+                <li>Häufigster Grund des Aufhörens ist meist ein äußerer (Essen, Uhrzeit, Akku, Eltern) und nicht der Abschluss der Erzählung. Daraus folgt die Handlungsempfehlung, sich <strong>eigene</strong> Ausstiegspunkte zu setzen — etwa am Kapitel- oder Rundenende statt an einer Uhrzeit.</li>
+              </ol>
+              <p>Als Ergebnis formuliert jede Person eine überprüfbare Absicht für die kommende Woche (zum Beispiel „Benachrichtigungen des Spiels aus“) und prüft sie danach.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Beurteile die Regel „Höchstens eine Stunde Spielen pro Tag“. Entwickle drei bessere Kriterien und begründe, warum sie aussagekräftiger sind.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Beurteilung:</strong> Die Regel ist einfach zu prüfen, aber wenig aussagekräftig. Sie zählt nur Zeit und unterscheidet nicht, <em>was</em> in dieser Zeit passiert: Zwei Stunden gemeinsames Spielen am Samstag mit Freunden können unproblematisch sein, während eine Stunde jede Nacht um halb zwölf schädlich ist. Ausgaben, Zwang und Verdrängung erfasst sie überhaupt nicht.</p>
+              <p><strong>Bessere Kriterien:</strong></p>
+              <ol>
+                <li><strong>Verdrängung:</strong> Fallen wegen des Spielens Schlaf, Schule, Sport oder Verabredungen aus? Aussagekräftiger, weil es die tatsächlichen Folgen misst statt einer Zahl.</li>
+                <li><strong>Steuerbarkeit:</strong> Kann ich aufhören, wenn ich will, und werde ich unruhig oder gereizt, wenn ich nicht spielen kann? Aussagekräftiger, weil der Kontrollverlust — nicht die Dauer — das eigentliche Warnzeichen ist.</li>
+                <li><strong>Ausgaben und Offenheit:</strong> Wie viel Geld ist im letzten Monat geflossen, und verheimliche ich Zeiten oder Käufe? Aussagekräftiger, weil Heimlichkeit ein verlässlicheres Signal ist als jede Stundenzahl.</li>
+              </ol>
+              <p>Ergänzend gültig: Stimmung nach dem Spielen (erholt oder leer und gereizt) sowie die Frage, ob das Spielen dem eigenen Wunsch oder einem äußeren Auslöser folgt. Wichtiger Zusatz: Keines dieser Kriterien ist eine Diagnose — sie strukturieren die Selbstbeobachtung.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+
+
+  <!-- ============ INFORMATION UND DATEN ============ -->
+  <section class="area" id="id">
+    <div class="area-head">
+      <span class="kb">Information und Daten</span>
+      <h2>Grundlagen digitaler Daten</h2>
+      <p class="count">7 Teilkompetenzen · ID 1 – ID 7 · ID 1 und ID 7 sind auf Niveau G nicht vorgesehen</p>
+    </div>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 1</span>
+        <h3>Eine Codierungsvorschrift entwerfen, um Text in eine Bitfolge zu überführen und dabei die Bedeutung der Umkehrbarkeit für das fehlerfreie Codieren und Decodieren begründen</h3>
+        <span class="tag">nicht im G-Niveau</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Eine <strong>Codierungsvorschrift</strong> ist eine eindeutige Zuordnung von Zeichen zu Bitfolgen. Die Schülerinnen und Schüler entwerfen eine solche Vorschrift selbst, statt nur eine fertige anzuwenden. Zentrale Überlegungen:</p>
+          <ul>
+            <li><strong>Wie viele Zeichen müssen unterschieden werden?</strong> Mit <em>n</em> Bit lassen sich 2<sup>n</sup> Zeichen darstellen: 1 Bit → 2, 3 Bit → 8, 5 Bit → 32, 7 Bit → 128. Für 26 Großbuchstaben genügen also 5 Bit.</li>
+            <li><strong>Feste oder variable Länge?</strong> Bei fester Länge weiß man, wo jedes Zeichen endet. Bei variabler Länge (kurze Codes für häufige Buchstaben) spart man Platz, braucht aber ein Trennkriterium.</li>
+          </ul>
+          <p><strong>Umkehrbarkeit</strong> heißt: Aus jeder erzeugten Bitfolge lässt sich der ursprüngliche Text <em>eindeutig</em> zurückgewinnen. Verletzt wird das, wenn zwei Zeichen dieselbe Bitfolge erhalten (nicht eindeutig) oder wenn der Code eines Zeichens der Anfang des Codes eines anderen ist (nicht präfixfrei). Fehlt die Umkehrbarkeit, ist die Vorschrift zum Speichern und Übertragen von Text unbrauchbar — genau hier liegt der Unterschied zu einer <em>verlustbehafteten</em> Verarbeitung, wie sie bei Bildern und Tönen bewusst in Kauf genommen wird.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Entwirf eine Codierungsvorschrift für das Alphabet der Buchstaben A bis H sowie das Leerzeichen.</p>
+              <ol class="sub">
+                <li>Wie viele Bit brauchst du je Zeichen bei fester Länge? Begründe.</li>
+                <li>Gib deine Tabelle an und codiere <span class="term">BACH</span>.</li>
+                <li>Wie lang ist die Bitfolge für einen Text aus 20 Zeichen?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Zu unterscheiden sind 9 Zeichen (A–H und das Leerzeichen). 3 Bit reichen nur für 2³ = 8 Zeichen, also sind <strong>4 Bit</strong> nötig (2⁴ = 16 ≥ 9). Sieben der 16 möglichen Codes bleiben unbenutzt.</p>
+              <p><strong>b)</strong> Zum Beispiel:</p>
+              <pre class="bits">A 0000   E 0100
+B 0001   F 0101
+C 0010   G 0110
+D 0011   H 0111
+␣ 1000</pre>
+              <p>Damit ergibt <span class="term">BACH</span>: B = 0001, A = 0000, C = 0010, H = 0111 →</p>
+              <pre class="bits">0001 0000 0010 0111</pre>
+              <p><strong>c)</strong> 20 Zeichen × 4 Bit = <strong>80 Bit</strong> = 10 Byte.</p>
+              <p>Jede andere eindeutige Zuordnung mit 4 Bit ist ebenso richtig — entscheidend ist, dass keine Bitfolge doppelt vergeben wird.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schüler schlägt vor, häufige Buchstaben kürzer zu codieren:</p>
+              <pre class="bits">E 0     N 1     A 01     T 10</pre>
+              <p>Zeige mit einem Gegenbeispiel, dass diese Vorschrift <strong>nicht umkehrbar</strong> ist, und erkläre, welche Bedingung verletzt wird. Gib anschließend eine Möglichkeit an, den Ansatz zu retten.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Gegenbeispiel:</strong> Die Bitfolge <span class="term">01</span> lässt sich auf zwei Weisen lesen:</p>
+              <ul>
+                <li>als ein Zeichen: <strong>A</strong></li>
+                <li>als zwei Zeichen: <strong>E N</strong> (0 = E, 1 = N)</li>
+              </ul>
+              <p>Ebenso ist <span class="term">10</span> entweder <strong>T</strong> oder <strong>N E</strong>. Der Empfänger kann nicht entscheiden, welche Lesart gemeint war — das Decodieren ist nicht eindeutig, die Codierung also nicht umkehrbar.</p>
+              <p><strong>Verletzte Bedingung:</strong> Die Vorschrift ist nicht <strong>präfixfrei</strong>. Der Code von E („0“) ist der Anfang des Codes von A („01“), und der Code von N („1“) der Anfang von T („10“). Bei fester Länge tritt das Problem nie auf, weil die Zeichengrenzen bekannt sind; bei variabler Länge muss sie ausdrücklich gesichert werden.</p>
+              <p><strong>Rettung:</strong> Kein Code darf Anfang eines anderen sein, zum Beispiel</p>
+              <pre class="bits">E 0     N 10     A 110     T 111</pre>
+              <p>Jetzt ist <span class="term">0110</span> eindeutig <strong>E A</strong> — beim Lesen von links ist stets klar, wann ein Zeichen zu Ende ist. Häufige Buchstaben bleiben kurz, der Platzvorteil ist also erhalten. (Ebenfalls gültig: fester Länge zurückkehren oder ein zusätzliches Trennzeichen einführen — Letzteres kostet allerdings den gesparten Platz wieder.)</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 2</span>
+        <h3>Texte in ihre ASCII-codierte Bitfolge überführen und umgekehrt</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>ASCII</strong> (American Standard Code for Information Interchange) ist eine festgelegte Codierungsvorschrift mit <strong>7 Bit</strong> je Zeichen und damit 2⁷ = 128 Zeichen: Großbuchstaben, Kleinbuchstaben, Ziffern, Satzzeichen, Leerzeichen und Steuerzeichen. Umlaute und ß sind <em>nicht</em> enthalten — dafür braucht es Erweiterungen wie Latin-1 oder Unicode/UTF-8.</p>
+          <p>Wichtige Ankerwerte, die man kennen sollte statt jede Tabelle abzulesen:</p>
+          <div class="tbl-scroll"><table>
+            <tr><th>Zeichen</th><th class="n">dezimal</th><th>7-Bit-Folge</th></tr>
+            <tr><td>Leerzeichen</td><td class="n">32</td><td><span class="term">0100000</span></td></tr>
+            <tr><td>Ziffer 0</td><td class="n">48</td><td><span class="term">0110000</span></td></tr>
+            <tr><td>A</td><td class="n">65</td><td><span class="term">1000001</span></td></tr>
+            <tr><td>a</td><td class="n">97</td><td><span class="term">1100001</span></td></tr>
+          </table></div>
+          <p>Merkregeln: Buchstaben stehen in alphabetischer Reihenfolge, also <em>Code = 65 + Position</em> für Großbuchstaben; Klein- und Großbuchstaben unterscheiden sich um genau 32, also nur im dritten Bit von links. In der Praxis wird je Zeichen ein ganzes <strong>Byte</strong> gespeichert, das führende Bit ist dann 0.</p>
+          <p>Umrechnung dezimal → binär über die Stellenwerte 64, 32, 16, 8, 4, 2, 1.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Codiere das Wort <span class="term">Hallo</span> in seine ASCII-Bitfolge (7 Bit je Zeichen). Notiere jeweils den Dezimalwert als Zwischenschritt und gib die Gesamtlänge in Bit und in Byte an.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th>Zeichen</th><th class="n">dezimal</th><th>Rechnung</th><th>7 Bit</th></tr>
+                <tr><td>H</td><td class="n">72</td><td>64 + 8</td><td><span class="term">1001000</span></td></tr>
+                <tr><td>a</td><td class="n">97</td><td>64 + 32 + 1</td><td><span class="term">1100001</span></td></tr>
+                <tr><td>l</td><td class="n">108</td><td>64 + 32 + 8 + 4</td><td><span class="term">1101100</span></td></tr>
+                <tr><td>l</td><td class="n">108</td><td>64 + 32 + 8 + 4</td><td><span class="term">1101100</span></td></tr>
+                <tr><td>o</td><td class="n">111</td><td>64 + 32 + 8 + 4 + 2 + 1</td><td><span class="term">1101111</span></td></tr>
+              </table></div>
+              <p>Zwischenschritte: H ist der 8. Großbuchstabe → 65 + 7 = 72. a = 97, l = 97 + 11 = 108, o = 97 + 14 = 111.</p>
+              <p>Gesamte Bitfolge:</p>
+              <pre class="bits">1001000 1100001 1101100 1101100 1101111</pre>
+              <p><strong>Länge:</strong> 5 Zeichen × 7 Bit = <strong>35 Bit</strong>. Bei der üblichen Speicherung mit einem Byte je Zeichen: <strong>5 Byte = 40 Bit</strong>.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Decodiere die folgende ASCII-Bitfolge (7 Bit je Zeichen):</p>
+              <pre class="bits">1001011 1101100 1100001 1110011 1110011 1100101</pre>
+              <p>Erkläre anschließend, woran man <em>ohne</em> Tabelle erkennt, dass das erste Zeichen ein Groß- und das zweite ein Kleinbuchstabe ist.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th>7 Bit</th><th class="n">dezimal</th><th>Zeichen</th></tr>
+                <tr><td><span class="term">1001011</span></td><td class="n">75</td><td>K</td></tr>
+                <tr><td><span class="term">1101100</span></td><td class="n">108</td><td>l</td></tr>
+                <tr><td><span class="term">1100001</span></td><td class="n">97</td><td>a</td></tr>
+                <tr><td><span class="term">1110011</span></td><td class="n">115</td><td>s</td></tr>
+                <tr><td><span class="term">1110011</span></td><td class="n">115</td><td>s</td></tr>
+                <tr><td><span class="term">1100101</span></td><td class="n">101</td><td>e</td></tr>
+              </table></div>
+              <p>Das Wort lautet <strong>Klasse</strong>. Rechnung beispielhaft für das erste Zeichen: 64 + 8 + 2 + 1 = 75; 75 − 65 = 10, also der 11. Großbuchstabe = K.</p>
+              <p><strong>Groß oder klein ohne Tabelle:</strong> Groß- und Kleinbuchstaben unterscheiden sich in ASCII um genau 32 = 2⁵, also nur im dritten Bit von links. Steht dort eine <strong>0</strong> (<span class="term">100…</span>), ist es ein Großbuchstabe (65–90); steht dort eine <strong>1</strong> (<span class="term">110…</span> oder <span class="term">111…</span>), ein Kleinbuchstabe (97–122). Beim ersten Zeichen <span class="term">1001011</span> ist das dritte Bit 0, beim zweiten <span class="term">1101100</span> ist es 1. Umschalten zwischen Groß- und Kleinschreibung heißt in ASCII also: dieses eine Bit kippen.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 3</span>
+        <h3>Ein Schwarzweißbild durch Diskretisierung in Pixel überführen</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Diskretisierung</strong> heißt: Eine stetige Vorlage wird in endlich viele, gleich große Bereiche zerlegt, und jeder Bereich erhält <em>einen</em> Wert. Bei einem Schwarzweißbild geschieht das in zwei Schritten:</p>
+          <ul>
+            <li><strong>Ortsdiskretisierung (Rasterung):</strong> Ein Gitter wird über die Vorlage gelegt; jedes Gitterfeld wird ein <strong>Pixel</strong> (von <em>picture element</em>). Die Zahl der Zeilen und Spalten ist die <strong>Auflösung</strong>.</li>
+            <li><strong>Wertdiskretisierung (Quantisierung):</strong> Jedem Pixel wird genau ein Wert zugewiesen — bei Schwarzweiß nur schwarz oder weiß, entschieden nach dem überwiegenden Anteil im Feld.</li>
+          </ul>
+          <p>Dabei entsteht notwendig <strong>Informationsverlust</strong>: Feine Details innerhalb eines Pixels verschwinden, Schrägen und Kurven werden treppenförmig (<em>Aliasing</em>), teilweise gefüllte Felder müssen sich für eine Farbe entscheiden. Höhere Auflösung verringert den Verlust und vervielfacht die Datenmenge — beim Verdoppeln von Zeilen und Spalten vervierfacht sich die Pixelzahl. Diskretisierung ist damit prinzipiell nicht umkehrbar, im Unterschied zur Textcodierung (siehe ID 1).</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Zeichne einen schwarzen Kreis auf Papier und lege zwei Raster darüber: zuerst 4 × 4 Felder, dann 8 × 8 Felder. Färbe ein Feld schwarz, wenn es mehr als zur Hälfte vom Kreis bedeckt ist.</p>
+              <ol class="sub">
+                <li>Vergleiche beide Ergebnisse mit der Vorlage.</li>
+                <li>Wie viele Pixel hat jedes Bild? Wie viele Bit brauchst du zum Speichern?</li>
+                <li>Erkläre, warum auch ein 100 × 100-Raster den Kreis nicht exakt wiedergibt.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Im 4 × 4-Raster ist der Kreis kaum als Kreis erkennbar; er wird zu einem groben, kantigen Klotz, und der Rand ist willkürlich, weil viele Felder ungefähr halb bedeckt sind. Im 8 × 8-Raster ist die Rundung erkennbar, der Rand bleibt aber eine Treppe. Je feiner das Raster, desto näher die Annäherung — der Charakter der Treppe verschwindet nicht, die Stufen werden nur kleiner.</p>
+              <p><strong>b)</strong> 4 × 4 = <strong>16 Pixel</strong> → 16 Bit = 2 Byte. 8 × 8 = <strong>64 Pixel</strong> → 64 Bit = 8 Byte. Bei Schwarzweiß gilt: 1 Pixel = 1 Bit. Verdoppeln der Kantenlänge vervierfacht Pixelzahl und Datenmenge.</p>
+              <p><strong>c)</strong> Weil der Kreisrand eine <em>stetige</em> Kurve ist, das Raster aber nur endlich viele Felder kennt und jedes Feld sich für <em>eine</em> Farbe entscheiden muss. Ein halb bedecktes Feld gibt es im Ergebnis nicht. Der Rand bleibt daher immer eine Treppe aus rechtwinkligen Stufen; sie wird bei 100 × 100 nur so klein, dass das Auge sie aus normalem Abstand nicht mehr auflöst. Die Diskretisierung ist somit grundsätzlich <strong>verlustbehaftet</strong>: Aus dem Pixelbild lässt sich die Vorlage nicht zurückgewinnen.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schwarzweißbild wird von 200 × 150 Pixel auf 400 × 300 Pixel verdoppelt.</p>
+              <ol class="sub">
+                <li>Berechne beide Datenmengen in Bit und in Byte.</li>
+                <li>Um welchen Faktor wächst die Datenmenge? Begründe.</li>
+                <li>Ein Schüler sagt: „Dann vergrößere ich einfach mein 200 × 150-Bild auf 400 × 300, dann ist es scharf.“ Nimm Stellung.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> 200 × 150 = 30 000 Pixel = <strong>30 000 Bit</strong> = 30 000 : 8 = <strong>3 750 Byte</strong> ≈ 3,75 kB.<br>
+              400 × 300 = 120 000 Pixel = <strong>120 000 Bit</strong> = <strong>15 000 Byte</strong> = 15 kB.</p>
+              <p><strong>b)</strong> Faktor <strong>4</strong>. Zeilen und Spalten werden jeweils verdoppelt, die Pixelzahl ist deren Produkt: 2 × 2 = 4. Allgemein: Bei Verdoppelung der Kantenlänge wächst die Fläche quadratisch.</p>
+              <p><strong>c)</strong> Der Schluss ist falsch. Beim Vergrößern entstehen zwar viermal so viele Pixel und damit viermal so viel Datenmenge, aber <strong>keine zusätzliche Information</strong>: Die neuen Pixel werden aus den vorhandenen berechnet (kopiert oder interpoliert). Was bei der Diskretisierung verloren ging, ist unwiederbringlich weg. Das Bild wird also größer und speicherintensiver, aber nicht detailreicher — bei Kopieren der Nachbarwerte bleiben die Treppenstufen sichtbar, bei Interpolation wird es weichgezeichnet statt scharf. Schärfe entsteht nur durch <em>Aufnahme</em> mit höherer Auflösung, nicht durch nachträgliches Vergrößern.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 4</span>
+        <h3>Pixelgrafiken nach einer vorgegebenen Codierungsvorschrift in eine Bitfolge überführen und umgekehrt</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Eine Pixelgrafik wird zur Bitfolge, indem die Pixel in einer <strong>festgelegten Reihenfolge</strong> gelesen werden — üblich ist zeilenweise von links oben nach rechts unten. Die Codierungsvorschrift muss drei Dinge festlegen:</p>
+          <ul>
+            <li><strong>Wertzuordnung:</strong> zum Beispiel 0 = weiß, 1 = schwarz</li>
+            <li><strong>Leserichtung:</strong> zeilenweise, links nach rechts, oben nach unten</li>
+            <li><strong>Bildbreite:</strong> Ohne sie ist die Bitfolge nicht decodierbar, weil unklar bleibt, wo eine Zeile endet — deshalb enthalten echte Bilddateien einen <strong>Header</strong> mit Breite, Höhe und Farbtiefe.</li>
+          </ul>
+          <p>Beim Decodieren wird die Bitfolge in Abschnitte der Zeilenlänge zerlegt und Zeile für Zeile aufgetragen. Erweiterung für Graustufen und Farbe: mehr Bit je Pixel — 8 Bit ergeben 256 Graustufen, 24 Bit ergeben je 8 Bit für Rot, Grün und Blau. Die Codierung ist <em>umkehrbar</em>; verlustbehaftet war nur die vorangehende Diskretisierung (ID 3).</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Es gilt: 0 = weiß, 1 = schwarz, zeilenweise von links oben. Codiere das folgende 5 × 5-Bild in eine Bitfolge.</p>
+              <pre class="bits grid-fig">■■■■■
+··■··
+··■··
+··■··
+··■··</pre>
+              <p>Gib zusätzlich an, wie viele Bit die Bitfolge lang ist und welche Angabe der Empfänger zum Decodieren zusätzlich braucht.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Zeile für Zeile: 11111 · 00100 · 00100 · 00100 · 00100</p>
+              <pre class="bits">1111100100001000010000100</pre>
+              <p><strong>Länge:</strong> 5 × 5 = <strong>25 Bit</strong> (das entspricht 3,125 Byte; gespeichert werden 4 Byte, die letzten 7 Bit bleiben ungenutzt).</p>
+              <p><strong>Zusätzlich nötig:</strong> die <strong>Bildbreite</strong> (hier 5). Ohne sie könnte derselbe 25-Bit-Strom auch als 1 × 25-Streifen oder 25 × 1-Spalte gelesen werden — das Bild wäre unkenntlich. Ebenfalls zu vereinbaren sind die Wertzuordnung (welche Ziffer bedeutet schwarz) und die Leserichtung. Genau diese Angaben stehen in echten Bilddateien im Header.</p>
+              <p>Das Bild zeigt den Buchstaben <strong>T</strong>.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Decodiere die folgende Bitfolge. Es gilt: 0 = weiß, 1 = schwarz, Bildbreite <strong>6</strong>, zeilenweise von links oben.</p>
+              <pre class="bits">011110 100001 101101 100001 110011 011110</pre>
+              <ol class="sub">
+                <li>Zeichne das Bild und beschreibe, was zu erkennen ist.</li>
+                <li>Was ergibt sich, wenn derselbe Bitstrom versehentlich mit der Breite 4 decodiert wird?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> 36 Bit : 6 = 6 Zeilen:</p>
+              <pre class="bits grid-fig">·■■■■·
+■····■
+■·■■·■
+■····■
+■■··■■
+·■■■■·</pre>
+              <p>Zu erkennen ist ein <strong>Gesicht</strong>: ein schwarzer, an den Ecken abgerundeter Kreis, in dem zwei weiße Pixel in Zeile 3 die Augen und zwei weiße Pixel in Zeile 5 den Mund bilden.</p>
+              <p><strong>b)</strong> Bei Breite 4 ergeben 36 Bit 9 Zeilen mit je 4 Pixeln:</p>
+              <pre class="bits grid-fig">·■■■
+■·■·
+···■
+■·■■
+·■■■
+···■
+■■··
+■■·■
+■■■·</pre>
+              <p>Das Ergebnis ist ein <strong>unkenntliches Muster</strong>. Weil jede Zeile zwei Pixel zu früh umbricht, wandert der Inhalt fortlaufend nach links — ein Effekt, der bei falscher Breitenangabe als schräger Versatz sichtbar wird. Das zeigt: Die Bitfolge allein <em>ist</em> nicht das Bild. Erst Bitfolge <strong>plus</strong> Codierungsvorschrift samt Breite ergeben ein eindeutiges Bild, und deshalb ist ein beschädigter Dateiheader oft schlimmer als ein einzelnes gekipptes Bit.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 5</span>
+        <h3>Datenmengen als Länge einer Bitfolge erklären und zur Größenangabe die Einheiten Bit und Byte verwenden</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Eine <strong>Datenmenge</strong> ist nichts anderes als die <em>Anzahl der Bit</em>, die zur Darstellung nötig sind. Ein <strong>Bit</strong> ist die kleinste Einheit und speichert genau eine von zwei Möglichkeiten (0 oder 1); ein <strong>Byte</strong> ist eine Gruppe von <strong>8 Bit</strong> und die übliche Grundeinheit für Speichergrößen.</p>
+          <p>Abkürzungen sauber unterscheiden: <strong>b</strong> = Bit, <strong>B</strong> = Byte. Übertragungsraten werden meist in Bit je Sekunde angegeben (Mbit/s), Dateigrößen in Byte — eine 100-Mbit/s-Leitung liefert also höchstens etwa 12,5 MB/s.</p>
+          <p>Typische Rechnungen, die alle auf demselben Prinzip beruhen:</p>
+          <ul>
+            <li>Text in ASCII: Zeichenzahl × 7 Bit (bzw. 1 Byte je Zeichen)</li>
+            <li>Schwarzweißbild: Breite × Höhe × 1 Bit</li>
+            <li>Graustufenbild: Breite × Höhe × 8 Bit</li>
+            <li>Farbbild: Breite × Höhe × 24 Bit</li>
+            <li>Audio: Datenrate × Dauer</li>
+          </ul>
+          <p>Merksatz: Wer die Codierungsvorschrift kennt, kann die Datenmenge ausrechnen — sie ist keine Eigenschaft des Inhalts, sondern seiner Darstellung.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Berechne jeweils die Datenmenge in Bit und in Byte:</p>
+              <ol class="sub">
+                <li>der Text <span class="term">Klasse 7</span> in ASCII mit 7 Bit je Zeichen</li>
+                <li>ein Schwarzweißbild mit 64 × 64 Pixel</li>
+                <li>dasselbe Bild als Graustufenbild mit 8 Bit je Pixel</li>
+                <li>dasselbe Bild als Farbbild mit 24 Bit je Pixel</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> <span class="term">Klasse 7</span> hat 8 Zeichen (das Leerzeichen zählt mit!): 8 × 7 = <strong>56 Bit</strong> = 7 Byte. Bei der üblichen Speicherung mit 1 Byte je Zeichen: 8 Byte = 64 Bit.</p>
+              <p><strong>b)</strong> 64 × 64 = 4 096 Pixel × 1 Bit = <strong>4 096 Bit</strong> = 512 Byte.</p>
+              <p><strong>c)</strong> 4 096 × 8 = <strong>32 768 Bit</strong> = 4 096 Byte ≈ 4,1 kB. Achtmal so viel wie bei b) — je Pixel achtmal so viele Bit.</p>
+              <p><strong>d)</strong> 4 096 × 24 = <strong>98 304 Bit</strong> = 12 288 Byte ≈ 12,3 kB. 24-mal so viel wie b), weil je Pixel 8 Bit für Rot, Grün und Blau gespeichert werden.</p>
+              <p>Einsicht: Die Pixelzahl ist gleich geblieben — allein die Codierungsvorschrift entscheidet über den Faktor 1 : 8 : 24.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Anschluss überträgt <strong>50 Mbit/s</strong>. Eine Datei ist <strong>300 MB</strong> groß.</p>
+              <ol class="sub">
+                <li>Wie lange dauert der Download rechnerisch mindestens?</li>
+                <li>Erkläre, warum viele Nutzende hier um den Faktor 8 falsch rechnen.</li>
+              </ol>
+              <p>Rechne mit den Dezimalpräfixen (1 MB = 1 000 000 Byte).</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Erst auf eine gemeinsame Einheit bringen. 300 MB = 300 000 000 Byte = 300 000 000 × 8 = <strong>2 400 000 000 Bit</strong> = 2 400 Mbit.</p>
+              <p>Dauer = 2 400 Mbit : 50 Mbit/s = <strong>48 Sekunden</strong>.</p>
+              <p><strong>b)</strong> Weil <strong>Mbit/s</strong> und <strong>MB</strong> verwechselt werden: Die Übertragungsrate wird in <em>Bit</em> je Sekunde angegeben, die Dateigröße in <em>Byte</em>. Wer „50 MB pro Sekunde“ liest, rechnet 300 : 50 = 6 Sekunden — und liegt um genau den Faktor 8 zu niedrig, weil 1 Byte = 8 Bit.</p>
+              <p>Praktische Umrechnung: 50 Mbit/s entsprechen 50 : 8 = <strong>6,25 MB/s</strong>. Damit ergibt 300 MB : 6,25 MB/s ebenfalls 48 s. Der Unterschied zwischen kleinem b und großem B ist also kein Schreibdetail, sondern ein Faktor 8 — und ein bekanntes Werbeargument der Anbieter. In der Praxis dauert es zusätzlich länger, weil Protokolldaten mitübertragen werden und die angegebene Rate ein Maximalwert ist.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 6</span>
+        <h3>Die Dezimalpräfixe Kilo, Mega, Giga und Tera zur Angabe von Datenmengen verwenden</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Dezimalpräfixe</strong> sind Zehnerpotenzen und in allen Wissenschaften gleich definiert:</p>
+          <div class="tbl-scroll"><table>
+            <tr><th>Präfix</th><th>Zeichen</th><th class="n">Faktor</th><th class="n">Byte</th></tr>
+            <tr><td>Kilo</td><td><span class="term">k</span></td><td class="n">10³</td><td class="n">1 000</td></tr>
+            <tr><td>Mega</td><td><span class="term">M</span></td><td class="n">10⁶</td><td class="n">1 000 000</td></tr>
+            <tr><td>Giga</td><td><span class="term">G</span></td><td class="n">10⁹</td><td class="n">1 000 000 000</td></tr>
+            <tr><td>Tera</td><td><span class="term">T</span></td><td class="n">10¹²</td><td class="n">1 000 000 000 000</td></tr>
+          </table></div>
+          <p>Jeder Schritt ist ein Faktor <strong>1 000</strong>, entsprechend drei Nullen bzw. drei Stellen im Komma-Verschieben. Schreibweise: kleines <strong>k</strong> bei Kilo, große Anfangsbuchstaben bei M, G und T.</p>
+          <p>Zur Einordnung ist der Hinweis auf die <strong>Binärpräfixe</strong> sinnvoll: 1 KiB (Kibibyte) = 1 024 Byte, 1 MiB = 1 024² Byte. Speicherhersteller rechnen dezimal, viele Betriebssysteme zeigen binär an — deshalb erscheint eine „1-TB-Festplatte“ im System nur mit etwa 931 GiB. Es fehlt nichts, es wird lediglich anders gezählt. Die Lesehilfe verlangt ausdrücklich die <em>Dezimal</em>präfixe.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Rechne um (Dezimalpräfixe):</p>
+              <ol class="sub">
+                <li>2,5 GB in MB, in kB und in Byte</li>
+                <li>7 500 000 Byte in MB</li>
+                <li>0,4 TB in GB</li>
+                <li>Wie viele Fotos von je 4 MB passen auf eine Speicherkarte mit 64 GB?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> 2,5 GB = 2,5 × 1 000 = <strong>2 500 MB</strong> = 2 500 × 1 000 = <strong>2 500 000 kB</strong> = <strong>2 500 000 000 Byte</strong> (also 2,5 × 10⁹ Byte).</p>
+              <p><strong>b)</strong> 7 500 000 Byte : 1 000 000 = <strong>7,5 MB</strong>.</p>
+              <p><strong>c)</strong> 0,4 TB = 0,4 × 1 000 = <strong>400 GB</strong>.</p>
+              <p><strong>d)</strong> 64 GB = 64 000 MB; 64 000 MB : 4 MB = <strong>16 000 Fotos</strong>.</p>
+              <p>Rechenweg allgemein: Ein Schritt nach oben (kB → MB → GB → TB) bedeutet dividieren durch 1 000, ein Schritt nach unten multiplizieren mit 1 000.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Auf der Verpackung einer Festplatte steht <strong>1 TB</strong>. Nach dem Anschließen zeigt das Betriebssystem <strong>931 GB</strong> freien Speicher an.</p>
+              <ol class="sub">
+                <li>Erkläre die Abweichung durch Rechnung.</li>
+                <li>Beurteile die Aussage „Der Hersteller betrügt“.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Der Hersteller rechnet <em>dezimal</em>: 1 TB = 10¹² = 1 000 000 000 000 Byte. Das Betriebssystem teilt diese Zahl durch 1 024 statt durch 1 000, und zwar dreimal (Byte → Kibibyte → Mebibyte → Gibibyte):</p>
+              <p>1 000 000 000 000 : 1 024³ = 1 000 000 000 000 : 1 073 741 824 ≈ <strong>931,3</strong></p>
+              <p>Angezeigt werden also 931 <em>Gibibyte</em> — die vielen Systeme fälschlich mit „GB“ beschriften. Es sind genau dieselben Bytes, nur in einer anderen Einheit gezählt.</p>
+              <p><strong>b)</strong> Die Aussage ist <strong>nicht zutreffend</strong>. Der Hersteller verwendet die international festgelegten Dezimalpräfixe korrekt: Kilo bedeutet 1 000, nicht 1 024. Irreführend ist vielmehr die <em>Beschriftung</em> im Betriebssystem, das binär rechnet, aber „GB“ statt „GiB“ schreibt. Kritisieren lässt sich, dass die Doppeldeutigkeit den Herstellern nützt, weil die größere Zahl auf der Packung steht. Sauber wäre: dezimale Angabe mit GB, binäre mit GiB. Ein tatsächlicher Verlust entsteht erst durch die <em>Formatierung</em>, weil das Dateisystem selbst etwas Platz belegt — das sind aber nur wenige Promille, nicht die 7 % der Differenz hier.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">ID 7</span>
+        <h3>Den Zusammenhang zwischen Datenmenge und Ressourcenverbrauch anhand eines Alltagsbeispiels beschreiben und kritisch reflektieren</h3>
+        <span class="tag">auf E erweitert um „kritisch reflektieren“ · nicht im G-Niveau</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Die Kette:</strong> Datenmenge → Übertragung und Speicherung → Rechenleistung → elektrische Energie → CO₂-Ausstoß und Kühlwasser; hinzu kommen die <em>graue</em> Energie und die Rohstoffe der Geräte selbst (Seltene Erden, Kobalt, Lithium).</p>
+          <p><strong>Wichtige Größen zum Einordnen:</strong> Videostreaming ist der größte Einzelposten des Datenverkehrs; die Datenmenge steigt stark mit der Auflösung (SD → HD → 4K), Mobilfunk verbraucht je übertragenem Bit deutlich mehr Energie als WLAN oder Kabel, und ein dauerhaft gespeichertes Backup verbraucht laufend Energie, nicht nur einmal. Faustregel: <em>weniger Bit = weniger Energie</em>, aber der Zusammenhang ist nicht linear, weil ein Rechenzentrum auch im Leerlauf Strom zieht.</p>
+          <p><strong>Kritische Reflexion — der E-Anteil.</strong> Hier reicht das Beschreiben nicht:</p>
+          <ul>
+            <li><em>Wer trägt die Kosten?</em> Der Verbrauch entsteht bei Anbietern und Netzbetreibern, entschieden wird er durch Voreinstellungen (Autoplay, höchste Auflösung als Standard).</li>
+            <li><em>Individuum oder Struktur?</em> Effizienzgewinne werden durch Mehrnutzung aufgezehrt (Rebound-Effekt) — daher sind Voreinstellungen, Strommix und Gerätelebensdauer wirksamer als einzelne Verzichtsappelle.</li>
+            <li><em>Wie belastbar sind die Zahlen?</em> Angaben zum „CO₂ pro Streamingstunde“ schwanken je nach Annahme um Größenordnungen; Quellen und Bezugsgrößen sind zu prüfen.</li>
+            <li><em>Abwägung:</em> Eine Videokonferenz kann eine Dienstreise ersetzen — digital ist nicht per se schlechter oder besser.</li>
+          </ul>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Eine Serienfolge dauert 45 Minuten. Die Datenrate beträgt in SD 1,5 Mbit/s, in HD 5 Mbit/s und in 4K 18 Mbit/s.</p>
+              <ol class="sub">
+                <li>Berechne die Datenmenge je Folge in GB.</li>
+                <li>Eine Person sieht ein Jahr lang jeden Abend eine Folge in 4K. Wie viel Datenvolumen entsteht?</li>
+                <li>Um welchen Faktor ließe sich das durch HD statt 4K senken?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>45 min = 2 700 s.</p>
+              <p><strong>a)</strong></p>
+              <ul>
+                <li>SD: 1,5 Mbit/s × 2 700 s = 4 050 Mbit : 8 = 506,25 MB ≈ <strong>0,51 GB</strong></li>
+                <li>HD: 5 × 2 700 = 13 500 Mbit : 8 = 1 687,5 MB ≈ <strong>1,69 GB</strong></li>
+                <li>4K: 18 × 2 700 = 48 600 Mbit : 8 = 6 075 MB ≈ <strong>6,08 GB</strong></li>
+              </ul>
+              <p><strong>b)</strong> 365 × 6,075 GB ≈ <strong>2 217 GB</strong> ≈ <strong>2,2 TB</strong> im Jahr.</p>
+              <p><strong>c)</strong> 18 : 5 = <strong>Faktor 3,6</strong>. In HD wären es 365 × 1,6875 GB ≈ 616 GB, also etwa 1 600 GB weniger — bei einer Auflösung, die auf einem Handydisplay ohnehin kaum von 4K zu unterscheiden ist. Genau hier liegt der wirksamste Hebel: nicht Verzicht auf das Serienschauen, sondern die <em>Voreinstellung</em> der Auflösung.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Nimm kritisch Stellung zu der Aussage: „Wenn alle Videos nur noch in SD streamen, ist das Klimaproblem der Digitalisierung gelöst.“ Beziehe mindestens drei Ebenen ein und benenne, wo du Zahlen bräuchtest.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Die Aussage trifft im Kern etwas Richtiges — Streaming ist der größte Datenposten, und weniger Bit bedeuten weniger Energie —, greift aber deutlich zu kurz.</p>
+              <ol>
+                <li><strong>Ebene Struktur statt Individuum:</strong> Entschieden wird die Auflösung meist nicht bewusst, sondern durch Voreinstellungen der Anbieter (höchste Qualität, Autoplay). Ein Appell an Einzelne ändert diese Voreinstellungen nicht. Wirksamer wären Standardeinstellungen, Effizienzvorgaben und ein CO₂-armer Strommix der Rechenzentren.</li>
+                <li><strong>Ebene Geräte:</strong> Ein großer Teil der Umweltwirkung entsteht bei der <em>Herstellung</em> der Endgeräte (graue Energie, Rohstoffabbau von Kobalt und Lithium). Ein Handy zwei Jahre länger zu nutzen wirkt vermutlich stärker als die Auflösungsumstellung — das betrifft die Datenmenge überhaupt nicht.</li>
+                <li><strong>Ebene Rebound:</strong> Effizienz- und Volumengewinne werden häufig durch Mehrnutzung aufgezehrt: Wird SD billiger und flüssiger, wird länger gestreamt. Ein Einsparziel muss deshalb absolut formuliert werden, nicht je Stunde.</li>
+                <li><strong>Ebene Abwägung:</strong> „Das Klimaproblem der Digitalisierung“ ist nicht nur ein Kostenposten. Digitale Anwendungen ersetzen teils emissionsintensive Alternativen (Videokonferenz statt Flug, Netzsteuerung für erneuerbare Energien). Eine reine Verzichtsbetrachtung unterschlägt diese Seite.</li>
+              </ol>
+              <p><strong>Wo Zahlen fehlen:</strong> Anteil des Streamings am gesamten IT-Strombedarf; Energie je übertragenem Gigabyte, getrennt nach Mobilfunk, WLAN und Kabel; Strommix und PUE-Wert der beteiligten Rechenzentren; Anteil der Herstellung an der Gesamtwirkung eines Geräts über seine Lebensdauer. Wichtig ist außerdem die Prüfung der Quellen: Angaben zum CO₂-Ausstoß je Streamingstunde schwanken je nach Annahme um Größenordnungen, weil unterschiedlich abgegrenzt wird, was mitgezählt wird.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ ALGORITHMEN ============ -->
+  <section class="area" id="al">
+    <div class="area-head">
+      <span class="kb">Algorithmen</span>
+      <h2>Algorithmische Grundbausteine</h2>
+      <p class="count">6 Teilkompetenzen · AL 1 – AL 6 · AL 2 und AL 6 nicht im G-Niveau; AL 3 und AL 5 auf E anspruchsvoller formuliert</p>
+    </div>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 1</span>
+        <h3>Algorithmische Grundbausteine beschreiben: Anweisung · Schleife (Variante mit konstanter Anzahl von Durchläufen und Variante mit Bedingung) · Verzweigung · Ausdrücke ohne Operatoren, mit arithmetischen Operatoren und mit Vergleichsoperatoren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Jeder Algorithmus lässt sich aus wenigen Bausteinen zusammensetzen. Die Lesehilfe nennt sie einzeln:</p>
+          <ul>
+            <li><strong>Anweisung</strong> — ein einzelner Arbeitsschritt, der genau eine Wirkung hat: <span class="term">gehe 50 Schritt</span>, <span class="term">setze punkte auf 0</span>. Mehrere Anweisungen hintereinander bilden eine <em>Sequenz</em>; die Reihenfolge ist bedeutsam.</li>
+            <li><strong>Schleife mit konstanter Anzahl von Durchläufen</strong> — die Zahl der Wiederholungen steht vor dem Start fest: <span class="term">wiederhole 4 mal</span>. Man weiß von Anfang an, wie oft.</li>
+            <li><strong>Schleife mit Bedingung</strong> — wiederholt wird, solange bzw. bis eine Bedingung gilt: <span class="term">wiederhole bis Punkte &gt; 10</span>. Wie oft, hängt vom Verlauf ab; wird die Bedingung nie erfüllt, entsteht eine Endlosschleife.</li>
+            <li><strong>Verzweigung</strong> — ein Weg wird abhängig von einer Bedingung gewählt: <span class="term">falls … dann …</span> bzw. <span class="term">falls … dann … sonst …</span>. Genau ein Zweig wird ausgeführt.</li>
+            <li><strong>Ausdrücke</strong> — Bestandteile, die einen <em>Wert liefern</em>, in drei Stufen:
+              <ul>
+                <li><em>ohne Operatoren:</em> ein Wert oder eine Variable — <span class="term">7</span>, <span class="term">"Hallo"</span>, <span class="term">punkte</span></li>
+                <li><em>mit arithmetischen Operatoren</em> (+ − · :) — <span class="term">punkte + 5</span>, liefert eine Zahl</li>
+                <li><em>mit Vergleichsoperatoren</em> (&lt; &gt; =) — <span class="term">punkte &gt; 10</span>, liefert einen Wahrheitswert</li>
+              </ul>
+            </li>
+          </ul>
+          <p>Der entscheidende Unterschied: Eine <strong>Anweisung tut etwas</strong>, ein <strong>Ausdruck liefert einen Wert</strong>. Ausdrücke stehen deshalb <em>in</em> Anweisungen, Schleifen und Verzweigungen — nie allein.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Benenne in dem folgenden Programm jeden Grundbaustein. Gib bei Ausdrücken zusätzlich an, welcher der drei Stufen sie angehören.</p>
+              <pre class="bits">1  setze leben auf 3
+2  wiederhole bis leben = 0
+3      gehe 10 Schritt
+4      falls berührt Rand? dann
+5          setze leben auf leben - 1
+6      sonst
+7          setze punkte auf punkte + 5
+8  sage "Spiel vorbei"</pre></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th class="n">Zeile</th><th>Baustein</th><th>Ausdruck darin</th></tr>
+                <tr><td class="n">1</td><td>Anweisung (Wertzuweisung)</td><td><span class="term">3</span> — ohne Operatoren</td></tr>
+                <tr><td class="n">2</td><td>Schleife <strong>mit Bedingung</strong></td><td><span class="term">leben = 0</span> — Vergleichsoperator</td></tr>
+                <tr><td class="n">3</td><td>Anweisung</td><td><span class="term">10</span> — ohne Operatoren</td></tr>
+                <tr><td class="n">4–7</td><td>Verzweigung mit Sonst-Zweig</td><td><span class="term">berührt Rand?</span> — ohne Operatoren (liefert direkt einen Wahrheitswert)</td></tr>
+                <tr><td class="n">5</td><td>Anweisung</td><td><span class="term">leben - 1</span> — arithmetischer Operator</td></tr>
+                <tr><td class="n">7</td><td>Anweisung</td><td><span class="term">punkte + 5</span> — arithmetischer Operator</td></tr>
+                <tr><td class="n">8</td><td>Anweisung</td><td><span class="term">"Spiel vorbei"</span> — ohne Operatoren</td></tr>
+              </table></div>
+              <p>Ergänzend: Zeilen 1–2 und 8 bilden auf oberster Ebene eine <strong>Sequenz</strong>. Eine Schleife mit konstanter Anzahl kommt im Programm <em>nicht</em> vor — die Zahl der Durchläufe hängt davon ab, wie oft die Figur den Rand berührt.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Entscheide jeweils begründet, welche Schleifenvariante geeignet ist — konstante Anzahl oder Bedingung:</p>
+              <ol class="sub">
+                <li>Ein Quadrat zeichnen</li>
+                <li>Eine Figur laufen lassen, bis sie die Ziellinie erreicht</li>
+                <li>Allen 28 Schülerinnen und Schülern der Klasse eine Nummer zuweisen</li>
+                <li>Warten, bis eine Taste gedrückt wird</li>
+                <li>Eine Zahl raten lassen, bis sie stimmt</li>
+              </ol>
+              <p>Formuliere anschließend, welche Gefahr nur bei der zweiten Variante besteht.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Konstante Anzahl</strong> (<span class="term">wiederhole 4 mal</span>). Ein Quadrat hat immer genau vier Seiten; die Zahl steht vor dem Start fest.</li>
+                <li><strong>Bedingung</strong> (<span class="term">wiederhole bis Ziel erreicht</span>). Wie viele Schritte nötig sind, hängt von Startort, Schrittweite und Hindernissen ab und ist vorher unbekannt.</li>
+                <li><strong>Konstante Anzahl</strong> (<span class="term">wiederhole 28 mal</span>). Die Anzahl ist bekannt und ändert sich während des Ablaufs nicht.</li>
+                <li><strong>Bedingung</strong>. Es ist völlig offen, wann — oder ob überhaupt — gedrückt wird.</li>
+                <li><strong>Bedingung</strong>. Die Zahl der Versuche hängt vom Raten ab.</li>
+              </ol>
+              <p><strong>Gefahr nur bei der Bedingungsvariante:</strong> die <strong>Endlosschleife</strong>. Wird die Abbruchbedingung nie erfüllt, läuft die Schleife unbegrenzt weiter. Das geschieht etwa, wenn die Ziellinie übersprungen wird, weil die Schrittweite zu groß ist und nur auf exakte Gleichheit geprüft wird, oder wenn in der Schleife nichts verändert wird, was die Bedingung beeinflusst. Bei konstanter Anzahl ist die Terminierung dagegen von vornherein gesichert. Abhilfe: statt auf Gleichheit auf <span class="term">&gt;=</span> prüfen und einen zusätzlichen Höchstwert für die Versuche vorsehen.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 2</span>
+        <h3>Übergabe und Rückgabe von Werten bei gegebenen Anweisungen und Ausdrücken identifizieren</h3>
+        <span class="tag">nicht im G-Niveau</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Bausteine sind nicht abgeschlossen — sie tauschen Werte aus. Zwei Richtungen sind zu unterscheiden:</p>
+          <ul>
+            <li><strong>Übergabe:</strong> Werte, die <em>hinein</em>gegeben werden, damit der Baustein arbeiten kann. In der blockbasierten Darstellung sind das die Eingabefelder: bei <span class="term">gehe 50 Schritt</span> die 50, bei <span class="term">setze x auf 120</span> die 120.</li>
+            <li><strong>Rückgabe:</strong> der Wert, den ein Baustein <em>heraus</em>gibt. Nur <strong>Ausdrücke</strong> haben eine Rückgabe: <span class="term">Zufallszahl von 1 bis 6</span> gibt eine Zahl zurück, <span class="term">Länge von "Hallo"</span> die Zahl 5, <span class="term">berührt Rand?</span> einen Wahrheitswert.</li>
+          </ul>
+          <p>Daraus folgt die zentrale Unterscheidung: <strong>Anweisungen haben eine Wirkung, aber keine Rückgabe</strong> — <span class="term">gehe 50 Schritt</span> bewegt die Figur und liefert nichts, das man weiterverwenden könnte. <strong>Ausdrücke haben eine Rückgabe, aber keine Wirkung.</strong> Deshalb lassen sich Ausdrücke ineinander stecken, Anweisungen nicht.</p>
+          <p>In der blockbasierten Sprache ist das an der Form ablesbar: Anweisungsblöcke sind Stapelbausteine mit Nut und Zapfen, Ausdrücke sind ovale oder sechseckige Blöcke, die in ein Eingabefeld passen. Erkennungsfrage: <em>Passt der Baustein in ein Loch? Dann gibt er einen Wert zurück.</em></p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Gib für jede Zeile an, welche Werte <strong>übergeben</strong> werden und was <strong>zurückgegeben</strong> wird. Notiere „keine Rückgabe“, wo es zutrifft.</p>
+              <pre class="bits">a)  gehe 50 Schritt
+b)  Zufallszahl von 1 bis 6
+c)  setze punkte auf (punkte + 10)
+d)  Länge von "Informatik"
+e)  sage (verbinde "Punkte: " punkte)
+f)  drehe dich um (90 * 2) Grad nach rechts</pre></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th></th><th>Übergabe</th><th>Rückgabe</th></tr>
+                <tr><td>a)</td><td>50</td><td>keine Rückgabe (Anweisung; Wirkung: Figur bewegt sich)</td></tr>
+                <tr><td>b)</td><td>1 und 6</td><td>eine Zahl zwischen 1 und 6</td></tr>
+                <tr><td>c)</td><td>an <span class="term">setze</span>: das Ergebnis von <span class="term">punkte + 10</span>; an <span class="term">+</span>: der Wert von <span class="term">punkte</span> und 10</td><td>Der Ausdruck <span class="term">punkte + 10</span> gibt eine Zahl zurück; <span class="term">setze … auf …</span> selbst hat keine Rückgabe</td></tr>
+                <tr><td>d)</td><td>"Informatik"</td><td>die Zahl 10</td></tr>
+                <tr><td>e)</td><td>an <span class="term">verbinde</span>: "Punkte: " und der Wert von <span class="term">punkte</span>; an <span class="term">sage</span>: die daraus entstandene Zeichenkette</td><td><span class="term">verbinde</span> gibt eine Zeichenkette zurück; <span class="term">sage</span> hat keine Rückgabe</td></tr>
+                <tr><td>f)</td><td>an <span class="term">*</span>: 90 und 2; an <span class="term">drehe dich</span>: das Ergebnis 180</td><td><span class="term">90 * 2</span> gibt die Zahl 180 zurück; <span class="term">drehe dich</span> hat keine Rückgabe</td></tr>
+              </table></div>
+              <p>Muster: In c), e) und f) ist die Rückgabe des inneren Ausdrucks gleichzeitig die Übergabe an die äußere Anweisung. Genau so werden Bausteine verkettet.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schüler schreibt <span class="term">setze punkte auf (gehe 50 Schritt)</span> und wundert sich, dass sich der Baustein nicht einsetzen lässt.</p>
+              <ol class="sub">
+                <li>Erkläre den Fehler mit den Begriffen Übergabe und Rückgabe.</li>
+                <li>Nenne einen Ausdruck, der an dieser Stelle passt, und begründe.</li>
+                <li>Warum lässt sich der Fehler in einer blockbasierten Sprache leichter erkennen als in einer Textsprache?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> <span class="term">setze punkte auf …</span> braucht an dieser Stelle eine <em>Übergabe</em>, also einen Wert. <span class="term">gehe 50 Schritt</span> ist aber eine <strong>Anweisung</strong>: Sie hat eine Wirkung (die Figur bewegt sich), aber <strong>keine Rückgabe</strong>. Es gibt also keinen Wert, der in die Variable geschrieben werden könnte — die Verbindung ist inhaltlich leer, nicht bloß formal falsch.</p>
+              <p><strong>b)</strong> Passend ist jeder Baustein mit Rückgabe eines Wertes, zum Beispiel <span class="term">setze punkte auf (punkte + 10)</span>, <span class="term">setze punkte auf (Zufallszahl von 1 bis 6)</span> oder <span class="term">setze punkte auf 0</span>. Begründung: Alle drei liefern eine Zahl, und eine Zahl ist genau das, was das Eingabefeld erwartet.</p>
+              <p><strong>c)</strong> Weil die <strong>Form</strong> die Regel sichtbar macht: Ausdrücke sind ovale oder sechseckige Bausteine, die in ein Loch passen; Anweisungen sind Stapelbausteine mit Nut und Zapfen, die sich nur oben und unten anfügen lassen. Ein Stapelbaustein passt geometrisch nicht in ein rundes Loch — der Fehler ist damit gar nicht erst konstruierbar. In einer Textsprache sieht <span class="term">punkte = gehe(50)</span> zunächst genauso aus wie eine korrekte Zuweisung; der Fehler zeigt sich erst zur Laufzeit oder gar nicht, weil dann still ein leerer Wert zugewiesen wird. Blockbasierte Sprachen erzwingen die Typregel also durch die Bausteinform.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 3</span>
+        <h3>Den Datentyp (Zeichenkette, Zahl, Wahrheitswert) von Werten und Ausdrücken identifizieren</h3>
+        <span class="tag">E: auch von Ausdrücken, und „identifizieren“ statt „zuordnen“</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Drei Datentypen genügen auf dieser Stufe:</p>
+          <ul>
+            <li><strong>Zahl</strong> — <span class="term">7</span>, <span class="term">-3</span>, <span class="term">2.5</span>; damit lässt sich rechnen</li>
+            <li><strong>Zeichenkette</strong> — <span class="term">"Hallo"</span>, <span class="term">"7"</span>, <span class="term">""</span>; eine Folge von Zeichen, erkennbar an den Anführungszeichen</li>
+            <li><strong>Wahrheitswert</strong> — <span class="term">wahr</span> oder <span class="term">falsch</span>; nur zwei mögliche Werte</li>
+          </ul>
+          <p>Bei <em>Werten</em> ist der Typ unmittelbar sichtbar. Neu auf Niveau E ist der Typ von <strong>Ausdrücken</strong>. Dafür gilt eine einfache Regel: <em>Der Datentyp eines Ausdrucks ist der Typ seines Ergebnisses, und dieser wird vom äußersten Operator bestimmt.</em></p>
+          <div class="tbl-scroll"><table>
+            <tr><th>Äußerster Operator</th><th>Ergebnistyp</th><th>Beispiel</th></tr>
+            <tr><td>arithmetisch (+ − · :)</td><td>Zahl</td><td><span class="term">3 + 4</span> → 7</td></tr>
+            <tr><td>Vergleich (&lt; &gt; =)</td><td>Wahrheitswert</td><td><span class="term">3 &gt; 4</span> → falsch</td></tr>
+            <tr><td>logisch (und, oder, nicht)</td><td>Wahrheitswert</td><td><span class="term">nicht wahr</span> → falsch</td></tr>
+            <tr><td>Verketten</td><td>Zeichenkette</td><td><span class="term">verbinde "Kl" "7"</span> → "Kl7"</td></tr>
+            <tr><td>Länge von</td><td>Zahl</td><td><span class="term">Länge von "Hallo"</span> → 5</td></tr>
+          </table></div>
+          <p>Wichtiger Stolperstein: <span class="term">7</span> und <span class="term">"7"</span> sehen gleich aus, sind aber verschiedene Typen. Mit der Zahl kann gerechnet werden, mit der Zeichenkette nicht.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Bestimme für jeden Ausdruck den Datentyp des Ergebnisses und gib das Ergebnis an. Es gilt <span class="term">punkte = 12</span> und <span class="term">name = "Mira"</span>.</p>
+              <pre class="bits">a)  punkte
+b)  "12"
+c)  punkte * 2
+d)  punkte &gt; 10
+e)  verbinde name "!"
+f)  Länge von name
+g)  (punkte + 3) &gt; 20
+h)  nicht (punkte = 12)</pre></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th></th><th>Datentyp</th><th class="n">Ergebnis</th><th>Begründung</th></tr>
+                <tr><td>a)</td><td>Zahl</td><td class="n">12</td><td>Variable ohne Operator; ihr Wert ist eine Zahl</td></tr>
+                <tr><td>b)</td><td>Zeichenkette</td><td class="n">"12"</td><td>Anführungszeichen — sieht wie eine Zahl aus, ist aber keine</td></tr>
+                <tr><td>c)</td><td>Zahl</td><td class="n">24</td><td>äußerster Operator arithmetisch</td></tr>
+                <tr><td>d)</td><td>Wahrheitswert</td><td class="n">wahr</td><td>äußerster Operator ist ein Vergleich</td></tr>
+                <tr><td>e)</td><td>Zeichenkette</td><td class="n">"Mira!"</td><td>Verketten liefert eine Zeichenkette</td></tr>
+                <tr><td>f)</td><td>Zahl</td><td class="n">4</td><td>gezählt wird, das Ergebnis ist eine Anzahl</td></tr>
+                <tr><td>g)</td><td>Wahrheitswert</td><td class="n">falsch</td><td>innen Zahl (15), außen Vergleich → der äußerste Operator entscheidet; 15 &gt; 20 ist falsch</td></tr>
+                <tr><td>h)</td><td>Wahrheitswert</td><td class="n">falsch</td><td>innen Vergleich (wahr), außen <span class="term">nicht</span> → wahr wird zu falsch</td></tr>
+              </table></div>
+              <p>Kernbeobachtung an g): Der Ausdruck enthält eine Rechnung, ist aber trotzdem kein Zahlausdruck. Maßgeblich ist allein der <strong>äußerste</strong> Operator.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>In einem Spiel wird die Punktzahl über ein Eingabefeld eingelesen. Das Programm prüft <span class="term">falls antwort &gt; 100 dann sage "Rekord"</span>. Die Eingabe <span class="term">99</span> löst die Meldung aus, die Eingabe <span class="term">100</span> nicht.</p>
+              <ol class="sub">
+                <li>Erkläre den Fehler über den Datentyp.</li>
+                <li>Beschreibe, wie er behoben wird.</li>
+                <li>Nenne einen weiteren Fall, in dem die Verwechslung von <span class="term">7</span> und <span class="term">"7"</span> Schaden anrichtet.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Eine Eingabe kommt zunächst als <strong>Zeichenkette</strong> an, nicht als Zahl. Der Vergleich wird deshalb <em>alphabetisch</em> ausgeführt, Zeichen für Zeichen von links: <span class="term">"99"</span> beginnt mit „9“, <span class="term">"100"</span> mit „1“. Da „9“ nach „1“ kommt, gilt <span class="term">"99" &gt; "100"</span> — die Meldung erscheint bei 99 und bleibt bei 100 aus. Der Vergleich ist nicht falsch programmiert, er vergleicht nur den falschen <em>Typ</em>.</p>
+              <p><strong>b)</strong> Die Eingabe muss vor dem Vergleich in eine <strong>Zahl</strong> umgewandelt werden, etwa <span class="term">setze punkte auf (0 + antwort)</span> oder ein ausdrückliches Umwandeln in eine Zahl; anschließend <span class="term">falls punkte &gt; 100</span>. Sinnvoll ist zusätzlich zu prüfen, ob die Eingabe überhaupt eine Zahl ist, damit „hundert“ keinen Fehler auslöst.</p>
+              <p><strong>c)</strong> Zum Beispiel <strong>Sortieren</strong>: Werden Zahlen als Zeichenketten sortiert, ergibt sich die Reihenfolge 1, 10, 100, 2, 3 statt 1, 2, 3, 10, 100 — ein Effekt, der bei Dateinamen wie <span class="term">Bild10</span> vor <span class="term">Bild2</span> ständig sichtbar ist. Ebenso beim <strong>Addieren</strong>: Werden zwei Zeichenketten „addiert“, entsteht in vielen Sprachen <span class="term">"7" + "1" = "71"</span> statt 8. Auch Postleitzahlen und Telefonnummern müssen Zeichenketten <em>bleiben</em>, weil führende Nullen sonst verloren gehen — hier wäre die Umwandlung in eine Zahl der Fehler.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 4</span>
+        <h3>Algorithmische Grundbausteine zielorientiert verwenden, um Algorithmen in einer geeigneten (zum Beispiel blockbasierten) Programmiersprache zu implementieren</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Hier verschiebt sich der Schwerpunkt vom Beschreiben zum <strong>Herstellen</strong>. „Zielorientiert“ heißt auf Niveau E: nicht durch Ausprobieren zu einem Ergebnis kommen, sondern den passenden Baustein <em>begründet</em> auswählen. Leitfragen bei der Planung:</p>
+          <ul>
+            <li>Wiederholt sich etwas? → Schleife statt kopierter Anweisungen</li>
+            <li>Steht die Anzahl vorher fest? → konstante Anzahl, sonst Bedingung</li>
+            <li>Gibt es Fälle mit unterschiedlichem Verhalten? → Verzweigung</li>
+            <li>Muss sich etwas gemerkt werden? → Variable</li>
+          </ul>
+          <p>Als Umgebung eignet sich eine blockbasierte Sprache wie Scratch. Typisches Vorgehen: Ziel in Worte fassen → Ablauf als Folge von Schritten notieren → Bausteine wählen → in kleinen Schritten testen → verbessern. Wichtige Qualitätsmerkmale, die schon in Klasse 7 gefordert werden können: keine kopierten Blockfolgen, sprechende Variablennamen, Startwerte werden gesetzt (Initialisierung), und das Programm läuft beim zweiten Start genauso wie beim ersten.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Implementiere ein Zahlenratespiel: Das Programm denkt sich eine Zahl von 1 bis 100. Bei jedem Versuch meldet es „zu klein“, „zu groß“ oder „richtig“ und gibt am Ende die Anzahl der Versuche aus. Notiere zunächst, welchen Grundbaustein du für welche Anforderung brauchst.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Bausteinwahl:</strong> Zufallszahl merken → <em>Variable</em> mit Zuweisung. Wiederholtes Raten, Anzahl unbekannt → <em>Schleife mit Bedingung</em>. Drei Rückmeldungen → <em>verschachtelte Verzweigung</em>. Versuche zählen → <em>Variable</em> mit arithmetischem Ausdruck.</p>
+              <pre class="bits">wenn Grüne Flagge angeklickt
+    setze gesucht auf (Zufallszahl von 1 bis 100)
+    setze versuche auf 0
+    setze geraten auf 0
+    wiederhole bis (geraten = gesucht)
+        frage "Deine Zahl?" und warte
+        setze geraten auf (0 + antwort)
+        setze versuche auf (versuche + 1)
+        falls (geraten &lt; gesucht) dann
+            sage "zu klein" für 1 Sekunden
+        sonst
+            falls (geraten &gt; gesucht) dann
+                sage "zu groß" für 1 Sekunden
+    sage (verbinde "Richtig! Versuche: " versuche)</pre>
+              <p><strong>Begründungen im Einzelnen:</strong> Die Schleife braucht eine <em>Bedingung</em>, weil unbekannt ist, wie viele Versuche nötig sind. <span class="term">geraten</span> wird vor der Schleife auf 0 gesetzt, damit die Bedingung beim ersten Prüfen einen Wert hat und 0 nie die gesuchte Zahl ist. <span class="term">0 + antwort</span> wandelt die Eingabe von einer Zeichenkette in eine Zahl (vergleiche AL 3) — ohne diesen Schritt vergleicht das Programm alphabetisch. Ein „richtig“ innerhalb der Schleife ist unnötig, weil die Schleife dann ohnehin endet; die Meldung steht danach.</p>
+              <p>Verkürzung, falls die Umgebung <span class="term">sonst-falls</span> anbietet: Die verschachtelte Verzweigung wird zu einer dreiteiligen Fallunterscheidung.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schüler zeichnet ein Quadrat so:</p>
+              <pre class="bits">gehe 100 Schritt
+drehe dich um 90 Grad nach rechts
+gehe 100 Schritt
+drehe dich um 90 Grad nach rechts
+gehe 100 Schritt
+drehe dich um 90 Grad nach rechts
+gehe 100 Schritt
+drehe dich um 90 Grad nach rechts</pre>
+              <ol class="sub">
+                <li>Verbessere das Programm mit dem passenden Grundbaustein.</li>
+                <li>Begründe zwei Vorteile deiner Fassung.</li>
+                <li>Ändere sie so, dass ein Sechseck entsteht.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Die Blockfolge wiederholt sich viermal identisch, und die Anzahl steht fest → <strong>Schleife mit konstanter Anzahl</strong>:</p>
+              <pre class="bits">wiederhole 4 mal
+    gehe 100 Schritt
+    drehe dich um 90 Grad nach rechts</pre>
+              <p><strong>b)</strong> (1) <em>Änderbarkeit:</em> Die Seitenlänge steht nur noch an einer Stelle. Wer aus 100 nun 150 machen will, ändert eine Zahl statt vier — in der langen Fassung führt jede vergessene Stelle zu einem verzogenen Viereck. (2) <em>Lesbarkeit:</em> Die Absicht „viermal dasselbe“ ist unmittelbar sichtbar, statt vom Leser aus acht Zeilen erschlossen werden zu müssen. Weiterer gültiger Vorteil: weniger Blöcke, damit weniger Gelegenheiten für Tippfehler.</p>
+              <p><strong>c) Sechseck:</strong> Die Figur muss insgesamt eine vollständige Drehung von 360° vollziehen, verteilt auf 6 Ecken: 360 : 6 = 60.</p>
+              <pre class="bits">wiederhole 6 mal
+    gehe 100 Schritt
+    drehe dich um 60 Grad nach rechts</pre>
+              <p>Allgemein gilt für ein regelmäßiges <em>n</em>-Eck: <span class="term">wiederhole n mal — gehe laenge Schritt — drehe dich um (360 / n) Grad</span>. Diese Verallgemeinerung ist der Übergang zu AL 6.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 5</span>
+        <h3>Codeabschnitte analysieren, deren Ablauf darstellen (zum Beispiel Bewegungsverlauf einer Figur) und deren Wirkung beschreiben</h3>
+        <span class="tag">E: zusätzlich Darstellung des Ablaufs gefordert</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Auf Niveau E genügt es nicht, das Ergebnis zu nennen — der <strong>Ablauf</strong> muss dargestellt werden. Bewährte Darstellungsformen:</p>
+          <ul>
+            <li><strong>Ablauftabelle (Schreibtischtest):</strong> je Zeile ein Schritt, je Spalte eine Variable oder Eigenschaft — Durchlauf, x, y, Richtung, Punkte. Damit wird jeder Zwischenzustand sichtbar.</li>
+            <li><strong>Bewegungsverlauf:</strong> die Spur der Figur im Koordinatensystem, mit numerierten Zwischenpositionen.</li>
+            <li><strong>Ablaufdiagramm</strong> für Verzweigungen und Schleifen.</li>
+          </ul>
+          <p>Getrennt zu halten sind drei Fragen: <em>Was passiert?</em> (Ablauf, Schritt für Schritt) — <em>Was kommt heraus?</em> (Wirkung, Endzustand) — <em>Wozu ist es gut?</em> (Zweck des Abschnitts, in einem Satz). Der Schreibtischtest ist zugleich das wichtigste Werkzeug zur Fehlersuche: Wo Tabelle und Erwartung erstmals auseinandergehen, liegt der Fehler.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Die Figur startet bei x = 0, y = 0 und schaut nach rechts (90°).</p>
+              <pre class="bits">wiederhole 4 mal
+    gehe 100 Schritt
+    drehe dich um 90 Grad nach rechts</pre>
+              <ol class="sub">
+                <li>Stelle den Ablauf in einer Tabelle mit den Spalten Durchlauf, x, y, Richtung dar.</li>
+                <li>Zeichne den Bewegungsverlauf und beschreibe die Wirkung.</li>
+                <li>Wo befindet sich die Figur am Ende, und warum ist das für ein Programm, das viele Figuren zeichnet, wichtig?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Zustand jeweils <em>nach</em> dem Durchlauf; „rechts“ = 90°, „unten“ = 180°, „links“ = 270°, „oben“ = 0°:</p>
+              <div class="tbl-scroll"><table>
+                <tr><th class="n">Durchlauf</th><th class="n">x</th><th class="n">y</th><th>Richtung danach</th></tr>
+                <tr><td class="n">Start</td><td class="n">0</td><td class="n">0</td><td>90° (rechts)</td></tr>
+                <tr><td class="n">1</td><td class="n">100</td><td class="n">0</td><td>180° (unten)</td></tr>
+                <tr><td class="n">2</td><td class="n">100</td><td class="n">−100</td><td>270° (links)</td></tr>
+                <tr><td class="n">3</td><td class="n">0</td><td class="n">−100</td><td>0° (oben)</td></tr>
+                <tr><td class="n">4</td><td class="n">0</td><td class="n">0</td><td>90° (rechts)</td></tr>
+              </table></div>
+              <p><strong>b)</strong> Bewegungsverlauf: von (0|0) nach rechts zu (100|0), nach unten zu (100|−100), nach links zu (0|−100), nach oben zurück zu (0|0).</p>
+              <pre class="bits grid-fig">4←←←1
+↓···↑
+↓···↑
+↓···↑
+2→→→3</pre>
+              <p><strong>Wirkung:</strong> Die Figur läuft ein geschlossenes <strong>Quadrat mit der Seitenlänge 100</strong> ab — bei aktiviertem Stift wird es gezeichnet. Vier Seiten mal 90° ergeben zusammen 360°, also eine vollständige Drehung.</p>
+              <p><strong>c)</strong> Die Figur endet <strong>exakt am Startpunkt (0|0) und in der Startrichtung 90°</strong>. Das ist wichtig, weil der Abschnitt damit den Zustand unverändert lässt: Man kann ihn beliebig oft hintereinander ausführen oder in eine weitere Schleife stecken, ohne dass die Figur davonwandert. Fehlte die letzte Drehung, wäre das Quadrat zwar sichtbar gleich, die Richtung aber verändert — und ein zweiter Durchgang würde ein verschobenes, gedrehtes Quadrat zeichnen. Genau solche Fehler macht die Ablauftabelle sichtbar, das gezeichnete Bild allein nicht.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Analysiere den Abschnitt. Zu Beginn gilt <span class="term">summe = 0</span> und <span class="term">i = 1</span>.</p>
+              <pre class="bits">wiederhole bis (i &gt; 5)
+    setze summe auf (summe + i)
+    setze i auf (i + 1)
+sage summe</pre>
+              <ol class="sub">
+                <li>Erstelle die Ablauftabelle.</li>
+                <li>Beschreibe die Wirkung in einem Satz.</li>
+                <li>Was geschieht, wenn Zeile 3 fehlt?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th class="n">Prüfung <span class="term">i &gt; 5</span></th><th class="n">i vorher</th><th class="n">summe nachher</th><th class="n">i nachher</th></tr>
+                <tr><td>falsch</td><td class="n">1</td><td class="n">1</td><td class="n">2</td></tr>
+                <tr><td>falsch</td><td class="n">2</td><td class="n">3</td><td class="n">3</td></tr>
+                <tr><td>falsch</td><td class="n">3</td><td class="n">6</td><td class="n">4</td></tr>
+                <tr><td>falsch</td><td class="n">4</td><td class="n">10</td><td class="n">5</td></tr>
+                <tr><td>falsch</td><td class="n">5</td><td class="n">15</td><td class="n">6</td></tr>
+                <tr><td><strong>wahr</strong> → Abbruch</td><td class="n">6</td><td class="n">15</td><td class="n">6</td></tr>
+              </table></div>
+              <p>Ausgabe: <strong>15</strong>.</p>
+              <p><strong>b) Wirkung:</strong> Der Abschnitt addiert die Zahlen von 1 bis 5 und gibt die Summe 15 aus. <span class="term">summe</span> sammelt die Werte auf, <span class="term">i</span> zählt mit.</p>
+              <p><strong>c)</strong> Fehlt <span class="term">setze i auf (i + 1)</span>, bleibt <span class="term">i</span> dauerhaft 1. Die Abbruchbedingung <span class="term">i &gt; 5</span> wird dann <strong>nie</strong> wahr, und es entsteht eine <strong>Endlosschleife</strong>; <span class="term">summe</span> wächst unbegrenzt (1, 2, 3, 4, …) und <span class="term">sage summe</span> wird nie erreicht.</p>
+              <p>Regel, die daraus folgt: In einer Schleife mit Bedingung muss im Schleifenkörper etwas verändert werden, das die Bedingung <em>beeinflusst</em>. Fehlt diese Fortschaltung, terminiert die Schleife nicht — eine Fehlerquelle, die bei der Schleife mit konstanter Anzahl gar nicht auftreten kann.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">AL 6</span>
+        <h3>Den Einfluss von übergebenen Werten auf die Programmausführung analysieren</h3>
+        <span class="tag">nicht im G-Niveau</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Derselbe Code führt zu unterschiedlichem Verhalten, wenn andere Werte übergeben werden. Analysiert wird also nicht ein einzelner Ablauf, sondern die <strong>Abhängigkeit des Ablaufs von den Eingaben</strong>. Zu untersuchen sind insbesondere:</p>
+          <ul>
+            <li><strong>Zahl der Durchläufe</strong> — <span class="term">wiederhole n mal</span> mit n = 3 oder n = 36</li>
+            <li><strong>Gewählter Zweig</strong> — welche Eingabe führt in den Dann-, welche in den Sonst-Zweig</li>
+            <li><strong>Grenz- und Sonderfälle</strong> — n = 0, n = 1, negative Werte, leere Zeichenkette, Division durch 0. Sie decken Fehler auf, die mit „normalen“ Werten unentdeckt bleiben.</li>
+            <li><strong>Zusammenwirken mehrerer Werte</strong> — bei einem Vieleck bestimmen Eckenzahl und Seitenlänge gemeinsam die Größe der Figur</li>
+          </ul>
+          <p>Methodisch geeignet ist die <strong>Wertetabelle</strong>: eine Spalte je übergebenem Wert, eine Spalte für das beobachtete Ergebnis. Daraus wird das <em>Muster</em> abgelesen und begründet — auf Niveau E das Ziel: nicht nur berichten, was herauskam, sondern erklären, <em>warum</em> der Wert genau diese Wirkung hat.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Gegeben ist der eigene Baustein</p>
+              <pre class="bits">definiere Vieleck (n, laenge)
+    wiederhole n mal
+        gehe laenge Schritt
+        drehe dich um (360 / n) Grad nach rechts</pre>
+              <ol class="sub">
+                <li>Fülle die Wertetabelle für <span class="term">Vieleck(3, 150)</span>, <span class="term">Vieleck(4, 100)</span>, <span class="term">Vieleck(6, 60)</span> und <span class="term">Vieleck(36, 10)</span>: Drehwinkel, Zahl der Durchläufe, entstehende Figur, Umfang.</li>
+                <li>Erkläre, warum die Figur bei großem n wie ein Kreis aussieht.</li>
+                <li>Was geschieht bei <span class="term">Vieleck(1, 100)</span> und bei <span class="term">Vieleck(0, 100)</span>?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Aufruf</th><th class="n">Winkel 360/n</th><th class="n">Durchläufe</th><th>Figur</th><th class="n">Umfang</th></tr>
+                <tr><td><span class="term">Vieleck(3, 150)</span></td><td class="n">120°</td><td class="n">3</td><td>gleichseitiges Dreieck</td><td class="n">450</td></tr>
+                <tr><td><span class="term">Vieleck(4, 100)</span></td><td class="n">90°</td><td class="n">4</td><td>Quadrat</td><td class="n">400</td></tr>
+                <tr><td><span class="term">Vieleck(6, 60)</span></td><td class="n">60°</td><td class="n">6</td><td>regelmäßiges Sechseck</td><td class="n">360</td></tr>
+                <tr><td><span class="term">Vieleck(36, 10)</span></td><td class="n">10°</td><td class="n">36</td><td>fast ein Kreis</td><td class="n">360</td></tr>
+              </table></div>
+              <p><strong>Einfluss der Werte:</strong> <span class="term">n</span> wirkt <em>doppelt</em> — es bestimmt die Zahl der Durchläufe <em>und</em> über <span class="term">360 / n</span> den Drehwinkel. Deshalb entsteht immer eine geschlossene Figur: n Drehungen um je 360/n Grad ergeben zusammen stets 360°. <span class="term">laenge</span> wirkt dagegen nur auf die Größe, nicht auf die Form.</p>
+              <p><strong>b)</strong> Bei großem n werden die Seiten sehr kurz und die Drehwinkel sehr klein. Die Ecken liegen so dicht beieinander, dass das Auge sie nicht mehr als Knicke wahrnimmt — der Umriss erscheint glatt. Es ist geometrisch weiterhin ein Vieleck mit 36 geraden Seiten, nur eine gute <em>Annäherung</em> an den Kreis. Dieselbe Überlegung wie bei der Diskretisierung eines Bildes (ID 3): Die Stufen verschwinden nicht, sie werden nur unsichtbar klein.</p>
+              <p><strong>c)</strong> <span class="term">Vieleck(1, 100)</span>: ein Durchlauf, Drehung um 360/1 = 360° — die Figur läuft <strong>eine Strecke von 100</strong> und dreht sich einmal vollständig, steht also wieder in Startrichtung. Es entsteht kein Vieleck, sondern ein Strich. <span class="term">Vieleck(0, 100)</span>: Die Schleife wird <strong>null mal</strong> ausgeführt, es passiert also nichts — allerdings wäre der Drehwinkel <span class="term">360 / 0</span>, eine <strong>Division durch 0</strong>. Weil der Ausdruck nie berechnet wird, bleibt der Fehler hier verborgen; er würde erst auftreten, wenn der Winkel vor der Schleife berechnet würde. Genau deshalb gehören 0 und 1 zu den Werten, die man immer prüft.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Baustein soll einen Rabatt berechnen:</p>
+              <pre class="bits">definiere Endpreis (preis, alter)
+    falls (alter &lt; 18) dann
+        sage (preis * 0.5)
+    sonst
+        falls (alter &gt; 65) dann
+            sage (preis * 0.7)
+        sonst
+            sage preis</pre>
+              <ol class="sub">
+                <li>Bestimme die Ausgabe für die Übergaben (20, 12), (20, 18), (20, 65) und (20, 66).</li>
+                <li>Untersuche das Verhalten an den Grenzen und beurteile, ob es beabsichtigt sein kann.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Übergabe</th><th>gewählter Zweig</th><th class="n">Ausgabe</th></tr>
+                <tr><td>(20, 12)</td><td><span class="term">alter &lt; 18</span> ist wahr</td><td class="n">10</td></tr>
+                <tr><td>(20, 18)</td><td>beide Bedingungen falsch → voller Preis</td><td class="n">20</td></tr>
+                <tr><td>(20, 65)</td><td>beide Bedingungen falsch → voller Preis</td><td class="n">20</td></tr>
+                <tr><td>(20, 66)</td><td><span class="term">alter &gt; 65</span> ist wahr</td><td class="n">14</td></tr>
+              </table></div>
+              <p><strong>b) Grenzverhalten:</strong> Bei <strong>18</strong> entfällt der Jugendrabatt sprunghaft — von 10 auf 20, ein Unterschied von 100 % durch einen einzigen Geburtstag. Das ist bei Altersgrenzen üblich und dürfte beabsichtigt sein, sofern die Regel „unter 18“ lautet; wäre „bis einschließlich 18“ gemeint, müsste <span class="term">alter &lt;= 18</span> stehen. Bei <strong>65</strong> zahlt man noch den vollen Preis, bei 66 den ermäßigten. Da Ermäßigungen üblicherweise „ab 65“ gelten, ist das mit hoher Wahrscheinlichkeit ein <strong>Fehler</strong>: Es müsste <span class="term">alter &gt;= 65</span> heißen. Der 65-Jährige fällt derzeit durch das Raster.</p>
+              <p><strong>Weitere prüfenswerte Übergaben:</strong> <span class="term">alter = 0</span> und negative Werte werden mit halbem Preis bedient, obwohl sie unsinnig sind; <span class="term">preis = 0</span> ergibt 0 — unkritisch; eine Zeichenkette als <span class="term">alter</span> ließe die Vergleiche alphabetisch ausfallen (vergleiche AL 3). Methodische Einsicht: Fehler an Bereichsgrenzen finden sich nicht mit „normalen“ Werten wie 12 oder 40, sondern nur, wenn man die Grenzwerte selbst und ihre unmittelbaren Nachbarn einsetzt.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ KOMMUNIKATION UND SICHERHEIT ============ -->
+  <section class="area" id="ks">
+    <div class="area-head">
+      <span class="kb">Kommunikation und Sicherheit</span>
+      <h2>Einfache kryptographische Verfahren</h2>
+      <p class="count">7 Teilkompetenzen · KS 1 – KS 7 · KS 6 nicht im G-Niveau; KS 2 und KS 5 auf E erweitert</p>
+    </div>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 1</span>
+        <h3>Gründe und alltagsnahe Beispiele für den Einsatz von Verschlüsselung nennen</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Gründe</strong> (Schutzziele): <em>Vertraulichkeit</em> — nur Befugte können mitlesen; <em>Integrität</em> — Veränderungen fallen auf; <em>Authentizität</em> — der Absender ist der, der er zu sein behauptet. Dazu kommen der Schutz vor Missbrauch bei Datenverlust und die Erfüllung rechtlicher Vorgaben (Datenschutz, Berufsgeheimnisse).</p>
+          <p><strong>Alltagsnahe Beispiele:</strong></p>
+          <ul>
+            <li><strong>Messenger</strong> — Chats, Sprachnachrichten, Anrufe</li>
+            <li><strong>Onlinebanking und Bezahlen</strong> — das Schloss und <span class="term">https</span> in der Adressleiste</li>
+            <li><strong>WLAN</strong> — WPA2/WPA3 verhindert Mitlesen im Funkbereich; ein offenes WLAN nicht</li>
+            <li><strong>Geräteverschlüsselung</strong> — bei Verlust des Handys sind Fotos und Nachrichten ohne PIN unlesbar</li>
+            <li><strong>Passwortmanager, Backups, E-Mail-Anhänge, digitale Fahrkarten</strong></li>
+          </ul>
+          <p>Gutes Gegenargument zum verbreiteten Satz „Ich habe nichts zu verbergen“: Verschlüsselt werden nicht Geheimnisse, sondern <em>alltägliche</em> Dinge — Kontostand, Adresse, Krankmeldung, Chat mit den Eltern. Der Briefumschlag ist die passende Analogie: Man benutzt ihn nicht, weil der Inhalt verboten ist, sondern weil er niemanden sonst angeht.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Ordne jeder Situation das vorrangige Schutzziel zu (Vertraulichkeit, Integrität, Authentizität) und begründe.</p>
+              <ol class="sub">
+                <li>Eine Ärztin schickt einen Befund an eine Kollegin.</li>
+                <li>Eine Software lädt ein Update herunter.</li>
+                <li>Eine Bank-App zeigt eine Überweisung zur Freigabe an.</li>
+                <li>Ein Handy wird im Bus vergessen.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Vertraulichkeit.</strong> Gesundheitsdaten sind besonders schützenswert; niemand außer der Empfängerin darf den Befund lesen. (Integrität und Authentizität sind zusätzlich wichtig, aber nachgeordnet.)</li>
+                <li><strong>Integrität</strong> und <strong>Authentizität.</strong> Der Inhalt ist nicht geheim — jeder darf das Update herunterladen. Entscheidend ist, dass es unverändert ist und wirklich vom Hersteller stammt; ein verändertes Update wäre Schadsoftware mit Administratorrechten.</li>
+                <li><strong>Integrität.</strong> Kontonummer und Betrag dürfen auf dem Weg nicht verändert werden. Genau das ist der Zweck der gesonderten Freigabe: Was angezeigt wird, muss dem entsprechen, was ausgeführt wird.</li>
+                <li><strong>Vertraulichkeit.</strong> Die Geräteverschlüsselung bewirkt, dass Fotos, Nachrichten und gespeicherte Zugangsdaten ohne PIN unlesbar bleiben, obwohl der Finder das Gerät physisch besitzt.</li>
+              </ol>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Entgegne der Aussage „Verschlüsselung brauche ich nicht, ich habe nichts zu verbergen“ mit drei unterschiedlichen Argumenten. Nenne anschließend ein Beispiel aus deinem eigenen Alltag, in dem du täglich Verschlüsselung nutzt, ohne es zu bemerken.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Nicht geheim heißt nicht öffentlich.</strong> Kontostand, Adresse, Noten oder ein Arztbesuch sind nichts Verbotenes — sie gehen nur niemanden sonst an. Deshalb benutzt man auch für eine harmlose Postkartennachricht einen Briefumschlag.</li>
+                <li><strong>Es geht nicht nur um dich.</strong> Wer unverschlüsselt schreibt, gibt auch die Nachrichten aller anderen aus dem Chat preis. Wer im offenen WLAN unverschlüsselt kommuniziert, legt Zugangsdaten offen, mit denen sich Fremde als er ausgeben und dann seine Kontakte täuschen können.</li>
+                <li><strong>Missbrauch statt Neugier.</strong> Angreifer suchen nicht Geheimnisse, sondern Verwertbares: Zugangsdaten, Kontodaten, Fotos für Erpressung, Identitäten für Betrug. Der Wert der Daten hängt nicht davon ab, ob man sie selbst für wichtig hält.</li>
+              </ol>
+              <p>Zusatzargument: Verschlüsselung schützt auch die <em>Integrität</em>. Ohne sie könnte eine Nachricht auf dem Weg verändert werden — auch eine völlig harmlose.</p>
+              <p><strong>Unbemerkte Alltagsnutzung:</strong> zum Beispiel jeder Aufruf einer Webseite mit <span class="term">https</span> (Transportverschlüsselung, sichtbar am Schloss), die Verbindung des Handys zum heimischen WLAN (WPA2/WPA3), jede Nachricht in einem Messenger mit Ende-zu-Ende-Verschlüsselung, das Entsperren des Handys, das den verschlüsselten Speicher freigibt, oder eine digitale Fahrkarte.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 2</span>
+        <h3>Die Konzepte Transportverschlüsselung und Ende-zu-Ende-Verschlüsselung beschreiben</h3>
+        <span class="tag">E: zusätzlich Transportverschlüsselung (G und M nur Ende-zu-Ende)</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Transportverschlüsselung</strong> schützt jeden <em>Abschnitt</em> des Weges einzeln. Die Nachricht wird zum Server verschlüsselt übertragen, dort <strong>entschlüsselt</strong>, verarbeitet und für den nächsten Abschnitt erneut verschlüsselt. Geschützt ist damit gegen Mitlesen auf der Leitung — im offenen WLAN, beim Netzbetreiber. <strong>Nicht</strong> geschützt ist gegen den Serverbetreiber selbst: Er sieht den Klartext. Beispiele: <span class="term">https</span>/TLS beim Aufruf einer Webseite, E-Mail-Versand mit TLS.</p>
+          <p><strong>Ende-zu-Ende-Verschlüsselung (E2EE)</strong> verschlüsselt auf dem Gerät des Absenders und entschlüsselt erst auf dem Gerät des Empfängers. Der Server leitet nur unlesbaren Geheimtext weiter; er besitzt den Schlüssel nicht. Beispiele: Messenger wie Signal, WhatsApp, Threema.</p>
+          <p><strong>Bild dafür:</strong> Transportverschlüsselung ist ein Panzerwagen, der die Post von Filiale zu Filiale bringt — in jeder Filiale wird der Umschlag geöffnet und neu verpackt. E2EE ist ein versiegelter Umschlag, den niemand unterwegs öffnen kann, auch die Filiale nicht.</p>
+          <p><strong>Grenzen von E2EE, die auf Niveau E dazugehören:</strong> <em>Metadaten</em> (wer, wann, wie oft, wie lange) bleiben für den Betreiber sichtbar; ein <em>unverschlüsseltes Backup</em> in der Cloud hebt den Schutz auf; auf einem kompromittierten Gerät liest Schadsoftware den Klartext mit; und Verschlüsselung sagt nichts darüber, was der Empfänger mit der Nachricht macht — ein Screenshot bleibt möglich.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Eine Nachricht geht von Handy A über einen Server zu Handy B. Beschreibe für beide Verfahren, an welchen Stellen des Weges die Nachricht als Klartext vorliegt, und gib jeweils an, wer mitlesen kann.</p>
+              <pre class="bits">Handy A  ──①──  Server  ──②──  Handy B</pre></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Transportverschlüsselung</strong></p>
+              <ul>
+                <li>Klartext liegt vor: auf Handy A, <strong>auf dem Server</strong> und auf Handy B.</li>
+                <li>Auf den Abschnitten ① und ② ist die Nachricht verschlüsselt.</li>
+                <li>Mitlesen kann: der <strong>Serverbetreiber</strong> — und jeder, der Zugriff auf den Server erlangt, etwa durch einen Angriff oder eine behördliche Anordnung. Nicht mitlesen kann, wer die Leitung abhört (offenes WLAN, Netzbetreiber).</li>
+              </ul>
+              <p><strong>Ende-zu-Ende-Verschlüsselung</strong></p>
+              <ul>
+                <li>Klartext liegt <em>nur</em> vor: auf Handy A und auf Handy B.</li>
+                <li>Auf ①, auf dem Server <em>und</em> auf ② liegt ausschließlich Geheimtext.</li>
+                <li>Mitlesen kann <strong>niemand außer A und B</strong>. Der Serverbetreiber sieht nur unlesbare Daten — allerdings weiterhin die <em>Metadaten</em>: dass A um 14:32 Uhr eine Nachricht dieser Länge an B geschickt hat.</li>
+              </ul>
+              <p>Entscheidender Unterschied in einem Satz: Bei Transportverschlüsselung ist der Server ein <strong>vertrauenswürdig sein müssender</strong> Zwischenhalt, bei E2EE nur ein Briefträger.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Dienst wirbt: „Ihre Daten werden bei uns verschlüsselt gespeichert und übertragen — niemand kann sie lesen.“ Gleichzeitig bietet der Dienst eine Volltextsuche über alle gespeicherten Nachrichten an.</p>
+              <ol class="sub">
+                <li>Begründe, warum die Werbeaussage in dieser Form nicht stimmen kann.</li>
+                <li>Nenne zwei Fragen, mit denen du prüfen würdest, ob ein Dienst wirklich Ende-zu-Ende verschlüsselt.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Eine Volltextsuche auf dem Server setzt voraus, dass der Server die Inhalte <strong>lesen</strong> kann — anders lässt sich in ihnen nicht suchen. Der Anbieter besitzt also den Schlüssel; es handelt sich um Transport- und Speicherverschlüsselung, nicht um Ende-zu-Ende-Verschlüsselung. „Niemand kann sie lesen“ ist damit falsch: Der Anbieter kann es, und wer den Server übernimmt, ebenfalls. Richtig wäre: „verschlüsselt gegen Zugriff Dritter auf dem Übertragungsweg“. (Technisch möglich ist eine Suche <em>auf dem Gerät</em> über lokal entschlüsselte Daten — dann müsste aber der ganze Nachrichtenbestand auf das Gerät geladen werden, was der Dienst offenkundig nicht meint.)</p>
+              <p><strong>b)</strong> Zum Beispiel:</p>
+              <ol>
+                <li><strong>Wo liegt der Schlüssel?</strong> Nur auf meinen Geräten oder auch beim Anbieter? Kann der Anbieter mein Passwort zurücksetzen und mir danach meine alten Nachrichten wieder zeigen? Wenn ja, hat er Zugriff — dann ist es keine E2EE.</li>
+                <li><strong>Welche Funktionen setzen Lesen voraus?</strong> Serverseitige Suche, Vorschaubilder, automatische Übersetzung, Werbung passend zum Inhalt, Zugriff über die Weboberfläche ohne Gerätekopplung — jede dieser Funktionen ist ein Hinweis darauf, dass der Server den Klartext sieht.</li>
+              </ol>
+              <p>Weitere gültige Prüffragen: Ist die Verschlüsselung <em>voreingestellt</em> oder muss sie eingeschaltet werden? Sind die Sicherheitsschlüssel überprüfbar (Vergleich eines Codes mit dem Gegenüber)? Ist das Verfahren offengelegt und unabhängig geprüft? Ist das <em>Backup</em> ebenfalls verschlüsselt?</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 3</span>
+        <h3>Die Begriffe Verschlüsselungsverfahren, Klartext, Geheimtext, Schlüssel, verschlüsseln und entschlüsseln verwenden</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Ein festes Begriffsgerüst, das anschließend bei jedem Verfahren wiederverwendet wird:</p>
+          <div class="tbl-scroll"><table>
+            <tr><th>Begriff</th><th>Bedeutung</th></tr>
+            <tr><td><strong>Klartext</strong></td><td>die ursprüngliche, lesbare Nachricht</td></tr>
+            <tr><td><strong>Geheimtext</strong></td><td>das unlesbare Ergebnis der Verschlüsselung</td></tr>
+            <tr><td><strong>Verschlüsselungsverfahren</strong></td><td>die <em>Vorschrift</em>, wie umgewandelt wird — zum Beispiel „verschiebe jeden Buchstaben“</td></tr>
+            <tr><td><strong>Schlüssel</strong></td><td>der <em>geheime Parameter</em> des Verfahrens — zum Beispiel „um 3 Stellen“</td></tr>
+            <tr><td><strong>verschlüsseln</strong></td><td>Klartext + Schlüssel → Geheimtext</td></tr>
+            <tr><td><strong>entschlüsseln</strong></td><td>Geheimtext + Schlüssel → Klartext (mit Kenntnis des Schlüssels)</td></tr>
+          </table></div>
+          <p>Zwei Punkte sind besonders wichtig. Erstens die <strong>Trennung von Verfahren und Schlüssel</strong>: Das Verfahren darf öffentlich bekannt sein, geheim ist allein der Schlüssel (<em>Kerckhoffs’ Prinzip</em>). Ein Verfahren, dessen Sicherheit darauf beruht, dass niemand es kennt, ist nicht sicher, sondern nur unbekannt.</p>
+          <p>Zweitens die Abgrenzung von <strong>entschlüsseln</strong> und <strong>knacken</strong> (Kryptoanalyse): Entschlüsseln tut der befugte Empfänger <em>mit</em> Schlüssel; knacken versucht ein Angreifer <em>ohne</em> Schlüssel. Diese Unterscheidung wird umgangssprachlich fast immer verwischt und soll im Unterricht sprachlich sauber gehalten werden.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Beschreibe den folgenden Vorgang vollständig mit den sechs Fachbegriffen:</p>
+              <p><em>Lena möchte Ben das Wort</em> <span class="term">TREFFPUNKT</span> <em>mitteilen. Beide haben vorher vereinbart, jeden Buchstaben um vier Stellen im Alphabet nach hinten zu verschieben. Lena schickt</em> <span class="term">XVIJJTYRSX</span>. <em>Ben stellt das Wort wieder her.</em></p>
+              <p>Prüfe außerdem, ob Lenas Geheimtext richtig ist.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Beschreibung:</strong> <span class="term">TREFFPUNKT</span> ist der <strong>Klartext</strong>. Das <strong>Verschlüsselungsverfahren</strong> ist die Verschiebung jedes Buchstaben im Alphabet (Caesar-Verfahren); der <strong>Schlüssel</strong> ist die Verschiebeweite <strong>4</strong>. Lena <strong>verschlüsselt</strong> den Klartext mit diesem Schlüssel und erhält den <strong>Geheimtext</strong>. Ben <strong>entschlüsselt</strong> ihn, indem er mit demselben Schlüssel um 4 Stellen zurück verschiebt, und erhält den Klartext zurück.</p>
+              <p><strong>Prüfung:</strong> T→X, R→V, E→I, F→J, F→J, P→T, U→Y, N→R, K→O, T→X, also <span class="term">XVIJJTYROX</span>.</p>
+              <p>Lenas Geheimtext <span class="term">XVIJJTYRSX</span> ist an der <strong>neunten Stelle falsch</strong>: Dort steht <span class="term">S</span> statt <span class="term">O</span>. Ben würde <span class="term">TREFFPUNOT</span> entschlüsseln. Das zeigt einen wichtigen Punkt: Ein einziger Fehler beim Verschlüsseln macht genau ein Zeichen unbrauchbar — beim Caesar-Verfahren wirkt er sich nicht auf den Rest aus, weil jeder Buchstabe unabhängig behandelt wird.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Beurteile die beiden Aussagen und begründe mit dem Kerckhoffs’schen Prinzip.</p>
+              <ol class="sub">
+                <li>„Mein Verfahren ist sicher, weil ich es selbst erfunden habe und niemand weiß, wie es funktioniert.“</li>
+                <li>„Wenn das Verfahren öffentlich bekannt ist, kann es nicht sicher sein.“</li>
+              </ol>
+              <p>Erkläre außerdem, warum man bei einem Angreifer nicht von „entschlüsseln“ spricht.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>1) Nicht sicher, sondern nur unbekannt</strong> („security by obscurity“). Die Sicherheit muss allein am <em>Schlüssel</em> hängen, nicht am Verfahren, denn: Ein Verfahren lässt sich durch Beobachtung vieler Geheimtexte, durch Analyse der Software oder durch eine indiskrete Person erschließen — und ist es einmal bekannt, ist es dauerhaft bekannt und lässt sich nicht wechseln. Einen Schlüssel kann man dagegen jederzeit austauschen. Zudem hat ein ungeprüftes Eigenbauverfahren fast immer Schwächen, die Fachleute in kurzer Zeit finden würden — nur schaut niemand hin.</p>
+              <p><strong>2) Falsch.</strong> Genau das Gegenteil gilt: Nur ein offengelegtes Verfahren kann von vielen Fachleuten geprüft werden, und nur was diese Prüfung überstanden hat, gilt als vertrauenswürdig. Alle heute eingesetzten Verfahren (AES, TLS, Signal-Protokoll) sind vollständig veröffentlicht. Ihre Sicherheit beruht darauf, dass es selbst bei bekanntem Verfahren praktisch unmöglich ist, den Schlüssel zu finden.</p>
+              <p><strong>Entschlüsseln vs. knacken:</strong> <em>Entschlüsseln</em> heißt, den Geheimtext <strong>mit dem Schlüssel</strong> in den Klartext zurückzuverwandeln — das tut der befugte Empfänger, und es ist ein einfacher, vorgesehener Vorgang. Ein Angreifer hat den Schlüssel nicht; er versucht, ihn zu <em>ermitteln</em> oder den Klartext ohne ihn zu erschließen. Das nennt man <strong>knacken</strong> oder <strong>brechen</strong> (Kryptoanalyse) und ist etwas grundlegend anderes — nämlich das, wogegen sich ein Verfahren behaupten muss.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 4</span>
+        <h3>Das Caesar-Verfahren beschreiben und händisch durchführen</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Beschreibung:</strong> Beim Caesar-Verfahren wird jeder Buchstabe des Klartextes um eine feste Anzahl von Stellen im Alphabet verschoben. Diese Anzahl ist der <strong>Schlüssel</strong>. Am Alphabetende wird zyklisch von vorn weitergezählt: Bei Schlüssel 3 wird aus <span class="term">X</span> ein <span class="term">A</span>. Es ist ein <em>symmetrisches</em> Verfahren — beide Seiten benutzen denselben Schlüssel — und eine <em>monoalphabetische Substitution</em>, weil jeder Buchstabe im ganzen Text stets durch denselben ersetzt wird.</p>
+          <p><strong>Schlüsseltabelle für Schlüssel 3:</strong></p>
+          <pre class="bits">Klar   A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Geheim D E F G H I J K L M N O P Q R S T U V W X Y Z A B C</pre>
+          <p><strong>Händische Durchführung</strong> — drei gleichwertige Wege: mit der Tabelle ablesen; mit einer Caesar-Scheibe (zwei drehbare Alphabetringe); oder rechnerisch mit Buchstabenpositionen A = 0 bis Z = 25 nach <span class="term">geheim = (klar + s) mod 26</span> und zurück mit <span class="term">klar = (geheim − s) mod 26</span>.</p>
+          <p>Der Schlüsselraum umfasst nur <strong>25 sinnvolle Schlüssel</strong> (der Schlüssel 0 verändert nichts) — genau darin liegt die Schwäche, die in KS 5 ausgenutzt wird. Praktische Hinweise: Klein- und Großschreibung, Umlaute, Ziffern und Satzzeichen müssen gesondert vereinbart werden; üblich ist, in Großbuchstaben ohne Leerzeichen zu schreiben, weil Wortlängen sonst Hinweise liefern.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Verschlüssele mit dem Caesar-Verfahren und dem Schlüssel <strong>3</strong>:</p>
+              <pre class="bits">GEHEIM</pre>
+              <p>Entschlüssele anschließend mit dem Schlüssel <strong>5</strong>:</p>
+              <pre class="bits">XHMZQJ</pre>
+              <p>Notiere bei mindestens einem Buchstaben den Rechenweg über die Buchstabenposition.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Verschlüsseln, Schlüssel 3:</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Klar</th><td class="n">G</td><td class="n">E</td><td class="n">H</td><td class="n">E</td><td class="n">I</td><td class="n">M</td></tr>
+                <tr><th>Geheim</th><td class="n">J</td><td class="n">H</td><td class="n">K</td><td class="n">H</td><td class="n">L</td><td class="n">P</td></tr>
+              </table></div>
+              <p>Ergebnis: <strong><span class="term">JHKHLP</span></strong>. Rechenweg für G: G hat die Position 6; (6 + 3) mod 26 = 9; Position 9 ist J.</p>
+              <p><strong>Entschlüsseln, Schlüssel 5:</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Geheim</th><td class="n">X</td><td class="n">H</td><td class="n">M</td><td class="n">Z</td><td class="n">Q</td><td class="n">J</td></tr>
+                <tr><th>Klar</th><td class="n">S</td><td class="n">C</td><td class="n">H</td><td class="n">U</td><td class="n">L</td><td class="n">E</td></tr>
+              </table></div>
+              <p>Ergebnis: <strong><span class="term">SCHULE</span></strong>. Rechenweg für X: X hat die Position 23; (23 − 5) mod 26 = 18; Position 18 ist S. Für Z: (25 − 5) mod 26 = 20 → U.</p>
+              <p>Beispiel für den Umbruch am Alphabetanfang: Wäre der Geheimtextbuchstabe C (Position 2), ergäbe (2 − 5) mod 26 = 23 → X. Man zählt also am Anfang zyklisch am Ende weiter.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Untersuche das Caesar-Verfahren rechnerisch:</p>
+              <ol class="sub">
+                <li>Warum gibt es nur 25 sinnvolle Schlüssel und nicht 26?</li>
+                <li>Was passiert, wenn ein Text zweimal verschlüsselt wird, zuerst mit Schlüssel 4, dann mit Schlüssel 7? Begründe.</li>
+                <li>Welcher Schlüssel hat die Eigenschaft, dass Verschlüsseln und Entschlüsseln denselben Vorgang sind?</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Möglich sind die Verschiebungen 0 bis 25, also 26. Der Schlüssel <strong>0</strong> lässt jeden Buchstaben unverändert — der Geheimtext ist dann gleich dem Klartext, es findet keine Verschlüsselung statt. Er ist also technisch erlaubt, aber unbrauchbar. Bleiben <strong>25</strong> sinnvolle Schlüssel. (Verschiebung 26 ist keine neue Möglichkeit, sondern identisch mit 0, weil 26 mod 26 = 0.)</p>
+              <p><strong>b)</strong> Es entsteht <strong>keine zusätzliche Sicherheit</strong>. Die beiden Verschiebungen addieren sich: (klar + 4 + 7) mod 26 = (klar + 11) mod 26. Das Ergebnis ist genau dasselbe wie eine einzige Verschlüsselung mit dem <strong>Schlüssel 11</strong>. Ein Angreifer, der alle 25 Schlüssel durchprobiert, findet den Text also genauso schnell wie vorher. Man sagt: Die Caesar-Verschlüsselungen sind gegenüber der Hintereinanderausführung <em>abgeschlossen</em> — Mehrfachverschlüsselung bringt hier nichts. (Bei modernen Verfahren gilt das nicht ohne Weiteres.)</p>
+              <p><strong>c)</strong> Der Schlüssel <strong>13</strong>, bekannt als <em>ROT13</em>. Weil 13 + 13 = 26 ≡ 0 (mod 26), führt zweimaliges Verschieben um 13 zum Ausgangstext zurück. Verschlüsseln und Entschlüsseln sind damit derselbe Vorgang — praktisch bequem, aber sicherheitstechnisch bedeutungslos, weil der Schlüssel dann allgemein bekannt ist. ROT13 dient deshalb nicht dem Schutz, sondern nur dazu, etwa eine Rätsellösung nicht versehentlich mitzulesen.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 5</span>
+        <h3>Angriffe auf mit dem Caesar-Verfahren erzeugte Geheimtexte mittels Brute Force und Häufigkeitsanalyse beschreiben, durchführen und damit die Sicherheit des Verschlüsselungsverfahrens bewerten</h3>
+        <span class="tag">E: zusätzlich Häufigkeitsanalyse</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Brute Force</strong> (vollständige Schlüsselsuche): Alle möglichen Schlüssel werden durchprobiert, bis ein sinnvoller Klartext erscheint. Beim Caesar-Verfahren sind das <strong>25 Versuche</strong> — händisch in wenigen Minuten, für einen Rechner in Bruchteilen einer Sekunde. Beschleunigung: Es genügt, die ersten Buchstaben zu prüfen, weil unsinnige Schlüssel sofort Buchstabensalat ergeben.</p>
+          <p><strong>Häufigkeitsanalyse:</strong> Buchstaben kommen in einer Sprache mit charakteristischer Häufigkeit vor. Weil das Caesar-Verfahren jeden Buchstaben <em>immer gleich</em> ersetzt, überträgt sich dieses Muster unverändert auf den Geheimtext — es wird nur um den Schlüssel verschoben. Im Deutschen:</p>
+          <div class="tbl-scroll"><table>
+            <tr><th>Buchstabe</th><td class="n">E</td><td class="n">N</td><td class="n">I</td><td class="n">S</td><td class="n">R</td><td class="n">A</td><td class="n">T</td><td class="n">D</td></tr>
+            <tr><th>Anteil</th><td class="n">17,4 %</td><td class="n">9,8 %</td><td class="n">7,6 %</td><td class="n">7,3 %</td><td class="n">7,0 %</td><td class="n">6,5 %</td><td class="n">6,2 %</td><td class="n">5,1 %</td></tr>
+          </table></div>
+          <p>Vorgehen: häufigsten Geheimtextbuchstaben bestimmen, ihn dem <strong>E</strong> gleichsetzen, den Schlüssel als Abstand berechnen, probeweise entschlüsseln — und bei Unsinn mit N als zweiter Annahme fortfahren. Der Vorteil gegenüber Brute Force: <strong>ein</strong> gezielter Versuch statt 25. Voraussetzung ist ein hinreichend langer Text; bei kurzen Texten sind die Häufigkeiten zufällig verteilt.</p>
+          <p><strong>Bewertung:</strong> Das Caesar-Verfahren ist <strong>unsicher</strong>. Der Schlüsselraum ist mit 25 winzig, und selbst ein großer Schlüsselraum würde nicht helfen, weil die Häufigkeitsanalyse den Schlüssel unabhängig von seiner Größe findet. Beide Angriffe zeigen zwei verschiedene Ursachen von Unsicherheit — <em>zu wenige Schlüssel</em> und <em>Struktur, die im Geheimtext erhalten bleibt</em>.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Knacke den folgenden Geheimtext mittels <strong>Brute Force</strong>. Notiere deine Versuche.</p>
+              <pre class="bits">MHGHU WHVW</pre>
+              <p>Erkläre anschließend, warum du nicht alle 25 Schlüssel vollständig durchrechnen musstest.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Es genügt, die ersten Buchstaben je Schlüssel zurück zu verschieben:</p>
+              <div class="tbl-scroll"><table>
+                <tr><th class="n">Schlüssel</th><th>Anfang</th><th>Beurteilung</th></tr>
+                <tr><td class="n">1</td><td>LGFGT</td><td>Unsinn</td></tr>
+                <tr><td class="n">2</td><td>KFEFS</td><td>Unsinn</td></tr>
+                <tr><td class="n"><strong>3</strong></td><td><strong>JEDER</strong></td><td><strong>sinnvoll → Abbruch, Schlüssel 3</strong></td></tr>
+              </table></div>
+              <p>Kontrolle mit dem vollständigen Text und Schlüssel 3: M→J, H→E, G→D, H→E, U→R, W→T, H→E, V→S, W→T, also <strong><span class="term">JEDER TEST</span></strong>.</p>
+              <p><strong>Warum nicht alle 25 vollständig?</strong> Erstens genügen je Schlüssel die ersten drei bis vier Buchstaben: Ergibt sich dort keine im Deutschen mögliche Buchstabenfolge, ist der Schlüssel ausgeschlossen — man rechnet also 25 × 4 Buchstaben statt 25 × 9. Zweitens kann man abbrechen, sobald ein sinnvoller Klartext erscheint, weil beim Caesar-Verfahren nur ein Schlüssel einen lesbaren Text liefert. Genau diese Abkürzung macht den Angriff so billig: Der Aufwand ist nicht die Textlänge, sondern die Größe des Schlüsselraums — und die ist 25.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Von einem längeren, mit Caesar verschlüsselten deutschen Text (312 Buchstaben) wurden die Häufigkeiten ermittelt:</p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Buchstabe</th><td class="n">X</td><td class="n">G</td><td class="n">B</td><td class="n">L</td><td class="n">K</td><td class="n">T</td></tr>
+                <tr><th>Anzahl</th><td class="n">54</td><td class="n">31</td><td class="n">24</td><td class="n">23</td><td class="n">22</td><td class="n">20</td></tr>
+              </table></div>
+              <ol class="sub">
+                <li>Bestimme den Schlüssel mit einem einzigen begründeten Ansatz.</li>
+                <li>Entschlüssele damit den Ausschnitt <span class="term">PBK MKXYYXG NGL NF TVAM</span>.</li>
+                <li>Bewerte die Sicherheit des Verfahrens und begründe, warum ein größerer Schlüsselraum das Problem nicht löst.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Häufigster Geheimtextbuchstabe ist <strong>X</strong> mit 54 von 312 Buchstaben, also 17,3 % — das passt genau zum deutschen <strong>E</strong> (17,4 %). Ansatz: X entspricht E.</p>
+              <p>Schlüssel = Position(X) − Position(E) = 23 − 4 = <strong>19</strong>.</p>
+              <p>Bestätigung durch den zweithäufigsten Buchstaben: G (Position 6); (6 − 19) mod 26 = 13 → <strong>N</strong>, und N ist mit 9,8 % der zweithäufigste deutsche Buchstabe. Die Annahme ist damit doppelt gestützt.</p>
+              <p><strong>b)</strong> Jeden Buchstaben um 19 zurück verschieben (gleichbedeutend mit 7 nach vorn, denn −19 ≡ +7 mod 26):</p>
+              <pre class="bits">P B K   M K X Y Y X G   N G L   N F   T V A M
+W I R   T R E F F E N   U N S   U M   A C H T</pre>
+              <p>Klartext: <strong>WIR TREFFEN UNS UM ACHT</strong>. Rechnung beispielhaft: P hat Position 15; (15 − 19) mod 26 = 22 → W.</p>
+              <p><strong>c) Bewertung:</strong> Das Caesar-Verfahren ist für jeden ernsthaften Zweck <strong>unsicher</strong>. Es fiel hier mit <em>einer</em> gezielten Annahme, ohne jedes Durchprobieren; selbst per Hand dauert das wenige Minuten, für einen Rechner ist es sofort erledigt.</p>
+              <p><strong>Warum ein größerer Schlüsselraum nicht hilft:</strong> Die Häufigkeitsanalyse probiert keine Schlüssel aus — sie <em>erschließt</em> den Schlüssel aus einer Eigenschaft des Geheimtextes. Diese Eigenschaft ist, dass jeder Buchstabe immer durch denselben ersetzt wird; dadurch bleibt das Häufigkeitsmuster der Sprache im Geheimtext vollständig erhalten und wird lediglich verschoben. Gäbe es eine Million Schlüssel, wäre Brute Force teurer, die Häufigkeitsanalyse aber genau gleich schnell — sie zählt nur Buchstaben. Behoben wird die Schwäche erst durch Verfahren, in denen derselbe Klartextbuchstabe an verschiedenen Stellen verschieden verschlüsselt wird (polyalphabetische und moderne Verfahren). Merksatz: Ein Verfahren ist nicht sicher, weil es viele Schlüssel hat, sondern weil der Geheimtext keine Struktur des Klartextes mehr verrät.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 6</span>
+        <h3>Die allgemeine monoalphabetische Substitution beschreiben</h3>
+        <span class="tag">nicht im G-Niveau</span></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p><strong>Beschreibung:</strong> Bei der allgemeinen monoalphabetischen Substitution wird jedem Klartextbuchstaben ein <em>beliebiger</em>, aber fester Geheimtextbuchstabe zugeordnet. Der <strong>Schlüssel</strong> ist die vollständige Zuordnungstabelle — also eine Vertauschung (Permutation) des Alphabets:</p>
+          <pre class="bits">Klar   A B C D E F G H I J K L M ...
+Geheim Q W E R T Z U I O P A S D ...</pre>
+          <p>Das Caesar-Verfahren ist der Sonderfall, in dem diese Vertauschung eine bloße Verschiebung ist.</p>
+          <p><strong>Schlüsselraum:</strong> Es gibt 26! ≈ 4 · 10<sup>26</sup> mögliche Zuordnungen, genauer 403 291 461 126 605 635 584 000 000. Bei einer Milliarde geprüften Schlüsseln je Sekunde würde vollständiges Durchprobieren etwa <strong>13 Milliarden Jahre</strong> dauern — ungefähr das Alter des Universums. <strong>Brute Force ist damit ausgeschlossen.</strong></p>
+          <p><strong>Trotzdem unsicher:</strong> Weil jeder Buchstabe wieder <em>immer gleich</em> ersetzt wird, bleibt das Häufigkeitsmuster der Sprache erhalten — es ist nur nicht mehr verschoben, sondern vertauscht. Die Häufigkeitsanalyse löst die Tabelle Buchstabe für Buchstabe auf, gestützt durch Buchstabenpaare (im Deutschen häufig <span class="term">ER</span>, <span class="term">EN</span>, <span class="term">CH</span>, <span class="term">EI</span>), typische Wortlängen und Wortmuster. Erschwerend für den Angreifer sind lediglich sehr kurze Texte.</p>
+          <p>Das ist die zentrale Einsicht dieses Bereichs: <strong>Ein riesiger Schlüsselraum genügt nicht.</strong> Solange die Struktur des Klartextes im Geheimtext sichtbar bleibt, ist das Verfahren angreifbar.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Vergleiche das Caesar-Verfahren mit der allgemeinen monoalphabetischen Substitution in einer Tabelle: Schlüssel, Anzahl möglicher Schlüssel, Aufwand für Brute Force, Anfälligkeit für Häufigkeitsanalyse. Formuliere daraus einen Merksatz.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th></th><th>Caesar</th><th>Allgemeine monoalphabetische Substitution</th></tr>
+                <tr><td><strong>Schlüssel</strong></td><td>eine Zahl (Verschiebeweite)</td><td>die vollständige Zuordnungstabelle, eine Vertauschung des Alphabets</td></tr>
+                <tr><td><strong>Anzahl Schlüssel</strong></td><td>25 sinnvolle</td><td>26! ≈ 4 · 10²⁶</td></tr>
+                <tr><td><strong>Brute Force</strong></td><td>in Minuten per Hand, für einen Rechner sofort</td><td>praktisch unmöglich (rund 13 Mrd. Jahre bei 10⁹ Schlüsseln/s)</td></tr>
+                <tr><td><strong>Häufigkeitsanalyse</strong></td><td>anfällig; ein Buchstabe verrät den ganzen Schlüssel</td><td><strong>ebenso anfällig</strong>; die Tabelle wird buchstabenweise aufgelöst, nur mit mehr Arbeit</td></tr>
+                <tr><td><strong>Merkbarkeit</strong></td><td>eine Zahl</td><td>26 Zuordnungen — meist über ein Schlüsselwort erzeugt, was den Schlüsselraum wieder verkleinert</td></tr>
+              </table></div>
+              <p><strong>Merksatz:</strong> Ein großer Schlüsselraum schützt nur gegen Brute Force. Sicher ist ein Verfahren erst, wenn der Geheimtext keine Struktur des Klartextes mehr erkennen lässt.</p>
+              <p>Ergänzende Beobachtung: Die Substitution ist gegen den <em>einen</em> Angriff um den Faktor 10²⁵ besser und gegen den <em>anderen</em> praktisch gar nicht besser. Sicherheit ist deshalb immer bezogen auf einen bestimmten Angriff zu bewerten, nie pauschal.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schüler argumentiert: „26! ist eine unvorstellbar große Zahl. Also ist die monoalphabetische Substitution sicher.“</p>
+              <ol class="sub">
+                <li>Widerlege die Schlussfolgerung.</li>
+                <li>Beschreibe die ersten drei Schritte, mit denen du einen langen, so verschlüsselten deutschen Text angreifen würdest.</li>
+                <li>Nenne eine Idee, wie sich das Verfahren verbessern ließe.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> Der Schluss ist ungültig, weil er nur <em>einen</em> Angriff berücksichtigt. Groß ist der Schlüsselraum — und gegen vollständiges Durchprobieren ist das Verfahren tatsächlich sicher. Ein Angreifer probiert aber nicht: Er nutzt aus, dass jeder Buchstabe stets gleich ersetzt wird, weshalb die Häufigkeiten, Buchstabenpaare und Wortmuster der deutschen Sprache im Geheimtext vollständig erhalten bleiben. Der Schlüssel wird nicht <em>gesucht</em>, sondern <em>rekonstruiert</em> — und dabei spielt die Zahl 26! keine Rolle. Der Fehler liegt also in der Annahme, Sicherheit sei gleichbedeutend mit einem großen Schlüsselraum.</p>
+              <p><strong>b) Angriff in drei Schritten:</strong></p>
+              <ol>
+                <li><strong>Einzelhäufigkeiten zählen.</strong> Der häufigste Geheimtextbuchstabe ist mit hoher Wahrscheinlichkeit <strong>E</strong> (17,4 %), der zweithäufigste <strong>N</strong> (9,8 %). Das liefert zwei bis drei erste Zuordnungen.</li>
+                <li><strong>Buchstabenpaare prüfen.</strong> Steht hinter dem vermuteten E oft derselbe Buchstabe, ist das wahrscheinlich <strong>R</strong> oder <strong>N</strong> (häufige Paare <span class="term">ER</span>, <span class="term">EN</span>); ein Zeichen, das fast nur vor dem vermuteten H steht, ist wahrscheinlich <strong>C</strong> (<span class="term">CH</span>). Auch <span class="term">SCH</span> und <span class="term">EI</span> sind gute Anker.</li>
+                <li><strong>Wortmuster ausnutzen.</strong> Sehr kurze Wörter sind meist <span class="term">DER</span>, <span class="term">DIE</span>, <span class="term">UND</span>, <span class="term">IST</span>, <span class="term">IN</span>; ein Wort mit doppeltem Buchstaben in der Mitte schränkt stark ein. Jede gesicherte Zuordnung wird eingesetzt, und die entstehenden Wortlücken werden aus dem Kontext ergänzt — der Rest fällt dann meist von selbst.</li>
+              </ol>
+              <p><strong>c) Verbesserung:</strong> Derselbe Klartextbuchstabe muss an verschiedenen Stellen <em>verschieden</em> verschlüsselt werden. Ansätze: mehrere Geheimalphabete abwechselnd verwenden, gesteuert durch ein Schlüsselwort (<em>polyalphabetische</em> Verschlüsselung, z. B. Vigenère) — damit ist die einfache Häufigkeitsanalyse ausgehebelt; oder häufige Buchstaben auf mehrere Zeichen verteilen, sodass alle Zeichen gleich häufig erscheinen (Homophone). Konsequent zu Ende gedacht führt der Weg zum <em>One-Time-Pad</em> mit einem zufälligen Schlüssel in Textlänge, das beweisbar sicher, aber praktisch unhandlich ist. Moderne Verfahren wie AES verfolgen dasselbe Ziel: Der Geheimtext soll statistisch von Zufall nicht zu unterscheiden sein.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">KS 7</span>
+        <h3>Unterschiede zwischen Codierung und Verschlüsselung beschreiben (Zweck, Schlüssel)</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Beide wandeln Daten um — der Unterschied liegt in <strong>Zweck</strong> und <strong>Schlüssel</strong>. Genau diese zwei Kriterien nennt die Lesehilfe.</p>
+          <div class="tbl-scroll"><table>
+            <tr><th></th><th>Codierung</th><th>Verschlüsselung</th></tr>
+            <tr><td><strong>Zweck</strong></td><td>Daten <em>darstellbar</em>, speicher- und übertragbar machen</td><td>Daten <em>geheim</em> halten</td></tr>
+            <tr><td><strong>Schlüssel</strong></td><td>keiner</td><td>zwingend erforderlich</td></tr>
+            <tr><td><strong>Vorschrift</strong></td><td>öffentlich bekannt und genormt — sie <em>muss</em> es sein, damit alle lesen können</td><td>ebenfalls öffentlich; geheim ist allein der Schlüssel</td></tr>
+            <tr><td><strong>Rückweg</strong></td><td>jedem möglich, der die Vorschrift kennt</td><td>nur mit Schlüssel</td></tr>
+            <tr><td><strong>Beispiele</strong></td><td>ASCII, Unicode, Morsecode, Strichcode, QR-Code, MP3, JPEG, Pixelcodierung</td><td>Caesar, AES, TLS, E2EE im Messenger</td></tr>
+          </table></div>
+          <p>Häufiges Missverständnis: Ein QR-Code oder eine Bitfolge sieht unlesbar aus und wirkt daher „verschlüsselt“. Er ist aber nur <strong>codiert</strong> — jedes Handy kann ihn lesen, weil die Vorschrift genormt ist und kein Schlüssel existiert. Unlesbarkeit für Menschen ist keine Geheimhaltung.</p>
+          <p>Prüffrage, die immer funktioniert: <em>Brauche ich eine geheime Zusatzinformation, um zurückzukommen?</em> Ja → Verschlüsselung. Nein → Codierung. Beides wird in der Praxis <strong>hintereinander</strong> angewendet: Text wird erst codiert (ASCII/Unicode), dann verschlüsselt, dann für die Übertragung wieder codiert.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Entscheide begründet, ob es sich um Codierung oder Verschlüsselung handelt. Gib jeweils Zweck an und benenne den Schlüssel, falls es einen gibt.</p>
+              <ol class="sub">
+                <li>Ein Text wird in ASCII-Bitfolgen umgewandelt.</li>
+                <li>Ein Text wird mit dem Caesar-Verfahren und Schlüssel 7 umgewandelt.</li>
+                <li>Ein Foto wird als JPEG gespeichert.</li>
+                <li>Ein QR-Code auf einem Plakat enthält eine Internetadresse.</li>
+                <li>Ein Passwortmanager speichert Zugangsdaten.</li>
+                <li>Ein Pixelbild wird nach der Vorschrift „0 = weiß, 1 = schwarz“ in eine Bitfolge überführt.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <div class="tbl-scroll"><table>
+                <tr><th></th><th>Art</th><th>Zweck</th><th>Schlüssel</th></tr>
+                <tr><td>1.</td><td>Codierung</td><td>Text im Rechner darstellbar und speicherbar machen</td><td>keiner — ASCII ist genormt und öffentlich</td></tr>
+                <tr><td>2.</td><td>Verschlüsselung</td><td>Inhalt geheim halten</td><td>die Verschiebeweite <strong>7</strong></td></tr>
+                <tr><td>3.</td><td>Codierung (verlustbehaftet)</td><td>Bild speicherbar machen und Datenmenge verkleinern</td><td>keiner — jedes Programm kann JPEG öffnen</td></tr>
+                <tr><td>4.</td><td>Codierung</td><td>Adresse maschinell lesbar machen, ohne sie abtippen zu müssen</td><td>keiner — deshalb kann jedes Handy sie lesen</td></tr>
+                <tr><td>5.</td><td>Verschlüsselung</td><td>Zugangsdaten geheim halten, auch bei Zugriff auf die Datei</td><td>das Hauptpasswort</td></tr>
+                <tr><td>6.</td><td>Codierung</td><td>Bild als Bitfolge darstellbar machen</td><td>keiner — die Vorschrift wird offen mitgeteilt</td></tr>
+              </table></div>
+              <p>Wichtig zu Nr. 3: „Verlustbehaftet“ ist nicht dasselbe wie „verschlüsselt“. Beim JPEG geht Information verloren, aber jeder kann das Bild öffnen — es fehlt kein Schlüssel, es fehlen Bildinformationen.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Ein Schüler sagt: „Wenn ich meinen Text in Binärcode umwandle, kann ihn niemand lesen — das ist doch Verschlüsselung.“</p>
+              <ol class="sub">
+                <li>Widerlege die Aussage mit den Kriterien Zweck und Schlüssel.</li>
+                <li>Erkläre, warum bei einer Messenger-Nachricht <em>beides</em> hintereinander vorkommt, und gib die Reihenfolge an.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a)</strong> <em>Zweck:</em> Die Umwandlung in Bitfolgen dient nicht der Geheimhaltung, sondern der <strong>Darstellbarkeit</strong> — ein Rechner kann nur Bitfolgen speichern und übertragen. <em>Schlüssel:</em> Es gibt <strong>keinen</strong>. ASCII und Unicode sind veröffentlichte Normen; jeder, der die Vorschrift kennt — und sie ist bekannt —, wandelt die Bitfolge in Sekunden zurück. Der Text wirkt nur für <em>Menschen</em> unlesbar; jedes Gerät liest ihn im Klartext. Beim Caesar-Verfahren dagegen sähe der Text nach Sprache aus und wäre trotzdem geschützt — das zeigt, dass Unlesbarkeit und Geheimhaltung nichts miteinander zu tun haben. Bereits jede unverschlüsselte Übertragung im offenen WLAN wäre mitlesbar.</p>
+              <p><strong>b)</strong> Beides ist nötig, weil beide Vorgänge <em>verschiedene Probleme</em> lösen: Codierung macht die Nachricht überhaupt verarbeitbar, Verschlüsselung macht sie geheim. Reihenfolge beim Senden:</p>
+              <ol>
+                <li><strong>Codieren:</strong> Der eingegebene Text wird nach Unicode/UTF-8 in Bitfolgen überführt — sonst gibt es nichts, worauf ein Verschlüsselungsverfahren rechnen könnte.</li>
+                <li><strong>Verschlüsseln:</strong> Diese Bitfolge wird mit dem Schlüssel in Geheimtext umgewandelt (auf dem Gerät, bei E2EE).</li>
+                <li><strong>Erneut codieren für die Übertragung:</strong> Der Geheimtext wird in Datenpakete verpackt und für das Funk- oder Kabelnetz codiert.</li>
+              </ol>
+              <p>Beim Empfänger läuft alles in umgekehrter Reihenfolge ab. Merksatz: <strong>Erst codieren, dann verschlüsseln</strong> — verschlüsselt wird immer eine Bitfolge, nie ein Buchstabe.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ DIGITALES ARBEITEN ============ -->
+  <section class="area" id="da">
+    <div class="area-head">
+      <span class="kb">Digitales Arbeiten</span>
+      <h2>Manipulation von Medien</h2>
+      <p class="count">2 Teilkompetenzen · DA 1 – DA 2 · auf Niveau E wortgleich mit G und M</p>
+    </div>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DA 1</span>
+        <h3>Formen der technischen Veränderung und Manipulation von Medien beschreiben (zum Beispiel Filter, Bildausschnitte)</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Zu unterscheiden sind Eingriffe, die das Bild <em>selbst</em> verändern, und Eingriffe, die seine <em>Aussage</em> verändern — Letztere sind die wirksameren.</p>
+          <ul>
+            <li><strong>Bildausschnitt (Cropping):</strong> Was weggeschnitten wird, ist nicht mehr überprüfbar. Aus einer Demonstration mit zwanzig Personen wird ein Massenauflauf oder ein leerer Platz — je nachdem, wo der Rahmen liegt. Ohne jede Bearbeitung des Bildinhalts.</li>
+            <li><strong>Filter und Tonwertkorrektur:</strong> Helligkeit, Kontrast, Sättigung, Farbstimmung. Wirkt auf die Stimmung — kühl-grau lässt dieselbe Szene bedrohlich, warm-golden freundlich erscheinen.</li>
+            <li><strong>Retusche:</strong> Entfernen oder Hinzufügen von Bildelementen, Glätten von Haut, Verändern von Körperproportionen.</li>
+            <li><strong>Montage:</strong> Zusammensetzen mehrerer Aufnahmen zu einer scheinbar einheitlichen Szene.</li>
+            <li><strong>KI-Erzeugung und -Bearbeitung:</strong> vollständig generierte Bilder, generatives Auffüllen, Deepfakes.</li>
+            <li><strong>Ohne Bildeingriff:</strong> falsche <strong>Bildunterschrift</strong>, <strong>falscher Kontext</strong> (echtes Bild, falsches Ereignis oder Jahr), <strong>Perspektive und Brennweite</strong> (Untersicht wirkt mächtig), <strong>Auswahl des Moments</strong> aus einer Serie, <strong>Schnitt und Tempo</strong> im Video, <strong>Musik und Geräusche</strong>.</li>
+          </ul>
+          <p>Wichtige Unterscheidung: <strong>Gestaltung</strong> (jedes Foto ist ausgewählt und bearbeitet — es gibt kein „neutrales“ Bild) gegenüber <strong>Manipulation</strong> (die Veränderung soll unbemerkt bleiben und führt zu einer falschen Aussage über die Wirklichkeit). Entscheidend ist nicht der Eingriff, sondern ob er offengelegt wird und welchem Zweck er dient.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Ordne den fünf Beispielen die Form der Veränderung zu und beschreibe die jeweilige Wirkungsabsicht. Gib an, welche davon <em>ohne</em> jede Bildbearbeitung funktionieren.</p>
+              <ol class="sub">
+                <li>Ein Foto von einer Veranstaltung ist so beschnitten, dass die leeren Stuhlreihen nicht zu sehen sind.</li>
+                <li>Ein Pressefoto eines Politikers erscheint in kaltem Blaugrau statt in den Originalfarben.</li>
+                <li>Ein echtes Bild einer Überschwemmung von 2013 wird als „gestern in unserer Stadt“ verbreitet.</li>
+                <li>Aus einer Serie von 40 Aufnahmen wird die eine mit halb geschlossenen Augen veröffentlicht.</li>
+                <li>Unter einem Bild spielender Kinder steht Musik in Moll.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <ol>
+                <li><strong>Bildausschnitt.</strong> Absicht: Die Veranstaltung soll gut besucht wirken. Der Bildinhalt ist echt, die Aussage über die Besucherzahl falsch.</li>
+                <li><strong>Filter / Farbstimmung.</strong> Absicht: Die Person soll kühl, distanziert oder unsympathisch erscheinen; Farbstimmung wirkt unmittelbar auf das Gefühl, ohne dass die Bearbeitung auffällt.</li>
+                <li><strong>Falscher Kontext.</strong> Absicht: Dramatisierung eines aktuellen Ereignisses. Das häufigste und wirksamste Mittel der Desinformation überhaupt — das Bild selbst ist unverändert und hält jeder Bildprüfung stand.</li>
+                <li><strong>Auswahl des Moments.</strong> Absicht: Die Person soll unaufmerksam oder unfähig wirken. Kein Eingriff, nur eine Entscheidung.</li>
+                <li><strong>Tongestaltung.</strong> Absicht: Bedrohung suggerieren, wo das Bild harmlos ist. Bild und Ton widersprechen sich, und der Ton setzt sich durch.</li>
+              </ol>
+              <p><strong>Ohne jede Bildbearbeitung funktionieren 1, 3, 4 und 5</strong> — und damit vier von fünf. Nur Nr. 2 greift in die Bilddatei ein. Zentrale Einsicht: Wer Manipulation nur in bearbeiteten Pixeln sucht, übersieht die wirksameren Mittel. Bildausschnitt, Kontext, Momentauswahl und Ton hinterlassen keine technischen Spuren.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Begründe die Aussage: „Jedes Foto ist bearbeitet, aber nicht jedes Foto ist manipuliert.“ Entwickle drei Kriterien, mit denen man beides unterscheiden kann, und wende sie auf zwei Fälle an: ein Werbefoto einer Burgerkette und ein Pressefoto von einer Demonstration.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>Begründung:</strong> Es gibt kein unbearbeitetes Foto. Schon die Kamera trifft Entscheidungen — Weißabgleich, Schärfung, Kontrast, Bildausschnitt, Brennweite, Moment des Auslösens. Ein „neutrales“ Bild der Wirklichkeit existiert nicht. Bearbeitung ist also der Normalfall und für sich kein Vorwurf; der Vorwurf betrifft eine bestimmte <em>Art</em> von Bearbeitung.</p>
+              <p><strong>Drei Kriterien:</strong></p>
+              <ol>
+                <li><strong>Wird die Aussage über die Wirklichkeit verändert?</strong> Farbkorrektur verändert die Stimmung, das Entfernen einer Person verändert die Tatsachenbehauptung.</li>
+                <li><strong>Ist die Bearbeitung offengelegt oder erkennbar?</strong> Was als Werbung, Illustration oder Kunst kenntlich ist, täuscht nicht; was als dokumentarische Aufnahme auftritt, erhebt einen Wahrheitsanspruch.</li>
+                <li><strong>Welche Erwartung hat das Publikum in diesem Zusammenhang?</strong> Bei einem Pressefoto wird Dokumentation erwartet, bei einem Werbefoto Idealisierung.</li>
+              </ol>
+              <p><strong>Werbefoto einer Burgerkette:</strong> stark bearbeitet — aufgebauter Burger, Speiseöl für den Glanz, perfekte Beleuchtung, Retusche. <em>Keine Manipulation</em> im hier gemeinten Sinn: Der Werbekontext ist offensichtlich, und niemand erwartet, dass der Burger im Laden so aussieht. Kritisieren lässt sich Irreführung über das Produkt (verbraucherrechtliche Frage), nicht eine Täuschung über Tatsachen.</p>
+              <p><strong>Pressefoto von einer Demonstration:</strong> Hier gilt ein Dokumentationsanspruch. Farbkorrektur und Beschnitt aus gestalterischen Gründen sind zulässig, wenn die Aussage gleich bleibt. <em>Manipulation</em> liegt vor, sobald der Beschnitt die Teilnehmerzahl anders erscheinen lässt, Personen oder Transparente entfernt oder hinzugefügt werden oder das Bild einem falschen Ereignis zugeordnet wird. Deshalb verbieten die Regeln von Nachrichtenagenturen genau solche Eingriffe, während sie Helligkeits- und Kontrastanpassungen ausdrücklich erlauben.</p>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="tk">
+      <div class="tk-head"><span class="tk-id">DA 2</span>
+        <h3>In ihrer Wirkung veränderte Medienprodukte entwerfen und erstellen</h3></div>
+      <div class="tk-body">
+        <h4 class="lbl">Inhalte</h4>
+        <div class="prose">
+          <p>Diese Teilkompetenz ist <strong>produktiv</strong>: Die Schülerinnen und Schüler erzeugen die Wirkung selbst und verstehen sie dadurch von innen. Bewährt hat sich die Trennung in <em>Entwurf</em> und <em>Erstellung</em>:</p>
+          <ul>
+            <li><strong>Entwurf:</strong> Wirkungsziel festlegen („dieselbe Person soll einmal vertrauenswürdig, einmal bedrohlich wirken“), Mittel auswählen und begründen, Vorgehen skizzieren.</li>
+            <li><strong>Erstellung:</strong> Umsetzung mit einfachen Werkzeugen — Bildbearbeitung für Beschnitt, Helligkeit, Kontrast, Farbstimmung; Videoschnitt für Reihenfolge, Tempo, Ton; Textwerkzeug für Bildunterschrift und Überschrift.</li>
+            <li><strong>Auswertung:</strong> Die Produkte werden anderen vorgelegt, deren Eindruck erhoben und mit der Absicht verglichen. Erst dieser Schritt macht die Wirkung überprüfbar statt behauptet.</li>
+          </ul>
+          <p>Besonders ertragreich ist die <strong>Doppelfassung</strong>: <em>ein</em> Ausgangsmaterial, zwei gegensätzliche Wirkungen. So wird sichtbar, dass die Wirkung nicht im Material liegt, sondern in der Bearbeitung.</p>
+          <p><strong>Rahmenbedingungen</strong>, die zur Kompetenz gehören: Es wird nur eigenes oder freies Material verwendet (Lizenzen, Recht am eigenen Bild); Personen der Klasse nur mit Einwilligung, keine Deepfakes von realen Personen; die Produkte bleiben im Unterricht und werden nicht veröffentlicht; jede Fassung wird als Übung <strong>gekennzeichnet</strong>. Beim Vorstellen wird die Bearbeitung offengelegt und dokumentiert.</p>
+        </div>
+        <ol class="tasks">
+          <li>
+            <span class="tk-num">Aufgabe 1</span>
+            <div class="q"><p>Erstelle aus <strong>einem</strong> Ausgangsfoto (eigene Aufnahme oder freies Bild, zum Beispiel ein Schulhof) zwei Fassungen mit gegensätzlicher Wirkung: „einladend“ und „trostlos“.</p>
+              <ol class="sub">
+                <li>Notiere vor der Bearbeitung je Fassung drei geplante Mittel.</li>
+                <li>Setze beide Fassungen um und ergänze jeweils eine passende Bildunterschrift.</li>
+                <li>Lege beide Fassungen fünf Personen vor, die das Original nicht kennen, und erhebe deren Eindruck in einem Wort.</li>
+                <li>Vergleiche Absicht und Wirkung. Welches Mittel war am wirksamsten?</li>
+              </ol>
+              <p class="note">Bearbeitet wird nur eigenes oder lizenzfreies Material. Abgebildete Personen müssen zustimmen; die Fassungen bleiben im Unterricht und werden als Übung gekennzeichnet.</p></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p>Individuelle Produkte; bewertet werden Begründung, Umsetzung und Auswertung. Erwartungshorizont:</p>
+              <p><strong>a) Geplante Mittel</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Mittel</th><th>„einladend“</th><th>„trostlos“</th></tr>
+                <tr><td>Ausschnitt</td><td>Gruppe spielender Kinder, Bäume im Bild</td><td>enger Ausschnitt auf leere Fläche und Betonwand</td></tr>
+                <tr><td>Farbe / Filter</td><td>warme Töne, hohe Sättigung, aufgehellt</td><td>kühles Blaugrau, entsättigt, abgedunkelt</td></tr>
+                <tr><td>Kontrast / Schärfe</td><td>weich, gleichmäßig belichtet</td><td>harter Kontrast, tiefe Schatten</td></tr>
+                <tr><td>Bildunterschrift</td><td>„Große Pause auf unserem Schulhof“</td><td>„Nachmittags bleibt der Hof leer“</td></tr>
+              </table></div>
+              <p><strong>c/d) Typischer Befund:</strong> Die Eindrücke der Befragten stimmen meist deutlich mit der Absicht überein — und am wirksamsten ist fast immer nicht der Farbfilter, sondern <strong>Bildausschnitt und Bildunterschrift</strong>. Beide verändern nicht das Aussehen, sondern die <em>Aussage</em>: Der Ausschnitt entscheidet, was es überhaupt zu sehen gibt, und die Unterschrift sagt dem Betrachter, was er sieht. Ein Farbfilter erzeugt Stimmung, aber die Unterschrift erzeugt eine <em>Behauptung</em>.</p>
+              <p>Erwartete Schlussfolgerung: Beide Fassungen sind „echte Fotos“ derselben Wirklichkeit. Wer eine davon sieht, hält seinen Eindruck für die Beobachtung des Schulhofs — tatsächlich beobachtet er eine Bearbeitungsentscheidung.</p>
+            </div></details>
+          </li>
+          <li>
+            <span class="tk-num">Aufgabe 2</span>
+            <div class="q"><p>Erstellt in Gruppen zu einem selbst gedrehten Videoausschnitt (etwa 20 Sekunden, zum Beispiel eine Person, die einen Gang hinuntergeht) zwei Fassungen: eine als Ausschnitt aus einem <em>Krimi</em>, eine als Ausschnitt aus einer <em>Komödie</em>. Der Bildinhalt darf nicht verändert werden.</p>
+              <ol class="sub">
+                <li>Welche Mittel bleiben, wenn das Bildmaterial gleich bleiben muss?</li>
+                <li>Dokumentiert eure Entscheidungen in einer Tabelle.</li>
+                <li>Erklärt anschließend, was ihr daraus für den Umgang mit Videos in sozialen Netzwerken ableitet.</li>
+              </ol></div>
+            <details><summary>Lösung</summary><div class="sol">
+              <p><strong>a) Verfügbare Mittel bei unverändertem Bildinhalt:</strong> Musik (Instrumentierung, Tonart, Tempo), Geräusche (knarrende Tür, Vogelgezwitscher, Slapstick-Effekte), <strong>Schnittrhythmus</strong> (lange Einstellungen und Verzögerung erzeugen Spannung, schnelle Schnitte und plötzliche Enden Komik), Reihenfolge der Einstellungen, Farbstimmung und Helligkeit, Titel und Untertitel, Standbild oder Zeitlupe, Stille als Mittel.</p>
+              <p><strong>b) Dokumentation, Beispiel:</strong></p>
+              <div class="tbl-scroll"><table>
+                <tr><th>Entscheidung</th><th>Krimi</th><th>Komödie</th></tr>
+                <tr><td>Musik</td><td>tiefe Streicher, langsam, Moll</td><td>schnelles Klavier, Dur</td></tr>
+                <tr><td>Geräusch</td><td>Schritte hallen, Tür knarrt</td><td>Quietschton beim Umdrehen</td></tr>
+                <tr><td>Schnitt</td><td>lange Einstellung, Schnitt kurz vor dem Ziel</td><td>drei schnelle Schnitte, abruptes Ende</td></tr>
+                <tr><td>Farbe</td><td>entsättigt, dunkel</td><td>helle, warme Töne</td></tr>
+                <tr><td>Titel</td><td>„21:40 Uhr — niemand hatte sie erwartet“</td><td>„Erster Schultag. Wieder falscher Raum.“</td></tr>
+              </table></div>
+              <p><strong>c) Ableitung:</strong> Derselbe Bildinhalt kann gegensätzliche Bedeutungen tragen, ohne dass ein einziges Pixel verändert wurde. In sozialen Netzwerken folgt daraus:</p>
+              <ul>
+                <li>Ein Video zu prüfen heißt nicht, nach Bildfehlern zu suchen. Musik, Schnitt und Titel sind die häufigeren Manipulationsmittel — und technisch nicht nachweisbar.</li>
+                <li>Die entscheidende Frage ist die nach dem <strong>Weggeschnittenen</strong>: Was geschah vor und nach dem Ausschnitt? Ein 20-Sekunden-Clip aus einer zehnminütigen Auseinandersetzung kann jede Seite als Angreifer zeigen.</li>
+                <li><strong>Ton ausschalten</strong> ist eine wirksame Prüfmethode: Ohne Musik wirkt derselbe Ausschnitt oft völlig unspektakulär.</li>
+                <li>Gesucht wird nach dem <strong>ungeschnittenen Original</strong> und danach, wer es zuerst veröffentlicht hat — dieselbe Kontextprüfung wie bei Deepfakes (DP 4).</li>
+              </ul>
+            </div></details>
+          </li>
+        </ol>
+      </div>
+    </article>
+  </section>
+
+  <footer class="doc">
+    <p><strong>Zur Verwendung:</strong> Die Formulierungen der Teilkompetenzen sind der Lesehilfe wörtlich entnommen. Inhaltsdarstellungen und Aufgaben sind Unterrichtsvorschläge und nicht Teil des Dokuments. Die Kennungen DP, ID, AL, KS und DA folgen den fünf Kompetenzbereichen und der Reihenfolge in den Tabellen des Originals.</p>
+    <p>Wo die Lesehilfe für Niveau E eine gegenüber G oder M erweiterte Formulierung ausweist, ist dies am jeweiligen Block gekennzeichnet. Sieben der 31 Teilkompetenzen sind auf Niveau G nicht vorgesehen oder auf E anspruchsvoller formuliert: ID 1, ID 7, AL 2, AL 3, AL 5, AL 6, KS 2, KS 5 und KS 6.</p>
+    <p>Quelle: <em>Lesehilfe Informatik und Medienbildung für die Klassen 5 bis 7 im Schuljahr 2026/2027</em>, Ministerium für Kultus Baden-Württemberg in Zusammenarbeit mit dem Zentrum für Schulqualität und Lehrerbildung, Juli 2026 — kein in Kraft gesetzter Bildungsplan.</p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('solAll');
+    var open = false;
+    btn.addEventListener('click', function () {
+      open = !open;
+      var all = document.querySelectorAll('details');
+      for (var i = 0; i < all.length; i++) { all[i].open = open; }
+      btn.textContent = open ? 'Alle Lösungen ausblenden' : 'Alle Lösungen einblenden';
+    });
+  })();
+
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var stored = null;
+    try { stored = localStorage.getItem('ium7e-theme'); } catch (e) {}
+    if (stored === 'light' || stored === 'dark') { root.setAttribute('data-theme', stored); }
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set === 'dark') { return true; }
+      if (set === 'light') { return false; }
+      return mq.matches;
+    }
+    function label() { btn.textContent = isDark() ? 'Hell' : 'Dunkel'; }
+    label();
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('ium7e-theme', next); } catch (e) {}
+      label();
+    });
+    mq.addEventListener('change', function () {
+      if (!root.hasAttribute('data-theme')) { label(); }
+    });
+  })();
+</script>
+</body>
+</html>
