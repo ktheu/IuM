@@ -319,7 +319,7 @@
     font-size: 13.5px;
     color: var(--ink-soft);
   }
-  .notes h2 {
+  .notes h3 {
     font-family: "Source Serif 4", Georgia, serif;
     font-size: 15px;
     font-weight: 600;
@@ -344,6 +344,141 @@
     padding-top: 16px;
   }
 
+  /* ---- sections ---- */
+  .sec { display: flex; flex-direction: column; gap: 20px; }
+  .sec-head { display: flex; flex-direction: column; gap: 4px; }
+  .sec-head h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -.005em;
+  }
+  .sec-head p { margin: 0; color: var(--ink-soft); max-width: 78ch; text-wrap: pretty; }
+  .rule { border: none; border-top: 1px solid var(--line-strong); margin: 12px 0 0; }
+
+  /* ---- weighting tool ---- */
+  .wgrid {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .wrow {
+    display: grid;
+    grid-template-columns: minmax(96px, 1fr) 104px 104px;
+    gap: 10px 14px;
+    align-items: center;
+  }
+  .wrow.head span {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .wrow.head span:not(:first-child) { text-align: right; padding-right: 12px; }
+  .wrow .cat { font-size: 14.5px; font-weight: 500; }
+  .wrow input {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 15px;
+    text-align: right;
+    padding: 8px 11px;
+  }
+  .wrow.off .cat { color: var(--ink-faint); }
+  .presets { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; }
+  .presets .lbl {
+    font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-faint); margin-right: 2px;
+  }
+  .chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 3px 11px;
+    cursor: pointer;
+    transition: border-color .12s, background .12s;
+  }
+  .chip:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .chip:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  .wresult {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 18px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: var(--radius);
+    color: var(--accent-ink);
+  }
+  .wresult .k-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; flex: 0 0 100%;
+  }
+  .wresult .w-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(30px, 5vw, 40px);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .wresult .w-chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+  .wresult .w-cap { font-size: 12.5px; opacity: .85; }
+  .wresult .w-note { flex: 0 0 100%; font-size: 12.5px; opacity: .9; }
+  .wresult.empty { border-left-color: var(--line-strong); background: var(--surface-alt); color: var(--ink-soft); }
+
+  .calcwrap { padding: 0 0 4px; }
+  .calcwrap > h3 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 10.5px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    margin: 0; padding: 16px 20px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .calctab { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .calctab th {
+    font-size: 10.5px; letter-spacing: .09em;
+    padding: 9px 14px; border-bottom: 1px solid var(--line);
+  }
+  .calctab th.l { text-align: left; padding-left: 20px; }
+  .calctab td {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13.5px; text-align: right;
+    padding: 7px 14px; border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .calctab td.l {
+    text-align: left; padding-left: 20px;
+    font-family: "IBM Plex Sans", sans-serif; font-size: 14px;
+  }
+  .calctab td.op { color: var(--ink-faint); }
+  .calctab tr.sum td { border-top: 1px solid var(--line-strong); border-bottom: none; font-weight: 600; }
+  .calctab tr.sum td.l { font-weight: 500; }
+  .calctab tr.div td {
+    border-bottom: none; border-top: 1px solid var(--line);
+    padding-top: 11px; padding-bottom: 14px;
+    color: var(--accent); font-weight: 600; font-size: 14.5px;
+  }
+  .calctab tr.div td.l { color: var(--ink-soft); font-weight: 400; font-size: 13px; }
+
+  @media (max-width: 520px) {
+    .wrow { grid-template-columns: minmax(80px, 1fr) 84px 84px; gap: 8px; }
+    .wrow input { font-size: 14px; padding: 7px 9px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
   }
@@ -351,7 +486,8 @@
   @media print {
     body { background: #fff; }
     .wrap { max-width: none; padding: 0; gap: 16px; }
-    .controls, .verdict, footer { display: none !important; }
+    .controls, .verdict, .presets, footer { display: none !important; }
+    .rule { margin-top: 4px; }
     .panel, .keyfig { box-shadow: none; border: 1px solid #999; }
     table { font-size: 11pt; }
   }
@@ -360,13 +496,22 @@
 <div class="wrap">
 
   <header class="masthead">
-    <div class="eyebrow">Klassenarbeit · Notenstufen 1–6 mit Tendenzen</div>
-    <h1>Halbierungsschlüssel</h1>
+    <div class="eyebrow">Klassenarbeit und Halbjahresnote</div>
+    <h1>Notenschlüssel und Gewichtung</h1>
     <p class="lede">
+      Zwei Rechner: Punktgrenzen einer Klassenarbeit nach dem Halbierungsschlüssel,
+      und die Verrechnung von schriftlicher, mündlicher und praktischer Note zu einer Gesamtnote.
+    </p>
+  </header>
+
+  <section class="sec">
+  <div class="sec-head">
+    <h2>Halbierungsschlüssel</h2>
+    <p>
       Obere Hälfte der Punkte gleichmäßig auf die Noten 1 bis 4, untere Hälfte auf 5 und 6.
       Gesamtpunktzahl eingeben — die Notengrenzen rechnen sich mit.
     </p>
-  </header>
+  </div>
 
   <div class="panel">
     <div class="controls">
@@ -435,25 +580,118 @@
 
   <div class="panel notes">
     <div>
-      <h2>Aufbau</h2>
+      <h3>Aufbau</h3>
       <p>Eine Notenstufe von 1 bis 4 umfasst <strong>12,5 % von n</strong>, eine Tendenzstufe ein Drittel davon: <code>n/24 ≈ 4,17 %</code>.</p>
       <p>Die Noten 5 und 6 teilen sich die untere Hälfte und umfassen je <strong>25 % von n</strong>.</p>
       <p>Die angegebene Grenze gehört jeweils zur <strong>besseren</strong> Note — verglichen wird mit ≥.</p>
     </div>
     <div>
-      <h2>Wahl von n</h2>
+      <h3>Wahl von n</h3>
       <p>Ein <strong>Vielfaches von 24</strong> (24, 48, 72) legt alle Grenzen auf ganze Punkte, ein Vielfaches von 12 (36, 60) auf halbe Punkte.</p>
       <p>Bei anderen Werten entstehen krumme Grenzen — dann eine Rundung wählen und konsistent anwenden.</p>
     </div>
     <div>
-      <h2>Kein Automatismus</h2>
+      <h3>Kein Automatismus</h3>
       <p>Der Schlüssel ist ein Hilfsmittel. War eine Aufgabe erkennbar zu schwer, darf er für diese Arbeit angepasst werden — die Note ist nach § 7 Abs. 2 NVO eine pädagogisch-fachliche Gesamtwertung.</p>
       <p>Tendenznoten sind in Klassenarbeiten zulässig; im <strong>Zeugnis</strong> sind nur ganze Noten erlaubt (§ 5 Abs. 4 NVO).</p>
     </div>
   </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="sec">
+  <div class="sec-head">
+    <h2>Gesamtnote gewichten</h2>
+    <p>
+      Schriftliche, mündliche und praktische Note in einem festgelegten Verhältnis zu einer Gesamtnote
+      verrechnen. Noten als Tendenz (<code>2−</code>) oder als Zahl (<code>2,3</code>) eingeben.
+      Ein leeres Notenfeld oder ein Anteil von 0 lässt den Bereich aus — so lassen sich auch nur zwei
+      Bereiche verrechnen.
+    </p>
+  </div>
+
+  <div class="panel">
+    <div class="wgrid">
+      <div class="wrow head">
+        <span>Bereich</span><span>Anteil</span><span>Note</span>
+      </div>
+      <div class="wrow" id="row-0">
+        <span class="cat">schriftlich</span>
+        <input type="number" id="w-0" value="40" min="0" max="100" step="5" inputmode="numeric" aria-label="Anteil schriftlich">
+        <input type="text" id="g-0" value="2−" placeholder="—" aria-label="Note schriftlich">
+      </div>
+      <div class="wrow" id="row-1">
+        <span class="cat">mündlich</span>
+        <input type="number" id="w-1" value="30" min="0" max="100" step="5" inputmode="numeric" aria-label="Anteil mündlich">
+        <input type="text" id="g-1" value="3+" placeholder="—" aria-label="Note mündlich">
+      </div>
+      <div class="wrow" id="row-2">
+        <span class="cat">praktisch</span>
+        <input type="number" id="w-2" value="30" min="0" max="100" step="5" inputmode="numeric" aria-label="Anteil praktisch">
+        <input type="text" id="g-2" value="2" placeholder="—" aria-label="Note praktisch">
+      </div>
+
+      <div class="presets">
+        <span class="lbl">Verhältnis</span>
+        <button type="button" class="chip" data-w="40,30,30">40:30:30</button>
+        <button type="button" class="chip" data-w="50,25,25">50:25:25</button>
+        <button type="button" class="chip" data-w="40,60,0">40:60</button>
+        <button type="button" class="chip" data-w="50,50,0">50:50</button>
+        <button type="button" class="chip" data-w="60,40,0">60:40</button>
+      </div>
+      <span class="hint">Die Anteile müssen sich nicht auf 100 summieren — <code>4:3:3</code> ergibt dasselbe wie <code>40:30:30</code>. Vorbelegt mit Beispielnoten.</span>
+    </div>
+  </div>
+
+  <div class="wresult" id="wresult">
+    <span class="k-label">Gesamtnote</span>
+    <span class="w-num" id="w-num">—</span>
+    <span class="w-chip" id="w-tend">—</span>
+    <span class="w-cap">Tendenznote</span>
+    <span class="w-chip" id="w-whole">—</span>
+    <span class="w-cap">Zeugnisnote</span>
+    <span class="w-note" id="w-note"></span>
+  </div>
+
+  <div class="panel calcwrap">
+    <h3>Rechnung</h3>
+    <div class="tablewrap">
+      <table class="calctab">
+        <thead>
+          <tr>
+            <th class="l">Bereich</th>
+            <th>Notenwert</th>
+            <th>Anteil</th>
+            <th>Produkt</th>
+          </tr>
+        </thead>
+        <tbody id="calcrows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel notes">
+    <div>
+      <h3>Wie gerechnet wird</h3>
+      <p>Jeder Notenwert wird mit seinem Anteil multipliziert, die Produkte werden addiert und durch die Summe der Anteile geteilt — ein gewichtetes Mittel.</p>
+      <p>Tendenzen zählen als Drittel: <code>2+</code> = 1,7 · <code>2</code> = 2,0 · <code>2−</code> = 2,3.</p>
+    </div>
+    <div>
+      <h3>Runden zur Zeugnisnote</h3>
+      <p>Im Zeugnis sind nur ganze Noten zulässig (§ 5 Abs. 4 NVO). Gerundet wird <strong>zugunsten der Schülerin oder des Schülers</strong>: 2,50 ergibt 2, nicht 3. Dasselbe gilt für die Tendenznote.</p>
+      <p>Liegt der Wert nahe bei x,5, meldet der Rechner zusätzlich einen <strong>Grenzfall</strong> — den entscheidet die Lehrkraft, nicht die Rundung.</p>
+    </div>
+    <div>
+      <h3>Keine reine Arithmetik</h3>
+      <p>Nach § 7 Abs. 2 NVO ist die Note eine <strong>pädagogisch-fachliche Gesamtwertung</strong>. Das angekündigte Verhältnis ist eine Regel-Gewichtung, kein Rechenzwang — das Ergebnis hier ist ein Anhaltspunkt.</p>
+      <p>Die Gewichtung ist nach § 7 Abs. 1 NVO zu Beginn des Unterrichts bekannt zu geben.</p>
+    </div>
+  </div>
+  </section>
 
   <footer>
-    Halbierungsschlüssel · Notenbildungsverordnung Baden-Württemberg
+    Notenschlüssel und Gewichtung · Notenbildungsverordnung Baden-Württemberg
   </footer>
 
 </div>
@@ -628,6 +866,176 @@
   ["input", "change"].forEach(function (evt) {
     [el.n, el.rounding, el.full, el.reached].forEach(function (c) {
       c.addEventListener(evt, render);
+    });
+  });
+
+  render();
+})();
+
+/* ---- Gesamtnote gewichten ---- */
+(function () {
+  "use strict";
+
+  var CATS = ["schriftlich", "mündlich", "praktisch"];
+  var TEND = [
+    { l: "1+", v: 0.7 }, { l: "1",  v: 1.0 }, { l: "1−", v: 1.3 },
+    { l: "2+", v: 1.7 }, { l: "2",  v: 2.0 }, { l: "2−", v: 2.3 },
+    { l: "3+", v: 2.7 }, { l: "3",  v: 3.0 }, { l: "3−", v: 3.3 },
+    { l: "4+", v: 3.7 }, { l: "4",  v: 4.0 }, { l: "4−", v: 4.3 },
+    { l: "5+", v: 4.7 }, { l: "5",  v: 5.0 }, { l: "5−", v: 5.3 },
+    { l: "6",  v: 6.0 }
+  ];
+
+  var rows = CATS.map(function (name, i) {
+    return {
+      name: name,
+      el: document.getElementById("row-" + i),
+      w: document.getElementById("w-" + i),
+      g: document.getElementById("g-" + i)
+    };
+  });
+
+  var out = {
+    box:   document.getElementById("wresult"),
+    num:   document.getElementById("w-num"),
+    tend:  document.getElementById("w-tend"),
+    whole: document.getElementById("w-whole"),
+    note:  document.getElementById("w-note"),
+    calc:  document.getElementById("calcrows")
+  };
+
+  function num(v, min, max) {
+    return new Intl.NumberFormat("de-DE", {
+      minimumFractionDigits: min === undefined ? 0 : min,
+      maximumFractionDigits: max === undefined ? 2 : max
+    }).format(v);
+  }
+
+  // Akzeptiert "2", "2+", "2−", "2-" sowie "2,3" und "2.3".
+  function parseNote(s) {
+    if (s === undefined || s === null) return null;
+    s = String(s).trim().replace(",", ".");
+    if (!s) return null;
+    var m = /^([1-6])\s*([+\-−–])?$/.exec(s);
+    if (m) {
+      var b = parseInt(m[1], 10);
+      if (!m[2]) return b;
+      return Math.min(6, Math.max(0.7, m[2] === "+" ? b - 0.3 : b + 0.3));
+    }
+    var f = parseFloat(s);
+    if (!isFinite(f) || f < 0.7 || f > 6) return null;
+    return f;
+  }
+
+  function nearestTendency(v) {
+    var best = TEND[0], d = Math.abs(TEND[0].v - v);
+    for (var i = 1; i < TEND.length; i++) {
+      var dd = Math.abs(TEND[i].v - v);
+      if (dd < d) { d = dd; best = TEND[i]; }
+    }
+    return best.l;
+  }
+
+  function cell(cls, html) {
+    return '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + html + '</td>';
+  }
+
+  function render() {
+    var parts = [], sumW = 0, sumP = 0, invalid = false;
+
+    rows.forEach(function (r) {
+      var w = parseFloat(r.w.value);
+      var g = parseNote(r.g.value);
+      if (r.g.value.trim() !== "" && g === null) invalid = true;
+      var active = g !== null && isFinite(w) && w > 0;
+      r.el.className = "wrow" + (active ? "" : " off");
+      if (active) {
+        parts.push({ name: r.name, g: g, w: w, p: g * w });
+        sumW += w;
+        sumP += g * w;
+      }
+    });
+
+    out.calc.innerHTML = "";
+
+    if (!parts.length) {
+      out.box.className = "wresult empty";
+      out.num.textContent = "—";
+      out.tend.textContent = "—";
+      out.whole.textContent = "—";
+      out.note.textContent = invalid
+        ? "Note nicht erkannt. Zulässig sind zum Beispiel 2, 2+, 2− oder 2,3."
+        : "Mindestens einen Bereich mit Note und einem Anteil größer als 0 angeben.";
+      return;
+    }
+
+    var value = sumP / sumW;
+
+    // Rechenweg
+    parts.forEach(function (p) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = cell("l", p.name)
+        + cell("", num(p.g, 1, 2))
+        + cell("op", "× " + num(p.w))
+        + cell("", num(p.p, 2, 2));
+      out.calc.appendChild(tr);
+    });
+
+    var sum = document.createElement("tr");
+    sum.className = "sum";
+    sum.innerHTML = cell("l", "Summe")
+      + cell("", "")
+      + cell("", num(sumW))
+      + cell("", num(sumP, 2, 2));
+    out.calc.appendChild(sum);
+
+    var div = document.createElement("tr");
+    div.className = "div";
+    div.innerHTML = '<td class="l" colspan="3">Summe der Produkte ÷ Summe der Anteile &nbsp;=&nbsp; '
+      + num(sumP, 2, 2) + " ÷ " + num(sumW) + '</td>'
+      + cell("", "= " + num(value, 2, 2));
+    out.calc.appendChild(div);
+
+    // Ergebnis
+    // Halbe Werte werden zugunsten der Schülerin oder des Schülers abgerundet:
+    // 2,50 ergibt 2, nicht 3.
+    var whole = Math.min(6, Math.max(1, Math.ceil(value - 0.5 - 1e-9)));
+    var frac = value - Math.floor(value);
+    var borderline = frac >= 0.45 && frac <= 0.55;
+
+    var text;
+    if (borderline) {
+      text = "Grenzfall: " + num(value, 2, 2) + " liegt zwischen " + Math.floor(value)
+        + " und " + (Math.floor(value) + 1)
+        + ". Vorgeschlagen ist die bessere Note " + whole
+        + " — die Entscheidung ist pädagogisch zu treffen.";
+    } else {
+      text = "Wirksame Anteile — "
+        + parts.map(function (p) {
+            return p.name + " " + num(p.w / sumW * 100, 0, 1) + " %";
+          }).join(", ") + ".";
+    }
+    if (invalid) text += " Ein Notenfeld wurde nicht erkannt und bleibt unberücksichtigt.";
+
+    out.box.className = "wresult";
+    out.num.textContent = num(value, 2, 2);
+    out.tend.textContent = nearestTendency(value);
+    out.whole.textContent = String(whole);
+    out.note.textContent = text;
+  }
+
+  rows.forEach(function (r) {
+    ["input", "change"].forEach(function (evt) {
+      r.w.addEventListener(evt, render);
+      r.g.addEventListener(evt, render);
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".chip"), function (btn) {
+    btn.addEventListener("click", function () {
+      var vals = btn.getAttribute("data-w").split(",");
+      rows.forEach(function (r, i) { r.w.value = vals[i]; });
+      render();
     });
   });
 
