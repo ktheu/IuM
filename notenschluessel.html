@@ -1,0 +1,636 @@
+<title>Halbierungsschlüssel-Rechner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root {
+    --paper:       #F2F4F8;
+    --surface:     #FFFFFF;
+    --surface-alt: #F8F9FC;
+    --ink:         #171A22;
+    --ink-soft:    #5B6270;
+    --ink-faint:   #878EA0;
+    --line:        #DDE1EA;
+    --line-strong: #C1C7D6;
+    --accent:      #24457F;
+    --accent-ink:  #1B3663;
+    --accent-soft: #E6ECF7;
+    --fail:        #9C4034;
+    --fail-soft:   #F7EBE8;
+    --b1: #24457F;
+    --b2: #4A6BA5;
+    --b3: #7C93C0;
+    --b4: #AEBCD8;
+    --b5: #C07C6F;
+    --b6: #9C4034;
+    --shadow: 0 1px 2px rgba(23,26,34,.06), 0 8px 24px -12px rgba(23,26,34,.18);
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:       #101219;
+      --surface:     #181B23;
+      --surface-alt: #1E222C;
+      --ink:         #E8EAF1;
+      --ink-soft:    #9BA3B5;
+      --ink-faint:   #737B8D;
+      --line:        #2A2F3C;
+      --line-strong: #3B4253;
+      --accent:      #93B0E6;
+      --accent-ink:  #B8CCF2;
+      --accent-soft: #1D2941;
+      --fail:        #DD9184;
+      --fail-soft:   #2E1F1C;
+      --b1: #A3BDEE;
+      --b2: #829DD6;
+      --b3: #647FB6;
+      --b4: #4A5C84;
+      --b5: #A96B5E;
+      --b6: #DD9184;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:       #101219;
+    --surface:     #181B23;
+    --surface-alt: #1E222C;
+    --ink:         #E8EAF1;
+    --ink-soft:    #9BA3B5;
+    --ink-faint:   #737B8D;
+    --line:        #2A2F3C;
+    --line-strong: #3B4253;
+    --accent:      #93B0E6;
+    --accent-ink:  #B8CCF2;
+    --accent-soft: #1D2941;
+    --fail:        #DD9184;
+    --fail-soft:   #2E1F1C;
+    --b1: #A3BDEE;
+    --b2: #829DD6;
+    --b3: #647FB6;
+    --b4: #4A5C84;
+    --b5: #A96B5E;
+    --b6: #DD9184;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ---- masthead ---- */
+  .masthead { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -.01em;
+  }
+  .lede {
+    margin: 2px 0 0;
+    color: var(--ink-soft);
+    max-width: 78ch;
+    text-wrap: pretty;
+  }
+
+  /* ---- controls ---- */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .controls {
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px 24px;
+    align-items: start;
+  }
+  .field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .field > label,
+  .field > .lbl {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  input[type="number"], select {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    background: var(--surface-alt);
+    border: 1px solid var(--line-strong);
+    border-radius: 7px;
+    padding: 9px 11px;
+    width: 100%;
+    transition: border-color .12s, box-shadow .12s;
+  }
+  select {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+  }
+  input[type="number"]:focus-visible, select:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .switch {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+    padding-top: 2px;
+  }
+  .switch input { accent-color: var(--accent); width: 16px; height: 16px; margin: 0; cursor: pointer; }
+  .hint { font-size: 12.5px; color: var(--ink-faint); line-height: 1.4; }
+
+  /* ---- key figure ---- */
+  .keyfig {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 18px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: var(--radius);
+  }
+  .keyfig .k-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    flex: 0 0 100%;
+  }
+  .keyfig .k-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(30px, 5vw, 40px);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: var(--accent-ink);
+  }
+  .keyfig .k-unit { font-size: 15px; color: var(--accent-ink); }
+  .keyfig .k-side { font-size: 13px; color: var(--accent-ink); opacity: .85; margin-left: auto; text-align: right; }
+
+  /* ---- lookup result ---- */
+  .verdict {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface-alt);
+    font-size: 14px;
+  }
+  .verdict.on { display: flex; }
+  .verdict .v-grade {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+  }
+  .verdict.pass .v-grade { color: var(--accent); border-color: var(--accent); }
+  .verdict.fail .v-grade { color: var(--fail); border-color: var(--fail); }
+
+  /* ---- warning ---- */
+  .warn {
+    display: none;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--fail-soft);
+    border: 1px solid var(--fail);
+    color: var(--fail);
+    font-size: 13.5px;
+  }
+  .warn.on { display: block; }
+
+  /* ---- table ---- */
+  .tablewrap { overflow-x: auto; border-radius: var(--radius); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-variant-numeric: tabular-nums;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    padding: 16px 20px 12px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: right;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+  th.c-note { text-align: left; padding-left: 20px; }
+  td {
+    padding: 9px 14px;
+    text-align: right;
+    border-bottom: 1px solid var(--line);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.c-note {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: inset 4px 0 0 var(--band);
+  }
+  td.c-val { color: var(--ink-faint); font-size: 13px; }
+  td.c-pts { font-weight: 600; font-size: 15px; }
+  td.c-range { color: var(--ink-soft); font-size: 13px; }
+  tbody tr.grp { border-top: 1px solid var(--line-strong); }
+  tbody tr.pass-line td { border-top: 2px solid var(--accent); }
+  tbody tr.fail td.c-note { color: var(--fail); }
+  tbody tr.hit td { background: var(--accent-soft); }
+  tbody tr.hit td.c-pts { color: var(--accent-ink); }
+  .pass-tag {
+    display: inline-block;
+    margin-left: 9px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 1px 5px;
+    vertical-align: 2px;
+  }
+
+  /* ---- notes ---- */
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px 32px;
+    padding: 22px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .notes h2 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 5px;
+  }
+  .notes p { margin: 0 0 7px; }
+  .notes p:last-child { margin-bottom: 0; }
+  .notes code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--ink);
+  }
+  footer {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: none; padding: 0; gap: 16px; }
+    .controls, .verdict, footer { display: none !important; }
+    .panel, .keyfig { box-shadow: none; border: 1px solid #999; }
+    table { font-size: 11pt; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Klassenarbeit · Notenstufen 1–6 mit Tendenzen</div>
+    <h1>Halbierungsschlüssel</h1>
+    <p class="lede">
+      Obere Hälfte der Punkte gleichmäßig auf die Noten 1 bis 4, untere Hälfte auf 5 und 6.
+      Gesamtpunktzahl eingeben — die Notengrenzen rechnen sich mit.
+    </p>
+  </header>
+
+  <div class="panel">
+    <div class="controls">
+      <div class="field">
+        <label for="n">Gesamtpunktzahl n</label>
+        <input type="number" id="n" value="48" min="1" max="999" step="1" inputmode="numeric">
+        <span class="hint" id="n-hint"></span>
+      </div>
+
+      <div class="field">
+        <label for="rounding">Punktgrenzen</label>
+        <select id="rounding">
+          <option value="exakt">exakt</option>
+          <option value="halb">auf halbe Punkte</option>
+          <option value="ganz">auf ganze Punkte</option>
+        </select>
+        <span class="hint">Gerundet wird abwärts, also zugunsten der Schülerinnen und Schüler.</span>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Tendenzen</span>
+        <label class="switch">
+          <input type="checkbox" id="full">
+          <span>1+ und Tendenzen bei der 5</span>
+        </label>
+        <span class="hint">Aus: die 1 reicht bis 100 %, die 5 bleibt ein Band von 25 % bis 50 %.</span>
+      </div>
+
+      <div class="field">
+        <label for="reached">Erreichte Punkte</label>
+        <input type="number" id="reached" placeholder="—" min="0" max="999" step="0.5" inputmode="decimal">
+        <span class="hint">Optional — hebt die passende Zeile hervor.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="keyfig">
+    <span class="k-label">Bestanden ab (Note 4−)</span>
+    <span class="k-num" id="pass-pts">24</span>
+    <span class="k-unit">von <span id="pass-of">48</span> Punkten &nbsp;·&nbsp; 50 %</span>
+    <span class="k-side">Tendenzstufe <code>e = n/24</code> = <span id="unit-val">2</span> Punkte</span>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <div class="verdict" id="verdict">
+    <span class="v-grade" id="v-grade">3</span>
+    <span id="v-text"></span>
+  </div>
+
+  <div class="panel tablewrap">
+    <table>
+      <caption id="cap">Notengrenzen bei n = 48 Punkten</caption>
+      <thead>
+        <tr>
+          <th class="c-note">Note</th>
+          <th>Wert</th>
+          <th>ab %</th>
+          <th>ab Punkten</th>
+          <th>Punktbereich</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="panel notes">
+    <div>
+      <h2>Aufbau</h2>
+      <p>Eine Notenstufe von 1 bis 4 umfasst <strong>12,5 % von n</strong>, eine Tendenzstufe ein Drittel davon: <code>n/24 ≈ 4,17 %</code>.</p>
+      <p>Die Noten 5 und 6 teilen sich die untere Hälfte und umfassen je <strong>25 % von n</strong>.</p>
+      <p>Die angegebene Grenze gehört jeweils zur <strong>besseren</strong> Note — verglichen wird mit ≥.</p>
+    </div>
+    <div>
+      <h2>Wahl von n</h2>
+      <p>Ein <strong>Vielfaches von 24</strong> (24, 48, 72) legt alle Grenzen auf ganze Punkte, ein Vielfaches von 12 (36, 60) auf halbe Punkte.</p>
+      <p>Bei anderen Werten entstehen krumme Grenzen — dann eine Rundung wählen und konsistent anwenden.</p>
+    </div>
+    <div>
+      <h2>Kein Automatismus</h2>
+      <p>Der Schlüssel ist ein Hilfsmittel. War eine Aufgabe erkennbar zu schwer, darf er für diese Arbeit angepasst werden — die Note ist nach § 7 Abs. 2 NVO eine pädagogisch-fachliche Gesamtwertung.</p>
+      <p>Tendenznoten sind in Klassenarbeiten zulässig; im <strong>Zeugnis</strong> sind nur ganze Noten erlaubt (§ 5 Abs. 4 NVO).</p>
+    </div>
+  </div>
+
+  <footer>
+    Halbierungsschlüssel · Notenbildungsverordnung Baden-Württemberg
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Untergrenze jeder Note in Einheiten von e = n/24.
+  var FULL = [
+    { l: "1+", w: "0,7", u: 23 }, { l: "1",  w: "1,0", u: 22 }, { l: "1−", w: "1,3", u: 21 },
+    { l: "2+", w: "1,7", u: 20 }, { l: "2",  w: "2,0", u: 19 }, { l: "2−", w: "2,3", u: 18 },
+    { l: "3+", w: "2,7", u: 17 }, { l: "3",  w: "3,0", u: 16 }, { l: "3−", w: "3,3", u: 15 },
+    { l: "4+", w: "3,7", u: 14 }, { l: "4",  w: "4,0", u: 13 }, { l: "4−", w: "4,3", u: 12 },
+    { l: "5+", w: "4,7", u: 10 }, { l: "5",  w: "5,0", u:  8 }, { l: "5−", w: "5,3", u:  6 },
+    { l: "6",  w: "6,0", u:  0 }
+  ];
+
+  var el = {
+    n: document.getElementById("n"),
+    nHint: document.getElementById("n-hint"),
+    rounding: document.getElementById("rounding"),
+    full: document.getElementById("full"),
+    reached: document.getElementById("reached"),
+    rows: document.getElementById("rows"),
+    cap: document.getElementById("cap"),
+    passPts: document.getElementById("pass-pts"),
+    passOf: document.getElementById("pass-of"),
+    unitVal: document.getElementById("unit-val"),
+    warn: document.getElementById("warn"),
+    verdict: document.getElementById("verdict"),
+    vGrade: document.getElementById("v-grade"),
+    vText: document.getElementById("v-text")
+  };
+
+  function num(v, min, max) {
+    return new Intl.NumberFormat("de-DE", {
+      minimumFractionDigits: min === undefined ? 0 : min,
+      maximumFractionDigits: max === undefined ? 2 : max
+    }).format(v);
+  }
+
+  function scale(mode) {
+    var list = FULL;
+    if (!el.full.checked) {
+      list = FULL.filter(function (g) {
+        return g.l !== "1+" && g.l !== "5+" && g.l !== "5−";
+      }).map(function (g) {
+        return g.l === "5" ? { l: g.l, w: g.w, u: 6 } : g;
+      });
+    }
+    return list;
+  }
+
+  function step(mode) { return mode === "halb" ? 0.5 : mode === "ganz" ? 1 : 0; }
+
+  function roundDown(v, mode) {
+    var s = step(mode);
+    if (!s) return v;
+    return Math.floor(v / s + 1e-9) * s;
+  }
+
+  function band(label) {
+    var d = label.charAt(0);
+    return "var(--b" + d + ")";
+  }
+
+  function render() {
+    var n = parseFloat(el.n.value);
+    var mode = el.rounding.value;
+    var grades = scale(mode);
+
+    if (!isFinite(n) || n <= 0) {
+      el.rows.innerHTML = "";
+      el.warn.className = "warn on";
+      el.warn.textContent = "Bitte eine Gesamtpunktzahl größer als 0 eingeben.";
+      el.verdict.className = "verdict";
+      return;
+    }
+
+    var e = n / 24;
+    el.passOf.textContent = num(n);
+    el.unitVal.textContent = num(e);
+    el.cap.textContent = "Notengrenzen bei n = " + num(n) + " Punkten";
+
+    // Hinweis zur Wahl von n
+    if (Math.abs(n / 24 - Math.round(n / 24)) < 1e-9) {
+      el.nHint.textContent = "Vielfaches von 24 — alle Grenzen liegen auf ganzen Punkten.";
+    } else if (Math.abs(n / 12 - Math.round(n / 12)) < 1e-9) {
+      el.nHint.textContent = "Vielfaches von 12 — alle Grenzen liegen auf halben Punkten.";
+    } else {
+      el.nHint.textContent = "Krumme Grenzen — ein Vielfaches von 24 legt sie auf ganze Punkte.";
+    }
+
+    // Grenzen berechnen
+    var rows = grades.map(function (g) {
+      var pct = g.u * 100 / 24;
+      var raw = g.u * e;
+      return { l: g.l, w: g.w, pct: pct, lo: roundDown(raw, mode) };
+    });
+
+    // Obergrenzen: bis knapp unter die nächstbessere Grenze
+    var s = step(mode);
+    rows.forEach(function (r, i) {
+      r.hi = i === 0 ? n : (s ? rows[i - 1].lo - s : rows[i - 1].lo);
+    });
+
+    // Kollabierte Grenzen erkennen
+    var collapsed = rows.some(function (r, i) {
+      return i > 0 && rows[i - 1].lo <= r.lo;
+    });
+    if (collapsed) {
+      el.warn.className = "warn on";
+      el.warn.textContent = "Bei n = " + num(n) + " und dieser Rundung fallen benachbarte Notengrenzen zusammen. "
+        + "Wähle eine höhere Gesamtpunktzahl (Vielfaches von 24) oder eine feinere Rundung.";
+    } else {
+      el.warn.className = "warn";
+    }
+
+    // Bestehensgrenze
+    var pass = rows.filter(function (r) { return r.l === "4−"; })[0];
+    el.passPts.textContent = num(pass.lo);
+
+    // Treffer der erreichten Punkte
+    var reached = parseFloat(el.reached.value);
+    var hit = null;
+    if (isFinite(reached) && el.reached.value !== "") {
+      for (var i = 0; i < rows.length; i++) {
+        if (reached >= rows[i].lo - 1e-9) { hit = rows[i]; break; }
+      }
+    }
+
+    // Tabelle
+    el.rows.innerHTML = "";
+    rows.forEach(function (r) {
+      var tr = document.createElement("tr");
+      var d = r.l.charAt(0);
+      var cls = [];
+      if (d === "5" || d === "6") cls.push("fail");
+      if (r.l === "4−") cls.push("pass-line");
+      if (r.l === "2+" || r.l === "3+" || r.l === "4+" || (r.l === "5" && !el.full.checked) || r.l === "5+") cls.push("grp");
+      if (hit && hit.l === r.l) cls.push("hit");
+      tr.className = cls.join(" ");
+
+      var range = r.l === "6"
+        ? "0 – " + num(r.hi)
+        : num(r.lo) + " – " + num(r.hi);
+
+      tr.innerHTML =
+        '<td class="c-note" style="--band:' + band(r.l) + '">' + r.l +
+          (r.l === "4−" ? '<span class="pass-tag">bestanden</span>' : '') + '</td>' +
+        '<td class="c-val">' + r.w + '</td>' +
+        '<td>' + num(r.pct, 2, 2) + ' %</td>' +
+        '<td class="c-pts">' + num(r.lo) + '</td>' +
+        '<td class="c-range">' + range + '</td>';
+      el.rows.appendChild(tr);
+    });
+
+    // Ergebnis
+    if (hit) {
+      var failing = hit.l.charAt(0) === "5" || hit.l.charAt(0) === "6";
+      el.verdict.className = "verdict on " + (failing ? "fail" : "pass");
+      el.vGrade.textContent = hit.l;
+      el.vText.textContent = num(reached) + " von " + num(n) + " Punkten sind "
+        + num(reached / n * 100, 1, 1) + " % — Note " + hit.l
+        + (failing ? " (nicht bestanden)." : ".");
+    } else {
+      el.verdict.className = "verdict";
+    }
+  }
+
+  ["input", "change"].forEach(function (evt) {
+    [el.n, el.rounding, el.full, el.reached].forEach(function (c) {
+      c.addEventListener(evt, render);
+    });
+  });
+
+  render();
+})();
+</script>
