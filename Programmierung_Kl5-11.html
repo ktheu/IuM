@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Programmieren im Bildungsplan Informatik und Medienbildung, Klassen 5 bis 11: Fortschrittsmatrix der Konzepte sowie Uebersichtstabelle aller 46 Programmier-Teilkompetenzen mit Inhalten und Aufgaben samt Loesungen.">
+<title>Programmieren Klassen 5–11</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; }
+  img, svg { max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+</style>
+<style>
+  :root{
+    color-scheme:light;
+    --ground:#f5f6f8; --surface:#ffffff; --surface-2:#eef0f4;
+    --ink:#14181e; --ink-2:#39414d; --muted:#5b6573; --line:#d8dce4; --line-soft:#e6e9ef;
+    --accent:#12459e; --accent-soft:#e4eaf6;
+    --a-dp:#12459e; --a-id:#0f6355; --a-al:#6c3a8e; --a-ks:#a0442b; --a-da:#6f6014;
+    --sol-bg:#f2f6f1; --sol-line:#c9d8c6; --sol-ink:#2c4a2a;
+    --neu-bg:#eef3fa; --neu-ink:#12459e;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:"Atkinson Hyperlegible","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+      --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+      --accent:#8fb2ee; --accent-soft:#1d2735;
+      --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+      --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+      --neu-bg:#1b2434; --neu-ink:#8fb2ee;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+    --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+    --accent:#8fb2ee; --accent-soft:#1d2735;
+    --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+    --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+    --neu-bg:#1b2434; --neu-ink:#8fb2ee;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem 5rem}
+
+  .mast{border-bottom:1px solid var(--line);padding:3.5rem 0 2rem;margin-bottom:2.5rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 1.1rem}
+  .mast h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5.5vw,3rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 .5rem;text-wrap:balance}
+  .mast .sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--ink-2);margin:0 0 1.6rem}
+  .mast p.lede{max-width:74ch;color:var(--ink-2);margin:0 0 1.4rem;text-wrap:pretty}
+  .src{font-size:.85rem;color:var(--muted);border-left:2px solid var(--line);padding-left:.9rem;max-width:74ch;margin:0 0 .9rem;text-wrap:pretty}
+
+  .bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);margin-bottom:2.5rem}
+  .bar-in{max-width:70rem;margin:0 auto;padding:.6rem 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center}
+  .bar nav{display:flex;flex-wrap:wrap;gap:.15rem .55rem;flex:1 1 auto}
+  .bar nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:.2rem .1rem;border-bottom:2px solid transparent}
+  .bar nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+  button.toggle{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:2px;padding:.35rem .7rem;cursor:pointer}
+  button.toggle:hover{border-color:var(--accent);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .area{margin:0 0 3.5rem;--c:var(--a-al)}
+  #m1{--c:var(--accent)} #k6,#k7{--c:var(--a-id)} #k8{--c:var(--a-al)} #k910a,#k910b{--c:var(--a-ks)} #k11{--c:var(--a-dp)}
+  .area-head{border-top:3px solid var(--c);padding-top:1rem;margin-bottom:1.5rem}
+  .area-head .kb{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:.4rem}
+  .area-head h2{font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,1.85rem);font-weight:600;line-height:1.2;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .area-head .count{font-size:.85rem;color:var(--muted);margin:.45rem 0 0}
+  .area-head .intro{font-size:.92rem;color:var(--ink-2);margin:.8rem 0 0;max-width:74ch;border-left:2px solid var(--line);padding-left:.9rem;text-wrap:pretty}
+
+  .tbl-scroll{overflow-x:auto;margin:.5rem 0 1rem;border:1px solid var(--line-soft);background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  thead th{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;background:var(--surface-2);position:sticky;top:0;border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:none}
+  td.n,th.n{text-align:right;font-family:var(--mono)}
+
+  /* Haupttabelle der Teilkompetenzen */
+  table.prog{min-width:58rem}
+  table.prog td:nth-child(1){font-family:var(--mono);font-size:.76rem;white-space:nowrap;color:var(--muted);width:4.5rem}
+  table.prog td:nth-child(2){font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--c);white-space:nowrap;width:4rem}
+  table.prog td:nth-child(3){width:19rem;color:var(--ink)}
+  table.prog td:nth-child(4){width:15rem;color:var(--ink-2);font-size:.85rem}
+  table.prog td:nth-child(5){color:var(--ink-2);font-size:.85rem}
+  table.prog tbody tr:hover{background:var(--surface-2)}
+  .tkname{font-family:var(--sans);font-size:.88rem;font-weight:400;color:var(--ink);display:block}
+  .begriffe{display:flex;flex-wrap:wrap;gap:.25rem}
+  .bg{font-family:var(--mono);font-size:.7rem;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:2px;padding:.1em .4em;white-space:nowrap}
+  .bg.neu{background:var(--neu-bg);color:var(--neu-ink);border-color:var(--neu-ink);font-weight:600}
+
+  .auf{margin:0 0 .5rem}
+  .auf:last-of-type{margin-bottom:0}
+  .auf b{font-family:var(--mono);font-size:.72rem;color:var(--c);font-weight:600}
+  details{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:2px;margin:.3rem 0 .6rem}
+  details:last-child{margin-bottom:0}
+  details>summary{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--sol-ink);padding:.3rem .55rem;cursor:pointer;list-style:none}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::before{content:"▸ ";display:inline-block}
+  details[open]>summary::before{content:"▾ "}
+  details .sol{padding:0 .6rem .55rem;font-size:.83rem;color:var(--ink-2);line-height:1.55}
+  details .sol p{margin:0 0 .4rem}
+  details .sol p:last-child{margin:0}
+  details .sol ul{margin:.2rem 0 .4rem;padding-left:1.1rem}
+  details .sol li{margin-bottom:.15rem}
+  details .sol strong{color:var(--ink)}
+  details .sol code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding:.05em .3em;border-radius:2px;color:var(--ink)}
+
+  /* Fortschrittsmatrix */
+  table.matrix{min-width:46rem;font-size:.84rem}
+  table.matrix th:first-child,table.matrix td:first-child{width:16rem;text-align:left}
+  table.matrix thead th:not(:first-child){text-align:center;width:5.2rem}
+  table.matrix td:not(:first-child){text-align:center;font-family:var(--mono);font-size:.74rem}
+  table.matrix tr.grp td{background:var(--surface-2);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  .e{display:inline-block;background:var(--a-al);color:#fff;border-radius:2px;padding:.08em .4em;font-weight:600}
+  .v{display:inline-block;border:1px solid var(--line);color:var(--muted);border-radius:2px;padding:.08em .4em}
+  :root[data-theme="dark"] .e,
+  :root:not([data-theme="light"]) .e{color:#14181e}
+  @media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .e{color:#fff}}
+  .leg{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;font-size:.85rem;color:var(--ink-2);margin:.6rem 0 0}
+
+  .term{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:.08em .35em;border-radius:2px;color:var(--ink)}
+  .prose p{margin:0 0 .8rem;max-width:74ch;color:var(--ink-2)}
+  .prose strong{color:var(--ink);font-weight:700}
+  .prose ul{margin:.2rem 0 .9rem;padding-left:1.1rem;max-width:74ch;color:var(--ink-2)}
+  .prose li{margin-bottom:.3rem}
+  a.file{font-family:var(--mono);font-size:.76rem;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+  a.file:hover{border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <nav>
+      <a href="#m1">Matrix</a>
+      <a href="#k6">Kl 6</a>
+      <a href="#k7">Kl 7</a>
+      <a href="#k8">Kl 8</a>
+      <a href="#k910a">Kl 9/10 · Interaktion</a>
+      <a href="#k910b">Kl 9/10 · Daten</a>
+      <a href="#k11">Kl 11</a>
+    </nav>
+    <button class="toggle" id="solAll" type="button">Alle Lösungen einblenden</button>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Farbschema wechseln">Dunkel</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Bildungsplan IuM · Anhörungsfassung 21.09.2026</p>
+    <h1>Programmieren in den Klassen 5 bis 11</h1>
+    <p class="sub">Fortschritt der Konzepte und Übersicht aller 46 Programmier-Teilkompetenzen</p>
+    <p class="lede">Diese Übersicht sammelt aus allen Jahrgängen die Teilkompetenzen, die unmittelbar das Programmieren betreffen — und zeigt, in welcher Klasse welches Konzept eingeführt und wo es wieder aufgegriffen wird. Zu jeder Teilkompetenz stehen die Inhalte in Schlagworten und die beiden Aufgaben mit einer knappen Lösung.</p>
+    <p class="src">Grundlage: <em>Bildungsplan des Gymnasiums — Informatik und Medienbildung, Anhörungsfassung vom 21. September 2026</em>. Die Formulierungen der Teilkompetenzen sind wörtlich übernommen.</p>
+
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Klasse</th><th>Themenfeld</th><th class="n">TK insgesamt</th><th class="n">davon Programmierung</th><th>Kennung</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td><em>kein Programmier-Themenfeld</em></td><td class="n">—</td><td class="n">0</td><td>—</td></tr>
+        <tr><td>6</td><td>3.1.3.1 Erste Schritte in der Programmierung</td><td class="n">6</td><td class="n">6</td><td>AL 1–6</td></tr>
+        <tr><td>7</td><td>3.2.3.1 Algorithmische Grundbausteine</td><td class="n">6</td><td class="n">6</td><td>AL 1–6</td></tr>
+        <tr><td>8</td><td>3.2.3.2 Algorithmen und Daten</td><td class="n">13</td><td class="n">8</td><td>AL 1–8</td></tr>
+        <tr><td>9/10</td><td>3.3.3.1 Interaktion und lernende Algorithmen</td><td class="n">15</td><td class="n">11</td><td>IA 1–11</td></tr>
+        <tr><td>9/10</td><td>3.3.3.2 Datenverarbeitende Algorithmen</td><td class="n">11</td><td class="n">8</td><td>DV 1–8</td></tr>
+        <tr><td>11</td><td>3.4.3.1 Modularisierung durch Funktionen</td><td class="n">7</td><td class="n">7</td><td>MF 1–7</td></tr>
+        <tr><td colspan="2"><strong>Summe</strong></td><td class="n"><strong>58</strong></td><td class="n"><strong>46</strong></td><td></td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="src"><strong>Was nicht enthalten ist:</strong> Die zwölf Teilkompetenzen der Algorithmen-Themenfelder, die nicht das Programmieren betreffen — Sprachmodelle (Kl 8, AL 9–13), verstärkendes Lernen (Kl 9/10, IA 12–15) und datenbasierte Systeme (Kl 9/10, DV 9–11). Ebenso fehlen hier die Themenfelder zu Daten und Codierung, Netzen, Kryptographie und Medienbildung.</p>
+    <p class="src"><strong>Zur Klasse 5:</strong> Der Bildungsplan fasst die Klassen 5 und 6 zu einem Block zusammen. Die Zuordnung des Programmier-Themenfelds zu Klasse 6 ist eine Setzung für die Unterrichtsplanung, keine Vorgabe des Plans.</p>
+    <p class="src"><strong>Ausführliche Fassung:</strong> Die vollständig ausgearbeiteten Inhalte und Lösungen stehen in den Jahrgangsdateien —
+      <a class="file" href="klasse6/IuM_Klasse6_NiveauE.html">klasse6</a> ·
+      <a class="file" href="klasse7/IuM_Klasse7_NiveauE.html">klasse7</a> ·
+      <a class="file" href="klasse8/IuM_Klasse8.html">klasse8</a> ·
+      <a class="file" href="klasse9_10/IuM_Klasse9_10.html">klasse9_10</a> ·
+      <a class="file" href="klasse11/IuM_Klasse11.html">klasse11</a>.
+      Die Lösungen in dieser Übersicht sind auf das Ergebnis verkürzt.</p>
+  </header>
+
+  <!-- ============ FORTSCHRITTSMATRIX ============ -->
+  <section class="area" id="m1">
+    <div class="area-head">
+      <span class="kb">Teil 1</span>
+      <h2>Wann wird welches Konzept eingeführt?</h2>
+      <p class="count">28 Programmierkonzepte über sechs Jahrgangsstufen</p>
+      <p class="intro">Die Matrix zeigt, wo ein Konzept erstmals verlangt wird und wo es wieder aufgegriffen oder erweitert wird. Die Angabe nennt jeweils die Kennung der Teilkompetenz.</p>
+    </div>
+
+    <div class="tbl-scroll"><table class="matrix">
+      <thead><tr><th>Konzept</th><th>Kl 6</th><th>Kl 7</th><th>Kl 8</th><th>Kl 9/10</th><th>Kl 11</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="6">Algorithmische Grundbausteine</td></tr>
+        <tr><td>Anweisung, Sequenz</td><td><span class="e">AL 4</span></td><td><span class="v">AL 1</span></td><td></td><td></td><td></td></tr>
+        <tr><td>Schleife mit konstanter Anzahl</td><td><span class="e">AL 4</span></td><td><span class="v">AL 1</span></td><td><span class="v">AL 6</span></td><td></td><td></td></tr>
+        <tr><td>Schleife mit Bedingung (<span class="term">while</span>)</td><td></td><td><span class="e">AL 1</span></td><td><span class="v">AL 6</span></td><td><span class="v">IA 10</span></td><td></td></tr>
+        <tr><td>Elementweise Schleife (<span class="term">for … in</span>)</td><td></td><td></td><td></td><td><span class="e">IA 1</span> <span class="v">IA 4 · DV 5</span></td><td></td></tr>
+        <tr><td>Verzweigung (<span class="term">if / else</span>)</td><td></td><td><span class="e">AL 1</span></td><td><span class="v">AL 1</span></td><td><span class="v">IA 6</span></td><td></td></tr>
+        <tr><td><strong>Funktionen</strong> mit Parametern und Rückgabe</td><td></td><td></td><td></td><td></td><td><span class="e">MF 1</span> <span class="v">MF 4</span></td></tr>
+
+        <tr class="grp"><td colspan="6">Ausdrücke, Werte, Datentypen</td></tr>
+        <tr><td>Ausdrücke ohne Operatoren</td><td></td><td><span class="e">AL 1</span></td><td><span class="v">AL 1</span></td><td></td><td></td></tr>
+        <tr><td>Arithmetische Operatoren</td><td></td><td><span class="e">AL 1</span></td><td><span class="v">AL 1 · AL 7</span></td><td></td><td></td></tr>
+        <tr><td>Vergleichsoperatoren</td><td></td><td><span class="e">AL 1</span></td><td><span class="v">AL 1</span></td><td></td><td></td></tr>
+        <tr><td>Logische Operatoren, Wahrheitstafeln</td><td></td><td></td><td><span class="e">AL 1 · AL 2</span></td><td></td><td></td></tr>
+        <tr><td>Datentypen benennen</td><td></td><td><span class="e">AL 3</span><br>3 Typen</td><td><span class="v">AL 5</span><br>4 Typen</td><td><span class="v">IA 9</span></td><td></td></tr>
+        <tr><td>Typumwandlung</td><td></td><td></td><td></td><td><span class="e">IA 5</span></td><td></td></tr>
+        <tr><td>Variablen, Initialisierung</td><td><span class="v">AL 6</span></td><td></td><td><span class="e">AL 4</span></td><td><span class="v">IA 2</span></td><td></td></tr>
+        <tr><td>Gültigkeitsbereich von Variablen</td><td></td><td></td><td></td><td></td><td><span class="e">MF 3</span></td></tr>
+
+        <tr class="grp"><td colspan="6">Datenstrukturen</td></tr>
+        <tr><td>Zeichenketten zeichenweise verarbeiten</td><td></td><td></td><td></td><td><span class="e">IA 4</span></td><td></td></tr>
+        <tr><td><strong>Listen</strong> (numerisch indizierte Sammlung)</td><td></td><td></td><td></td><td><span class="e">DV 1</span> <span class="v">DV 2 · DV 5</span></td><td></td></tr>
+        <tr><td><strong>Dictionaries</strong> (schlüsselbasierte Sammlung)</td><td></td><td></td><td></td><td><span class="e">DV 1</span> <span class="v">DV 2 · DV 5</span></td><td></td></tr>
+        <tr><td>Daten modellieren</td><td></td><td></td><td></td><td><span class="e">DV 2</span></td><td></td></tr>
+
+        <tr class="grp"><td colspan="6">Ein- und Ausgabe</td></tr>
+        <tr><td>Standardeingabe (<span class="term">input</span>)</td><td></td><td></td><td></td><td><span class="e">IA 2</span> <span class="v">IA 6</span></td><td></td></tr>
+        <tr><td>Standardausgabe, Formatierung</td><td></td><td></td><td></td><td><span class="e">IA 3</span></td><td></td></tr>
+        <tr><td>Dateien einlesen (Text)</td><td></td><td></td><td></td><td><span class="e">DV 3</span></td><td></td></tr>
+        <tr><td>Dateien einlesen (CSV, JSON, XML)</td><td></td><td></td><td></td><td><span class="e">DV 4</span></td><td><span class="v">MF 4</span></td></tr>
+        <tr><td>Bibliotheken verwenden</td><td></td><td></td><td><span class="e">AL 3</span></td><td><span class="v">DV 3 · DV 4</span></td><td></td></tr>
+
+        <tr class="grp"><td colspan="6">Implementieren</td></tr>
+        <tr><td>Blockbasiert implementieren</td><td><span class="e">AL 5</span></td><td><span class="v">AL 4</span></td><td></td><td></td><td></td></tr>
+        <tr><td><strong>Textuell</strong> implementieren</td><td></td><td></td><td><span class="e">AL 6</span></td><td><span class="v">IA 6 · DV 6</span></td><td><span class="v">MF 4</span></td></tr>
+        <tr><td>Auswertemuster: Zählen, Summieren, Filtern, Extremwert</td><td></td><td></td><td><span class="v">AL 6</span></td><td><span class="e">DV 6</span></td><td></td></tr>
+        <tr><td>Vorgegebene Programme anpassen</td><td></td><td></td><td></td><td><span class="e">DV 6</span></td><td></td></tr>
+
+        <tr class="grp"><td colspan="6">Analysieren, Prüfen, Dokumentieren</td></tr>
+        <tr><td>Codeabschnitte analysieren</td><td><span class="e">AL 6</span></td><td><span class="v">AL 5 · AL 6</span></td><td><span class="v">AL 8</span></td><td><span class="v">IA 10</span></td><td><span class="v">MF 6</span></td></tr>
+        <tr><td>Werteverlaufstabelle</td><td><span class="v">AL 6</span></td><td><span class="v">AL 5</span></td><td></td><td><span class="e">IA 10</span></td><td><span class="v">MF 6</span></td></tr>
+        <tr><td>Werkzeuge zur Fehlersuche (Debugger, REPL)</td><td></td><td></td><td><span class="e">AL 8</span></td><td><span class="v">IA 11</span></td><td></td></tr>
+        <tr><td>Fehlerarten unterscheiden</td><td></td><td></td><td></td><td><span class="e">DV 7</span></td><td></td></tr>
+        <tr><td>Kommentieren</td><td></td><td></td><td></td><td><span class="e">IA 8</span></td><td></td></tr>
+        <tr><td>Schnittstellen dokumentieren</td><td></td><td></td><td></td><td></td><td><span class="e">MF 2 · MF 7</span></td></tr>
+        <tr><td>KI-Werkzeuge beim Programmieren</td><td></td><td></td><td></td><td><span class="e">DV 8</span></td><td></td></tr>
+
+        <tr class="grp"><td colspan="6">Darstellungsformen</td></tr>
+        <tr><td>Flussdiagramm lesen</td><td><span class="e">AL 3</span></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Flussdiagramm implementieren</td><td></td><td></td><td></td><td><span class="e">IA 7</span></td><td></td></tr>
+        <tr><td>Ablauf darstellen (Bewegungsverlauf)</td><td></td><td><span class="e">AL 5</span></td><td></td><td></td><td></td></tr>
+        <tr><td>Sequenzdiagramm</td><td></td><td></td><td></td><td></td><td><span class="e">MF 5</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="leg">
+      <span><span class="e">AL 4</span> &nbsp;erstmals verlangt</span>
+      <span><span class="v">AL 1</span> &nbsp;wieder aufgegriffen oder erweitert</span>
+    </p>
+
+    <div class="prose" style="margin-top:1.8rem">
+      <p><strong>Was an der Matrix auffällt</strong></p>
+      <ul>
+        <li><strong>Der Wechsel von blockbasiert zu textuell liegt in Klasse 8</strong> (AL 6). Klassen 6 und 7 arbeiten blockbasiert; danach wird nur noch textuell programmiert.</li>
+        <li><strong>Die Grundbausteine sind früh vollständig:</strong> Anweisung, Schleife, Verzweigung und Ausdrücke stehen bis Ende Klasse 7. Was danach kommt, ist Vertiefung und Erweiterung — mit zwei Ausnahmen: die elementweise Schleife in Klasse 9/10 und die Funktionen in Klasse 11.</li>
+        <li><strong>Funktionen kommen spät.</strong> Erst in Klasse 11 werden eigene Funktionen geschrieben. In Klasse 7 wird Übergabe und Rückgabe nur <em>erkannt</em> (AL 2), in Klasse 8 werden Bibliotheksfunktionen <em>benutzt</em> (AL 3) — selbst definieren erst MF 1.</li>
+        <li><strong>Ein- und Ausgabe liegen in Klasse 9/10.</strong> Vorher gibt es keine Teilkompetenz zu <span class="term">input</span> oder <span class="term">print</span>; die blockbasierten Umgebungen bringen das mit.</li>
+        <li><strong>Datenstrukturen sind auf Klasse 9/10 gebündelt</strong> — Listen und Dictionaries zugleich, in einer einzigen Teilkompetenz (DV 1).</li>
+        <li><strong>Codeanalyse läuft durch alle Jahrgänge</strong> und ist damit der durchgängigste Faden: von AL 6 in Klasse 6 bis MF 6 in Klasse 11.</li>
+      </ul>
+      <p><strong>Eine Besonderheit der Anordnung:</strong> In Klasse 9/10 werden Dateien eingelesen und Daten ausgewertet, <em>bevor</em> eigene Funktionen zur Verfügung stehen. Programme dieser Stufe bleiben deshalb notwendig flach strukturiert — die Gliederung in Funktionen kommt erst im Jahr darauf.</p>
+    </div>
+  </section>
+
+  <!-- ============ KLASSE 6 ============ -->
+  <section class="area" id="k6">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klasse 6 · 3.1.3.1</span>
+      <h2>Erste Schritte in der Programmierung</h2>
+      <p class="count">6 Teilkompetenzen · AL 1 – AL 6 · blockbasiert</p>
+      <p class="intro">Einstieg über Algorithmen im Alltag und ihre grafische Darstellung. Programmiert wird blockbasiert; es gibt nur zwei Grundbausteine — Anweisung und Schleife mit konstanter Anzahl. Verzweigungen und Variablen sind noch nicht gefordert.</p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>6</td><td>AL 1</td>
+        <td><span class="tkname">Digitale Systeme identifizieren, deren Funktionsweise wesentlich durch algorithmische Prozesse bestimmt ist</span></td>
+        <td><div class="begriffe"><span class="bg neu">algorithmischer Prozess</span><span class="bg">Entscheidung</span><span class="bg">Berechnung</span><span class="bg">Eingabe→Ausgabe</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für fünf Systeme entscheiden, ob algorithmische Prozesse wesentlich sind — Taschenlampen-App, Übersetzer, Navigation, Taschenrechner, Wecker.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Wesentlich algorithmisch: <strong>Übersetzer</strong> (wählt zwischen Wortbedeutungen), <strong>Navigation</strong> (berechnet und vergleicht Wege). Nicht wesentlich: <strong>Taschenlampe</strong> (schaltet nur), <strong>Wecker</strong> (vergleicht nur die Uhrzeit). Grenzfall <strong>Taschenrechner</strong>: Er rechnet, trifft aber keine Entscheidungen.</p>
+            <p><em>Kriterium:</em> Wird aus den Eingaben etwas <em>abgeleitet</em>, oder nur weitergegeben?</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Warum folgt daraus, dass eine Navigation morgens und sonntags verschiedene Routen vorschlägt, ein algorithmischer Prozess?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Eine feste Tabelle würde immer dasselbe liefern. Verschiedene Antworten auf dieselbe Frage bedeuten, dass <strong>zusätzliche Eingaben</strong> (Verkehrslage, Uhrzeit) verarbeitet und Wege <strong>verglichen</strong> werden. Es wird gerechnet, nicht nachgeschlagen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>6</td><td>AL 2</td>
+        <td><span class="tkname">Algorithmen als Abfolge von präzisen Handlungsvorschriften beschreiben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Algorithmus</span><span class="bg neu">Präzision</span><span class="bg">Eindeutigkeit</span><span class="bg">Endlichkeit</span><span class="bg">Reihenfolge</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Butterbrot-Anleitung für einen Roboter: vier unpräzise Stellen finden und verbessern.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Unpräzise: „etwas Brot" (wie viel?), „Butter drauf" (womit, wie dick, auf welche Seite?), „Käse dazu" (wie viele Scheiben, wohin?), die Reihenfolge ist nicht festgelegt. Außerdem fehlt, dass das Brot <em>geschnitten</em> sein muss.</p>
+            <p><em>Kern:</em> Eine Handlungsvorschrift ist präzise, wenn sie <strong>keine Entscheidung offenlässt</strong>, die der Ausführende treffen müsste.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Das Maximum aus 20 Zahlen in <em>einem</em> Durchgang finden — als präzise Schrittfolge.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>1. Merke die erste Zahl als „größte". 2. Gehe die restlichen 19 der Reihe nach durch. 3. Ist die betrachtete Zahl größer als die gemerkte, merke sie stattdessen. 4. Am Ende ist die gemerkte Zahl die größte.</p>
+            <p><em>Warum ein Durchgang genügt:</em> Die gemerkte Zahl ist immer das Maximum der bisher gesehenen. Wichtig ist, mit der <strong>ersten Zahl</strong> zu starten, nicht mit 0 — sonst scheitert es bei lauter negativen Zahlen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>6</td><td>AL 3</td>
+        <td><span class="tkname">Einfache grafische Darstellungen von Algorithmen erläutern und die dargestellten Handlungsschritte durchführen</span></td>
+        <td><div class="begriffe"><span class="bg neu">Programmablaufplan</span><span class="bg neu">Flussdiagramm</span><span class="bg">Raute = Bedingung</span><span class="bg">Rücksprung = Schleife</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Einen gegebenen Programmablaufplan erläutern und ausführen; Rolle der Raute und des Rücksprungpfeils benennen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die <strong>Raute</strong> ist die Entscheidung — von ihr gehen zwei Wege ab (ja/nein). Der <strong>zurückführende Pfeil</strong> erzeugt die Wiederholung: Er schickt den Ablauf an eine frühere Stelle. Beides zusammen bildet eine Schleife mit Bedingung.</p>
+            <p><em>Ohne Rücksprung</em> liefe der Plan genau einmal von oben nach unten durch.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Einen Programmablaufplan zeichnen für: Wecker klingelt → Schultag? → aufstehen und packen, sonst weiterschlafen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Start → Rechteck „Wecker klingelt" → <strong>Raute</strong> „Schultag?" → ja: „aufstehen", „Schulsachen packen" · nein: „weiterschlafen" → beide Wege treffen sich wieder → „in beiden Fällen: Wecker ausschalten" → Ende.</p>
+            <p><em>Typischer Fehler:</em> Die beiden Zweige nicht wieder zusammenführen. Was in <em>beiden</em> Fällen geschieht, steht nach der Zusammenführung — nicht zweimal.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>6</td><td>AL 4</td>
+        <td><span class="tkname">Algorithmische Grundbausteine beschreiben: Anweisung, Schleife mit konstanter Anzahl von Durchläufen</span></td>
+        <td><div class="begriffe"><span class="bg neu">Anweisung</span><span class="bg neu">Schleife</span><span class="bg">Schleifenrumpf</span><span class="bg">Durchlauf</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Dreimal „gehe 10 Schritte, drehe 120° rechts" — welche Figur entsteht, und wie lässt sich das verkürzen?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Ein <strong>gleichseitiges Dreieck</strong>: Drei Seiten gleicher Länge, Außenwinkel 120°, und 3 · 120° = 360° — die Figur ist geschlossen.</p>
+            <p>Verkürzt: <span class="term">wiederhole 3 mal [ gehe 10 Schritte · drehe 120° rechts ]</span> — aus sechs Anweisungen werden zwei im Rumpf.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei Programme vergleichen: „sage Hallo / sage Welt" innerhalb bzw. außerhalb der Schleife.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>A</strong> (beides im Rumpf): Hallo Welt Hallo Welt Hallo Welt — <strong>B</strong> (nur „Hallo" im Rumpf): Hallo Hallo Hallo Welt.</p>
+            <p><em>Kern:</em> Was <strong>eingerückt</strong> im Rumpf steht, wird wiederholt; was danach steht, läuft einmal. Die Zugehörigkeit zum Rumpf entscheidet über das Ergebnis.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>6</td><td>AL 5</td>
+        <td><span class="tkname">Die algorithmischen Grundbausteine in einer geeigneten (zum Beispiel blockbasierten) Programmiersprache verwenden</span></td>
+        <td><div class="begriffe"><span class="bg neu">blockbasiert</span><span class="bg">Startzustand</span><span class="bg">Reproduzierbarkeit</span><span class="bg">Schleife anwenden</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Quadrat mit Seitenlänge 80 zeichnen — bei jedem Start mit demselben Ergebnis, unabhängig von der vorherigen Position.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">gehe zu x:0 y:0 · setze Richtung auf 90° · lösche alles · wiederhole 4 mal [ gehe 80 Schritte · drehe 90° rechts ]</span></p>
+            <p><em>Entscheidend sind die drei Zeilen vor der Schleife:</em> Ohne das Festlegen von Position, Richtung und Zeichenfläche hängt das Ergebnis davon ab, wo die Figur vorher stand. Ein Programm soll bei gleicher Eingabe gleich wirken.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Treppe aus fünf Stufen — ein fehlerhaftes Skript analysieren und berichtigen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Der Fehler liegt im <strong>Setzen der Richtung innerhalb der Schleife</strong>: Dadurch wird die Drehung in jedem Durchlauf zurückgesetzt, und die Figur läuft nur in eine Richtung. Richtig ist, je Stufe <em>zweimal</em> zu drehen: 40 nach rechts, drehen, 40 nach oben, zurückdrehen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>6</td><td>AL 6</td>
+        <td><span class="tkname">Codeabschnitte schrittweise analysieren und deren Wirkung beschreiben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Werte-Tabelle</span><span class="bg">schrittweise</span><span class="bg">Zählervariable</span><span class="bg">Summe bilden</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> „summe = 0, zahl = 1, wiederhole 5 mal [summe + zahl; zahl + 1]" — Werte-Tabelle anlegen und Wirkung beschreiben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>summe: 0 → 1 → 3 → 6 → 10 → <strong>15</strong>; zahl: 1 → 2 → 3 → 4 → 5 → 6.</p>
+            <p><em>Wirkung:</em> Der Abschnitt bildet die Summe 1 + 2 + 3 + 4 + 5 = 15. Nach dem letzten Durchlauf steht zahl auf 6 — ein Wert, der nicht mehr in die Summe eingeht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei Spiralskripte vergleichen: Wo wird die Länge erhöht — im Rumpf oder davor?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Nur das Skript, das <strong>im Rumpf</strong> die Länge erhöht, erzeugt eine Spirale. Steht die Erhöhung davor, bleibt die Länge in allen Durchläufen gleich — es entsteht ein geschlossenes Vieleck.</p>
+            <p><em>Dasselbe Muster wie in AL 4:</em> Die Zugehörigkeit zum Schleifenrumpf entscheidet über die Wirkung.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ KLASSE 7 ============ -->
+  <section class="area" id="k7">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klasse 7 · 3.2.3.1</span>
+      <h2>Algorithmische Grundbausteine</h2>
+      <p class="count">6 Teilkompetenzen · AL 1 – AL 6 · blockbasiert</p>
+      <p class="intro">Die Grundbausteine werden vollständig: Verzweigung und die Schleife mit Bedingung kommen hinzu, ebenso Ausdrücke mit arithmetischen und Vergleichsoperatoren sowie die drei Datentypen. Übergabe und Rückgabe werden erkannt, aber noch nicht selbst definiert. Weiterhin blockbasiert.</p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>7</td><td>AL 1</td>
+        <td><span class="tkname">Algorithmische Grundbausteine beschreiben: Anweisung · Schleife (konstante Anzahl und mit Bedingung) · Verzweigung · Ausdrücke ohne Operatoren, mit arithmetischen und mit Vergleichsoperatoren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Verzweigung</span><span class="bg neu">Schleife mit Bedingung</span><span class="bg neu">Ausdruck</span><span class="bg neu">arithmetische Operatoren</span><span class="bg neu">Vergleichsoperatoren</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> In einem Programm jeden Grundbaustein benennen; bei Ausdrücken die Stufe angeben (ohne Operator, arithmetisch, Vergleich).</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">setze leben auf 3</span> → Anweisung, Ausdruck ohne Operator · <span class="term">wiederhole bis leben = 0</span> → Schleife mit Bedingung, Vergleichsausdruck · <span class="term">gehe 10 Schritt</span> → Anweisung · <span class="term">falls … dann</span> → Verzweigung · <span class="term">setze leben auf (leben − 1)</span> → Anweisung mit arithmetischem Ausdruck.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Für vier Situationen entscheiden: konstante Anzahl oder Bedingung?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Quadrat zeichnen → <strong>konstant</strong> (genau 4). 28 Schülerinnen begrüßen → <strong>konstant</strong> (Anzahl bekannt). Bis zur Ziellinie laufen → <strong>Bedingung</strong> (Anzahl vorher unbekannt). Würfeln bis zur Sechs → <strong>Bedingung</strong>.</p>
+            <p><em>Entscheidungsregel:</em> Anzahl vorher bekannt → konstant. Nur das Abbruchkriterium bekannt → Bedingung.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td><td>AL 2</td>
+        <td><span class="tkname">Übergabe und Rückgabe von Werten bei gegebenen Anweisungen und Ausdrücken identifizieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Übergabe</span><span class="bg neu">Rückgabe</span><span class="bg">Anweisung ohne Rückgabe</span><span class="bg">Ausdruck mit Rückgabe</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für mehrere Bausteine angeben, was übergeben und was zurückgegeben wird.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">gehe 50 Schritt</span> → übergeben: 50, <strong>keine Rückgabe</strong> · <span class="term">Zufallszahl von 1 bis 6</span> → übergeben: 1 und 6, Rückgabe: eine Zahl · <span class="term">setze punkte auf (punkte + 1)</span> → der Ausdruck gibt eine Zahl zurück, die Anweisung selbst nicht · <span class="term">Länge von name</span> → übergeben: name, Rückgabe: eine Zahl.</p>
+            <p><em>Merkmal:</em> Bausteine mit Rückgabe lassen sich <strong>einsetzen</strong>, solche ohne nicht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Warum lässt sich <span class="term">setze punkte auf (gehe 50 Schritt)</span> nicht zusammenbauen?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">gehe 50 Schritt</span> ist eine <strong>Anweisung ohne Rückgabe</strong> — es gibt keinen Wert, den man speichern könnte. In die Lücke passt nur ein Baustein, der etwas <em>zurückgibt</em>, etwa <span class="term">Zufallszahl von 1 bis 6</span> oder <span class="term">x-Position</span>.</p>
+            <p><em>Dieselbe Unterscheidung</em> begegnet in Klasse 11 als <span class="term">print</span> gegenüber <span class="term">return</span> (MF 1).</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td><td>AL 3</td>
+        <td><span class="tkname">Den Datentyp (Zeichenkette, Zahl, Wahrheitswert) von Werten und Ausdrücken identifizieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Zeichenkette</span><span class="bg neu">Zahl</span><span class="bg neu">Wahrheitswert</span><span class="bg">Datentyp eines Ausdrucks</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für sechs Ausdrücke Datentyp und Ergebnis angeben (punkte = 12, name = "Mira").</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">punkte</span> → Zahl, 12 · <span class="term">"12"</span> → <strong>Zeichenkette</strong>, "12" · <span class="term">punkte * 2</span> → Zahl, 24 · <span class="term">punkte &gt; 10</span> → <strong>Wahrheitswert</strong>, wahr · <span class="term">verbinde name "!"</span> → Zeichenkette, "Mira!" · <span class="term">Länge von name</span> → Zahl, 4.</p>
+            <p><em>Kern:</em> <span class="term">12</span> und <span class="term">"12"</span> sehen gleich aus und sind verschiedene Typen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Eingabe 99 löst „Rekord" aus, Eingabe 100 nicht — warum?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die Eingabe wird als <strong>Zeichenkette</strong> verglichen, also <em>alphabetisch</em>: "99" &gt; "100", weil „9" nach „1" kommt. Die Länge spielt keine Rolle, nur das erste unterschiedliche Zeichen.</p>
+            <p><em>Lösung:</em> Die Eingabe vor dem Vergleich in eine Zahl umwandeln. Dieselbe Falle vertieft IA 9 in Klasse 9/10.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td><td>AL 4</td>
+        <td><span class="tkname">Algorithmische Grundbausteine zielorientiert verwenden, um Algorithmen in einer geeigneten (zum Beispiel blockbasierten) Programmiersprache zu implementieren</span></td>
+        <td><div class="begriffe"><span class="bg">Schleife mit Bedingung</span><span class="bg">Verzweigung</span><span class="bg">Zähler</span><span class="bg">Zufallszahl</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Zahlenratespiel 1–100 mit Rückmeldung „zu klein / zu groß / richtig" und Versuchszähler.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Zufallszahl von 1 bis 100 speichern, Zähler auf 0 · <span class="term">wiederhole bis tipp = zahl</span>: fragen, Zähler + 1, dann Verzweigung mit drei Fällen · am Ende Zähler ausgeben.</p>
+            <p><em>Warum eine Schleife mit Bedingung:</em> Die Zahl der Versuche ist vorher unbekannt. Der Zähler muss <strong>vor</strong> der Schleife auf 0 gesetzt werden.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Ein Quadrat ohne Schleife — beurteilen und verbessern.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Vier gleiche Blockpaare lassen sich durch <span class="term">wiederhole 4 mal</span> ersetzen. Vorteile: kürzer, der Zweck ist erkennbar, und eine Änderung der Seitenlänge betrifft <strong>eine</strong> Stelle statt vier.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td><td>AL 5</td>
+        <td><span class="tkname">Codeabschnitte analysieren, deren Ablauf darstellen (zum Beispiel Bewegungsverlauf einer Figur) und deren Wirkung beschreiben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Ablauftabelle</span><span class="bg">Bewegungsverlauf</span><span class="bg">Zustand verfolgen</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Vier Durchläufe „gehe 100, drehe 90° rechts" als Tabelle mit Durchlauf, x, y, Richtung.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Start (0,0) Richtung 90° → (100,0) R 180° → (100,−100) R 270° → (0,−100) R 0° → <strong>(0,0) R 90°</strong>.</p>
+            <p><em>Wirkung:</em> Ein Quadrat mit Seitenlänge 100. Die Figur endet genau im Startzustand — daran erkennt man die geschlossene Figur.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> „wiederhole bis i &gt; 5" mit summe und i — Ablauftabelle und Wirkung.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>summe 0→1→3→6→10→15, i 1→2→3→4→5→6. Ausgabe <strong>15</strong>.</p>
+            <p><em>Wirkung:</em> Summe der Zahlen 1 bis 5. Die Schleife endet, wenn i auf 6 steht — dieser Wert geht nicht mehr in die Summe ein.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>7</td><td>AL 6</td>
+        <td><span class="tkname">Den Einfluss von übergebenen Werten auf die Programmausführung analysieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Parameter</span><span class="bg">Wertetabelle</span><span class="bg">Fallunterscheidung</span><span class="bg">Grenzfall</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Eigener Baustein <span class="term">Vieleck(n, laenge)</span> — Wertetabelle für (3,150), (4,100), (6,60).</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>(3,150): Dreieck, Drehwinkel 120° · (4,100): Quadrat, 90° · (6,60): Sechseck, 60°.</p>
+            <p><em>Zusammenhang:</em> Der Drehwinkel ist stets 360/n — nur dann ist die Figur geschlossen. <span class="term">n</span> bestimmt die Form, <span class="term">laenge</span> die Größe.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Rabattbaustein mit <span class="term">alter &lt; 18</span> und <span class="term">alter &gt; 65</span> — Ausgaben bestimmen, Grenzfälle prüfen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Alter 10 → halber Preis · 30 → voller Preis · 70 → 70 %. <strong>Grenzfälle:</strong> Alter 18 → voller Preis (18 ist nicht &lt; 18); Alter 65 → voller Preis (65 ist nicht &gt; 65).</p>
+            <p><em>Beide Grenzen sind fragwürdig</em> — gemeint war wohl „ab 65". Richtig wäre <span class="term">alter &gt;= 65</span>. Genau solche Verwechslungen von <span class="term">&gt;</span> und <span class="term">&gt;=</span> sind die häufigsten stillen Fehler.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ KLASSE 8 ============ -->
+  <section class="area" id="k8">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klasse 8 · 3.2.3.2</span>
+      <h2>Algorithmen und Daten</h2>
+      <p class="count">8 von 13 Teilkompetenzen · AL 1 – AL 8 · <strong>Wechsel zu textueller Programmierung</strong></p>
+      <p class="intro">Der Jahrgang mit dem Sprachwechsel: Ab AL 6 wird textuell programmiert. Neu sind logische Operatoren mit Wahrheitstafeln, Bibliotheksfunktionen, Variablen mit ausdrücklicher Initialisierung, die vier Datentypen und erste Werkzeuge zur Fehlersuche. <em>Die Teilkompetenzen AL 9 bis AL 13 behandeln Sprachmodelle und sind hier nicht aufgeführt.</em></p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>8</td><td>AL 1</td>
+        <td><span class="tkname">Algorithmische Grundbausteine beschreiben: Ausdrücke ohne Operatoren, mit arithmetischen, mit logischen und mit Vergleichsoperatoren</span></td>
+        <td><div class="begriffe"><span class="bg neu">logische Operatoren</span><span class="bg">and / or / not</span><span class="bg">Vorrangregeln</span><span class="bg">Klammerung</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für sieben Ausdrücke Art und Wert bestimmen (a = 5, b = 12, name = "Lea").</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">b</span> → ohne Operator, 12 · <span class="term">a*3−2</span> → arithmetisch, 13 · <span class="term">b%a</span> → arithmetisch, 2 · <span class="term">a&lt;b</span> → Vergleich, True · <span class="term">a*3 == b+3</span> → Vergleich, True (15 = 15) · <span class="term">a&lt;b and b&lt;10</span> → logisch, False · <span class="term">not (a&lt;b)</span> → logisch, False.</p>
+            <p><em>Wichtig:</em> Arithmetik wird <strong>vor</strong> dem Vergleich ausgewertet, der Vergleich vor der logischen Verknüpfung.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Freibad-Ermäßigung: jünger als 16 <em>oder</em> Schülerausweis, aber nicht mit Gruppenticket.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">(alter &lt; 16 or ausweis) and not gruppe</span></p>
+            <p><em>Die Klammer ist zwingend:</em> <span class="term">and</span> bindet stärker als <span class="term">or</span>. Ohne Klammer würde die Bedingung „jünger als 16" allein schon genügen, auch mit Gruppenticket.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 2</td>
+        <td><span class="tkname">Wahrheitstafeln der logischen Verknüpfungen UND, ODER und NICHT angeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Wahrheitstafel</span><span class="bg neu">De Morgan</span><span class="bg">2ⁿ Zeilen</span><span class="bg">XOR</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Wahrheitstafel für <span class="term">not (A and B)</span> und <span class="term">(not A) or (not B)</span> — Ergebnisspalten vergleichen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beide Spalten lauten <strong>w, w, w, f</strong> — die Ausdrücke sind <strong>gleichwertig</strong>. Das ist die erste Regel von De Morgan: Beim Verneinen wird UND zu ODER.</p>
+            <p><em>In Worten:</em> „Nicht beide" bedeutet „mindestens eines nicht".</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Fahrkartenautomat: Ermäßigung bei <em>genau einem</em> von zwei Nachweisen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Das ist das <strong>exklusive ODER</strong>: wahr nur bei f/w und w/f, falsch bei f/f und w/w.</p>
+            <p>Mit den Grundverknüpfungen: <span class="term">(A or B) and not (A and B)</span> — oder kürzer <span class="term">A != B</span>.</p>
+            <p><em>Unterschied zum gewöhnlichen ODER:</em> Dieses wäre auch bei beiden Nachweisen wahr.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 3</td>
+        <td><span class="tkname">Vorgegebene Anweisungen und Funktionen aus Bibliotheken verwenden</span></td>
+        <td><div class="begriffe"><span class="bg neu">Bibliothek</span><span class="bg neu">import</span><span class="bg">Dokumentation lesen</span><span class="bg">Parameter</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Aus einem Dokumentationsausschnitt (<span class="term">randint</span>, <span class="term">choice</span>, <span class="term">sleep</span>) Aufrufe bilden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Würfeln: <span class="term">random.randint(1, 6)</span> — <strong>beide Grenzen eingeschlossen</strong>, anders als bei <span class="term">range</span>. Zufälliges Element: <span class="term">random.choice(liste)</span>. Pause: <span class="term">time.sleep(2)</span>.</p>
+            <p><em>Was man der Dokumentation entnimmt:</em> Name, Zahl und Bedeutung der Parameter, Rückgabetyp — und genau solche Randbedingungen wie „einschließlich b".</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Turtle-Quadrat läuft nicht — alle Fehler finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>(1) <span class="term">import turtle</span> fehlt. (2) <span class="term">forward</span> ohne Modulnamen, <span class="term">turtle.left</span> mit — inkonsistent. (3) Nur zwei Seiten statt vier. (4) <span class="term">sqrt(10000)</span> ergibt 100.0 und ist ein überflüssiger Umweg.</p>
+            <p><em>Richtig:</em> <span class="term">import turtle</span>, dann <span class="term">for i in range(4): turtle.forward(100); turtle.left(90)</span>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 4</td>
+        <td><span class="tkname">Variablen als veränderbare Wertespeicher und deren Initialisierung erläutern</span></td>
+        <td><div class="begriffe"><span class="bg neu">Initialisierung</span><span class="bg neu">Zuweisung ≠ Gleichung</span><span class="bg">Wertekopie</span><span class="bg">Akkumulator</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Acht Zeilen Zuweisungen verfolgen; erklären, warum sich <span class="term">b</span> nicht mitverändert.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>a=3, b=3, a=10 → Ausgabe <strong>10</strong> und <strong>3</strong>. Dann b=3+10=13, a=13−3=10 → Ausgabe <strong>10 13</strong>.</p>
+            <p><em>Kern:</em> <span class="term">b = a</span> kopiert den <strong>Wert</strong>, es entsteht keine dauerhafte Verbindung. Eine Zuweisung ist keine Gleichung, sondern ein einmaliger Vorgang.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei Summenprogramme: <span class="term">summe = 0</span> vor oder in der Schleife.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>A</strong> (davor): 15 — richtig. <strong>B</strong> (darin): 5 — die Summe wird in jedem Durchlauf zurückgesetzt, am Ende steht nur der letzte Wert.</p>
+            <p><em>Regel:</em> Zähler und Summen werden <strong>vor</strong> der Schleife initialisiert. Der Fehler erzeugt keine Meldung — nur ein falsches Ergebnis.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 5</td>
+        <td><span class="tkname">Den Datentyp (Zeichenkette, Ganzzahl, Dezimalzahl, Wahrheitswert) von Variablenwerten angeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Ganzzahl / Dezimalzahl</span><span class="bg"><span class="term">/</span> ergibt float</span><span class="bg"><span class="term">//</span> ergibt int</span><span class="bg">input liefert Text</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für neun Variablen den Datentyp angeben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>42 → int · 42.0 → <strong>float</strong> · "42" → str · 42&gt;40 → bool · 10/5 → <strong>float (2.0!)</strong> · 10//5 → int · str(42) → str · int("42")+1 → int · "Hallo"*3 → str.</p>
+            <p><em>Die Überraschung:</em> <span class="term">/</span> liefert <em>immer</em> float, auch wenn die Division aufgeht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Mittelwert zweier eingegebener Noten stürzt ab.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">input</span> liefert Zeichenketten. <span class="term">"2" + "3"</span> ergibt <span class="term">"23"</span>, und <span class="term">"23" / 2</span> löst einen <strong>TypeError</strong> aus.</p>
+            <p><em>Richtig:</em> <span class="term">float(input(…))</span> — die Umwandlung unmittelbar beim Einlesen, nicht später.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 6</td>
+        <td><span class="tkname">Algorithmische Grundbausteine und Variablen zielorientiert verwenden, um Algorithmen <strong>textuell</strong> zu implementieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">textuelle Sprache</span><span class="bg">Einrückung</span><span class="bg">Doppelpunkt</span><span class="bg">range</span><span class="bg">Zählen · Summieren · Maximum</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Einen blockbasierten Algorithmus (5 Runden, Punkte addieren, Bonus bei &gt; 20) nach Python übersetzen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">punkte = 0</span> · <span class="term">for runde in range(1, 6):</span> · darin <span class="term">eingabe = int(input(f"Punkte in Runde {runde}? "))</span>, <span class="term">punkte += eingabe</span>, <span class="term">if eingabe &gt; 20: print("stark!")</span> · danach <span class="term">print(punkte)</span>.</p>
+            <p><em>Drei Übersetzungsregeln:</em> Doppelpunkt am Kopfende, Einrückung statt „ende", und <span class="term">input</span> liefert Text — also umwandeln.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zehn Würfelwürfe: alle Augenzahlen, Anzahl Sechsen, Maximum, Durchschnitt auf zwei Stellen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Vier Variablen vor der Schleife: <span class="term">wuerfe = []</span>, <span class="term">sechsen = 0</span>, <span class="term">summe = 0</span>, <span class="term">groesster = 0</span>. In der Schleife würfeln, anfügen, summieren, bei 6 zählen, Maximum vergleichen. Danach <span class="term">round(summe/10, 2)</span>.</p>
+            <p><em>Hier erscheinen vier Grundmuster zugleich:</em> Füllen, Zählen, Summieren, Extremwert. Beim Maximum ist der Startwert 0 unproblematisch, weil Augenzahlen stets positiv sind.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 7</td>
+        <td><span class="tkname">Den Wert und Datentyp eines einfachen Ausdrucks (auch unter Verwendung von Variablen und Operatoren) angeben</span></td>
+        <td><div class="begriffe"><span class="bg">Vorrangregeln</span><span class="bg"><span class="term">**</span> Potenz</span><span class="bg">Zwischenschritte</span><span class="bg">Typregeln</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Sieben Ausdrücke mit x = 7, y = 2, wort = "Ei"; bei zwei davon die Zwischenschritte notieren.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>x+y → 9 int · x/y → 3.5 float · x//y → 3 int · <span class="term">x%y + y**2</span> → 1 + 4 = <strong>5</strong> int (Potenz zuerst, dann Rest, dann Summe) · wort*y → "EiEi" str · wort+str(x) → "Ei7" str · <span class="term">x&gt;5 and y&lt;3</span> → True bool.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Teilbarkeit durch 3 <em>und</em> 5 — Programm liefert falsche Ergebnisse.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Zwei Fehler: (1) <span class="term">input</span> liefert Text, <span class="term">%</span> scheitert → <span class="term">int(input(…))</span>. (2) <span class="term">and 5 == 0</span> prüft, ob 5 gleich 0 ist — immer falsch. Gemeint war <span class="term">zahl % 5 == 0</span>.</p>
+            <p><em>Der zweite Fehler ist typisch:</em> Bei einer zweiten Bedingung muss die Variable <strong>wiederholt</strong> werden.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>8</td><td>AL 8</td>
+        <td><span class="tkname">Codeabschnitte mit Hilfe eines geeigneten Werkzeugs (zum Beispiel Debugger, Variableninspektor, REPL) schrittweise analysieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Debugger</span><span class="bg neu">REPL</span><span class="bg">Schreibtischtest</span><span class="bg">systematisch suchen</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Maximumsuche gibt immer 0 aus — Schreibtischtest durchführen und Fehler finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die Bedingung ist <strong>verdreht</strong>: <span class="term">if groesste &gt; z</span> müsste <span class="term">if z &gt; groesste</span> lauten. So wird nie ersetzt, und der Startwert 0 bleibt stehen.</p>
+            <p><em>Zweiter Mangel:</em> Der Startwert 0 ist ungeeignet — bei lauter negativen Zahlen wäre das Ergebnis auch nach der Korrektur falsch. Besser <span class="term">groesste = zahlen[0]</span>.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> „Ich probiere mal, das Minus durch ein Plus zu ersetzen" — Kritik und systematisches Vorgehen in vier Schritten.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Warum problematisch:</em> Zufälliges Ändern kann den Fehler verdecken statt beheben, neue Fehler einbauen — und man lernt nichts über die Ursache.</p>
+            <p><strong>Vier Schritte:</strong> (1) Fehler zuverlässig wiederholbar machen. (2) Bereich eingrenzen, in dem er entsteht. (3) <em>Eine</em> Vermutung aufstellen und prüfen. (4) Nach der Korrektur alle Fälle erneut testen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ KLASSE 9/10 · INTERAKTION ============ -->
+  <section class="area" id="k910a">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klassen 9/10 · 3.3.3.1</span>
+      <h2>Interaktion und lernende Algorithmen</h2>
+      <p class="count">11 von 15 Teilkompetenzen · IA 1 – IA 11 · textuell</p>
+      <p class="intro">Der Jahrgang der Interaktion: Ein- und Ausgabe, die elementweise Schleife, Typumwandlung, Kommentieren und die Werteverlaufstabelle. Programme nach dem EVA-Prinzip werden hier vollständig selbst geschrieben. <em>Die Teilkompetenzen IA 12 bis IA 15 behandeln verstärkendes Lernen und sind hier nicht aufgeführt.</em></p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>9/10</td><td>IA 1</td>
+        <td><span class="tkname">Algorithmische Grundbausteine beschreiben: elementweise Schleife</span></td>
+        <td><div class="begriffe"><span class="bg neu">elementweise Schleife</span><span class="bg"><span class="term">for … in</span></span><span class="bg">Element statt Index</span><span class="bg">Zählschleife</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> „Informatik" zeichenweise ausgeben — einmal elementweise, einmal mit Index; vergleichen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">for z in wort: print(z)</span> gegenüber <span class="term">for i in range(len(wort)): print(wort[i])</span>.</p>
+            <p><em>Die elementweise Fassung ist vorzuziehen:</em> kürzer, lesbarer und ohne die Möglichkeit eines Indexfehlers. Den Index braucht man nur, wenn die <strong>Position</strong> selbst gebraucht wird.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">print(z * 3)</span> gegenüber <span class="term">print(wort * 3)</span> in derselben Schleife.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>A:</strong> TTT / ooo / rrr — jedes Zeichen dreifach. <strong>B:</strong> dreimal „TorTorTor" — das ganze Wort, dreimal wiederholt, in drei Zeilen.</p>
+            <p><em>Kern:</em> <span class="term">z</span> ist das aktuelle Element, <span class="term">wort</span> die ganze Zeichenkette. Die Schleife verändert <span class="term">wort</span> nicht.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 2</td>
+        <td><span class="tkname">Benutzereingaben von der Standardeingabe verwenden, um Variablen Werte zuzuweisen</span></td>
+        <td><div class="begriffe"><span class="bg neu">input</span><span class="bg neu">EVA-Prinzip</span><span class="bg">Umwandlung beim Einlesen</span><span class="bg">Variablenname</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Benzinverbrauch nach dem EVA-Prinzip: km und Liter einlesen, Verbrauch je 100 km ausgeben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>E:</strong> <span class="term">km = float(input(…))</span>, <span class="term">liter = float(input(…))</span> · <strong>V:</strong> <span class="term">verbrauch = liter / km * 100</span> · <strong>A:</strong> <span class="term">print(f"{verbrauch:.2f} l/100 km")</span>.</p>
+            <p><em>Die drei Teile sind im Code klar getrennt</em> — das ist der Zweck des EVA-Prinzips. <span class="term">float</span> statt <span class="term">int</span>, weil Liter und Kilometer Kommazahlen sein können.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei Namen einlesen und begrüßen — funktioniert nicht wie gewollt.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beide Eingaben werden in <em>dieselbe</em> Variable <span class="term">name</span> geschrieben. Die zweite überschreibt die erste; die Ausgabe nennt zweimal den zweiten Namen.</p>
+            <p><em>Richtig:</em> zwei verschiedene Variablen, etwa <span class="term">name1</span> und <span class="term">name2</span>. Der Fehler erzeugt keine Meldung.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 3</td>
+        <td><span class="tkname">Die Standardausgabe verwenden, um Texte und Variablenwerte auszugeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">print</span><span class="bg neu">f-String</span><span class="bg">Formatangabe <span class="term">:.2f</span></span><span class="bg">Tabellenausgabe</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Die Ausgabe <span class="term">3x Heft = 4.50 Euro</span> auf drei Wegen erzeugen; Nachteil des Komma-Wegs benennen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Komma:</em> <span class="term">print(anzahl, "x", artikel, "=", preis*anzahl, "Euro")</span> → setzt überall Leerzeichen, und 4.5 statt 4.50 · <em>Verketten:</em> umständlich, braucht <span class="term">str()</span> · <em>f-String:</em> <span class="term">print(f"{anzahl}x {artikel} = {preis*anzahl:.2f} Euro")</span> — am klarsten.</p>
+            <p><em>Der Komma-Weg</em> fügt automatisch Leerzeichen ein: „3 x Heft = 4.5 Euro". Die Formatierung ist nicht steuerbar.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Ausgabe <span class="term">2.6666666666666665</span> — drei Mängel benennen und verbessern.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Mängel:</em> zu viele Nachkommastellen, kein erklärender Text, keine Einheit. <em>Herkunft der Stellen:</em> Gleitkommazahlen werden binär gespeichert; 8/3 ist nicht exakt darstellbar.</p>
+            <p><em>Besser:</em> <span class="term">print(f"Durchschnitt: {schnitt:.2f}")</span> → „Durchschnitt: 2.67". Für die Anzeige wird gerundet, <strong>nicht</strong> für die Weiterrechnung.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 4</td>
+        <td><span class="tkname">Eine elementweise Schleife verwenden, um Zeichenketten zeichenweise zu verarbeiten</span></td>
+        <td><div class="begriffe"><span class="bg">Zählen</span><span class="bg">Filtern</span><span class="bg">Aufbauen</span><span class="bg"><span class="term">in</span>-Prüfung</span><span class="bg">Marke (Flag)</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Vokale zählen · Vokale durch <span class="term">*</span> ersetzen · Wort umkehren — jeweils das Grundmuster benennen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Zählen:</em> <span class="term">anzahl = 0</span>, bei <span class="term">z in "aeiou"</span> erhöhen · <em>Ersetzen:</em> <span class="term">ergebnis = ""</span>, je Zeichen anfügen (<span class="term">*</span> oder das Zeichen) · <em>Umkehren:</em> <span class="term">ergebnis = z + ergebnis</span> — das neue Zeichen kommt <strong>davor</strong>.</p>
+            <p>Grundmuster: <strong>Zählen</strong>, <strong>Aufbauen mit Filter</strong>, <strong>Aufbauen in umgekehrter Richtung</strong>. Alle drei brauchen einen Startwert vor der Schleife.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Passwortprüfung: 12 Zeichen, Ziffer, Groß- und Kleinbuchstabe — warum drei Marken?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">hat_ziffer = False</span> usw. vor der Schleife; in der Schleife bei einem Treffer auf <span class="term">True</span> setzen.</p>
+            <p><em>Warum Marken:</em> Die Bedingung lautet „mindestens eine" — ein einzelnes Zeichen kann sie nicht widerlegen. Erst nach dem <strong>vollständigen</strong> Durchlauf steht das Ergebnis fest. Ein <span class="term">if/else</span> je Zeichen würde nur das letzte Zeichen beurteilen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 5</td>
+        <td><span class="tkname">Sprachliche Mittel zur Typumwandlung anwenden, um Zeichenketten in numerische Werte zu überführen und umgekehrt</span></td>
+        <td><div class="begriffe"><span class="bg neu"><span class="term">int()</span> <span class="term">float()</span> <span class="term">str()</span></span><span class="bg"><span class="term">round()</span></span><span class="bg">ValueError</span><span class="bg">Komma vs. Punkt</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für acht Umwandlungen Wert und Typ angeben — oder den Fehler.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">int("7")+3</span> → 10 int · <span class="term">"7"+str(3)</span> → "73" str · <span class="term">float("2.5")*2</span> → 5.0 float · <span class="term">int(9.7)</span> → <strong>9</strong> (abgeschnitten!) · <span class="term">round(9.7)</span> → 10 · <span class="term">int("9.7")</span> → <strong>ValueError</strong> · <span class="term">str(2+3)</span> → "5" str.</p>
+            <p><em>Zwei Fallen:</em> <span class="term">int()</span> schneidet ab, es rundet nicht. Und <span class="term">int()</span> verträgt keine Dezimalstellen im Text — der Umweg führt über <span class="term">float()</span>.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Celsius → Fahrenheit: Eingabe 21,5 scheitert, 21.5 funktioniert.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">float()</span> erwartet einen <strong>Punkt</strong> als Dezimaltrennzeichen. Das deutsche Komma führt zum <em>ValueError</em>.</p>
+            <p><em>Lösung:</em> <span class="term">eingabe.replace(",", ".")</span> vor der Umwandlung — und mit <span class="term">try … except ValueError</span> erneut fragen statt abzubrechen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 6</td>
+        <td><span class="tkname">Algorithmen textuell implementieren und dabei Benutzereingaben verarbeiten und die Ergebnisse darstellen</span></td>
+        <td><div class="begriffe"><span class="bg">EVA vollständig</span><span class="bg"><span class="term">elif</span>-Kette</span><span class="bg">Wächterwert</span><span class="bg">Eingabeprüfung</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Notenberechnung nach dem Halbierungsschlüssel: Gesamtpunktzahl und erreichte Punkte einlesen, Note ausgeben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">prozent = punkte / gesamt * 100</span>, dann eine <span class="term">elif</span>-Kette <strong>absteigend</strong>: ≥ 91,67 → 1 · ≥ 79,17 → 2 · ≥ 66,67 → 3 · ≥ 54,17 → 4 · ≥ 25 → 5 · sonst 6.</p>
+            <p><em>Die Reihenfolge ist zwingend absteigend:</em> Stünde „≥ 25" oben, ergäbe jede Punktzahl darüber die Note 5. Und <span class="term">gesamt</span> muss vor dem Teilen auf 0 geprüft werden.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Beliebig viele Messwerte einlesen; Anzahl, Summe, Mittelwert, Minimum, Maximum ausgeben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">while True</span> mit <strong>Wächterwert</strong>: Eine leere Eingabe beendet die Schleife (<span class="term">break</span>). Vier Variablen vorher setzen; Minimum und Maximum mit <span class="term">None</span> beginnen.</p>
+            <p><em>Warum ein Wächterwert</em> und nicht die Anzahl vorher erfragen: Niemand zählt gern vorab ab, und bei Verzählen scheitert die Eingabe. Vor dem Teilen muss <span class="term">anzahl == 0</span> abgefangen werden.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 7</td>
+        <td><span class="tkname">Algorithmen implementieren, die durch eine graphische Darstellung (zum Beispiel Flussdiagramm) gegeben sind</span></td>
+        <td><div class="begriffe"><span class="bg">Flussdiagramm → Code</span><span class="bg">Raute → <span class="term">while</span>/<span class="term">if</span></span><span class="bg">Rücksprung</span><span class="bg">Zähler</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Ein Flussdiagramm umsetzen: Zahl einlesen, summe = 0, i = 1, solange i ≤ zahl summieren.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">zahl = int(input(…))</span> · <span class="term">summe = 0</span> · <span class="term">i = 1</span> · <span class="term">while i &lt;= zahl:</span> darin <span class="term">summe += i</span> und <span class="term">i += 1</span> · danach <span class="term">print(summe)</span>.</p>
+            <p><em>Übersetzungsregeln:</em> Rechteck → Anweisung · Raute mit Rücksprung → <span class="term">while</span> · Raute ohne Rücksprung → <span class="term">if</span>. Die Erhöhung von <span class="term">i</span> darf nicht fehlen, sonst Endlosschleife.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zahlenratespiel aus einem Flussdiagramm implementieren.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">import random</span>, Zufallszahl 1–100, <span class="term">versuche = 0</span> · <span class="term">while True:</span> Eingabe, Zähler erhöhen, drei Fälle mit <span class="term">if/elif/else</span>, bei Treffer <span class="term">break</span> · am Ende Zähler ausgeben.</p>
+            <p><em>Vorteil von <span class="term">while True</span> mit <span class="term">break</span>:</em> Die Abbruchbedingung steht dort, wo sie geprüft werden kann — nach der Eingabe.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 8</td>
+        <td><span class="tkname">Programmcode kommentieren, um die Lesbarkeit und Verständlichkeit von Programmcode durch Kommentare für sich selbst und andere zu erhöhen</span></td>
+        <td><div class="begriffe"><span class="bg neu">Kommentar</span><span class="bg">Warum, nicht Was</span><span class="bg">sprechende Namen</span><span class="bg">Magische Zahl</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Nutzlose Kommentare beurteilen und verbessern (<span class="term"># importiere random</span>, <span class="term"># s ist 0</span>, <span class="term"># Schleife</span>).</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Alle genannten Kommentare <strong>wiederholen nur den Code</strong> und tragen nichts bei. Besser: die Variablen umbenennen (<span class="term">s</span> → <span class="term">summe</span>, <span class="term">n</span> → <span class="term">anzahl_wuerfe</span>) und nur dort kommentieren, wo das <em>Warum</em> nicht aus dem Code hervorgeht.</p>
+            <p><em>Grundsatz:</em> Ein guter Name erspart einen Kommentar. Kommentare erklären Absichten und Entscheidungen, nicht die Syntax.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term"># rechnet den Wert um</span> bei <span class="term">(roh − 40) * 0.6172 + 273.15</span> — warum hilft das nicht?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Der Kommentar sagt nur, <em>dass</em> umgerechnet wird — nicht <strong>von welcher Einheit in welche</strong>, woher die Zahlen 40, 0,6172 und 273,15 kommen und für welchen Messbereich die Formel gilt.</p>
+            <p><em>Besser:</em> Quelle und Bedeutung nennen (etwa Datenblatt des Sensors), die Zahlen als benannte Konstanten setzen und den Gültigkeitsbereich angeben. Unerklärte Zahlen im Code heißen <em>magische Zahlen</em>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 9</td>
+        <td><span class="tkname">Bei Zahlen die Art der Datenspeicherung (als Zeichenkette oder numerischen Wert) identifizieren, und deren Auswirkungen auf Operationen erläutern</span></td>
+        <td><div class="begriffe"><span class="bg">Zahl oder Text?</span><span class="bg">Rechnen vs. Bezeichnen</span><span class="bg">führende Null</span><span class="bg">alphabetische Sortierung</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für Alter, Postleitzahl, Punktzahl, Schülernummer entscheiden: Zahl oder Zeichenkette?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>Zahl:</strong> Alter, Punktzahl — damit wird gerechnet. <strong>Zeichenkette:</strong> Postleitzahl (führende Null in „01067" würde verloren gehen), Schülernummer (wird nur bezeichnet, nicht addiert).</p>
+            <p><em>Prüffrage:</em> Wird mit dem Wert <strong>gerechnet</strong>? Wenn nein, ist er eine Bezeichnung und gehört in eine Zeichenkette — auch wenn er aus Ziffern besteht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Sortierung ergibt 100, 12, 3, 45, 7, 89 — erklären und berichtigen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die Werte sind <strong>Zeichenketten</strong> und werden <em>alphabetisch</em> sortiert: „100" vor „12" vor „3", weil zeichenweise verglichen wird — „1" &lt; „3".</p>
+            <p><em>Richtig:</em> 3, 7, 12, 45, 89, 100 — erreichbar durch Umwandlung in Zahlen beim Einlesen: <span class="term">werte = [int(z) for z in zeilen]</span>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 10</td>
+        <td><span class="tkname">Codeabschnitte analysieren und dazu eine Werteverlaufstabelle angeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Werteverlaufstabelle</span><span class="bg">Zeile für Zeile</span><span class="bg">Division mit Rest</span><span class="bg">neutrales Element</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Werteverlaufstabelle für die Umwandlung von 26 ins Binärsystem (<span class="term">while zahl &gt; 0</span>).</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>zahl 26→13→6→3→1→0; rest 0,1,0,1,1; ergebnis "" → "0" → "10" → "010" → "1010" → <strong>"11010"</strong>.</p>
+            <p><em>Wirkung:</em> Umwandlung ins Binärsystem. Probe: 16+8+2 = 26 ✓. Entscheidend ist <span class="term">str(rest) + ergebnis</span> — der neue Rest kommt <strong>davor</strong>, weil die Reste von hinten nach vorn anfallen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Fakultät gibt immer 0 aus — Tabelle erstellen und Fehler finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Der Startwert ist falsch: <span class="term">ergebnis = 0</span>. Jede Multiplikation mit 0 ergibt 0 — die Tabelle zeigt in der Spalte <span class="term">ergebnis</span> nur Nullen.</p>
+            <p><em>Richtig:</em> <span class="term">ergebnis = 1</span>. Das <strong>neutrale Element</strong> hängt von der Operation ab: 0 beim Summieren, <strong>1</strong> beim Multiplizieren.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>IA 11</td>
+        <td><span class="tkname">Codeabschnitte durch das gezielte Ausgeben von Zwischenergebnissen auf der Standardausgabe testen</span></td>
+        <td><div class="begriffe"><span class="bg">Zwischenausgabe</span><span class="bg">Vermutung prüfen</span><span class="bg">Bedingung prüfen</span><span class="bg">Fehler eingrenzen</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Durchschnitt dreier Eingaben stürzt ab — mit Zwischenausgaben eingrenzen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">print(f"{a=} {type(a)=}")</span> zeigt: <span class="term">a</span> ist eine <strong>Zeichenkette</strong>. <span class="term">a+b+c</span> verkettet also, und <span class="term">"123"/3</span> löst einen TypeError aus.</p>
+            <p><em>Richtig:</em> <span class="term">float(input(…))</span>. Die wirksamste Zwischenausgabe steht <strong>unmittelbar vor</strong> der fehlerhaften Zeile und zeigt Wert <em>und</em> Typ.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zahlen von 1 bis 20, die durch 3 teilbar sind — es wird gar nichts ausgegeben.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die Bedingung lautet <span class="term">i % 3 == 1</span> statt <span class="term">== 0</span>. Eine Zwischenausgabe von <span class="term">i</span> und <span class="term">i % 3</span> macht sofort sichtbar, dass die Reste 1, 2, 0 durchlaufen — die Bedingung trifft also durchaus zu, nur für die falschen Zahlen.</p>
+            <p><em>Zweiter Mangel:</em> <span class="term">while i &lt; 20</span> schließt die 20 aus. Hier ist es belanglos (20 ist nicht teilbar), bei anderen Grenzen nicht.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ KLASSE 9/10 · DATEN ============ -->
+  <section class="area" id="k910b">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klassen 9/10 · 3.3.3.2</span>
+      <h2>Datenverarbeitende Algorithmen</h2>
+      <p class="count">8 von 11 Teilkompetenzen · DV 1 – DV 8 · textuell</p>
+      <p class="intro">Hier kommen die Datenstrukturen: Listen und Dictionaries, das Einlesen von Dateien und die Auswertemuster Zählen, Filtern und Mittelwert. Dazu die Fehlerarten und der Umgang mit KI-Werkzeugen beim Programmieren. <em>Die Teilkompetenzen DV 9 bis DV 11 behandeln datenbasierte Systeme und sind hier nicht aufgeführt.</em></p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>9/10</td><td>DV 1</td>
+        <td><span class="tkname">Datenstrukturen beschreiben: schlüsselbasierte Sammlung, numerisch indizierte Sammlung</span></td>
+        <td><div class="begriffe"><span class="bg neu">Liste</span><span class="bg neu">Dictionary</span><span class="bg">Index ab 0</span><span class="bg">Schlüssel</span><span class="bg">IndexError</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Für fünf Situationen die passende Struktur wählen — Temperaturen, Einwohnerzahlen, Zieleinlauf, Vokabeln, Buchstabenhäufigkeit.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>Liste:</strong> stündliche Temperaturen (Position = Uhrzeit), Zieleinlauf (die Reihenfolge <em>ist</em> die Information). <strong>Dictionary:</strong> Einwohnerzahlen, Vokabeln, Buchstabenhäufigkeit — Zugriff über einen Namen.</p>
+            <p><em>Entscheidungsfrage:</em> Womit greife ich zu? Lückenlose Nummerierung → Liste. Frei gewählte Bezeichner → Dictionary.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei parallele Listen für Namen und Noten — Probleme benennen und besser modellieren.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Probleme:</em> Die Listen können auseinanderlaufen (Einfügen ohne Anpassung verschiebt <em>alle</em> folgenden Zuordnungen — ohne Fehlermeldung), und der Zugriff braucht den Umweg über <span class="term">index()</span>.</p>
+            <p><em>Besser:</em> ein Dictionary <span class="term">{"Mia": 2, …}</span>, oder — sobald weitere Angaben dazukommen — eine <strong>Liste von Dictionaries</strong>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 2</td>
+        <td><span class="tkname">Sammlungen bei der Modellierung von Sachverhalten verwenden</span></td>
+        <td><div class="begriffe"><span class="bg neu">Modellieren</span><span class="bg">Liste von Dictionaries</span><span class="bg">getrennte Felder</span><span class="bg">Sonderfälle</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Daten für eine Vertretungsplan-App modellieren und die Strukturwahl begründen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>Liste von Dictionaries</strong> — viele gleichartige Meldungen, je Meldung verschiedenartige Felder: Datum, Stunde, Klasse, Fach, Vertretung, Raum, Art.</p>
+            <p><em>Sonderfälle, an denen das Modell scheitert:</em> eine Meldung für mehrere Klassen (das Feld fasst nur einen Wert) und Doppelstunden oder geteilte Lerngruppen. Beide zeigen dasselbe Muster — ein Feld, das mehrere Werte bräuchte.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Wetterdaten als Textzeilen gegenüber Dictionaries — vergleichen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Textzeilen brauchen bei jeder Verwendung Zerlegen, Positionskenntnis und Umwandlung. Bei Dictionaries genügt <span class="term">eintrag["temp"]</span>, und der Wert ist schon eine Zahl.</p>
+            <p><em>Wann Textzeilen vertretbar sind:</em> als <strong>Transportformat</strong> unmittelbar nach dem Einlesen — nicht als Arbeitsstruktur. Eine neue Spalte in der Mitte verschiebt sonst alle folgenden Positionen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 3</td>
+        <td><span class="tkname">Bereitgestellte Funktionen oder Bibliotheken verwenden, um einfache Daten (zum Beispiel Text, Bitfolge) aus Dateien einzulesen</span></td>
+        <td><div class="begriffe"><span class="bg neu">open / with</span><span class="bg neu">encoding</span><span class="bg"><span class="term">.strip()</span></span><span class="bg">FileNotFoundError</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Temperaturen zeilenweise einlesen; Anzahl, Mittelwert, Minimum, Maximum ausgeben. Warum <span class="term">.strip()</span>?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">with open(…, encoding="utf-8") as datei:</span> und je Zeile <span class="term">float(zeile.strip())</span>, leere Zeilen überspringen.</p>
+            <p><em>Warum <span class="term">.strip()</span>:</em> Jede Zeile endet mit einem Zeilenumbruch. Bei <span class="term">float()</span> fällt das nicht auf, bei <strong>Textvergleichen</strong> aber schon — <span class="term">"ja\n" == "ja"</span> ergibt False, und man sieht den Unterschied nicht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">open("text.txt")</span> ohne <span class="term">with</span> und ohne <span class="term">encoding</span> — Mängel benennen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>(1) Keine Codierung angegeben → Umlaute erscheinen als „Ã¼", weil UTF-8-Bytes einzeln gedeutet werden. (2) Die Datei wird nie geschlossen.</p>
+            <p><em>Warum <span class="term">with</span> wichtig ist:</em> Es schließt auch bei einem Fehler. Beim Schreiben entscheidend, weil Daten gepuffert werden — ohne Schließen fehlt der letzte Teil. Außerdem bleibt die Datei sonst gesperrt.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 4</td>
+        <td><span class="tkname">Bereitgestellte Funktionen oder Bibliotheken verwenden, um flach strukturierte Daten aus Dateien (zum Beispiel im CSV-, XML- oder JSON-Format) einzulesen</span></td>
+        <td><div class="begriffe"><span class="bg neu">CSV</span><span class="bg neu">JSON</span><span class="bg"><span class="term">csv.DictReader</span></span><span class="bg">Trennzeichen</span><span class="bg">alles ist Text</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> <span class="term">noten.csv</span> einlesen, Namen ausgeben, Durchschnitt berechnen, nach Klasse filtern.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">csv.DictReader(datei, delimiter=";")</span> liefert je Zeile ein Dictionary mit den Spaltennamen als Schlüssel.</p>
+            <p><em>Wichtig:</em> Alle Werte sind <strong>Text</strong> — <span class="term">punkte</span> muss mit <span class="term">int()</span> umgewandelt werden, am besten einmal für alle Einträge direkt nach dem Einlesen. Ohne das hängt <span class="term">+</span> die Ziffern aneinander.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Selbstgebautes <span class="term">split(";")</span> scheitert an <span class="term">"Meier; Schmidt und Partner";Ulm</span>.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Das Semikolon steht <em>innerhalb</em> eines Feldes in Anführungszeichen und ist dort kein Trennzeichen. <span class="term">split()</span> kennt diese Regel nicht und erzeugt drei Teile statt zwei — <strong>ohne Fehlermeldung</strong>.</p>
+            <p><em>Weitere Fälle:</em> Zeilenumbruch im Feld, verdoppelte Anführungszeichen, andere Trennzeichen. <span class="term">csv.reader</span> behandelt all das korrekt.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 5</td>
+        <td><span class="tkname">Schleifen verwenden, um über Elemente von schlüsselbasierten und numerisch indizierten Sammlungen zu iterieren</span></td>
+        <td><div class="begriffe"><span class="bg"><span class="term">.items()</span></span><span class="bg"><span class="term">enumerate</span></span><span class="bg">verschachtelte Schleifen</span><span class="bg">nicht beim Durchlauf ändern</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Fünf Schleifen über eine Liste von Dictionaries: Namen, Gesamtpunkte, Filter &gt; 30, Dictionary aufbauen, Maximum finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Namen: <span class="term">for p in klasse: print(p["name"])</span> · Summe: Startwert 0, addieren · Filter mit eigenem Zähler für die Nummerierung · Dictionary: <span class="term">d[p["name"]] = p["punkte"]</span> · Maximum: ganzes Dictionary merken, Startwert <span class="term">None</span>.</p>
+            <p><em>Beim Maximum</em> wird nicht nur die Punktzahl gespeichert, sondern der ganze Eintrag — so hat man am Ende auch den Namen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">remove()</span> während des Durchlaufs — warum bleibt ein Wert übrig?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beim Entfernen rücken die folgenden Elemente nach vorn, die Schleife zählt aber weiter — das nachgerückte Element wird <strong>übersprungen</strong>. Bei zwei benachbarten Treffern bleibt der zweite stehen.</p>
+            <p><em>Richtig:</em> eine neue Liste aufbauen (<span class="term">[w for w in werte if w &gt;= 0]</span>) oder über eine Kopie <span class="term">werte[:]</span> laufen. <strong>Regel:</strong> Eine Sammlung wird nie verändert, während man über sie läuft.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 6</td>
+        <td><span class="tkname">Auswertungen von Daten selbstständig oder durch Anpassung gegebener Programme textuell implementieren (zum Beispiel durch Zählen, Filtern, Mittelwert berechnen)</span></td>
+        <td><div class="begriffe"><span class="bg neu">Zählen · Summieren · Filtern · Extremwert · Gruppieren</span><span class="bg"><span class="term">.get(k, 0)</span></span><span class="bg">Division durch 0</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Wetterdaten: Tage ohne Regen zählen, Durchschnittstemperatur, Filter &gt; 23 °C, Durchschnitt <em>je Ort</em>.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Die ersten drei sind die Grundmuster Zählen, Summieren und Filtern. <strong>Gruppieren</strong> braucht <em>zwei</em> Dictionaries — Summe je Ort und Anzahl je Ort — mit <span class="term">.get(ort, 0) + …</span>.</p>
+            <p><em>Probe von Hand:</em> Ulm (24,5 + 26,1)/2 = 25,3 · Aalen (22,8 + 23,4)/2 = 23,1. Jede Auswertung sollte an so kleinen Daten geprüft werden.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Ein gegebenes Programm anpassen: nur Klasse 9b, Anzahl mitführen, leeren Fall abfangen, Notenverteilung.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Filter mit <span class="term">continue</span>, dazu ein <strong>eigener Zähler</strong> — und das ist der entscheidende Punkt: <span class="term">len(klasse)</span> zählt weiterhin <em>alle</em> Personen. Der Durchschnitt wäre systematisch zu klein, ohne dass eine Meldung erscheint.</p>
+            <p><em>Plausibilitätsprüfung:</em> Ein Mittelwert muss zwischen Minimum und Maximum liegen. Das deckt den Fehler auf.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 7</td>
+        <td><span class="tkname">Verschiedene Fehlerarten (zum Beispiel Syntax-, Index-, Typfehler) erläutern</span></td>
+        <td><div class="begriffe"><span class="bg neu">Syntaxfehler</span><span class="bg neu">Laufzeitfehler</span><span class="bg neu">Logikfehler</span><span class="bg">Traceback lesen</span><span class="bg"><span class="term">try … except</span></span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Vier Codeabschnitte einordnen und berichtigen (fehlender Doppelpunkt, IndexError, TypeError, <span class="term">=</span> statt <span class="term">+=</span>).</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>A → Syntaxfehler · B → IndexError (gültig sind 0 und 1) · C → TypeError (<span class="term">"42" + 8</span>) · <strong>D → Logikfehler, keine Meldung</strong>: <span class="term">summe = w</span> statt <span class="term">+=</span>, Ergebnis 10.0 statt 20.0.</p>
+            <p><em>D ist der gefährlichste:</em> Das Programm läuft, das Ergebnis sieht plausibel aus. Nur eine Prüfung an bekannten Daten deckt es auf.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">ZeroDivisionError</span> in Zeile 8 — Meldung lesen, Ursachen nennen, behandeln.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Ursachen:</em> keine Datenzeilen eingelesen, oder der Filter greift nicht (etwa „9B" statt „9b"). <em>Behandlung:</em> <span class="term">if anzahl == 0</span> <strong>vor</strong> dem Teilen — „keine Daten" ist ein erwartbarer Zustand, kein Ausnahmefall.</p>
+            <p><em>Warum <span class="term">except:</span> ohne Typ schlecht ist:</em> Es verschluckt auch NameError und TypeError und verwandelt einen auffälligen Laufzeitfehler in einen stillen Logikfehler.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>9/10</td><td>DV 8</td>
+        <td><span class="tkname">Die Potenziale und Risiken des Einsatzes von KI-basierten Werkzeugen bei der Implementierung (zum Beispiel zur Fehleranalyse, zur Recherche von Bibliotheken oder zum Kommentieren) reflektieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Halluzination</span><span class="bg">Namen prüfen</span><span class="bg">Verantwortung</span><span class="bg">Lernzuwachs</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Erfundene Bibliothek <span class="term">csvreader</span> — was ist geschehen, und wie hätte man es vorher bemerkt?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Eine <strong>Halluzination</strong>: Name und Funktionen sind erfunden, folgen aber der üblichen Benennung und wirken dadurch glaubwürdig — zumal der Vorschlag kürzer als die richtige Lösung ist.</p>
+            <p><em>Vorher erkennbar:</em> den Namen in der Dokumentation nachschlagen (der wichtigste Schritt), beim fehlenden Installationshinweis stutzig werden, und <span class="term">import</span> allein ausführen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Jonas lässt sich die Lösung erzeugen, Nele lässt sich eine Fehlermeldung erklären — Unterschied?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beide haben ein laufendes Programm; nur Nele hat zusätzlich das <strong>Verständnis</strong>. Jonas kann weder beurteilen, ob die Zahlen richtig sind, noch das Programm anpassen — und in der Klassenarbeit steht er ohne Werkzeug da.</p>
+            <p><em>Drei Regeln:</em> erst selbst, dann fragen · nichts übernehmen, was man nicht Zeile für Zeile erklären kann · jeden fremden Namen in der Dokumentation prüfen.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ KLASSE 11 ============ -->
+  <section class="area" id="k11">
+    <div class="area-head">
+      <span class="kb">Teil 2 · Klasse 11 · 3.4.3.1</span>
+      <h2>Modularisierung durch Funktionen</h2>
+      <p class="count">7 Teilkompetenzen · MF 1 – MF 7 · textuell</p>
+      <p class="intro">Erst hier werden eigene Funktionen geschrieben — mit Parametern, Rückgabe, Gültigkeitsbereichen, Dokumentation und Sequenzdiagrammen. Der Plan gliedert das Themenfeld in zwei Gruppen: <em>Funktionen</em> (MF 1–4) und <em>Codeanalyse</em> (MF 5–7).</p>
+    </div>
+
+    <div class="tbl-scroll"><table class="prog">
+      <thead><tr><th>Klasse</th><th>TK</th><th>Teilkompetenz</th><th>Inhalte</th><th>Aufgaben mit Lösungen</th></tr></thead>
+      <tbody>
+
+      <tr>
+        <td>11</td><td>MF 1</td>
+        <td><span class="tkname">Algorithmische Grundbausteine beschreiben: Funktionen mit Parametern und Rückgabe</span></td>
+        <td><div class="begriffe"><span class="bg neu"><span class="term">def</span></span><span class="bg neu"><span class="term">return</span></span><span class="bg neu">Parameter / Argument</span><span class="bg">ausgeben ≠ zurückgeben</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> <span class="term">mittelwert(a,b,c)</span> und <span class="term">note(prozent)</span> schreiben und zusammen verwenden. Warum zurückgeben statt ausgeben?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beide mit <span class="term">return</span>. Dann ist <span class="term">note(mittelwert(85, 72, 91))</span> möglich — mit <span class="term">print</span> im Inneren nicht.</p>
+            <p><em>Vier Gründe für <span class="term">return</span>:</em> das Ergebnis lässt sich weiterverarbeiten, die Funktion ist mit <span class="term">assert</span> prüfbar, sie ist wiederverwendbar, und sie vermischt nicht Rechnen mit Darstellen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Ein Programm ohne Funktionen (Notenlogik zweimal kopiert) umbauen und auf eine Klasse erweitern.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Drei Probleme:</em> Verdopplung · Änderungen müssen überall nachgezogen werden · nummerierte Variablen lassen keine Schleife zu.</p>
+            <p><em>Nach dem Umbau</em> steht die Notenlogik an <strong>einer</strong> Stelle. Eine Erweiterung um die Note 5 betrifft eine Zeile statt 28 — und eine vergessene Stelle kann nicht mehr anders bewerten.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 2</td>
+        <td><span class="tkname">Mit öffentlichen Schnittstellen von Funktionen umgehen</span></td>
+        <td><div class="begriffe"><span class="bg neu">Schnittstelle</span><span class="bg neu">Kapselung</span><span class="bg">Vorbedingung</span><span class="bg">Nebenwirkung</span><span class="bg">Standardwert</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Eine Funktion nur anhand ihrer Beschreibung benutzen; fehlerhafte Aufrufe erkennen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><span class="term">bewerte(48)</span> → TypeError (<span class="term">gesamt</span> fehlt) · <span class="term">bewerte(50, 48)</span> → ValueError (Vorbedingung verletzt) · <span class="term">bewerte(30, 48, "punkte")</span> → unklar, <em>Lücke in der Beschreibung</em> · <span class="term">bewerte("30", 48)</span> → falscher Typ.</p>
+            <p><em>Warum die Beschreibung genügt:</em> Sie nennt Parameter, Rückgabe, Vorbedingungen und Ausnahmen. Wie die Funktion intern arbeitet, braucht man nicht zu wissen — und darf sich ändern.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Zwei Fassungen zum Entfernen von Duplikaten: neue Liste gegenüber Veränderung der übergebenen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Beide geben dasselbe zurück — Fassung B <strong>verändert aber die übergebene Liste</strong>. Das ist eine Nebenwirkung und Teil der Schnittstelle, nicht bloß der Umsetzung.</p>
+            <p><em>Fassung A ist vorzuziehen:</em> keine Überraschungen, in beiden Fällen verwendbar (<span class="term">liste = ohne_doppelte(liste)</span>), leichter prüfbar. Python selbst unterscheidet so zwischen <span class="term">sorted()</span> und <span class="term">liste.sort()</span>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 3</td>
+        <td><span class="tkname">Den Gültigkeitsbereich von Variablen (auch Parameter von Funktionen) angeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">lokal / global</span><span class="bg neu">Gültigkeitsbereich</span><span class="bg">Verdeckung</span><span class="bg">UnboundLocalError</span><span class="bg">Verweis auf Liste</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Vier Programme: globale Variable lesen, verdecken, vor der Zuweisung lesen, Liste als Parameter.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>A:</strong> 5 und 5 — lesender Zugriff ist möglich. <strong>B:</strong> 99 und 5 — die lokale verdeckt die globale. <strong>C:</strong> <em>UnboundLocalError</em> — weil irgendwo zugewiesen wird, gilt der Name in der <em>ganzen</em> Funktion als lokal. <strong>D:</strong> [1,2,3,4] zweimal — der Parameter verweist auf <em>dieselbe</em> Liste.</p>
+            <p><em>D ist der wichtigste Fall:</em> <span class="term">werte.append(4)</span> wirkt nach außen, <span class="term">werte = [9,9]</span> nicht.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">anzahl = anzahl + 1</span> in einer Funktion — Fehler und zwei Lösungen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>UnboundLocalError.</em> Lösung A mit <span class="term">global anzahl</span>, Lösung B durch Übergeben und Zurückgeben des Zählerstands.</p>
+            <p><em>B ist vorzuziehen:</em> vorhersagbar, prüfbar, wiederverwendbar — und die Abhängigkeit steht sichtbar in der Signatur. Am besten zählt man dort, wo die Schleife läuft.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 4</td>
+        <td><span class="tkname">Algorithmen in einer textuellen Programmiersprache strukturiert mit Hilfe eigener Funktionen implementieren</span></td>
+        <td><div class="begriffe"><span class="bg neu">Zerlegen</span><span class="bg neu">Einlesen · Verarbeiten · Ausgeben</span><span class="bg">ein Zweck ohne „und"</span><span class="bg">erweiterbare Regeln</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> CSV-Auswertung mit Notenverteilung und Durchschnitt — in Funktionen zerlegen und begründen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Sieben Funktionen in drei Schichten: <span class="term">lies_daten</span> · <span class="term">prozent</span>, <span class="term">note</span>, <span class="term">werte_aus</span>, <span class="term">verteilung</span>, <span class="term">durchschnitt</span> · <span class="term">zeige_bericht</span>.</p>
+            <p><em>Der Nutzen zeigt sich beim Formatwechsel:</em> Käme die Eingabe als JSON, müsste <strong>nur</strong> <span class="term">lies_daten</span> geändert werden — alles andere ist gegen eine Datenstruktur geschrieben, nicht gegen ein Dateiformat.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Passwortprüfung zerlegen und erweiterbar gestalten; die Regeln inhaltlich beurteilen.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Je Regel eine Funktion, die Regeln als <strong>Liste von Paaren</strong> (Prüfung, Meldung). Eine neue Regel sind zwei Zeilen, ohne Änderung am Prüfablauf.</p>
+            <p><em>Inhaltliche Kritik:</em> Zeichenklassen zu erzwingen ist nach heutigem Stand (BSI, NIST) nicht empfehlenswert — Länge wirkt stärker, und die Vorgaben erzeugen vorhersehbare Muster. <em>Die Zerlegung macht die Regeln überhaupt erst sichtbar und diskutierbar.</em></p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 5</td>
+        <td><span class="tkname">Funktionsaufrufe mit Übergabe und Rückgabe von Werten in einem Sequenzdiagramm darstellen</span></td>
+        <td><div class="begriffe"><span class="bg neu">Sequenzdiagramm</span><span class="bg">Lebenslinie</span><span class="bg">Aktivierungsbalken</span><span class="bg">Rekursion</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Sequenzdiagramm für <span class="term">bewerte(38, 48)</span> mit <span class="term">prozent</span> und <span class="term">note</span>.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>Drei</strong> Aufrufe und drei Rückgaben, also sechs Pfeile. Haupt → bewerte(38,48) → prozent(38,48) → 79,1666… → note(79,1666…) → 2 → 2.</p>
+            <p><em>Was das Diagramm aufdeckt:</em> 38/48 ergibt 79,1666…, die Grenze wird oft als 79,17 notiert — streng genommen <em>kleiner</em> als die Grenze. Solche Grenzen rechnet man aus Brüchen, nicht aus gerundeten Dezimalzahlen.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Sequenzdiagramm für <span class="term">fakultaet(4)</span> — warum geschehen die Multiplikationen erst auf dem Rückweg?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><strong>Vier</strong> Aufrufe, als Treppe. Auf dem Hinweg wird nichts gerechnet: <span class="term">n * fakultaet(n−1)</span> braucht beide Faktoren, der zweite fehlt noch — die Multiplikation wird <strong>aufgeschoben</strong>. Erst beim Zurückkehren wird sie nachgeholt: 1 → 2 → 6 → 24.</p>
+            <p><em>Bei <span class="term">fakultaet(-1)</span></em> greift <span class="term">n &lt;= 1</span> und liefert still 1 — inhaltlich falsch. Besser mit <span class="term">raise ValueError</span>.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 6</td>
+        <td><span class="tkname">Codeabschnitte mit Funktionsaufrufen analysieren und dazu eine Werteverlaufstabelle von Variablen und Parametern angeben</span></td>
+        <td><div class="begriffe"><span class="bg">Tabelle je Gültigkeitsbereich</span><span class="bg">lokale Variablen werden ungültig</span><span class="bg">Startwert aus den Daten</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Werteverlaufstabelle für <span class="term">berechne([5,3,8])</span> mit Hilfsfunktion <span class="term">addiere</span>.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>17 Schritte, <span class="term">addiere</span> wird <strong>dreimal</strong> aufgerufen. Ergebnis 16. Die Tabelle hat getrennte Spaltengruppen für <em>global</em>, <em>berechne</em> und <em>addiere</em>.</p>
+            <p><em>Warum es keinen Namenskonflikt gibt:</em> Jeder Aufruf bekommt einen eigenen Satz lokaler Variablen, der beim <span class="term">return</span> verfällt. Die drei <span class="term">summe</span> existieren nie gleichzeitig. Bei leerer Liste: 0 — richtig, denn die Summe der leeren Menge ist 0.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> <span class="term">maximum([-5,-3,-8])</span> gibt 0 aus — Tabelle erstellen und Fehler finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>Der Startwert <span class="term">groesstes = 0</span> ist größer als <em>jeder</em> Wert der Liste; er wird nie ersetzt. <span class="term">groesser</span> selbst ist korrekt — die Tabelle zeigt, wo der Fehler <em>nicht</em> liegt.</p>
+            <p><em>Zwei Lösungen:</em> mit <span class="term">werte[0]</span> beginnen, oder mit <span class="term">None</span> und Prüfung. Entscheidende Prüfung: <span class="term">maximum([-5,-3,-8]) == -3</span> — mit positiven Testdaten bleibt der Fehler unentdeckt.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      <tr>
+        <td>11</td><td>MF 7</td>
+        <td><span class="tkname">Die Dokumentation der öffentlichen Schnittstellen von Funktionen angeben</span></td>
+        <td><div class="begriffe"><span class="bg neu">Docstring</span><span class="bg">Zweck · Parameter · Rückgabe</span><span class="bg">Sonderfälle</span><span class="bg">veraltete Doku</span></div></td>
+        <td>
+          <p class="auf"><b>A1</b> Eine schlechte Dokumentation beurteilen und verbessern; warum muss die Rückgabe <span class="term">−1</span> unbedingt dastehen?</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p><em>Mängel:</em> „Sucht in der Liste" sagt nichts · sie beschreibt die <em>Umsetzung</em> statt der Schnittstelle · Rückgabe und Sonderfälle fehlen ganz.</p>
+            <p><em>Warum die −1 kritisch ist:</em> Sie ist in Python ein <strong>gültiger Index</strong> (das letzte Element). <span class="term">liste[suche(…)]</span> liefert bei „nicht gefunden" still das letzte Element — ohne Fehlermeldung. <span class="term">None</span> wäre der sicherere Entwurf.</p>
+          </div></details>
+          <p class="auf"><b>A2</b> Eine Funktion wurde erweitert, die Dokumentation nicht — drei Abweichungen finden.</p>
+          <details><summary>Lösung</summary><div class="sol">
+            <p>(1) Sie gibt auch <span class="term">None</span> zurück, nicht nur float. (2) Sie <strong>filtert <span class="term">None</span>-Werte heraus</strong> — das verändert das Ergebnis, steht aber nirgends. (3) Sie rundet auf zwei Stellen.</p>
+            <p><em>Punkt 2 ist der gefährlichste:</em> Der Mittelwert beruht auf drei statt fünf Werten, ohne Fehlermeldung — und eine Aussage wie „Mittel aus 5 Messungen" wäre falsch.</p>
+            <p><em>Warum veraltete Doku schlimmer ist als keine:</em> Sie wird geglaubt und verhindert gerade die Vorsicht, die sonst geherrscht hätte.</p>
+          </div></details>
+        </td>
+      </tr>
+
+      </tbody>
+    </table></div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('solAll');
+    var open = false;
+    btn.addEventListener('click', function () {
+      open = !open;
+      var all = document.querySelectorAll('details');
+      for (var i = 0; i < all.length; i++) { all[i].open = open; }
+      btn.textContent = open ? 'Alle Lösungen ausblenden' : 'Alle Lösungen einblenden';
+    });
+  })();
+
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var stored = null;
+    try { stored = localStorage.getItem('iumprog-theme'); } catch (e) {}
+    if (stored === 'light' || stored === 'dark') { root.setAttribute('data-theme', stored); }
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set === 'dark') { return true; }
+      if (set === 'light') { return false; }
+      return mq.matches;
+    }
+    function label() { btn.textContent = isDark() ? 'Hell' : 'Dunkel'; }
+    label();
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('iumprog-theme', next); } catch (e) {}
+      label();
+    });
+    mq.addEventListener('change', function () {
+      if (!root.hasAttribute('data-theme')) { label(); }
+    });
+  })();
+</script>
+</body>
+</html>

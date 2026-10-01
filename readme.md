@@ -8,6 +8,8 @@
 - [Klasse 9_10](./IuM_Klasse9_10.html)
 - [Klasse 11](./IuM_Klasse11.html)
 
+- [Programmierung Klasse 5-11](./Programmierung_Kl5-11.html)
+
 -----
 
 - [Brückenkurs Informatik](./Brueckenkurs_Informatik.html)
