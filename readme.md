@@ -13,7 +13,7 @@
 -----
 
 - [Brückenkurs Informatik](./Brueckenkurs_Informatik.html)
-- [Basiskurs Informatik](./Basiskurs_Informatik.html)
+- [Basisfach Informatik](./Basisfach_Informatik.html)
 
 -----
 
