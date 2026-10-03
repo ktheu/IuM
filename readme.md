@@ -19,6 +19,6 @@
 -----
 
 - [Vergleich Brückenkurs - Klasse 5-11](./vergleich_brueckenkurs_neu.md)
-- [Unterschiede Basisfach - Leistungsfach](./Unterschiede_Basisfach_Leistungsfach.html)
+- [Unterschiede Basisfach - Leistungsfach](./Unterschiede_Basis_Leistungsfach.html)
 
 <!-- - [Notenschlüssel](./notenschluessel.html) -->
