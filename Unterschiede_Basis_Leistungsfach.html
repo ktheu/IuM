@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Informatik Klassen 11/12 (Bildungsplan 2016): Unterschiede zwischen Basisfach und Leistungsfach — Teilkompetenzen, Erweiterungen, Themen nur im Leistungsfach">>
+<title>Basis- und Leistungsfach</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; }
+  img, svg { max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+</style>
+<style>
+  :root{
+    color-scheme:light;
+    --ground:#f5f6f8; --surface:#ffffff; --surface-2:#eef0f4;
+    --ink:#14181e; --ink-2:#39414d; --muted:#5b6573; --line:#d8dce4; --line-soft:#e6e9ef;
+    --accent:#12459e; --accent-soft:#e4eaf6;
+    --a-dp:#12459e; --a-id:#0f6355; --a-al:#6c3a8e; --a-ks:#a0442b; --a-da:#6f6014;
+    --sol-bg:#f2f6f1; --sol-line:#c9d8c6; --sol-ink:#2c4a2a;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --sans:"Atkinson Hyperlegible","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+      --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+      --accent:#8fb2ee; --accent-soft:#1d2735;
+      --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+      --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ground:#111418; --surface:#181c22; --surface-2:#21262e;
+    --ink:#eceef2; --ink-2:#c3c9d3; --muted:#98a1ae; --line:#333a45; --line-soft:#272d36;
+    --accent:#8fb2ee; --accent-soft:#1d2735;
+    --a-dp:#8fb2ee; --a-id:#5fbfa9; --a-al:#c193dd; --a-ks:#e08e70; --a-da:#c3b04a;
+    --sol-bg:#1a2119; --sol-line:#33452f; --sol-ink:#bcd9b6;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:52rem;margin:0 auto;padding:0 1.5rem 5rem}
+
+  .mast{border-bottom:1px solid var(--line);padding:3.5rem 0 2rem;margin-bottom:2.5rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 1.1rem}
+  .mast h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5.5vw,3rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 .5rem;text-wrap:balance}
+  .mast .sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--ink-2);margin:0 0 1.6rem}
+  .mast p.lede{max-width:72ch;color:var(--ink-2);margin:0 0 1.4rem;text-wrap:pretty}
+  .src{font-size:.85rem;color:var(--muted);border-left:2px solid var(--line);padding-left:.9rem;max-width:72ch;margin:0 0 .9rem;text-wrap:pretty}
+
+  .bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);margin-bottom:2.5rem}
+  .bar-in{max-width:52rem;margin:0 auto;padding:.6rem 1.5rem;display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center}
+  .bar nav{display:flex;flex-wrap:wrap;gap:.15rem .55rem;flex:1 1 auto}
+  .bar nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-decoration:none;color:var(--muted);padding:.2rem .1rem;border-bottom:2px solid transparent}
+  .bar nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+  button.toggle{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);border-radius:2px;padding:.35rem .7rem;cursor:pointer}
+  button.toggle:hover{border-color:var(--accent);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .area{margin:0 0 4rem;--c:var(--accent)}
+  #be,#ds,#db{--c:var(--a-id)} #op,#ad,#rk{--c:var(--a-al)} #rn{--c:var(--a-ks)} #is{--c:var(--a-dp)} #af,#pm{--c:var(--a-da)}
+  .area-head{border-top:3px solid var(--c);padding-top:1rem;margin-bottom:1.75rem}
+  .area-head .kb{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:.4rem}
+  .area-head h2{font-family:var(--serif);font-size:clamp(1.45rem,3.6vw,1.95rem);font-weight:600;line-height:1.2;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .area-head .count{font-size:.85rem;color:var(--muted);margin:.45rem 0 0}
+  .area-head .intro{font-size:.92rem;color:var(--ink-2);margin:.8rem 0 0;max-width:72ch;border-left:2px solid var(--line);padding-left:.9rem;text-wrap:pretty}
+
+  .tk{background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--c);margin-bottom:1.5rem}
+  .tk-head{padding:1.15rem 1.4rem 1rem;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;align-items:baseline}
+  .tk-id{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--c);letter-spacing:.04em;white-space:nowrap}
+  .tk-head h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;line-height:1.35;margin:0;text-wrap:pretty}
+  .tk-body{padding:1.2rem 1.4rem 1.4rem}
+  .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 .6rem}
+  .lbl+*{margin-top:0}
+  .prose p{margin:0 0 .8rem;max-width:72ch;color:var(--ink-2)}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:700}
+  .prose ul{margin:.2rem 0 .9rem;padding-left:1.1rem;max-width:72ch;color:var(--ink-2)}
+  .prose ol{margin:.2rem 0 .9rem;padding-left:1.3rem;max-width:72ch;color:var(--ink-2)}
+  .prose li{margin-bottom:.3rem}
+  .prose li::marker{color:var(--c)}
+  .term{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:.08em .35em;border-radius:2px;color:var(--ink)}
+
+  .tasks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem;border-top:1px solid var(--line-soft);padding-top:1.1rem;margin-top:1.4rem}
+  .tasks>li{display:flex;flex-direction:column;gap:.55rem}
+  .tk-num{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600}
+  .tasks .q{margin:0;max-width:72ch}
+  .tasks .q p{margin:0 0 .5rem}
+  .tasks .q p:last-child{margin:0}
+  .tasks ol.sub,.tasks ul.sub{margin:.4rem 0 0;padding-left:1.3rem}
+  .tasks ol.sub li,.tasks ul.sub li{margin-bottom:.25rem}
+
+  details{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:2px}
+  details>summary{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sol-ink);padding:.5rem .8rem;cursor:pointer;list-style:none}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::before{content:"▸ ";display:inline-block}
+  details[open]>summary::before{content:"▾ "}
+  details .sol{padding:0 .9rem .9rem;font-size:.94rem;color:var(--ink-2);max-width:74ch}
+  details .sol p{margin:0 0 .6rem}
+  details .sol p:last-child{margin:0}
+  details .sol ol,details .sol ul{margin:.3rem 0 .7rem;padding-left:1.25rem}
+  details .sol li{margin-bottom:.28rem}
+  details .sol strong{color:var(--ink)}
+
+  pre.bits{font-family:var(--mono);font-size:.82rem;line-height:1.7;background:var(--surface-2);border:1px solid var(--line-soft);border-radius:2px;padding:.7rem .85rem;margin:.5rem 0 .7rem;overflow-x:auto;white-space:pre;color:var(--ink)}
+
+  table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.5rem 0 .8rem;font-variant-numeric:tabular-nums}
+  .tbl-scroll{overflow-x:auto;margin:.5rem 0 .8rem}
+  .tbl-scroll table{margin:0;min-width:22rem}
+  th,td{text-align:left;padding:.4rem .7rem .4rem 0;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+  td.n,th.n{text-align:right;padding-right:1.1rem;font-family:var(--mono)}
+
+  :root{--k-gleich:#2a78d6;--k-geaendert:#eb6834;--k-neu:#1baf7a}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--k-gleich:#3987e5;--k-geaendert:#d95926;--k-neu:#199e70}}
+  :root[data-theme="dark"]{--k-gleich:#3987e5;--k-geaendert:#d95926;--k-neu:#199e70}
+  .area{--c:var(--accent)}
+  .area-head h2{margin-bottom:.2rem}
+  a{color:var(--accent)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:.75rem;margin:1.6rem 0 1.4rem}
+  .stat{background:var(--surface);border:1px solid var(--line-soft);padding:.8rem .9rem}
+  .stat .v{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+  .stat .l{font-size:.82rem;color:var(--muted);margin-top:.35rem;display:flex;align-items:center;gap:.4rem}
+  .key{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;flex:none}
+  .key.k-gleich{background:var(--k-gleich)} .key.k-geaendert{background:var(--k-geaendert)} .key.k-neu{background:var(--k-neu)}
+  .legend{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.85rem;color:var(--ink-2);margin:.2rem 0 1rem}
+  .legend span{display:flex;align-items:center;gap:.4rem}
+  .points{margin:0 0 1rem;padding-left:1.2rem;max-width:72ch;color:var(--ink-2)}
+  .points li{margin-bottom:.55rem}
+  .points strong{color:var(--ink)}
+
+  .bars{background:var(--surface);border:1px solid var(--line-soft);padding:1rem 1.1rem;margin:.5rem 0 1rem}
+  .brow{display:grid;grid-template-columns:minmax(8rem,15rem) 1fr auto;gap:.3rem .8rem;align-items:center;padding:.3rem 0}
+  .bname{font-size:.86rem;color:var(--ink-2);text-decoration:none;line-height:1.25}
+  .bname:hover{color:var(--ink);text-decoration:underline}
+  .btrack{display:flex;gap:2px;height:14px;min-width:2rem}
+  .seg{display:block;height:100%}
+  .seg:first-child{border-radius:4px 0 0 4px} .seg:last-child{border-radius:0 4px 4px 0} .seg:only-child{border-radius:4px}
+  .s-gleich{background:var(--k-gleich)} .s-geaendert{background:var(--k-geaendert)} .s-neu{background:var(--k-neu)}
+  .bval{font-family:var(--mono);font-size:.78rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bnote{font-size:.8rem;color:var(--muted);margin:.6rem 0 0}
+  @media (max-width:560px){.brow{grid-template-columns:1fr auto}.btrack{grid-column:1/-1;grid-row:2}}
+
+  .grow{background:var(--surface);border:1px solid var(--line-soft);padding:1rem 1.2rem 1.1rem;margin-bottom:1rem;scroll-margin-top:4rem}
+  .grow h3,.nur-feld h3{font-family:var(--serif);font-size:1.08rem;font-weight:600;margin:0 0 .7rem}
+  .gnr{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--muted);margin-left:.35rem}
+  .chips{display:flex;flex-wrap:wrap;gap:4px}
+  .chip{display:inline-flex;align-items:center;justify-content:center;gap:.2rem;min-width:2.6rem;height:2rem;padding:0 .35rem;border-radius:4px;font-family:var(--mono);font-size:.8rem;color:var(--ink);background:var(--surface-2);border-bottom:4px solid transparent;cursor:default}
+  .chip.c-gleich{border-bottom-color:var(--k-gleich)} .chip.c-geaendert{border-bottom-color:var(--k-geaendert)} .chip.c-neu{border-bottom-color:var(--k-neu)}
+  .chip .cs{font-size:.7rem;color:var(--muted)}
+  .chip:hover{outline:2px solid var(--ink-2);outline-offset:1px}
+  .kern{font-size:.93rem;color:var(--ink-2);margin:.8rem 0 .3rem;max-width:72ch}
+  .links{font-size:.8rem;color:var(--muted);margin:0}
+
+  .cmp{background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--k-geaendert);margin-bottom:1rem}
+  .cmp-head{display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;align-items:baseline;padding:.9rem 1.2rem .7rem;border-bottom:1px solid var(--line-soft)}
+  .cmp .tk-id{color:var(--ink)}
+  .was{margin:0;font-size:.95rem;color:var(--ink-2)}
+  .was strong{color:var(--ink)}
+  .cmp-body{padding:.8rem 1.2rem 1rem;display:grid;grid-template-columns:7.5rem 1fr;gap:.45rem 1rem}
+  .vlabel{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0}
+  .vtext{margin:0;font-family:var(--serif);font-size:1rem;line-height:1.5;color:var(--ink)}
+  ins{text-decoration:none;background:color-mix(in srgb,var(--k-geaendert) 22%,transparent);border-bottom:2px solid var(--k-geaendert);padding:0 .1em}
+  del{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+  @media (max-width:560px){.cmp-body{grid-template-columns:1fr}.vlabel{margin-top:.5rem}}
+
+  .nur-feld{margin-bottom:1.4rem}
+  .nurl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-soft)}
+  .nurl li{display:grid;grid-template-columns:3.6rem 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line-soft)}
+  .nk{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--ink);padding-left:.5rem;border-left:4px solid var(--k-neu);height:fit-content}
+  .nt{display:flex;flex-direction:column;gap:.15rem}
+  .nt strong{font-size:.95rem;color:var(--ink);font-weight:600}
+  .nw{font-size:.84rem;color:var(--muted)}
+  .leer{font-size:.9rem;color:var(--muted);margin:0}
+  .muted{color:var(--muted)}
+  td ul{margin:0;padding-left:1.1rem} td li{margin-bottom:.25rem}
+  .unterricht h3{font-family:var(--serif);font-size:1.08rem;font-weight:600;margin:1.4rem 0 .4rem}
+  .unterricht p,.unterricht li{color:var(--ink-2);max-width:72ch}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <nav>
+      <a href="#ueberblick">Überblick</a>
+      <a href="#themenfelder">Themenfelder</a>
+      <a href="#raster">Nummernraster</a>
+      <a href="#erweitert">Erweitert</a>
+      <a href="#nur-lf">Nur LF</a>
+      <a href="#einleitung">Einleitungstexte</a>
+      <a href="#unterricht">Unterricht</a>
+    </nav>
+    <button class="toggle" id="themeBtn" type="button" aria-label="Farbschema wechseln">Dunkel</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Bildungsplan 2016 · Schulversuchsfassung · Informatik Klassen 11/12</p>
+    <h1>Basisfach und Leistungsfach</h1>
+    <p class="sub">Was beide gemeinsam haben — und was nur im Leistungsfach vorkommt</p>
+    <p class="lede">Der Bildungsplan nummeriert die Teilkompetenzen beider Fächer gemeinsam. Teilkompetenzen, die nur im Leistungsfach gelten, stehen im Basisfach als „[nur LF]“. Dadurch lassen sich die beiden Fächer Teilkompetenz für Teilkompetenz vergleichen. Diese Übersicht zeigt das Ergebnis.</p>
+    <div class="stats">
+      <div class="stat"><div class="v">60</div><div class="l">Teilkompetenzen Basisfach</div></div>
+      <div class="stat"><div class="v">111</div><div class="l">Teilkompetenzen Leistungsfach</div></div>
+      <div class="stat"><div class="v">48</div><div class="l"><span class="key k-gleich"></span>wortgleich</div></div>
+      <div class="stat"><div class="v">12</div><div class="l"><span class="key k-geaendert"></span>im LF erweitert</div></div>
+      <div class="stat"><div class="v">51</div><div class="l"><span class="key k-neu"></span>nur Leistungsfach</div></div>
+    </div>
+    <p class="src">Grundlage: <em>Bildungsplan 2016 (Schulversuchsfassung) — Informatik (Schulversuch), Gymnasium</em>, Stand 21. Januar 2020, Abschnitte 3.2 (Basisfach) und 3.3 (Leistungsfach). Ausgearbeitete Inhalte und Aufgaben: <a href="../basiskurs/Basisfach_Informatik.html">Basisfach</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html">Leistungsfach</a>.</p>
+  </header>
+
+  <section class="area" id="ueberblick">
+    <div class="area-head"><span class="kb">Überblick</span><h2>Das Wichtigste in fünf Sätzen</h2></div>
+    <ol class="points">
+      <li><strong>Das Basisfach ist vollständig im Leistungsfach enthalten.</strong> Alle 60 Teilkompetenzen des Basisfachs kommen unter derselben Nummer auch im Leistungsfach vor; es gibt keine, die nur im Basisfach steht.</li>
+      <li><strong>Fast die Hälfte des Leistungsfachs ist zusätzlicher Stoff.</strong> 51 von 111 Teilkompetenzen (46 %) gibt es nur im Leistungsfach.</li>
+      <li><strong>Zwei Gebiete gehören praktisch nur zum Leistungsfach:</strong> Hardware und Netze (11 von 13 Teilkompetenzen in „Rechner und Netze“) und formale Sprachen (11 von 15 in „Automaten und formale Sprachen“).</li>
+      <li><strong>Wo beide Fächer dasselbe Thema haben, geht das Leistungsfach oft weiter:</strong> In 12 Teilkompetenzen ist die Formulierung erweitert — meist von <em>beschreiben</em> zu <em>beschreiben und implementieren</em> oder von <em>einem</em> zu <em>allen</em> Verfahren.</li>
+      <li><strong>Das Fundament ist gleich:</strong> Datenbanken sind in beiden Fächern fast identisch, und die Grundlagen der objektorientierten Programmierung, des Suchens und Sortierens, der Rekursion und der Kryptologie sind gemeinsam. Laut den Leitgedanken des Plans sind formale Sprachen ausdrücklich dem Leistungsfach vorbehalten, Automatenmodelle dagegen beiden Fächern gemeinsam.</li>
+    </ol>
+  </section>
+
+  <section class="area" id="themenfelder">
+    <div class="area-head"><span class="kb">Themenfelder</span><h2>Wo die Unterschiede liegen</h2>
+      <p class="intro">Jeder Balken zeigt die Teilkompetenzen des Leistungsfachs in einem Themenfeld; die Länge entspricht ihrer Anzahl. Der blaue und der orange Teil zusammen sind das Basisfach. Die Zahl rechts nennt: Teilkompetenzen im Basisfach → im Leistungsfach.</p></div>
+    <div class="legend" aria-hidden="true">
+      <span><span class="key k-gleich"></span>= wortgleich</span>
+      <span><span class="key k-geaendert"></span>+ im Leistungsfach erweitert</span>
+      <span><span class="key k-neu"></span>◆ nur Leistungsfach</span>
+    </div>
+    <div class="bars" role="img" aria-label="Balkendiagramm: Teilkompetenzen je Themenfeld nach Kategorie. Die Werte stehen in der Tabelle darunter.">
+      <div class="brow">
+        <a class="bname" href="#f-be">Bitebene</a>
+        <div class="btrack" style="width:40.9%"><span class="seg s-gleich" style="flex:5 0 0" title="BE: 5 wortgleich"></span><span class="seg s-neu" style="flex:4 0 0" title="BE: 4 nur Leistungsfach"></span></div>
+        <span class="bval">5 → 9</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-ds">Datenstrukturen</a>
+        <div class="btrack" style="width:50.0%"><span class="seg s-gleich" style="flex:4 0 0" title="DS: 4 wortgleich"></span><span class="seg s-geaendert" style="flex:2 0 0" title="DS: 2 im LF erweitert"></span><span class="seg s-neu" style="flex:5 0 0" title="DS: 5 nur Leistungsfach"></span></div>
+        <span class="bval">6 → 11</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-db">Relationale Datenbanksysteme</a>
+        <div class="btrack" style="width:40.9%"><span class="seg s-gleich" style="flex:7 0 0" title="DB: 7 wortgleich"></span><span class="seg s-geaendert" style="flex:2 0 0" title="DB: 2 im LF erweitert"></span></div>
+        <span class="bval">9 → 9</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-op">Strukturierte und objektorientierte Programmierung</a>
+        <div class="btrack" style="width:100.0%"><span class="seg s-gleich" style="flex:14 0 0" title="OP: 14 wortgleich"></span><span class="seg s-geaendert" style="flex:1 0 0" title="OP: 1 im LF erweitert"></span><span class="seg s-neu" style="flex:7 0 0" title="OP: 7 nur Leistungsfach"></span></div>
+        <span class="bval">15 → 22</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-ad">Algorithmen auf Datenstrukturen</a>
+        <div class="btrack" style="width:54.5%"><span class="seg s-gleich" style="flex:3 0 0" title="AD: 3 wortgleich"></span><span class="seg s-geaendert" style="flex:4 0 0" title="AD: 4 im LF erweitert"></span><span class="seg s-neu" style="flex:5 0 0" title="AD: 5 nur Leistungsfach"></span></div>
+        <span class="bval">7 → 12</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-rk">Rekursion</a>
+        <div class="btrack" style="width:27.3%"><span class="seg s-gleich" style="flex:3 0 0" title="RK: 3 wortgleich"></span><span class="seg s-neu" style="flex:3 0 0" title="RK: 3 nur Leistungsfach"></span></div>
+        <span class="bval">3 → 6</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-rn">Rechner und Netze</a>
+        <div class="btrack" style="width:59.1%"><span class="seg s-gleich" style="flex:2 0 0" title="RN: 2 wortgleich"></span><span class="seg s-neu" style="flex:11 0 0" title="RN: 11 nur Leistungsfach"></span></div>
+        <span class="bval">2 → 13</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-is">Informationsgesellschaft und Datensicherheit</a>
+        <div class="btrack" style="width:45.5%"><span class="seg s-gleich" style="flex:6 0 0" title="IS: 6 wortgleich"></span><span class="seg s-geaendert" style="flex:1 0 0" title="IS: 1 im LF erweitert"></span><span class="seg s-neu" style="flex:3 0 0" title="IS: 3 nur Leistungsfach"></span></div>
+        <span class="bval">7 → 10</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-af">Automaten und formale Sprachen</a>
+        <div class="btrack" style="width:68.2%"><span class="seg s-gleich" style="flex:2 0 0" title="AF: 2 wortgleich"></span><span class="seg s-geaendert" style="flex:2 0 0" title="AF: 2 im LF erweitert"></span><span class="seg s-neu" style="flex:11 0 0" title="AF: 11 nur Leistungsfach"></span></div>
+        <span class="bval">4 → 15</span>
+      </div>
+      <div class="brow">
+        <a class="bname" href="#f-pm">Projektmanagement</a>
+        <div class="btrack" style="width:18.2%"><span class="seg s-gleich" style="flex:2 0 0" title="PM: 2 wortgleich"></span><span class="seg s-neu" style="flex:2 0 0" title="PM: 2 nur Leistungsfach"></span></div>
+        <span class="bval">2 → 4</span>
+      </div>
+      <p class="bnote">Fahre mit der Maus über einen Abschnitt, um die Anzahl zu sehen. Ein Klick auf den Namen springt zum Nummernraster.</p>
+    </div>
+    <div class="tbl-scroll"><table>
+      <tr><th>Kennung</th><th>Themenfeld</th><th class="n">Basisfach</th><th class="n">Leistungsfach</th><th class="n">= gleich</th><th class="n">+ erweitert</th><th class="n">◆ nur LF</th></tr>
+      <tr><td><a href="#f-be">BE</a></td><td>Bitebene</td><td class="n">5</td><td class="n">9</td><td class="n">5</td><td class="n">0</td><td class="n">4</td></tr>
+      <tr><td><a href="#f-ds">DS</a></td><td>Datenstrukturen</td><td class="n">6</td><td class="n">11</td><td class="n">4</td><td class="n">2</td><td class="n">5</td></tr>
+      <tr><td><a href="#f-db">DB</a></td><td>Relationale Datenbanksysteme</td><td class="n">9</td><td class="n">9</td><td class="n">7</td><td class="n">2</td><td class="n">0</td></tr>
+      <tr><td><a href="#f-op">OP</a></td><td>Strukturierte und objektorientierte Programmierung</td><td class="n">15</td><td class="n">22</td><td class="n">14</td><td class="n">1</td><td class="n">7</td></tr>
+      <tr><td><a href="#f-ad">AD</a></td><td>Algorithmen auf Datenstrukturen</td><td class="n">7</td><td class="n">12</td><td class="n">3</td><td class="n">4</td><td class="n">5</td></tr>
+      <tr><td><a href="#f-rk">RK</a></td><td>Rekursion</td><td class="n">3</td><td class="n">6</td><td class="n">3</td><td class="n">0</td><td class="n">3</td></tr>
+      <tr><td><a href="#f-rn">RN</a></td><td>Rechner und Netze</td><td class="n">2</td><td class="n">13</td><td class="n">2</td><td class="n">0</td><td class="n">11</td></tr>
+      <tr><td><a href="#f-is">IS</a></td><td>Informationsgesellschaft und Datensicherheit</td><td class="n">7</td><td class="n">10</td><td class="n">6</td><td class="n">1</td><td class="n">3</td></tr>
+      <tr><td><a href="#f-af">AF</a></td><td>Automaten und formale Sprachen</td><td class="n">4</td><td class="n">15</td><td class="n">2</td><td class="n">2</td><td class="n">11</td></tr>
+      <tr><td><a href="#f-pm">PM</a></td><td>Projektmanagement</td><td class="n">2</td><td class="n">4</td><td class="n">2</td><td class="n">0</td><td class="n">2</td></tr>
+      <tr><td></td><td><strong>Summe</strong></td><td class="n"><strong>60</strong></td><td class="n"><strong>111</strong></td><td class="n"><strong>48</strong></td><td class="n"><strong>12</strong></td><td class="n"><strong>51</strong></td></tr>
+    </table></div>
+  </section>
+
+  <section class="area" id="raster">
+    <div class="area-head"><span class="kb">Nummernraster</span><h2>Jede Teilkompetenz auf einen Blick</h2>
+      <p class="intro">Jedes Kästchen ist eine Teilkompetenz mit ihrer Nummer im Bildungsplan. Farbe und Zeichen geben an, ob sie in beiden Fächern wortgleich ist (=), im Leistungsfach erweitert ist (+) oder nur im Leistungsfach vorkommt (◆). Beim Darüberfahren erscheint der Wortlaut.</p></div>
+    <div class="legend" aria-hidden="true">
+      <span><span class="key k-gleich"></span>= wortgleich</span>
+      <span><span class="key k-geaendert"></span>+ im Leistungsfach erweitert</span>
+      <span><span class="key k-neu"></span>◆ nur Leistungsfach</span>
+    </div>
+    <div class="grow" id="f-be">
+      <h3>BE · Bitebene <span class="gnr">3.2.1.1 / 3.3.1.1</span></h3>
+      <div class="chips" role="list" aria-label="Bitebene: Teilkompetenzen 1 bis 9"><span class="chip c-gleich" title="BE 1 · wortgleich: negative Zahlen in ihrer Einerkomplement- und Zweierkomplementdarstellung angeben und interpretieren"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="BE 2 · wortgleich: Addition und Subtraktion von Binärzahlen in Zweierkomplementdarstellung schriftlich durchführen und das Ergebnis interpretieren"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="BE 3 · wortgleich: Einschränkungen beim Rechnen mit endlicher Stellenzahl erläutern (zum Beispiel Overflow, Genauigkeit)"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="BE 4 · nur Leistungsfach: die Festkommadarstellung als Beispiel für eine Codierung nichtganzer Zahlen erläutern"><span class="cn">4</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="BE 5 · nur Leistungsfach: am Beispiel von Textcodierungen Erweiterungsmöglichkeiten von Codierungen beschreiben (zum Beispiel Biterweiterung, Escapezeichen, Codepages)"><span class="cn">5</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="BE 6 · wortgleich: Merkmale von Codes (unter anderem Umkehrbarkeit, Präfixfreiheit, feste/variable Bitlänge) erläutern"><span class="cn">6</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="BE 7 · wortgleich: das Huffmanverfahren als Beispiel für ein verlustfreies Datenkompressionsverfahren erläutern und die Codierung durch Erzeugung eines Huffmanbaums sowie Decodierung von Hand durchführen"><span class="cn">7</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="BE 8 · nur Leistungsfach: das LZW-Verfahren als Beispiel für ein Wörterbuchverfahren erläutern und von Hand durchführen"><span class="cn">8</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="BE 9 · nur Leistungsfach: das Konzept von Hashfunktionen und Anforderungen an diese (unter anderem Nichtumkehrbarkeit, Vermeidung von Kollisionen) beschreiben und dieses an Beispielen (zum Beispiel Fingerprint, Integritätsprüfung, ISBN-Prüfsumme) erläutern"><span class="cn">9</span><span class="cs" aria-hidden="true">◆</span></span></div>
+      <p class="kern">Das Leistungsfach ergänzt negative Zahlen im Zweierkomplement, Festkommazahlen, Erweiterungen von Textcodierungen, das LZW-Verfahren und Hashfunktionen.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#be">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#be">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-ds">
+      <h3>DS · Datenstrukturen <span class="gnr">3.2.1.2 / 3.3.1.2</span></h3>
+      <div class="chips" role="list" aria-label="Datenstrukturen: Teilkompetenzen 1 bis 11"><span class="chip c-neu" title="DS 1 · nur Leistungsfach: zweidimensionale Arrays in ihrer Implementierung verwenden"><span class="cn">1</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="DS 2 · wortgleich: einfach verkettete Listen als Beispiel einer linearen Struktur und Grundoperationen (zum Beispiel Einfügen, Löschen) implementieren"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DS 3 · wortgleich: Binärbäume als Beispiel einer Baumstruktur implementieren"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DS 4 · wortgleich: Graphen in den Repräsentationsformen Adjazenzmatrix und Adjazenzliste beschreiben"><span class="cn">4</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DS 5 · wortgleich: Begriffe aus der Graphentheorie (unter anderem Knoten, Kanten, Knotengrad, Kreis/Zyklus) und Eigenschaften von Graphen (unter anderem gerichtet/ungerichtet, gewichtet/ungewichtet, zyklisch/azyklisch) verwenden"><span class="cn">5</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="DS 6 · nur Leistungsfach: erläutern, dass Bäume spezielle Graphen sind (Begriffe: Wurzel, innerer Knoten, Blatt)"><span class="cn">6</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="DS 7 · nur Leistungsfach: das Konzept des Abstrakten Datentyps (unter anderem anhand von Set) erläutern"><span class="cn">7</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-geaendert" title="DS 8 · im LF erweitert: den Abstrakten Datentyp (ADT) Stack mit den Operationen isEmpty, push, pop und top beschreiben (LIFO-Prinzip) und mithilfe einer geeigneten Datenstruktur implementieren"><span class="cn">8</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-geaendert" title="DS 9 · im LF erweitert: den Abstrakten Datentyp (ADT) Queue mit den Operationen isEmpty, enqueue, dequeue und front beschreiben (FIFO-Prinzip) und mithilfe einer geeigneten Datenstruktur implementieren"><span class="cn">9</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-neu" title="DS 10 · nur Leistungsfach: Datenstrukturen zur Modellierung und Lösung ausgewählter Anwendungsfälle (zum Beispiel Straßennetz, Geldflüsse, Freundschaftsbeziehungen in sozialen Netzwerken, Organigramm, To-do-Liste, Klammerausdrücke, Rangierbahnhof) nutzen"><span class="cn">10</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="DS 11 · nur Leistungsfach: einen Algorithmus auf Graphen implementieren (unter Verwendung geeigneter Bibliotheken oder Frameworks)"><span class="cn">11</span><span class="cs" aria-hidden="true">◆</span></span></div>
+      <p class="kern">Stack und Queue werden im Leistungsfach auch <em>implementiert</em>; dazu kommen 2D-Arrays, Bäume als Graphen, der ADT Set, Anwendungsfälle und ein Graphalgorithmus mit Bibliothek.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#ds">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#ds">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-db">
+      <h3>DB · Relationale Datenbanksysteme <span class="gnr">3.2.1.3 / 3.3.1.3</span></h3>
+      <div class="chips" role="list" aria-label="Relationale Datenbanksysteme: Teilkompetenzen 1 bis 9"><span class="chip c-gleich" title="DB 1 · wortgleich: Komponenten (unter anderem Datenbank, Datenbankschnittstelle, Datenbankverwaltungssystem) und deren Funktionen von Datenbanksystemen beschreiben"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DB 2 · wortgleich: das relationale Datenbankmodell und wesentliche Begriffe (Entität, Entitätstyp, Attribut, Relation, Kardinalität, Tabelle, Datensatz, Datenfeld) beschreiben"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DB 3 · wortgleich: die Begriffe Schlüssel, Primärschlüssel und Fremdschlüssel erläutern"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-geaendert" title="DB 4 · im LF erweitert: Ausschnitte der Realität in einem Diagramm (Entity-Relationship-Diagramm und UML-Klassendiagramm) modellieren"><span class="cn">4</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-gleich" title="DB 5 · wortgleich: ein relationales Datenbankschema in 3. Normalform erstellen, um unerwünschte Redundanzen zu vermeiden und damit das Risiko für Inkonsistenzen zu minimieren"><span class="cn">5</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DB 6 · wortgleich: Diagramme und relationale Datenbankschemata ineinander überführen"><span class="cn">6</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="DB 7 · wortgleich: ein Datenbankverwaltungsprogramm zur Erstellung und Administration von Datenbanken nutzen"><span class="cn">7</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-geaendert" title="DB 8 · im LF erweitert: Abfragen auf Datenbanken in der Datenbanksprache SQL (Aggregatfunktion, Gruppierung, Projektion, Selektion und Verbund über WHERE) auch über mehrere Tabellen durchführen"><span class="cn">8</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-gleich" title="DB 9 · wortgleich: Manipulationen auf Datenbanken in der Datenbanksprache SQL (unter anderem Ändern, Einfügen und Löschen) durchführen"><span class="cn">9</span><span class="cs" aria-hidden="true">=</span></span></div>
+      <p class="kern">Inhaltlich fast gleich. Im Leistungsfach zusätzlich Aggregatfunktionen und Gruppierung in SQL sowie <em>beide</em> Diagrammarten (ER <em>und</em> UML).</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#db">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#db">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-op">
+      <h3>OP · Strukturierte und objektorientierte Programmierung <span class="gnr">3.2.2.1 / 3.3.2.1</span></h3>
+      <div class="chips" role="list" aria-label="Strukturierte und objektorientierte Programmierung: Teilkompetenzen 1 bis 22"><span class="chip c-gleich" title="OP 1 · wortgleich: die Begriffe Variable, Bezeichner, Datentyp, Wert, Deklaration, Initialisierung, Wertzuweisung und Gültigkeitsbereich erläutern"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 2 · wortgleich: primitive Datentypen für ganzzahlige Werte, Gleitkommawerte und boolesche Werte unter Beachtung ihres Wertebereichs verwenden"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 3 · wortgleich: implizite und explizite Typumwandlungen (type casts) zur Konvertierung von Werten unterschiedlicher Datentypen ineinander verwenden und dabei auftretende Probleme beschreiben"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-geaendert" title="OP 4 · im LF erweitert: Operationen auf Zeichenketten (unter anderem Vergleichen, Verketten, Zugriff auf einzelne Zeichen, Umwandlung in Zahlen) durchführen"><span class="cn">4</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-gleich" title="OP 5 · wortgleich: eigene Klassendefinitionen mit Attributen und Methoden implementieren"><span class="cn">5</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 6 · wortgleich: Referenzvariablen/Referenztypen mit primitiven Variablen / primitiven Datentypen vergleichen"><span class="cn">6</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="OP 7 · nur Leistungsfach: mögliche Ursachen und Auswirkungen von Nullpointerfehlern erläutern"><span class="cn">7</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="OP 8 · wortgleich: Methoden mit und ohne Rückgabewert sowie mit und ohne Parameter implementieren und den Begriff der Methodensignatur erläutern"><span class="cn">8</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 9 · wortgleich: die Funktion von Zugriffsmodifikatoren (public, private, protected) erläutern und diese verwenden"><span class="cn">9</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 10 · wortgleich: die Kapselung von Attributen und Methoden (Geheimnisprinzip) erläutern und in eigenen Implementierungen verwenden (unter anderem Zugriff auf Attribute über Zugriffsmethoden)"><span class="cn">10</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="OP 11 · nur Leistungsfach: den Unterschied zwischen Objektattributen/Objektmethoden und Klassenattributen/Klassenmethoden erklären"><span class="cn">11</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="OP 12 · nur Leistungsfach: den Lebenszyklus von Objekten (unter anderem Instanziierung, Verwendung, Zerstörung) beschreiben"><span class="cn">12</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="OP 13 · wortgleich: die Rolle von Konstruktoren beim Erzeugen von Instanzen einer Klasse (Objekten) erläutern und diese implementieren"><span class="cn">13</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="OP 14 · nur Leistungsfach: generische Datentypen bei der Instanziierung vorgegebener Klassen verwenden"><span class="cn">14</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="OP 15 · nur Leistungsfach: sprachliche Mittel zur Sammlung gleichartiger Objekte (Collection) und zum Durchlaufen aller Elemente der Sammlung (zum Beispiel Iteration, foreach, Lambdaausdrücke etc.) nutzen"><span class="cn">15</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="OP 16 · wortgleich: das Konzept der Vererbung erläutern und in Modellierungen und Implementierungen anwenden"><span class="cn">16</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="OP 17 · nur Leistungsfach: das Prinzip der Polymorphie erläutern und anwenden und dabei auch sichere class casts verwenden"><span class="cn">17</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="OP 18 · nur Leistungsfach: abstrakte Klassen und abstrakte Methoden nutzen"><span class="cn">18</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="OP 19 · wortgleich: Algorithmen in den Notationsformen Nassi-Shneiderman-Diagramm und Pseudocode darstellen und interpretieren"><span class="cn">19</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 20 · wortgleich: UML-Klassendiagramme mit Vererbung und Assoziation (auch rekursiv) entwerfen und zur Modellierung nutzen"><span class="cn">20</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 21 · wortgleich: ihren Programmcode nach gängigen Standards kommentieren und dazu vorhandene Hilfsmittel der Entwicklungsumgebung nutzen"><span class="cn">21</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="OP 22 · wortgleich: Dokumentationen zu gegebenem Quellcode und Bibliotheken nutzen"><span class="cn">22</span><span class="cs" aria-hidden="true">=</span></span></div>
+      <p class="kern">Der Kern der OOP ist gleich. Das Leistungsfach geht in die Tiefe der Sprache: Nullpointer, Klassenattribute, Lebenszyklus, Generics, Collections, Polymorphie mit Casts, abstrakte Klassen.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#op">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#op">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-ad">
+      <h3>AD · Algorithmen auf Datenstrukturen <span class="gnr">3.2.2.2 / 3.3.2.2</span></h3>
+      <div class="chips" role="list" aria-label="Algorithmen auf Datenstrukturen: Teilkompetenzen 1 bis 12"><span class="chip c-gleich" title="AD 1 · wortgleich: die lineare Suche auf Array und Liste implementieren"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="AD 2 · wortgleich: die binäre Suche auf sortierten Arrays implementieren"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="AD 3 · nur Leistungsfach: Inorder‑, Postorder- und Preorder-Traversierung auf Binärbäumen händisch durchführen und Anwendungsbeispiele nennen"><span class="cn">3</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-geaendert" title="AD 4 · im LF erweitert: Breitensuche und Tiefensuche auf Bäumen beschreiben und implementieren"><span class="cn">4</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-geaendert" title="AD 5 · im LF erweitert: elementare vergleichsbasierte Sortierverfahren (Bubblesort, Selectionsort, Insertionsort) beschreiben, händisch durchführen und implementieren"><span class="cn">5</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-geaendert" title="AD 6 · im LF erweitert: höhere vergleichsbasierte rekursive Sortierverfahren (Mergesort, Quicksort) beschreiben, händisch durchführen und eines davon implementieren"><span class="cn">6</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-neu" title="AD 7 · nur Leistungsfach: ein nicht-vergleichsbasiertes Verfahren (zum Beispiel Bucketsort, Countingsort, Radixsort, …) beschreiben"><span class="cn">7</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="AD 8 · wortgleich: Sortierverfahren hinsichtlich der Eigenschaften Laufzeit (in O-Notation), Speicherbedarf und Stabilität vergleichen und die Begriffe best case, worst case und average case erläutern"><span class="cn">8</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="AD 9 · nur Leistungsfach: Breitensuche und Tiefensuche auf Graphen beschreiben, auf reale Problemstellungen anwenden und händisch durchführen"><span class="cn">9</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-geaendert" title="AD 10 · im LF erweitert: einen Algorithmus (zum Beispiel Prim, Kruskal) zur Bestimmung eines Minimum Spanning Tree und einen zur Lösung des Problems des kürzesten Pfades (zum Beispiel Dijkstra, Bellman-Ford) beschreiben und an Beispielen von Hand durchführen"><span class="cn">10</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-neu" title="AD 11 · nur Leistungsfach: erläutern, dass nicht bekannt ist, ob für jedes Problem eine in Polynomialzeit berechenbare Lösung existiert, und können dafür Beispiele angeben"><span class="cn">11</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AD 12 · nur Leistungsfach: Strategien (zum Beispiel Greedy) zur Bestimmung von Näherungslösungen in polynomieller Laufzeit beschreiben und an geeigneten Problemstellungen (zum Beispiel 4-Farben-Problem, Dominating Sets) von Hand durchführen"><span class="cn">12</span><span class="cs" aria-hidden="true">◆</span></span></div>
+      <p class="kern">Im Basisfach wird vieles <em>beschrieben</em>, im Leistungsfach <em>implementiert</em>. Neu: Traversierungen, nicht-vergleichsbasiertes Sortieren, Graphensuche, MST, P/NP und Näherungsverfahren.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#ad">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#ad">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-rk">
+      <h3>RK · Rekursion <span class="gnr">3.2.2.3 / 3.3.2.3</span></h3>
+      <div class="chips" role="list" aria-label="Rekursion: Teilkompetenzen 1 bis 6"><span class="chip c-gleich" title="RK 1 · wortgleich: zu geeigneten Problemstellungen (zum Beispiel Türme von Hanoi, Baumtraversierung) rekursive Algorithmen unter Angabe von Rekursionsschritt und Rekursionsbasis entwerfen und von Hand durchführen"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="RK 2 · wortgleich: das Divide-and-Conquer-Prinzip an geeigneten Problemstellungen erläutern"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="RK 3 · wortgleich: rekursive Algorithmen zu unterschiedlichen Problemstellungen (zum Beispiel Fakultätsfunktion, Fibonacci-Zahlen, Kochsche Schneeflocke) implementieren"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="RK 4 · nur Leistungsfach: Rekursionsabläufe darstellen (unter anderem am call stack, Baum)"><span class="cn">4</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RK 5 · nur Leistungsfach: iterative Algorithmen und rekursive Algorithmen zur Lösung derselben Problemstellung vergleichen (unter anderem hinsichtlich Laufzeit) und bewerten"><span class="cn">5</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RK 6 · nur Leistungsfach: das Prinzip des Backtrackings anhand einer geeigneten Problemstellung (zum Beispiel Acht-Damen-Problem, Magische Quadrate, Zyklensuche) erläutern"><span class="cn">6</span><span class="cs" aria-hidden="true">◆</span></span></div>
+      <p class="kern">Das Basisfach endet beim Entwerfen und Implementieren rekursiver Algorithmen. Das Leistungsfach ergänzt Aufrufstapel, den Vergleich mit Iteration und Backtracking.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#rk">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#rk">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-rn">
+      <h3>RN · Rechner und Netze <span class="gnr">3.2.3 / 3.3.3</span></h3>
+      <div class="chips" role="list" aria-label="Rechner und Netze: Teilkompetenzen 1 bis 13"><span class="chip c-neu" title="RN 1 · nur Leistungsfach: aus logischen Gattern (unter anderem AND, OR, XOR, NOT) Schaltnetze entwerfen, diese untersuchen und ihre Wahrheitstafeln ermitteln"><span class="cn">1</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 2 · nur Leistungsfach: Aufbau und Funktion von Halbaddierer und Volladdierer beschreiben und daraus in einer Simulationsumgebung einen Mehrbitaddierer erstellen"><span class="cn">2</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 3 · nur Leistungsfach: Aufbau und Funktion eines bistabilen Bauteils (zum Beispiel Latch, Flipflop) als Beispiel für einen 1-Bit-Speicher beschreiben und in einer Simulationsumgebung SR-Latch und D-Latch erstellen"><span class="cn">3</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 4 · nur Leistungsfach: Begriffe der booleschen Algebra (boolescher Wert, Verknüpfungen, Basis) erklären"><span class="cn">4</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 5 · nur Leistungsfach: Boolesche Terme mithilfe der Rechengesetze (unter anderem De Morgan’sche Regeln) in eine vereinfachte Darstellung überführen"><span class="cn">5</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 6 · nur Leistungsfach: Boolesche Funktionen in disjunktiver Normalform (DNF) und konjunktiver Normalform (KNF) angeben, auch kanonisch"><span class="cn">6</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 7 · nur Leistungsfach: Boolesche Funktionen in bis zu vier Variablen mithilfe von KV-Diagrammen in Minimalform überführen"><span class="cn">7</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="RN 8 · wortgleich: Aufbau, Funktionsweise (unter anderem Befehlszyklus) und Komponenten (unter anderem Adressbus, Datenbus, Rechenwerk, Register, Steuerwerk, Speicherwerk) einer Von-Neumann-Modellmaschine beschreiben"><span class="cn">8</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="RN 9 · wortgleich: Mikroprogramme für Assemblerbefehle (zum Beispiel ADD, SUB, JMP) in einer Simulationsumgebung implementieren"><span class="cn">9</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="RN 10 · nur Leistungsfach: Assembler-Programme für eine Von-Neumann-Modellmaschine (zum Beispiel Multiplikation natürlicher Zahlen) in einer Simulationsumgebung implementieren"><span class="cn">10</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 11 · nur Leistungsfach: das Prinzip der paketorientierten Übertragung (unter anderem Adressierung, Segmentierung) erläutern"><span class="cn">11</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 12 · nur Leistungsfach: das Zusammenwirken von Protokollschichten (unter anderem am Beispiel von TCP/IP) am vereinfachten Schichtenmodell (Netzwerkschicht, Vermittlungsschicht, Transportschicht, Anwendungsschicht) erläutern"><span class="cn">12</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="RN 13 · nur Leistungsfach: den Kommunikationsablauf über ein Protokoll (unter anderem TCP mit Verbindungsaufbau und ‑abbau) in einem Sequenzdiagramm darstellen"><span class="cn">13</span><span class="cs" aria-hidden="true">◆</span></span></div>
+      <p class="kern">Das größte Gefälle: Im Basisfach nur Von-Neumann-Rechner und Mikroprogramme. Das Leistungsfach behandelt zusätzlich Schaltnetze, boolesche Algebra, KV-Diagramme, Assembler und Netzwerkprotokolle.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#rn">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#rn">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-is">
+      <h3>IS · Informationsgesellschaft und Datensicherheit <span class="gnr">3.2.4 / 3.3.4</span></h3>
+      <div class="chips" role="list" aria-label="Informationsgesellschaft und Datensicherheit: Teilkompetenzen 1 bis 10"><span class="chip c-gleich" title="IS 1 · wortgleich: asymmetrische und symmetrische Verschlüsselung vergleichen (Schlüsselverwaltung, Schlüsseltausch, Geschwindigkeit)"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="IS 2 · wortgleich: erklären, wie Nachrichten mit asymmetrischer Verschlüsselung signiert werden können"><span class="cn">2</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="IS 3 · wortgleich: erläutern, dass die Sicherheit asymmetrischer Kryptoverfahren auf Einwegfunktionen basiert, für die ausschließlich Angriffe mit exponentieller Laufzeit bekannt sind"><span class="cn">3</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="IS 4 · nur Leistungsfach: spezielle Anforderungen an kryptologische Hashfunktionen und Anwendungen in der Kryptologie erläutern (zum Beispiel Fingerprint, Signatur, Passworthashes)"><span class="cn">4</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-geaendert" title="IS 5 · im LF erweitert: Kryptographische Ziele (Geheimhaltung, Authentifizierung, Integritätssicherung) und ihre Umsetzung mit kryptographischen Methoden (Chiffren, Signaturen, Hashfunktionen) erläutern"><span class="cn">5</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-gleich" title="IS 6 · wortgleich: Anwendungsbereiche von Public-Key-Infrastrukturen beschreiben (zum Beispiel digitaler Personalausweis, Transportverschlüsselung, Mailverschlüsselung) und im Hinblick auf Sicherheitsaspekte bewerten"><span class="cn">6</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="IS 7 · nur Leistungsfach: erläutern, dass digitale Zertifikate auf Vertrauensmodellen (zum Beispiel hierarchisches Modell, Web of Trust) basieren"><span class="cn">7</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="IS 8 · nur Leistungsfach: Angriffe auf Informatiksysteme beschreiben (zum Beispiel SQL-Injections auf Datenbanksysteme, DDOS auf Netzwerkinfrastrukturen oder Phishing auf Zugangskontrollsysteme)"><span class="cn">8</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="IS 9 · wortgleich: Maßnahmen zur Gewährleistung von Datensicherheit und Datenschutz beim Einsatz von Informatiksystemen erläutern"><span class="cn">9</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="IS 10 · wortgleich: Szenarien bewerten, in denen Daten massenweise erhoben, gespeichert und weiterverarbeitet werden"><span class="cn">10</span><span class="cs" aria-hidden="true">=</span></span></div>
+      <p class="kern">Kryptologie und Datenschutz sind in beiden Fächern da. Das Leistungsfach ergänzt kryptologische Hashfunktionen, Vertrauensmodelle von Zertifikaten und konkrete Angriffe.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#is">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#is">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-af">
+      <h3>AF · Automaten und formale Sprachen <span class="gnr">3.2.5 / 3.3.5</span></h3>
+      <div class="chips" role="list" aria-label="Automaten und formale Sprachen: Teilkompetenzen 1 bis 15"><span class="chip c-geaendert" title="AF 1 · im LF erweitert: Anwendungsbereiche beschreiben, in denen formale Sprachen und Automatenmodelle eingesetzt werden"><span class="cn">1</span><span class="cs" aria-hidden="true">+</span></span><span class="chip c-neu" title="AF 2 · nur Leistungsfach: die Definition einer formalen Sprache erläutern"><span class="cn">2</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 3 · nur Leistungsfach: den Unterschied zwischen Semantik und Syntax einer formalen Sprache erläutern"><span class="cn">3</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 4 · nur Leistungsfach: Syntaxdiagramme unter Verwendung von Terminalsymbolen und Nichtterminalsymbolen zur Beschreibung einer formalen Sprache entwerfen"><span class="cn">4</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 5 · nur Leistungsfach: eine Grammatik unter Verwendung von Terminalsymbolen, Nichtterminalsymbolen, Startsymbol und Produktionsregeln (auch unter Verwendung von EBNF) zur Beschreibung einer formalen Sprache angeben"><span class="cn">5</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 6 · nur Leistungsfach: für verschiedene Sprachtypen überprüfen, ob ein Wort einer formalen Sprache angehört (Wortproblem), eine Ableitung für ein Wort der Sprache angeben und Wörter der Sprache angeben"><span class="cn">6</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="AF 7 · wortgleich: einen endlichen Automaten mit und ohne Ausgabe (unter anderem Mealy-Automat als Zustandsdiagramm) zur Modellierung von Abläufen verwenden"><span class="cn">7</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-gleich" title="AF 8 · wortgleich: zu einem endlichen Automaten die Darstellungsformen Zustandsdiagramm und Zustandsübergangstabelle ineinander überführen"><span class="cn">8</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="AF 9 · nur Leistungsfach: die Definition einer regulären Sprache erläutern"><span class="cn">9</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 10 · nur Leistungsfach: reguläre Sprachen durch deterministische endliche Automaten (DEA), reguläre Grammatiken und reguläre Ausdrücke beschreiben"><span class="cn">10</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 11 · nur Leistungsfach: die Grenzen regulärer Sprachen erläutern"><span class="cn">11</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 12 · nur Leistungsfach: die Definition einer kontextfreien Sprache angeben"><span class="cn">12</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 13 · nur Leistungsfach: kontextfreie Sprachen durch Kellerautomaten und kontextfreie Grammatiken beschreiben"><span class="cn">13</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="AF 14 · nur Leistungsfach: Grenzen kontextfreier Sprachen erläutern"><span class="cn">14</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-geaendert" title="AF 15 · im LF erweitert: Einsatzbereiche für reguläre Automaten (zum Beispiel Substringproblem, GUI, zustandsbasierte Protokolle) und Kellerautomaten (Parsen von Klammersprachen) erläutern"><span class="cn">15</span><span class="cs" aria-hidden="true">+</span></span></div>
+      <p class="kern">Das Basisfach behandelt nur endliche Automaten. Formale Sprachen — Grammatiken, Syntaxdiagramme, reguläre und kontextfreie Sprachen, Kellerautomaten — gibt es nur im Leistungsfach.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#af">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#af">Leistungsfach-Datei</a></p>
+    </div>
+    <div class="grow" id="f-pm">
+      <h3>PM · Projektmanagement <span class="gnr">3.2.6 / 3.3.6</span></h3>
+      <div class="chips" role="list" aria-label="Projektmanagement: Teilkompetenzen 1 bis 4"><span class="chip c-gleich" title="PM 1 · wortgleich: Aspekte des Projektmanagements (unter anderem Projekt, Projektauftrag, Projektphasen, Anforderungen, Abnahme) und ein Vorgehensmodell (zum Beispiel agiles Vorgehen, iterativ, Wasserfallmodell) erklären"><span class="cn">1</span><span class="cs" aria-hidden="true">=</span></span><span class="chip c-neu" title="PM 2 · nur Leistungsfach: Vorgehensweisen und Herausforderungen bei der kollaborativen Softwareentwicklung (zum Beispiel Nutzung von Bibliotheken und APIs, Versionsverwaltung, Bereitstellung selbst erstellter Bibliotheken, Bugtracking, Updates) beschreiben"><span class="cn">2</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-neu" title="PM 3 · nur Leistungsfach: Methoden testgetriebener oder testgestützter Entwicklung beschreiben und verwenden"><span class="cn">3</span><span class="cs" aria-hidden="true">◆</span></span><span class="chip c-gleich" title="PM 4 · wortgleich: einen Projektentwurf erstellen und Anforderungen an das Projekt in geeigneter Form (zum Beispiel Lastenheft, Pflichtenheft, User Stories, Systemfunktionen) beschreiben, ein (Teil‑)Projekt durchführen und einen Prototyp erstellen"><span class="cn">4</span><span class="cs" aria-hidden="true">=</span></span></div>
+      <p class="kern">Projektplanung und Prototyp in beiden Fächern. Das Leistungsfach ergänzt kollaborative Entwicklung (Git, Bibliotheken, Bugtracking) und testgetriebene Entwicklung.</p>
+      <p class="links"><a href="../basiskurs/Basisfach_Informatik.html#pm">Basisfach-Datei</a> · <a href="../leistungskurs/Leistungsfach_Informatik.html#pm">Leistungsfach-Datei</a></p>
+    </div>
+  </section>
+
+  <section class="area" id="erweitert">
+    <div class="area-head"><span class="kb">Erweitert</span><h2>Die 12 Teilkompetenzen, die das Leistungsfach erweitert</h2>
+      <p class="intro">Gleiche Nummer, anderer Wortlaut. <ins>Hervorgehoben</ins> ist, was im Leistungsfach hinzukommt; <del>durchgestrichen</del>, was im Basisfach steht und im Leistungsfach ersetzt wird.</p></div>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">DS 8</span><p class="was">Operationen werden benannt, und der Stack wird <strong>implementiert</strong>, nicht nur beschrieben.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Den Abstrakten Datentyp (ADT) Stack beschreiben (LIFO-Prinzip)</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">den Abstrakten Datentyp (ADT) Stack <ins>mit den Operationen isEmpty, push, pop und top</ins> beschreiben (LIFO-Prinzip) <ins>und mithilfe einer geeigneten Datenstruktur implementieren</ins></p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">DS 9</span><p class="was">Ebenso für die Queue: Operationen benannt, <strong>Implementierung</strong> verlangt.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Den Abstrakten Datentyp (ADT) Queue beschreiben (FIFO-Prinzip)</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">den Abstrakten Datentyp (ADT) Queue <ins>mit den Operationen isEmpty, enqueue, dequeue und front</ins> beschreiben (FIFO-Prinzip) <ins>und mithilfe einer geeigneten Datenstruktur implementieren</ins></p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">DB 4</span><p class="was">„oder“ wird zu „und“: Im Leistungsfach werden <strong>beide</strong> Diagrammarten beherrscht.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Ausschnitte der Realität in einem Diagramm (Entity-Relationship-Diagramm oder UML-Klassendiagramm) modellieren</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Ausschnitte der Realität in einem Diagramm (Entity-Relationship-Diagramm <del>oder</del> <ins>und</ins> UML-Klassendiagramm) modellieren</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">DB 8</span><p class="was">SQL-Abfragen zusätzlich mit <strong>Aggregatfunktionen und Gruppierung</strong> (COUNT, AVG, GROUP BY …).</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Abfragen auf Datenbanken in der Datenbanksprache SQL (Projektion, Selektion und Verbund über WHERE) auch über mehrere Tabellen durchführen</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Abfragen auf Datenbanken in der Datenbanksprache SQL <del>(Projektion,</del> <ins>(Aggregatfunktion, Gruppierung, Projektion,</ins> Selektion und Verbund über WHERE) auch über mehrere Tabellen durchführen</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">OP 4</span><p class="was">Statt nur Verketten: auch <strong>Vergleichen, Zugriff auf Zeichen, Umwandlung in Zahlen</strong>.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Operationen auf Zeichenketten durchführen (unter anderem Verketten)</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Operationen auf Zeichenketten <del>durchführen</del> (unter anderem <del>Verketten)</del> <ins>Vergleichen, Verketten, Zugriff auf einzelne Zeichen, Umwandlung in Zahlen) durchführen</ins></p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AD 4</span><p class="was">Breiten- und Tiefensuche auf Bäumen werden auch <strong>implementiert</strong>.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Breitensuche und Tiefensuche auf Bäumen beschreiben</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Breitensuche und Tiefensuche auf Bäumen beschreiben <ins>und implementieren</ins></p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AD 5</span><p class="was"><strong>Alle drei</strong> elementaren Sortierverfahren implementieren statt nur eines.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">elementare vergleichsbasierte Sortierverfahren (Bubblesort, Selectionsort, Insertionsort) beschreiben, händisch durchführen und eines davon implementieren</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">elementare vergleichsbasierte Sortierverfahren (Bubblesort, Selectionsort, Insertionsort) beschreiben, händisch durchführen und <del>eines davon</del> implementieren</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AD 6</span><p class="was"><strong>Beide</strong> höheren Verfahren (Mergesort und Quicksort) beschreiben und von Hand durchführen, eines implementieren.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">ein höheres vergleichsbasiertes rekursives Sortierverfahren (zum Beispiel Mergesort, Quicksort) beschreiben</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext"><del>ein höheres vergleichsbasiertes rekursives</del> <ins>höhere vergleichsbasierte rekursive</ins> Sortierverfahren <del>(zum Beispiel Mergesort,</del> <ins>(Mergesort,</ins> Quicksort) <del>beschreiben</del> <ins>beschreiben, händisch durchführen und eines davon implementieren</ins></p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AD 10</span><p class="was">Zusätzlich ein Verfahren für den <strong>minimalen Spannbaum</strong> (Prim, Kruskal); Bellman-Ford als Beispiel.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">einen Algorithmus zur Lösung des Problems des kürzesten Pfades (zum Beispiel Dijkstra) beschreiben und an Beispielen von Hand durchführen</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">einen Algorithmus <ins>(zum Beispiel Prim, Kruskal) zur Bestimmung eines Minimum Spanning Tree und einen</ins> zur Lösung des Problems des kürzesten Pfades (zum Beispiel <del>Dijkstra)</del> <ins>Dijkstra, Bellman-Ford)</ins> beschreiben und an Beispielen von Hand durchführen</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">IS 5</span><p class="was">Neben den Zielen auch ihre <strong>Umsetzung</strong> mit Chiffren, Signaturen und Hashfunktionen.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Kryptographische Ziele (Geheimhaltung, Authentifizierung, Integritätssicherung) erläutern</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Kryptographische Ziele (Geheimhaltung, Authentifizierung, Integritätssicherung) <ins>und ihre Umsetzung mit kryptographischen Methoden (Chiffren, Signaturen, Hashfunktionen)</ins> erläutern</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AF 1</span><p class="was">Anwendungsbereiche auch für <strong>formale Sprachen</strong>, nicht nur für Automaten.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Anwendungsbereiche beschreiben, in denen Automatenmodelle eingesetzt werden</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Anwendungsbereiche beschreiben, in denen <ins>formale Sprachen und</ins> Automatenmodelle eingesetzt werden</p>
+      </div>
+    </article>
+    <article class="cmp">
+      <div class="cmp-head"><span class="tk-id">AF 15</span><p class="was">Zusätzlich <strong>Kellerautomaten</strong> zum Parsen von Klammersprachen.</p></div>
+      <div class="cmp-body">
+        <p class="vlabel">Basisfach</p><p class="vtext">Einsatzbereiche für endliche Automaten (zum Beispiel Substringproblem, GUI, zustandsbasierte Protokolle) erläutern</p>
+        <p class="vlabel">Leistungsfach</p><p class="vtext">Einsatzbereiche für <del>endliche</del> <ins>reguläre</ins> Automaten (zum Beispiel Substringproblem, GUI, zustandsbasierte Protokolle) <ins>und Kellerautomaten (Parsen von Klammersprachen)</ins> erläutern</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="area" id="nur-lf">
+    <div class="area-head"><span class="kb">Nur Leistungsfach</span><h2>Die 51 Teilkompetenzen, die es nur im Leistungsfach gibt</h2>
+      <p class="intro">Kurzbezeichnung und darunter der vollständige Wortlaut des Bildungsplans.</p></div>
+    <div class="nur-feld"><h3>BE · Bitebene <span class="gnr">4</span></h3><ul class="nurl"><li><span class="nk">BE 4</span><span class="nt"><strong>Festkommadarstellung</strong><span class="nw">die Festkommadarstellung als Beispiel für eine Codierung nichtganzer Zahlen erläutern</span></span></li><li><span class="nk">BE 5</span><span class="nt"><strong>Erweiterung von Textcodierungen</strong><span class="nw">am Beispiel von Textcodierungen Erweiterungsmöglichkeiten von Codierungen beschreiben (zum Beispiel Biterweiterung, Escapezeichen, Codepages)</span></span></li><li><span class="nk">BE 8</span><span class="nt"><strong>LZW-Verfahren</strong><span class="nw">das LZW-Verfahren als Beispiel für ein Wörterbuchverfahren erläutern und von Hand durchführen</span></span></li><li><span class="nk">BE 9</span><span class="nt"><strong>Hashfunktionen</strong><span class="nw">das Konzept von Hashfunktionen und Anforderungen an diese (unter anderem Nichtumkehrbarkeit, Vermeidung von Kollisionen) beschreiben und dieses an Beispielen (zum Beispiel Fingerprint, Integritätsprüfung, ISBN-Prüfsumme) erläutern</span></span></li></ul></div>
+    <div class="nur-feld"><h3>DS · Datenstrukturen <span class="gnr">5</span></h3><ul class="nurl"><li><span class="nk">DS 1</span><span class="nt"><strong>zweidimensionale Arrays</strong><span class="nw">zweidimensionale Arrays in ihrer Implementierung verwenden</span></span></li><li><span class="nk">DS 6</span><span class="nt"><strong>Bäume als spezielle Graphen</strong><span class="nw">erläutern, dass Bäume spezielle Graphen sind (Begriffe: Wurzel, innerer Knoten, Blatt)</span></span></li><li><span class="nk">DS 7</span><span class="nt"><strong>Abstrakter Datentyp, Set</strong><span class="nw">das Konzept des Abstrakten Datentyps (unter anderem anhand von Set) erläutern</span></span></li><li><span class="nk">DS 10</span><span class="nt"><strong>Datenstrukturen für Anwendungsfälle</strong><span class="nw">Datenstrukturen zur Modellierung und Lösung ausgewählter Anwendungsfälle (zum Beispiel Straßennetz, Geldflüsse, Freundschaftsbeziehungen in sozialen Netzwerken, Organigramm, To-do-Liste, Klammerausdrücke, Rangierbahnhof) nutzen</span></span></li><li><span class="nk">DS 11</span><span class="nt"><strong>Graphalgorithmus mit Bibliothek</strong><span class="nw">einen Algorithmus auf Graphen implementieren (unter Verwendung geeigneter Bibliotheken oder Frameworks)</span></span></li></ul></div>
+    <div class="nur-feld"><h3>DB · Relationale Datenbanksysteme</h3><p class="leer">keine — alle Teilkompetenzen kommen auch im Basisfach vor</p></div>
+    <div class="nur-feld"><h3>OP · Strukturierte und objektorientierte Programmierung <span class="gnr">7</span></h3><ul class="nurl"><li><span class="nk">OP 7</span><span class="nt"><strong>Nullpointerfehler</strong><span class="nw">mögliche Ursachen und Auswirkungen von Nullpointerfehlern erläutern</span></span></li><li><span class="nk">OP 11</span><span class="nt"><strong>Klassen- vs. Objektattribute</strong><span class="nw">den Unterschied zwischen Objektattributen/Objektmethoden und Klassenattributen/Klassenmethoden erklären</span></span></li><li><span class="nk">OP 12</span><span class="nt"><strong>Lebenszyklus von Objekten</strong><span class="nw">den Lebenszyklus von Objekten (unter anderem Instanziierung, Verwendung, Zerstörung) beschreiben</span></span></li><li><span class="nk">OP 14</span><span class="nt"><strong>generische Datentypen</strong><span class="nw">generische Datentypen bei der Instanziierung vorgegebener Klassen verwenden</span></span></li><li><span class="nk">OP 15</span><span class="nt"><strong>Collections, foreach, Lambdas</strong><span class="nw">sprachliche Mittel zur Sammlung gleichartiger Objekte (Collection) und zum Durchlaufen aller Elemente der Sammlung (zum Beispiel Iteration, foreach, Lambdaausdrücke etc.) nutzen</span></span></li><li><span class="nk">OP 17</span><span class="nt"><strong>Polymorphie, sichere Casts</strong><span class="nw">das Prinzip der Polymorphie erläutern und anwenden und dabei auch sichere class casts verwenden</span></span></li><li><span class="nk">OP 18</span><span class="nt"><strong>abstrakte Klassen</strong><span class="nw">abstrakte Klassen und abstrakte Methoden nutzen</span></span></li></ul></div>
+    <div class="nur-feld"><h3>AD · Algorithmen auf Datenstrukturen <span class="gnr">5</span></h3><ul class="nurl"><li><span class="nk">AD 3</span><span class="nt"><strong>Pre-, In-, Postorder</strong><span class="nw">Inorder‑, Postorder- und Preorder-Traversierung auf Binärbäumen händisch durchführen und Anwendungsbeispiele nennen</span></span></li><li><span class="nk">AD 7</span><span class="nt"><strong>nicht-vergleichsbasiertes Sortieren</strong><span class="nw">ein nicht-vergleichsbasiertes Verfahren (zum Beispiel Bucketsort, Countingsort, Radixsort, …) beschreiben</span></span></li><li><span class="nk">AD 9</span><span class="nt"><strong>Breiten- und Tiefensuche auf Graphen</strong><span class="nw">Breitensuche und Tiefensuche auf Graphen beschreiben, auf reale Problemstellungen anwenden und händisch durchführen</span></span></li><li><span class="nk">AD 11</span><span class="nt"><strong>P und NP</strong><span class="nw">erläutern, dass nicht bekannt ist, ob für jedes Problem eine in Polynomialzeit berechenbare Lösung existiert, und können dafür Beispiele angeben</span></span></li><li><span class="nk">AD 12</span><span class="nt"><strong>Näherungsverfahren (Greedy)</strong><span class="nw">Strategien (zum Beispiel Greedy) zur Bestimmung von Näherungslösungen in polynomieller Laufzeit beschreiben und an geeigneten Problemstellungen (zum Beispiel 4-Farben-Problem, Dominating Sets) von Hand durchführen</span></span></li></ul></div>
+    <div class="nur-feld"><h3>RK · Rekursion <span class="gnr">3</span></h3><ul class="nurl"><li><span class="nk">RK 4</span><span class="nt"><strong>Aufrufstapel, Rekursionsbaum</strong><span class="nw">Rekursionsabläufe darstellen (unter anderem am call stack, Baum)</span></span></li><li><span class="nk">RK 5</span><span class="nt"><strong>rekursiv vs. iterativ</strong><span class="nw">iterative Algorithmen und rekursive Algorithmen zur Lösung derselben Problemstellung vergleichen (unter anderem hinsichtlich Laufzeit) und bewerten</span></span></li><li><span class="nk">RK 6</span><span class="nt"><strong>Backtracking</strong><span class="nw">das Prinzip des Backtrackings anhand einer geeigneten Problemstellung (zum Beispiel Acht-Damen-Problem, Magische Quadrate, Zyklensuche) erläutern</span></span></li></ul></div>
+    <div class="nur-feld"><h3>RN · Rechner und Netze <span class="gnr">11</span></h3><ul class="nurl"><li><span class="nk">RN 1</span><span class="nt"><strong>Schaltnetze aus Gattern</strong><span class="nw">aus logischen Gattern (unter anderem AND, OR, XOR, NOT) Schaltnetze entwerfen, diese untersuchen und ihre Wahrheitstafeln ermitteln</span></span></li><li><span class="nk">RN 2</span><span class="nt"><strong>Halb-, Voll-, Mehrbitaddierer</strong><span class="nw">Aufbau und Funktion von Halbaddierer und Volladdierer beschreiben und daraus in einer Simulationsumgebung einen Mehrbitaddierer erstellen</span></span></li><li><span class="nk">RN 3</span><span class="nt"><strong>Latch, Flipflop</strong><span class="nw">Aufbau und Funktion eines bistabilen Bauteils (zum Beispiel Latch, Flipflop) als Beispiel für einen 1-Bit-Speicher beschreiben und in einer Simulationsumgebung SR-Latch und D-Latch erstellen</span></span></li><li><span class="nk">RN 4</span><span class="nt"><strong>Begriffe der booleschen Algebra</strong><span class="nw">Begriffe der booleschen Algebra (boolescher Wert, Verknüpfungen, Basis) erklären</span></span></li><li><span class="nk">RN 5</span><span class="nt"><strong>Rechengesetze, De Morgan</strong><span class="nw">Boolesche Terme mithilfe der Rechengesetze (unter anderem De Morgan’sche Regeln) in eine vereinfachte Darstellung überführen</span></span></li><li><span class="nk">RN 6</span><span class="nt"><strong>DNF und KNF</strong><span class="nw">Boolesche Funktionen in disjunktiver Normalform (DNF) und konjunktiver Normalform (KNF) angeben, auch kanonisch</span></span></li><li><span class="nk">RN 7</span><span class="nt"><strong>KV-Diagramme</strong><span class="nw">Boolesche Funktionen in bis zu vier Variablen mithilfe von KV-Diagrammen in Minimalform überführen</span></span></li><li><span class="nk">RN 10</span><span class="nt"><strong>Assemblerprogramme</strong><span class="nw">Assembler-Programme für eine Von-Neumann-Modellmaschine (zum Beispiel Multiplikation natürlicher Zahlen) in einer Simulationsumgebung implementieren</span></span></li><li><span class="nk">RN 11</span><span class="nt"><strong>paketorientierte Übertragung</strong><span class="nw">das Prinzip der paketorientierten Übertragung (unter anderem Adressierung, Segmentierung) erläutern</span></span></li><li><span class="nk">RN 12</span><span class="nt"><strong>Schichtenmodell, TCP/IP</strong><span class="nw">das Zusammenwirken von Protokollschichten (unter anderem am Beispiel von TCP/IP) am vereinfachten Schichtenmodell (Netzwerkschicht, Vermittlungsschicht, Transportschicht, Anwendungsschicht) erläutern</span></span></li><li><span class="nk">RN 13</span><span class="nt"><strong>TCP im Sequenzdiagramm</strong><span class="nw">den Kommunikationsablauf über ein Protokoll (unter anderem TCP mit Verbindungsaufbau und ‑abbau) in einem Sequenzdiagramm darstellen</span></span></li></ul></div>
+    <div class="nur-feld"><h3>IS · Informationsgesellschaft und Datensicherheit <span class="gnr">3</span></h3><ul class="nurl"><li><span class="nk">IS 4</span><span class="nt"><strong>kryptologische Hashfunktionen</strong><span class="nw">spezielle Anforderungen an kryptologische Hashfunktionen und Anwendungen in der Kryptologie erläutern (zum Beispiel Fingerprint, Signatur, Passworthashes)</span></span></li><li><span class="nk">IS 7</span><span class="nt"><strong>Vertrauensmodelle für Zertifikate</strong><span class="nw">erläutern, dass digitale Zertifikate auf Vertrauensmodellen (zum Beispiel hierarchisches Modell, Web of Trust) basieren</span></span></li><li><span class="nk">IS 8</span><span class="nt"><strong>Angriffe auf Informatiksysteme</strong><span class="nw">Angriffe auf Informatiksysteme beschreiben (zum Beispiel SQL-Injections auf Datenbanksysteme, DDOS auf Netzwerkinfrastrukturen oder Phishing auf Zugangskontrollsysteme)</span></span></li></ul></div>
+    <div class="nur-feld"><h3>AF · Automaten und formale Sprachen <span class="gnr">11</span></h3><ul class="nurl"><li><span class="nk">AF 2</span><span class="nt"><strong>Definition formaler Sprachen</strong><span class="nw">die Definition einer formalen Sprache erläutern</span></span></li><li><span class="nk">AF 3</span><span class="nt"><strong>Syntax und Semantik</strong><span class="nw">den Unterschied zwischen Semantik und Syntax einer formalen Sprache erläutern</span></span></li><li><span class="nk">AF 4</span><span class="nt"><strong>Syntaxdiagramme</strong><span class="nw">Syntaxdiagramme unter Verwendung von Terminalsymbolen und Nichtterminalsymbolen zur Beschreibung einer formalen Sprache entwerfen</span></span></li><li><span class="nk">AF 5</span><span class="nt"><strong>Grammatiken, EBNF</strong><span class="nw">eine Grammatik unter Verwendung von Terminalsymbolen, Nichtterminalsymbolen, Startsymbol und Produktionsregeln (auch unter Verwendung von EBNF) zur Beschreibung einer formalen Sprache angeben</span></span></li><li><span class="nk">AF 6</span><span class="nt"><strong>Wortproblem, Ableitungen</strong><span class="nw">für verschiedene Sprachtypen überprüfen, ob ein Wort einer formalen Sprache angehört (Wortproblem), eine Ableitung für ein Wort der Sprache angeben und Wörter der Sprache angeben</span></span></li><li><span class="nk">AF 9</span><span class="nt"><strong>Definition regulärer Sprachen</strong><span class="nw">die Definition einer regulären Sprache erläutern</span></span></li><li><span class="nk">AF 10</span><span class="nt"><strong>DEA, reguläre Grammatik, regulärer Ausdruck</strong><span class="nw">reguläre Sprachen durch deterministische endliche Automaten (DEA), reguläre Grammatiken und reguläre Ausdrücke beschreiben</span></span></li><li><span class="nk">AF 11</span><span class="nt"><strong>Grenzen regulärer Sprachen</strong><span class="nw">die Grenzen regulärer Sprachen erläutern</span></span></li><li><span class="nk">AF 12</span><span class="nt"><strong>Definition kontextfreier Sprachen</strong><span class="nw">die Definition einer kontextfreien Sprache angeben</span></span></li><li><span class="nk">AF 13</span><span class="nt"><strong>Kellerautomaten, kontextfreie Grammatiken</strong><span class="nw">kontextfreie Sprachen durch Kellerautomaten und kontextfreie Grammatiken beschreiben</span></span></li><li><span class="nk">AF 14</span><span class="nt"><strong>Grenzen kontextfreier Sprachen</strong><span class="nw">Grenzen kontextfreier Sprachen erläutern</span></span></li></ul></div>
+    <div class="nur-feld"><h3>PM · Projektmanagement <span class="gnr">2</span></h3><ul class="nurl"><li><span class="nk">PM 2</span><span class="nt"><strong>kollaborative Softwareentwicklung</strong><span class="nw">Vorgehensweisen und Herausforderungen bei der kollaborativen Softwareentwicklung (zum Beispiel Nutzung von Bibliotheken und APIs, Versionsverwaltung, Bereitstellung selbst erstellter Bibliotheken, Bugtracking, Updates) beschreiben</span></span></li><li><span class="nk">PM 3</span><span class="nt"><strong>testgetriebene Entwicklung</strong><span class="nw">Methoden testgetriebener oder testgestützter Entwicklung beschreiben und verwenden</span></span></li></ul></div>
+  </section>
+
+  <section class="area" id="einleitung">
+    <div class="area-head"><span class="kb">Einleitungstexte</span><h2>Was die Einleitungstexte der Themenfelder zusätzlich sagen</h2>
+      <p class="intro">Jedes Themenfeld beginnt im Plan mit einem kurzen Text. Die Tabelle nennt, was im Leistungsfach gegenüber dem Basisfach hinzukommt oder sich ändert.</p></div>
+    <div class="tbl-scroll"><table>
+      <tr><th>Kennung</th><th>Themenfeld</th><th>zusätzlich im Leistungsfach</th></tr>
+<tr><td>BE</td><td>Bitebene</td><td><ul><li>nichtganze Zahlen (Festkomma) als zusätzliche Zahlendarstellung</li><li>„weitere auf unterschiedlichen Ansätzen basierende“ Kompressionsverfahren statt nur Huffman</li><li>Hashfunktionen als Hilfsmittel für Datenbanksysteme und Kryptologie</li></ul></td></tr>
+<tr><td>DS</td><td>Datenstrukturen</td><td><span class="muted">Einleitungstext wortgleich</span></td></tr>
+<tr><td>DB</td><td>Relationale Datenbanksysteme</td><td><ul><li>SQL nicht nur zum Ermitteln, sondern auch zum Einfügen, Löschen und Ändern von Daten</li></ul></td></tr>
+<tr><td>OP</td><td>Strukturierte und objektorientierte Programmierung</td><td><span class="muted">Einleitungstext wortgleich</span></td></tr>
+<tr><td>AD</td><td>Algorithmen auf Datenstrukturen</td><td><ul><li>Verfahren abhängig von Problemstellung <em>und Datenstruktur</em></li><li>„Neben klassischen Such- und Sortierproblemen werden auch komplexere Problemstellungen untersucht.“</li></ul></td></tr>
+<tr><td>RK</td><td>Rekursion</td><td><ul><li>Acht-Damen-Problem als zusätzliches Beispiel</li><li>Kriterien für den Einsatz rekursiver gegenüber iterativer Algorithmen</li><li>Verstehen, wie Rechner Rekursion ausführen (Rekursionsabläufe darstellen)</li></ul></td></tr>
+<tr><td>RN</td><td>Rechner und Netze</td><td><ul><li>boolesche Algebra als Grundlage von Schaltnetzen und Schaltwerken</li><li>Assemblerprogramme auf der Modellmaschine</li><li>Protokolle, paketorientierte Übertragung, Schichtenmodell, Sequenzdiagramme</li></ul></td></tr>
+<tr><td>IS</td><td>Informationsgesellschaft und Datensicherheit</td><td><ul><li>Authentifizierung mittels digitaler Zertifikate</li><li>Informatiksysteme als Angriffsziele; gängige Angriffe (SQL-Injection, DDoS, Phishing)</li></ul></td></tr>
+<tr><td>AF</td><td>Automaten und formale Sprachen</td><td><ul><li>Ausgangspunkt sind <em>formale Sprachen</em> (Kfz-Kennzeichen, E-Mail-Adressen, XML, Programmiersprachen …) statt Automatenphänomene</li><li>Wörter ableiten, Wortproblem, Grammatiken</li><li>Unterschiede und Grenzen regulärer und kontextfreier Sprachen, Chomsky-Hierarchie</li></ul></td></tr>
+<tr><td>PM</td><td>Projektmanagement</td><td><ul><li>„Vorgehensmodelle“ statt „exemplarisch ein Vorgehensmodell“</li><li>Beispiel: eine formale Sprache zur Speicherung eines Spielstands</li></ul></td></tr>
+    </table></div>
+  </section>
+
+  <section class="area unterricht" id="unterricht">
+    <div class="area-head"><span class="kb">Unterricht</span><h2>Was das für den Unterricht bedeutet</h2></div>
+    <h3>Gemeinsamer Kern</h3>
+    <p>Die 60 Teilkompetenzen des Basisfachs bilden einen gemeinsamen Kern. Material, das für das Basisfach entsteht, ist im Leistungsfach weiter verwendbar — die Ausarbeitungen in diesem Ordner übernehmen die 48 wortgleichen Teilkompetenzen deshalb unverändert.</p>
+    <h3>Mehr Breite</h3>
+    <p>Die 51 zusätzlichen Teilkompetenzen sind keine Vertiefungen einzelner Stunden, sondern ganze Gebiete: Schaltnetze und boolesche Algebra, Netzwerkprotokolle, formale Sprachen und Grammatiken, P/NP und Näherungsverfahren, Backtracking. Wer zwischen Basis- und Leistungsfach wechselt, verpasst diese Gebiete vollständig oder muss sie nachholen.</p>
+    <h3>Mehr Tiefe</h3>
+    <p>An den erweiterten Teilkompetenzen lässt sich ablesen, worin die Tiefe besteht: Das Leistungsfach verlangt häufiger den Operator <em>implementieren</em>, wo das Basisfach <em>beschreiben</em> genügen lässt (Stack, Queue, Baumsuche, Sortierverfahren). In der Programmierung kommen Sprachkonzepte hinzu, die über die Grundlagen der OOP hinausgehen (Generics, Polymorphie mit Casts, abstrakte Klassen, Lambdaausdrücke).</p>
+    <h3>Kursplanung</h3>
+    <ul>
+      <li>In einem gemeinsamen Kurs mit Basis- und Leistungsfachschülern lassen sich die gemeinsamen Teilkompetenzen zusammen unterrichten; die erweiterten bieten sich für Differenzierung an (Implementierung als Zusatzaufgabe).</li>
+      <li>Die Themenfelder Rechner und Netze sowie Automaten und formale Sprachen brauchen im Leistungsfach deutlich mehr Zeit als im Basisfach — dort sind es nur zwei bzw. vier Teilkompetenzen.</li>
+      <li>Datenbanken eignen sich gut als gemeinsame Einheit; die Unterschiede beschränken sich auf Aggregation und Gruppierung sowie den Einsatz beider Diagrammarten.</li>
+    </ul>
+    <p class="src">Die Stundenzahlen von Basis- und Leistungsfach legt nicht der Bildungsplan fest, sondern die Oberstufenverordnung; sie sind hier deshalb nicht angegeben.</p>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var stored = null;
+    try { stored = localStorage.getItem('bklf-theme'); } catch (e) {}
+    if (stored === 'light' || stored === 'dark') { root.setAttribute('data-theme', stored); }
+    function isDark() {
+      var set = root.getAttribute('data-theme');
+      if (set === 'dark') { return true; }
+      if (set === 'light') { return false; }
+      return mq.matches;
+    }
+    function label() { btn.textContent = isDark() ? 'Hell' : 'Dunkel'; }
+    label();
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('bklf-theme', next); } catch (e) {}
+      label();
+    });
+    mq.addEventListener('change', function () {
+      if (!root.hasAttribute('data-theme')) { label(); }
+    });
+  })();
+</script>
+</body>
+</html>

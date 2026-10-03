@@ -14,9 +14,11 @@
 
 - [Brückenkurs Informatik](./Brueckenkurs_Informatik.html)
 - [Basisfach Informatik](./Basisfach_Informatik.html)
+- [Leistungsfach Informatik](./Leistungsfach_Informatik.html)
 
 -----
 
 - [Vergleich Brückenkurs - Klasse 5-11](./vergleich_brueckenkurs_neu.md)
+- [Unterschiede Basisfach - Leistungsfach](./Unterschiede_Basisfach_Leistungsfach.html)
 
 <!-- - [Notenschlüssel](./notenschluessel.html) -->
