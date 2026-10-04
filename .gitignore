@@ -7,5 +7,5 @@ __pycache__/
 media/
 
 # Videos: nur das fertige Video, keine Vorschauversionen
-*_vorschau.mp4
+*_vorschau.*
 *.mp4

@@ -4,9 +4,10 @@ Umsetzung von Drehbuch_DC1_Video1_Inhalte.md mit Manim (Community Edition)
 und manim-voiceover.
 
 Jede Drehbuch-Szene ist eine eigene Manim-Szene (Szene0_… bis Szene8_…).
-Der Sprechtext steht direkt im Code: `with self.sage("…"):` lässt die
-KI-Stimme den Satz sprechen; die Animationen im Block laufen gleichzeitig,
-danach wartet die Szene, bis der Satz zu Ende gesprochen ist.
+Der Sprechtext steht direkt im Code: `with self.sage("…"):` steht für einen
+gesprochenen Satz; die Animationen im Block laufen gleichzeitig, danach wartet
+die Szene, bis der Satz zu Ende ist. Ob dabei eine KI-Stimme spricht oder ein
+stummes Video zum Einsprechen entsteht, regelt MIT_STIMME (unten).
 
 Für die Stimme sind Hex-Ziffern mit Leerzeichen und Ziffern als Wörter
 geschrieben („A D“, „acht null“), damit die Sprachausgabe sie nicht als
@@ -16,17 +17,39 @@ Vorschau einer Szene:   manim -pql dc1_video1.py Szene1_Stellenwertsystem
 Alles in Full HD:       python render.py
 """
 
+from contextlib import contextmanager
+from pathlib import Path
+
 from manim import *
 from manim_voiceover import VoiceoverScene
 from manim_voiceover.services.gtts import GTTSService
 
 config.background_color = "#FAFAF7"
 
+# False: stummes Video zum späteren Einsprechen (z. B. in Camtasia). Die Dauer
+# jedes Satzes wird aus der Wortzahl geschätzt; zu jeder Szene entsteht eine
+# .srt-Datei mit dem Sprechtext an der richtigen Stelle.
+# True: KI-Stimme aus sprachdienst() wird beim Rendern eingesprochen.
+MIT_STIMME = False
+WOERTER_PRO_MINUTE = 130   # Sprechtempo im stummen Modus
+
 
 def sprachdienst():
     """Hier die Stimme wechseln, z. B. ElevenLabsService, OpenAIService, AzureService
     oder RecorderService (eigene Stimme aufnehmen)."""
     return GTTSService(lang="de", tld="de")
+
+
+class _Schaetzung:
+    """Ersatz für den Tracker von manim-voiceover im stummen Modus."""
+
+    def __init__(self, text):
+        self.duration = len(text.split()) * 60 / WOERTER_PRO_MINUTE + 0.3
+
+
+def _srt_zeit(sekunden):
+    ms = round(sekunden * 1000)
+    return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
 # ---------------------------------------------------------------- Farben, Schriften
@@ -104,14 +127,38 @@ class Szene(VoiceoverScene):
 
     def setup(self):
         super().setup()
-        self.set_speech_service(sprachdienst())
+        if MIT_STIMME:
+            self.set_speech_service(sprachdienst())
+        self.untertitel = []
         self.kopfzeile = None
         if self.titel:
             self.kopfzeile = sans(self.titel, GRAU, 26).to_corner(UL, buff=0.4)
             self.add(self.kopfzeile)
 
+    @contextmanager
     def sage(self, text):
-        return self.voiceover(text=text)
+        """Ein Satz Sprechtext. Die Animationen im with-Block laufen gleichzeitig."""
+        if MIT_STIMME:
+            with self.voiceover(text=text) as tracker:
+                yield tracker
+            return
+        tracker = _Schaetzung(text)
+        start = self.renderer.time
+        self.untertitel.append((start, start + tracker.duration, text))
+        yield tracker
+        rest = start + tracker.duration - self.renderer.time
+        if rest > 0:
+            self.wait(rest)
+
+    def tear_down(self):
+        if MIT_STIMME or not self.untertitel:
+            return
+        srt = Path(self.renderer.file_writer.movie_file_path).with_suffix(".srt")
+        anfaenge = [a for a, _, _ in self.untertitel[1:]] + [float("inf")]
+        srt.write_text("".join(
+            f"{i}\n{_srt_zeit(a)} --> {_srt_zeit(min(b, naechster))}\n{text}\n\n"
+            for i, ((a, b, text), naechster) in enumerate(zip(self.untertitel, anfaenge), 1)
+        ), encoding="utf-8")
 
     def pause(self):
         """Entspricht [Pause] im Drehbuch."""

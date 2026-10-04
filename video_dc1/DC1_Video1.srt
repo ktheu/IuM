@@ -1,0 +1,328 @@
+﻿1
+00:00:00,000 --> 00:00:09,067
+Wenn wir uns den Quelltext einer Webseite anschauen, finden wir solche Angaben: Raute F F acht null null null.
+
+2
+00:00:09,067 --> 00:00:13,517
+Das ist eine Farbe – genauer gesagt dieses Orange.
+
+3
+00:00:13,517 --> 00:00:17,509
+Aber warum stehen da Buchstaben zwischen den Ziffern?
+
+4
+00:00:18,300 --> 00:00:21,367
+Das ist eine Zahl im Hexadezimalsystem.
+
+5
+00:00:21,367 --> 00:00:30,433
+In diesem Video lernen wir, wie das Hexadezimalsystem funktioniert und wie es mit dem Binärsystem und unserem Dezimalsystem zusammenhängt.
+
+6
+00:00:30,433 --> 00:00:34,887
+Und am Ende können wir diesen Farbcode selbst entschlüsseln.
+
+7
+00:00:35,683 --> 00:00:43,366
+Fangen wir mit etwas an, das wir schon kennen: unserem Dezimalsystem. Nehmen wir die Zahl 173.
+
+8
+00:00:43,366 --> 00:00:51,974
+Die 3 steht ganz rechts an der Einerstelle, die 7 an der Zehnerstelle, die 1 an der Hunderterstelle.
+
+9
+00:00:52,016 --> 00:00:59,239
+Die Zahl bedeutet also: 1 mal 100 plus 7 mal 10 plus 3 mal 1.
+
+10
+00:01:00,050 --> 00:01:07,733
+Die Stellenwerte 1, 10, 100 sind Potenzen von 10, von rechts beginnend mit 10 hoch null.
+
+11
+00:01:07,733 --> 00:01:16,800
+Die 10 nennt man die Basis des Systems. Deshalb gibt es auch genau zehn Ziffern, von 0 bis 9.
+
+12
+00:01:16,800 --> 00:01:25,407
+Ein solches System heißt Stellenwertsystem: Was eine Ziffer wert ist, hängt davon ab, an welcher Stelle sie steht.
+
+13
+00:01:26,200 --> 00:01:31,115
+Und jetzt das Entscheidende: Die Basis muss nicht 10 sein.
+
+14
+00:01:31,900 --> 00:01:36,800
+Computer arbeiten mit nur zwei Zuständen: Strom an oder aus,
+
+15
+00:01:36,800 --> 00:01:38,483
+eins oder null.
+
+16
+00:01:38,483 --> 00:01:46,629
+Darum verwenden sie das Binärsystem mit der Basis 2. Es gibt nur zwei Ziffern, 0 und 1.
+
+17
+00:01:47,617 --> 00:02:01,301
+Die Stellenwerte sind Potenzen von 2: von rechts 1, 2, 4, 8, dann 16, 32 und so weiter. Jede Stelle ist doppelt so viel wert wie die rechts daneben.
+
+18
+00:02:02,300 --> 00:02:07,200
+Schauen wir uns die Binärzahl eins eins null eins an.
+
+19
+00:02:07,200 --> 00:02:20,885
+Ganz rechts eine 1 an der Einerstelle: 1. Dann eine 0 an der Zweierstelle: nichts. Dann eine 1 an der Viererstelle: 4. Und eine 1 an der Achterstelle: 8.
+
+20
+00:02:20,933 --> 00:02:24,926
+Zusammen: 8 plus 4 plus 1 gleich 13.
+
+21
+00:02:25,717 --> 00:02:32,017
+Das Prinzip ist genau dasselbe wie im Dezimalsystem: Ziffer mal Stellenwert, dann addieren.
+
+22
+00:02:33,000 --> 00:02:36,517
+Der Nachteil: Binärzahlen werden schnell sehr lang.
+
+23
+00:02:36,517 --> 00:02:43,278
+Schon die Zahl 200 braucht acht Stellen. Für Menschen ist das schwer zu lesen.
+
+24
+00:02:44,067 --> 00:02:52,667
+Hier kommt das Hexadezimalsystem ins Spiel. Es hat die Basis 16. Das heißt: Wir brauchen sechzehn verschiedene Ziffern.
+
+25
+00:02:52,667 --> 00:02:56,650
+Die Ziffern 0 bis 9 haben wir schon.
+
+26
+00:02:56,650 --> 00:03:01,100
+Für die Werte 10 bis 15 nimmt man Buchstaben:
+
+27
+00:03:01,100 --> 00:03:10,631
+A steht für 10, B für 11, C für 12, D für 13, E für 14 und F für 15.
+
+28
+00:03:10,700 --> 00:03:17,923
+Die Stellenwerte sind Potenzen von 16: von rechts 1, dann 16, dann 256, dann 4096.
+
+29
+00:03:19,734 --> 00:03:23,717
+Hier noch einmal alle drei Systeme im Überblick.
+
+30
+00:03:23,717 --> 00:03:32,325
+Jedes hat eine Basis, so viele Ziffern, wie die Basis angibt, und Stellenwerte, die Potenzen der Basis sind.
+
+31
+00:03:33,117 --> 00:03:41,717
+Wie viel ist dann die Hexadezimalzahl A D? Wir gehen vor wie gewohnt: jede Ziffer mal ihren Stellenwert.
+
+32
+00:03:41,717 --> 00:03:48,934
+Das D steht an der Einerstelle und ist 13 wert: 13 mal 1 gleich 13.
+
+33
+00:03:48,934 --> 00:03:56,150
+Das A steht an der Sechzehnerstelle und ist 10 wert: 10 mal 16 gleich 160.
+
+34
+00:03:56,150 --> 00:03:59,220
+Zusammen: 160 plus 13 gleich 173.
+
+35
+00:04:00,017 --> 00:04:05,855
+A D im Hexadezimalsystem ist also dieselbe Zahl wie 173 im Dezimalsystem.
+
+36
+00:04:06,650 --> 00:04:11,550
+Und wie kommt man umgekehrt von 173 auf A D?
+
+37
+00:04:11,550 --> 00:04:16,450
+Dafür gibt es ein Verfahren: die fortgesetzte Division mit Rest.
+
+38
+00:04:16,450 --> 00:04:22,750
+Man teilt die Zahl immer wieder durch die Basis, hier also durch 16,
+
+39
+00:04:22,750 --> 00:04:25,819
+und notiert jedes Mal den Rest.
+
+40
+00:04:27,617 --> 00:04:37,133
+173 geteilt durch 16 ergibt 10, Rest 13. Denn 10 mal 16 sind 160, und bis 173 fehlen noch 13.
+
+41
+00:04:37,133 --> 00:04:40,650
+Rest 13, das ist die Hexadezimalziffer D.
+
+42
+00:04:40,650 --> 00:04:47,867
+Jetzt rechnen wir mit dem Ergebnis weiter: 10 geteilt durch 16 ergibt 0, Rest 10.
+
+43
+00:04:47,867 --> 00:04:51,383
+Rest 10, das ist die Ziffer A.
+
+44
+00:04:51,383 --> 00:04:55,376
+Sobald das Ergebnis 0 ist, sind wir fertig.
+
+45
+00:04:56,167 --> 00:05:02,450
+Jetzt kommt der wichtige Schritt: Wir lesen die Reste von unten nach oben.
+
+46
+00:05:02,450 --> 00:05:09,212
+Also erst A, dann D: A D. Das passt zu unserer Rechnung von eben.
+
+47
+00:05:10,000 --> 00:05:17,683
+Dasselbe Verfahren funktioniert für das Binärsystem, dann teilt man eben durch 2. Nehmen wir die 13.
+
+48
+00:05:17,683 --> 00:05:32,753
+13 geteilt durch 2 ist 6, Rest 1. 6 geteilt durch 2 ist 3, Rest 0. 3 geteilt durch 2 ist 1, Rest 1. 1 geteilt durch 2 ist 0, Rest 1.
+
+49
+00:05:32,817 --> 00:05:37,267
+Von unten nach oben gelesen: eins eins null eins.
+
+50
+00:05:37,267 --> 00:05:40,797
+Genau die Binärzahl, die wir vorhin hatten.
+
+51
+00:05:41,583 --> 00:05:50,183
+Fällt etwas auf? Die 13 ist im Hexadezimalsystem die Ziffer D und im Binärsystem eins eins null eins.
+
+52
+00:05:50,183 --> 00:05:55,098
+Zwischen diesen beiden Systemen gibt es eine besonders praktische Verbindung.
+
+53
+00:05:55,883 --> 00:05:59,866
+Der Grund: 16 ist gleich 2 hoch 4.
+
+54
+00:05:59,866 --> 00:06:13,550
+Mit vier Binärstellen kann man genau 16 verschiedene Werte darstellen, von null null null null bis eins eins eins eins. Das sind genau so viele, wie es Hexadezimalziffern gibt.
+
+55
+00:06:13,550 --> 00:06:17,080
+Jede Hexadezimalziffer entspricht also genau vier Binärstellen.
+
+56
+00:06:18,866 --> 00:06:26,551
+Hier ist die vollständige Tabelle. Damit kann man Ziffer für Ziffer übersetzen, ganz ohne zu rechnen.
+
+57
+00:06:28,350 --> 00:06:30,950
+Beispiel: die Hexadezimalzahl zwei F.
+
+58
+00:06:30,950 --> 00:06:34,933
+Die 2 wird zu null null eins null,
+
+59
+00:06:34,933 --> 00:06:38,450
+das F zu eins eins eins eins.
+
+60
+00:06:38,450 --> 00:06:42,904
+Ergebnis: null null eins null, eins eins eins eins.
+
+61
+00:06:44,700 --> 00:06:52,833
+Und umgekehrt: Die Binärzahl eins null eins null, null null eins eins teilen wir in zwei Vierergruppen.
+
+62
+00:06:52,833 --> 00:06:55,900
+Eins null eins null ist A,
+
+63
+00:06:55,900 --> 00:06:58,966
+null null eins eins ist 3.
+
+64
+00:06:58,966 --> 00:07:00,651
+Ergebnis: A drei.
+
+65
+00:07:03,950 --> 00:07:11,167
+Jetzt verstehen wir, warum Hexadezimal so beliebt ist: Es ist eine kurze Schreibweise für Binärzahlen.
+
+66
+00:07:11,167 --> 00:07:15,617
+Ein Byte besteht aus acht Bits, also acht Binärstellen.
+
+67
+00:07:15,617 --> 00:07:21,917
+Im Hexadezimalsystem sind das nur zwei Ziffern, und die Umrechnung geht ohne Rechnen.
+
+68
+00:07:23,700 --> 00:07:30,450
+Darum begegnet uns Hexadezimal überall dort, wo es eigentlich um Bits und Bytes geht:
+
+69
+00:07:30,450 --> 00:07:34,442
+bei MAC-Adressen von Netzwerkgeräten, bei Zeichencodes, bei Speicheradressen
+
+70
+00:07:34,450 --> 00:07:36,135
+und bei Farben.
+
+71
+00:07:37,250 --> 00:07:46,317
+Zurück zu unserem Farbcode: Raute F F acht null null null. Er besteht aus drei Bytes, also drei Ziffernpaaren:
+
+72
+00:07:46,317 --> 00:07:52,155
+F F für Rot, acht null für Grün, null null für Blau.
+
+73
+00:07:52,167 --> 00:07:58,917
+F F ist der größte Wert, den zwei Hexadezimalziffern darstellen können, also volles Rot.
+
+74
+00:07:58,917 --> 00:08:05,217
+Wie viel das im Dezimalsystem ist, rechnen wir in Aufgabe 1 selbst aus.
+
+75
+00:08:05,217 --> 00:08:13,350
+Acht null ist 8 mal 16 plus 0, also 128. Das ist etwa die Hälfte: halbes Grün.
+
+76
+00:08:13,350 --> 00:08:17,342
+Und null null ist null, also kein Blau.
+
+77
+00:08:18,133 --> 00:08:21,664
+Volles Rot mit halbem Grün ergibt: Orange.
+
+78
+00:08:23,450 --> 00:08:32,050
+Fassen wir zusammen. Erstens: Dezimal-, Binär- und Hexadezimalsystem funktionieren nach demselben Prinzip. Die Stellenwerte sind Potenzen der Basis.
+
+79
+00:08:32,050 --> 00:08:40,183
+Zweitens: Ins Dezimalsystem rechnen wir um, indem wir jede Ziffer mit ihrem Stellenwert multiplizieren und alles addieren.
+
+80
+00:08:40,183 --> 00:08:50,167
+Drittens: Aus dem Dezimalsystem heraus kommen wir mit der fortgesetzten Division mit Rest. Die Reste lesen wir von unten nach oben.
+
+81
+00:08:50,167 --> 00:08:57,390
+Und viertens: Zwischen Hexadezimal und Binär übersetzen wir Ziffer für Ziffer. Eine Hexadezimalziffer, vier Bits.
+
+82
+00:08:58,183 --> 00:09:07,714
+Jetzt sind wir dran: Im nächsten Video geht es um Aufgabe 1. Am besten probieren wir sie vorher selbst aus!
+
