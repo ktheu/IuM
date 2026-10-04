@@ -1,0 +1,11 @@
+# Python-Umgebung
+.venv/
+__pycache__/
+*.pyc
+
+# Manim: Zwischendateien und einzelne Szenen (werden mit render.py neu erzeugt)
+media/
+
+# Videos: nur das fertige Video, keine Vorschauversionen
+*_vorschau.mp4
+*.mp4
